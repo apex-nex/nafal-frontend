@@ -313,6 +313,7 @@ import Forums from "../pages/Forums/index";
 
 //Footer layouts 
 import PageFooterLayouts from "../pages/Pages/PageFooterLayouts/PageFooterLayouts";
+import LandingPage from '../pages/Nafal/Landing-Page/LandingPage';
 
 const routes = [
   //routes without Layout
@@ -680,6 +681,12 @@ const routes = [
   { path: "/documentation", component: Documentation, isTopbarDark: true },
   { path: "/widget", component: Widget, isTopbarDark: true },
 
+  //Nafal-Project
+  // Landing-Page 
+  {
+    path:"/home",
+    component: LandingPage, 
+  },
   //Index Main
   {
     path: "/",
