@@ -3,7 +3,8 @@ import { withRouter } from "react-router-dom";
 import Tagline from "./Tagline";
 import ThemeSwitcher from "./ThemeSwitcher";
 import BackToTop from "./backToTop";
-
+import NavbarNafal from '../../pages/Nafal/components/common/header/Navbar'
+import FooterNafal from '../../pages/Nafal/components/common/footer/Footer'
 
 // Layout Components
 const Topbar = React.lazy(() => import("./Topbar"));
@@ -66,8 +67,9 @@ class Layout extends Component {
     return (
       <React.Fragment>
         <Suspense fallback={Loader()}>
-          {this.props.location.pathname === "/index-onepage" ? (
-            <NavbarPage />
+          {this.props.location.pathname === "/" ? (
+
+            <NavbarNafal/>
           ) : (
             <Topbar tagline={tagLineContent} hasDarkTopBar={this.props.hasDarkTopBar} />
           )}
@@ -105,7 +107,7 @@ class Layout extends Component {
               return <FooterWithoutMenuLightSocialOnly className="" />;
             }
             else {
-              return <Footer />;
+              return <FooterNafal />;
             }
           })()}
 
