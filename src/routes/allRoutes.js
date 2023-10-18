@@ -313,6 +313,7 @@ import Forums from "../pages/Forums/index";
 
 //Footer layouts 
 import PageFooterLayouts from "../pages/Pages/PageFooterLayouts/PageFooterLayouts";
+import Home from '../pages/Nafal/pages/home/Home';
 
 const routes = [
   //routes without Layout
@@ -680,12 +681,16 @@ const routes = [
   { path: "/documentation", component: Documentation, isTopbarDark: true },
   { path: "/widget", component: Widget, isTopbarDark: true },
 
+  //Nafal-Project
+  // Landing-Page 
+  { path: "/", component: Home, },
   //Index Main
-  {
-    path: "/",
-    exact: true,
-    component: () => <Redirect to="/index" />,
-  },
+  // {
+  //   path: "/home",
+  //   exact: true,
+  //   component: () => <Redirect to="/index" />,
+  // }
+  // ,
   { path: "/index", component: Main, isTopbarDark: true },
 ];
 
