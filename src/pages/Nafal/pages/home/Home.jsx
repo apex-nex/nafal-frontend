@@ -1,10 +1,13 @@
 import React from 'react'
+import AboutSection from '../../components/home/AboutSection'
 
 const Home = () => {
   return (
-    <div>
-      
-    </div>
+    <React.Fragment>
+      <div className='about-section'>
+      <AboutSection/>
+      </div>
+    </React.Fragment>
   )
 }
 
