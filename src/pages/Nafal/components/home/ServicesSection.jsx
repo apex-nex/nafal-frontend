@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ServicesSection() {
+const ServicesSection = () => {
   return (
     <div>
       ServicesSection

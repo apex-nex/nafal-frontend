@@ -1,9 +1,9 @@
 import React from 'react'
 
-function AboutSection() {
+const AboutSection = () => {
   return (
     <div>
-      
+      AboutSection
     </div>
   )
 }

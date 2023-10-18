@@ -1,6 +1,6 @@
 import React from 'react'
 
-function VideoSection() {
+const VideoSection = () => {
   return (
     <div>
       VideoSection

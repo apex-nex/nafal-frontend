@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ClientSection() {
+const ClientSection = () => {
   return (
     <div>
       ClientSection
