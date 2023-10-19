@@ -1,11 +1,22 @@
-import Carousel from '../../components/home/Carousel'
 import React from 'react'
+import Carousel from '../../components/home/Carousel'
+import AboutSection from '../../components/home/AboutSection'
+import Vision from '../../components/home/Vision'
+
 
 const Home = () => {
   return (
-    <div>
+    <React.Fragment>
+      <div className='carousel'>
       <Carousel/>
-    </div>
+      </div>
+      <div className='about-section'>
+      <AboutSection/>
+      </div>
+      <div className='vision-container'>
+      <Vision/>
+      </div>
+    </React.Fragment>
   )
 }
 
