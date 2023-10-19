@@ -681,17 +681,13 @@ const routes = [
   { path: "/documentation", component: Documentation, isTopbarDark: true },
   { path: "/widget", component: Widget, isTopbarDark: true },
 
-  //Nafal-Project
-  // Landing-Page 
-  { path: "/", component: Home, },
+  // Nafal Project
+  // HomePage 
+  { path: "/", component: Home },
+
   //Index Main
-  // {
-  //   path: "/home",
-  //   exact: true,
-  //   component: () => <Redirect to="/index" />,
-  // }
-  // ,
-  { path: "/index", component: Main, isTopbarDark: true },
+  // { path: "/", exact: true, component: () => <Redirect to="/index" />},
+  // { path: "/index", component: Main, isTopbarDark: true },
 ];
 
 export default routes;
