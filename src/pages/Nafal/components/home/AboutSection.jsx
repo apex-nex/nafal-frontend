@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
-import mockData from '../../mock/mockAboutData.json';
-import about from "../../../../assets/images/course/about.jpg";
+import mockData from '../../mock/mockHomePageData.json';
+import about from '../../../../assets/images/course/about.jpg';
 
 const AboutSection = () => {
   return (
@@ -10,6 +10,11 @@ const AboutSection = () => {
       <section className="section pt-0">
         <Container>
           <Row className="align-items-center">
+            <h3 className="title mb-4 mt-5 text-center">
+              <span className="text-primary">
+                {mockData.data.aboutData.heading}
+              </span>
+            </h3>
             <Col lg="5" md="6" xs="12">
               <img
                 src={about}
@@ -20,9 +25,13 @@ const AboutSection = () => {
             <Col lg="7" md="6" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
               <div className="section-title ms-lg-4">
                 <h4 className="title mb-4">
-                  <span className="text-primary">{mockData.data.title}</span>
+                  <span className="text-primary">
+                    {mockData.data.aboutData.title}
+                  </span>
                 </h4>
-                <p className="text-muted">{mockData.data.discription}</p>
+                <p className="text-muted">
+                  {mockData.data.aboutData.discription}
+                </p>
                 {/* <ul className="list-unstyled feature-list mb-0 text-muted">
                   <li>
                     <i className="uil uil-arrow-circle-right text-primary h5 mb-0 align-middle me-2"></i>
@@ -39,7 +48,7 @@ const AboutSection = () => {
                 </ul> */}
                 <Container>
                   <Row>
-                    <Col xs="12" sm="12"  md="4" lg="4" xl="4">
+                    <Col xs="12" sm="12" md="4" lg="4" xl="4">
                       <Link to="#" className="btn btn-outline-primary mt-3">
                         Company Profile
                       </Link>
