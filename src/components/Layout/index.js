@@ -121,7 +121,7 @@ class Layout extends Component {
             <CustomDot />
           </ScrollUpButton> */}
           <BackToTop />
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
         </Suspense>
 
       </React.Fragment>
