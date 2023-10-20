@@ -5,6 +5,7 @@ import Vision from '../../components/home/Vision'
 import ServicesSection from '../../components/home/ServicesSection'
 import MetaTags from 'react-meta-tags';
 
+import ClientSection from '../../components/home/ClientSection'
 
 
 const Home = () => {
@@ -26,6 +27,9 @@ const Home = () => {
       </div>
       <div className='services-container'>
      <ServicesSection/>
+      </div>
+      <div className='clients-section'>
+          <ClientSection/>
       </div>
     </React.Fragment>
   );

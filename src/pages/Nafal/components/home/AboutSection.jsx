@@ -1,6 +1,8 @@
-import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
+import mockData from '../../mock/mockHomePageData.json';
+import about from '../../../../assets/images/course/about.jpg';
 
 //import images
 import about from "../../../../assets/images/coworking/about.jpg";
