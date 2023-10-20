@@ -13,7 +13,7 @@ const Home = () => {
       <div className='about-section'>
       <AboutSection/>
       </div>
-      <div className='vision-container'>
+      <div className='vision-container mb-5'>
       <Vision/>
       </div>
     </React.Fragment>
