@@ -1,8 +1,11 @@
-import React from 'react';
+import React from 'react'
+import Carousel from '../../components/home/Carousel'
+import AboutSection from '../../components/home/AboutSection'
+import Vision from '../../components/home/Vision'
+import ServicesSection from '../../components/home/ServicesSection'
 import MetaTags from 'react-meta-tags';
-import Carousel from '../../components/home/Carousel';
-import AboutSection from '../../components/home/AboutSection';
-import Vision from '../../components/home/Vision';
+
+
 
 const Home = () => {
   return (
@@ -20,6 +23,9 @@ const Home = () => {
         <div className="vision-container mb-5">
           <Vision />
         </div>
+      </div>
+      <div className='services-container'>
+     <ServicesSection/>
       </div>
     </React.Fragment>
   );
