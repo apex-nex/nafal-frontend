@@ -36,12 +36,13 @@ function DownloadAppSection() {
                     Available for your <br /> Smartphones
                   </h4>
                   <p className="text-muted para-desc mb-0">
-                    Start working with{" "}
+                  Stay connected with{" "}
                     <span className="text-primary fw-bold">
-                      Landrick
+                    Nafal  HVAC.
                     </span>{" "}
-                    that can provide everything you need to generate awareness,
-                    drive traffic, connect.
+                      Get our app for all your heating, cooling, and ventilation needs.
+
+
                   </p>
                   <div className="my-4">
                     <Link to="#" className="btn btn-lg btn-dark mt-2 me-2">
@@ -52,7 +53,7 @@ function DownloadAppSection() {
                     </Link>
                   </div>
 
-                  <div className="d-inline-block">
+                  {/* <div className="d-inline-block">
                     <div className="pt-4 d-flex align-items-center border-top">
                       <i>
                         <FeatherIcon
@@ -69,7 +70,7 @@ function DownloadAppSection() {
                         </Link>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </Col>
             </Row>

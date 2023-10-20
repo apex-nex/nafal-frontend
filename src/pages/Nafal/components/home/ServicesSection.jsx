@@ -8,6 +8,8 @@ import SectionTitle from "./SectionTitle";
 
 import { hotelRoomsData } from "../../../../common/data";
 
+
+
 const ServicesSection = () => {
   return (
     <React.Fragment>
@@ -16,7 +18,7 @@ const ServicesSection = () => {
           {/* section title */}
           <SectionTitle
             title="Services"
-            desc=" that can provide everything you need to generate awareness, drive traffic, connect"
+            desc=" your reliable partner for all HVAC needs. From emergency fixes to routine maintenance, installation, and duct cleaning, we guarantee affordable, reliable, and prompt service. Your comfort is our priority."
           />
 
           <Row>
