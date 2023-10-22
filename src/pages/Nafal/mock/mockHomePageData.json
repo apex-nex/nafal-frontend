@@ -1,0 +1,52 @@
+{
+  "status": true,
+  "data": {
+    "aboutData": {
+      "heading": "About",
+      "title": "HVAC Contracting And Service Exellence",
+      "discription": "IceBear is a leading company in air-conditioning market in the Kingdom. We undertake the tasks of all commercial and residential projects, starting from study, design, supply, implementation and maintenance. In light of the company’s success in implementing various supply contracts and distinguished after-sales services on a large scale, the company was able to prove its worth in the Saudi market, and was also able to occupy a distinguished position among its peers in the same field. Ice Bear pledges to its customers to provide the highest level of services, technical support and after-sales services, through its team of highly qualified engineers, technicians and supervisors."
+    },
+    "clientsData": [
+      {
+        "badgeNo": 1,
+        "img": "01.jpg",
+        "title": "Jordan Joo"
+      },
+      {
+        "badgeNo": 2,
+        "img": "02.jpg",
+        "title": "Sofia Malik"
+      },
+      {
+        "badgeNo": 3,
+        "img": "03.jpg",
+        "title": "Cristina Murphy"
+      },
+      {
+        "badgeNo": 4,
+        "img": "04.jpg",
+        "title": "Jack Lili"
+      },
+      {
+        "badgeNo": 5,
+        "img": "05.jpg",
+        "title": "Lilia Moris"
+      },
+      {
+        "badgeNo": 6,
+        "img": "06.jpg",
+        "title": "Anderson"
+      },
+      {
+        "badgeNo": 7,
+        "img": "07.jpg",
+        "title": "Joe Moris"
+      },
+      {
+        "badgeNo": 8,
+        "img": "08.jpg",
+        "title": "John Carter"
+      }
+    ]
+  }
+}
