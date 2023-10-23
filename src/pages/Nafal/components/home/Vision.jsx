@@ -63,7 +63,7 @@ function Vision () {
       <ModalVideo
         channel="youtube"
         isOpen={isOpen}
-        videoId="yba7hPeTSjk"
+        videoId="4z_odywmsyM"
         onClose={() => setIsOpen(false)}
       />
     </React.Fragment>
