@@ -8,7 +8,8 @@ import mockData from '../../mock/mockHomePageData.json';
 const ClientSection = () => {
   return (
     <React.Fragment>
-      <Container className="mt-100 mt-60">
+      <section className="section">
+      <Container>
         <Row className="justify-content-center">
           <Col className="col-12">
             <div className="section-title mb-4 pb-2 text-center">
@@ -90,6 +91,7 @@ const ClientSection = () => {
           </Col>
         </Row>
       </Container>
+      </section>
     </React.Fragment>
   );
 };

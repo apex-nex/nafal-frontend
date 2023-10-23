@@ -7,11 +7,10 @@ import MetaTags from 'react-meta-tags';
 import ClientSection from '../../components/home/ClientSection'
 import DownloadAppSection from '../../components/home/DownloadAppSection'
 
-
 const Home = () => {
   return (
     <React.Fragment>
-      <div className="page-content">
+      <div className="page-content wrapper bg-light">
         <MetaTags>
           <title>Home | Nafal</title>
         </MetaTags>
