@@ -10,6 +10,7 @@ import MetaTags from 'react-meta-tags';
 const Home = () => {
   return (
     <React.Fragment>
+      
       <div className="page-content">
         <MetaTags>
           <title>Home | Nafal</title>
