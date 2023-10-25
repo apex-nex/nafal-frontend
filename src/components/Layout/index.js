@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import Tagline from "./Tagline";
 import ThemeSwitcher from "./ThemeSwitcher";
 import BackToTop from "./backToTop";
-import NavbarNafal from '../../pages/Nafal/components/common/header/Navbar'
+import NavbarNafal from '../../pages/Nafal/components/common/header/navbar/Navbar'
 import FooterNafal from '../../pages/Nafal/components/common/footer/Footer'
 
 // Layout Components
@@ -69,7 +69,8 @@ class Layout extends Component {
         <Suspense fallback={Loader()}>
           {this.props.location.pathname === "/" ? (
 
-            <NavbarNafal/>
+            // <NavbarNafal/>
+            <NavbarPage/>
           ) : (
             <Topbar tagline={tagLineContent} hasDarkTopBar={this.props.hasDarkTopBar} />
           )}
