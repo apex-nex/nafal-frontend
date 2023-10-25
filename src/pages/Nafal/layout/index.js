@@ -7,8 +7,7 @@ function Layout(props) {
   console.log(props);
   return (
     <>
-      {props.location.pathname === '/' ? <NavBarNafal /> : <NavBarNafal />}
-
+      <NavBarNafal />
       <div>{props.children}</div>
       <FooterNafal />
     </>
