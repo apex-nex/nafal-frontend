@@ -1,34 +1,36 @@
-import React, { Component, Suspense } from "react";
-import Layout from "./components/Layout/";
+import React, { Component, Suspense } from 'react';
+// import Layout from "./components/Layout/";
+import Layout1 from './pages/Nafal/layout/index';
 import {
   Route,
   Switch,
   BrowserRouter as Router,
   withRouter,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 // Import Css
-import "./assets/css/materialdesignicons.min.css"
-import "./Apps.scss";
+import './assets/css/materialdesignicons.min.css';
+import './Apps.scss';
 
 // import "./assets/css/colors/default.css";
 
 // Include Routes
-import routes from "./routes/allRoutes";
+import routes from './routes/allRoutes';
+import routes1 from './routes/nafalAllRoutes';
 
-function withLayout(WrappedComponent, hasDarkTopBar) {
+function withLayout(WrappedComponent) {
   // ...and returns another component...
   /* eslint-disable react/display-name */
   return class extends React.Component {
     render() {
       return (
-        <Layout hasDarkTopBar={hasDarkTopBar}>
+        <Layout1>
           <WrappedComponent></WrappedComponent>
-        </Layout>
+        </Layout1>
       );
-    };
+    }
   };
-};
+}
 
 class App extends Component {
   Loader = () => {
@@ -49,23 +51,14 @@ class App extends Component {
         <Router>
           <Suspense fallback={this.Loader()}>
             <Switch>
-              {routes.map((route, idx) =>
-                route.isWithoutLayout ? (
-                  <Route
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.component}
-                    key={idx}
-                  />
-                ) : (
-                  <Route
-                    path={route.path}
-                    exact
-                    component={withLayout(route.component, route.isTopbarDark)}
-                    key={idx}
-                  />
-                )
-              )}
+              {routes1.map((route, idx) => (
+                <Route
+                  path={route.path}
+                  exact
+                  component={withLayout(route.component)}
+                  key={idx}
+                />
+              ))}
             </Switch>
           </Suspense>
         </Router>

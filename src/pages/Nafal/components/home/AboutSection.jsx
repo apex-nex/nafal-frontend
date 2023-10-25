@@ -30,7 +30,7 @@ function AboutSection() {
                 to ensure your home's comfort and efficiency. Our team of experts
                 is committed to delivering outstanding service and reliability.
               </p>
-              <Link to="#" className="btn btn-primary mt-3">
+              <Link to="/service" className="btn btn-primary mt-3">
                 Read more
               </Link>
             </div>
