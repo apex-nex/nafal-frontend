@@ -684,8 +684,7 @@ const routes = [
   { path: "/documentation", component: Documentation, isTopbarDark: true },
   { path: "/widget", component: Widget, isTopbarDark: true },
 
-  // Nafal Project
-  // HomePage 
+  // Nafal 
   { path: "/", component: HomeNafal ,isWithoutLayout: false},
   { path: "/services", component: ServicesNafal ,isWithoutLayout: false },
   { path: "/about", component: AboutUsNafal ,isWithoutLayout: false },

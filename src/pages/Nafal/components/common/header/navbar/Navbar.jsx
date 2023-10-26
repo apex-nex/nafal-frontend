@@ -9,9 +9,9 @@ import { useEffect } from 'react';
 
 const navItems = [
   { id: 1, idnm: '/', navheading: 'Home' },
-  { id: 2, idnm: '/about', navheading: 'About' },
+  { id: 2, idnm: '/about', navheading: 'About Us' },
   { id: 3, idnm: '/services', navheading: 'Services' },
-  { id: 4, idnm: '/contact-us', navheading: 'Contact' },
+  { id: 4, idnm: '/contact-us', navheading: 'Contact Us' },
 ];
 
 const Navbar = () => {
