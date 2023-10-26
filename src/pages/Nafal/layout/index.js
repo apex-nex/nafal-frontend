@@ -4,7 +4,6 @@ import NavBarNafal from '../components/common/header/navbar/Navbar';
 import FooterNafal from '../components/common/footer/Footer';
 
 function Layout(props) {
-  console.log(props);
   return (
     <>
       <NavBarNafal />

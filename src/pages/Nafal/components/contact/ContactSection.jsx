@@ -15,7 +15,7 @@ export default function ContactSection() {
               <div className="content mt-4">
                 <h5 className="fw-bold">Phone</h5>
                 <p className="text-muted">
-                  Start working with Landrick that can provide everything
+                  Start working with Nafal that can provide everything
                 </p>
                 <Link to="#" className="text-primary">
                   +152 534-468-854
@@ -32,7 +32,7 @@ export default function ContactSection() {
               <div className="content mt-4">
                 <h5 className="fw-bold">Email</h5>
                 <p className="text-muted">
-                  Start working with Landrick that can provide everything
+                  Start working with Nafal that can provide everything
                 </p>
                 <Link to="#" className="text-primary">
                   contact@example.com

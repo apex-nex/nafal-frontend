@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -13,10 +14,20 @@ export default function HeadingSection() {
           <Row className="mt-5 justify-content-center">
             <Col lg={12} className="text-center">
               <div className="pages-heading">
-                <h4 className="title mb-0"> Contact Us </h4>
+                <h4 className="title mb-0"> Contact Us</h4>
               </div>
             </Col>
           </Row>
+
+          <div className="position-breadcrumb">
+            <nav aria-label="breadcrumb" className="d-inline-block">
+              <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
+                <li className="breadcrumb-item"><Link to="/">Nafal</Link></li>{" "}
+                <li className="breadcrumb-item"><Link to="#">Page</Link></li>{" "}
+                <li className="breadcrumb-item active" aria-current="page">Contact Us</li>
+              </ul>
+            </nav>
+          </div>
         </Container>
       </section>
       <div className="form-icon position-relative">

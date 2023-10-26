@@ -35,10 +35,20 @@ const About = () => {
           <Row className="mt-5 justify-content-center">
             <Col lg={12} className="text-center">
               <div className="pages-heading">
-                <h4 className="title mb-0"> About us </h4>
+                <h4 className="title mb-0"> About us</h4>
               </div>
             </Col>
           </Row>
+
+          <div className="position-breadcrumb">
+            <nav aria-label="breadcrumb" className="d-inline-block">
+              <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
+                <li className="breadcrumb-item"><Link to="/">Nafal</Link></li>{" "}
+                <li className="breadcrumb-item"><Link to="#">Page</Link></li>{" "}
+                <li className="breadcrumb-item active" aria-current="page">About us</li>
+              </ul>
+            </nav>
+          </div>
         </Container>
       </section>
       <div className="position-relative">

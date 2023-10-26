@@ -29,15 +29,14 @@ const Footer = () => {
                 <Col sm={6}>
                   <div className="text-sm-start">
                     <p className="mb-0">
-                      © {new Date().getFullYear()} NAFAL. HVAC {' '}
-                      <i className="mdi mdi-heart text-danger"></i> by{' '}
+                      © {new Date().getFullYear()} NAFAL HVAC. {' '}
                       <Link
                         to="/"
                         target="_blank"
                         rel="noreferrer"
                         className="text-reset"
                       >
-                        AC Companey
+                      All rights reserved.
                       </Link>
                       .
                     </p>
