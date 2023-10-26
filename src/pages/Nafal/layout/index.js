@@ -7,7 +7,7 @@ function Layout(props) {
   return (
     <>
       <NavBarNafal />
-      <div>{props.children}</div>
+      <div style={{width:"100%"}}>{props.children}</div>
       <FooterNafal />
     </>
   );
