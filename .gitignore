@@ -17,6 +17,9 @@ node_modules/
 
 # production
 /build
+/.firebase
+.firebaserc
+firebase.json
 
 # misc
 .DS_Store
