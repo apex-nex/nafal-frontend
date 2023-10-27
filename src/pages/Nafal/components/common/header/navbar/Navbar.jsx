@@ -67,7 +67,7 @@ const Navbar = () => {
                 <li
                   key={key}
                   className={
-                    item.navheading === 'Home'
+                    window.location.pathname === item.idnm
                       ? 'has-submenu active'
                       : 'has-submenu'
                   }
@@ -108,7 +108,7 @@ const Navbar = () => {
                   <li
                     key={key}
                     className={
-                      item.navheading === 'Home'
+                      item.navheading === 'About Us'
                         ? 'has-submenu active'
                         : 'has-submenu'
                     }
