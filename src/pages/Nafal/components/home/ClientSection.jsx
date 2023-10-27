@@ -16,11 +16,12 @@ const ClientSection = () => {
               <h3 className="title mb-4">
                 <span className="text-primary">Our Clients</span>
               </h3>
-                <p className="text-muted para-desc mb-0 mx-auto">
-                  At NAFAL HVAC, our clients' satisfaction is our ultimate goal. 
-                  We are dedicated to providing exceptional products and services customized to their specific requirements. 
-                  Their happiness and contentment inspire us to consistently surpass expectations.
-                </p>
+              <p className="text-muted para-desc mb-0 mx-auto">
+                Our clients' happiness is our top priority. We take pride in
+                delivering outstanding products and services, tailored to their
+                unique needs. Their smiles and satisfaction are our greatest
+                achievements, motivating us to continue exceeding expectations..
+              </p>
             </div>
           </Col>
         </Row>
@@ -75,6 +76,9 @@ const ClientSection = () => {
                               >
                                 {item.title}
                               </Link>
+                              <small className="d-block fw-bold mt-1">
+                                0.75<span className="text-muted">ETH</span>
+                              </small>
                             </div>
                           </div>
                         </div>
