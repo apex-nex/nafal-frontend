@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 //Import Images
-import logodark from '../../../../../../assets/images/logo-dark.png';
+import logoNafal from '../../../../../../assets/images/nafal/logo/nafal-logo.png';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -53,8 +53,8 @@ const Navbar = () => {
       >
         <Container>
           <div>
-            <Link className="logo" to="#">
-              <img src={logodark} height="24" alt="" />
+            <Link className="logo" to="/">
+              <img src={logoNafal} height="24" alt="" />
             </Link>
           </div>
           {/* Dekstop Nav */}
