@@ -10,12 +10,12 @@
       {
         "badgeNo": 1,
         "img": "01.jpg",
-        "title": "Jordan Joo"
+        "title": "Ahmed Al-Malik"
       },
       {
         "badgeNo": 2,
         "img": "02.jpg",
-        "title": "Sofia Malik"
+        "title": "Sara Al-Murad"
       },
       {
         "badgeNo": 3,
@@ -25,22 +25,22 @@
       {
         "badgeNo": 4,
         "img": "04.jpg",
-        "title": "Jack Lili"
+        "title": "Layla Al-Omari"
       },
       {
         "badgeNo": 5,
         "img": "05.jpg",
-        "title": "Lilia Moris"
+        "title": "Fatimah Al-Saud"
       },
       {
         "badgeNo": 6,
         "img": "06.jpg",
-        "title": "Anderson"
+        "title": "Abdullah Al-Rashid"
       },
       {
         "badgeNo": 7,
         "img": "07.jpg",
-        "title": "Joe Moris"
+        "title": "Hassan Al-Mansoor"
       },
       {
         "badgeNo": 8,
@@ -48,5 +48,6 @@
         "title": "Mohammed Abdulaziz"
       }
     ]
+    
   }
 }
