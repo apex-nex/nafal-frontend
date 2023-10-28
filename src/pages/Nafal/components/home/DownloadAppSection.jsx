@@ -1,9 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
-
-//Import Icons
-import FeatherIcon from "feather-icons-react";
 
 //Import Images
 import userInterface from "../../../../assets/images/illustrator/user_interface.svg";
@@ -24,7 +21,6 @@ function DownloadAppSection() {
                   alt="Landrick"
                 />
               </Col>
-
               <Col
                 lg={7}
                 md={{ size: 7, order: 1 }}
@@ -41,36 +37,15 @@ function DownloadAppSection() {
                     Nafal  HVAC.
                     </span>{" "}
                       Get our app for all your heating, cooling, and ventilation needs.
-
-
                   </p>
                   <div className="my-4">
-                    <Link to="#" className="btn btn-lg btn-dark mt-2 me-2">
+                    <Link to="/app-comingsoon" className="btn btn-lg btn-dark mt-2 me-2">
                       <i className="mdi mdi-apple"></i> App Store
                     </Link>
-                    <Link to="#" className="btn btn-lg btn-dark mt-2 ms-1">
+                    <Link to="/app-comingsoon" className="btn btn-lg btn-dark mt-2 ms-1">
                       <i className="mdi mdi-google-play"></i> Play Store
                     </Link>
                   </div>
-
-                  {/* <div className="d-inline-block">
-                    <div className="pt-4 d-flex align-items-center border-top">
-                      <i>
-                        <FeatherIcon
-                          icon="smartphone"
-                          className="fea icon-md me-2 text-primary"
-                        />
-                      </i>
-                      <div className="content">
-                        <h6 className="mb-0">
-                          Install app now on your cellphones
-                        </h6>
-                        <Link to="#" className="text-primary">
-                          Learn More <i className="uil uil-angle-right-b align-middle"></i>
-                        </Link>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </Col>
             </Row>

@@ -16,41 +16,42 @@ const ServiceSection = () => {
   const works = [
     {
       image: work1,
-      title: "Iphone mockup",
-      subtitle: "Offices",
-      category: "Offices",
+      title: "Home Conditioners",
+      subtitle: "Cooling Solutions",
+      category: "Residential",
     },
     {
       image: work2,
-      title: "Mockup Collection",
-      subtitle: "Mockup",
-      category: "Buildings",
+      title: "Package AC",
+      subtitle: "Commercial HVAC",
+      category: "Commercial",
     },
     {
       image: work3,
-      title: "Abstract images",
-      subtitle: "Abstract",
-      category: "Roads",
+      title: "Air20",
+      subtitle: "Innovative HVAC",
+      category: "Infrastructure",
     },
     {
       image: work4,
-      title: "Yellow bg with Books",
-      subtitle: "Company V-card",
-      category: "Buildings",
+      title: "Concealed",
+      subtitle: "Building Solutions",
+      category: "Commercial",
     },
     {
       image: work5,
-      title: "Company V-card",
-      subtitle: "V-card",
-      category: "Roads",
+      title: "Duct Construction And Design",
+      subtitle: "Architectural HVAC",
+      category: "Infrastructure",
     },
     {
       image: work6,
-      title: "Mockup box with paints",
-      subtitle: "Photography",
-      category: "Offices",
+      title: "Duct Construction And Design",
+      subtitle: "Project Showcase",
+      category: "Residential",
     },
   ];
+  
 
   const setCategory = (category) => {
     setDisplayCategory(category);
@@ -83,14 +84,13 @@ const ServiceSection = () => {
             <div className="section-title sticky-bar position-sticky">
               <span className="badge rounded-pill bg-soft-primary">Projects</span>
               <h4 className="title mt-3 mb-4">
-                Our latest projects <br /> check now dears
+                Experience Our HVAC Projects
               </h4>
               <p className="text-muted para-desc mb-0">
-                Start working with{" "}
-                <span className="text-primary fw-bold">Landrick</span> that can
-                provide everything you need to generate awareness, drive traffic,
-                connect.
+                Discover the quality and reliability of our HVAC services at{" "}
+                <span className="text-primary fw-bold">NAFAL HVAC</span>. We provide everything you need to ensure your home's comfort and efficiency.
               </p>
+
               <div className="mt-4 d-none d-md-block">
                 <Link to="#" className="btn btn-soft-primary">
                   See More{" "}
@@ -117,34 +117,34 @@ const ServiceSection = () => {
                       All
                     </li>{" "}
                     <li
-                      onClick={() => setCategory("Offices")}
+                      onClick={() => setCategory("Residential")}
                       className={
-                        displayCategory === "Offices"
+                        displayCategory === "Residential"
                           ? "list-inline-item categories-name border text-dark rounded active"
                           : "list-inline-item categories-name border text-dark rounded"
                       }
                     >
-                      Offices
+                      Residential
                     </li>{" "}
                     <li
-                      onClick={() => setCategory("Buildings")}
+                      onClick={() => setCategory("Commercial")}
                       className={
-                        displayCategory === "Buildings"
+                        displayCategory === "Commercial"
                           ? "list-inline-item categories-name border text-dark rounded active"
                           : "list-inline-item categories-name border text-dark rounded"
                       }
                     >
-                      Buildings
+                      Commercial
                     </li>{" "}
                     <li
-                      onClick={() => setCategory("Roads")}
+                      onClick={() => setCategory("Infrastructure")}
                       className={
-                        displayCategory === "Roads"
+                        displayCategory === "Infrastructure"
                           ? "list-inline-item categories-name border text-dark rounded active"
                           : "list-inline-item categories-name border text-dark rounded"
                       }
                     >
-                      Roads
+                      Infrastructure
                     </li>
                   </ul>
                 </div>
