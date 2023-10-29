@@ -7,7 +7,7 @@ import userInterface from "../../../../assets/images/illustrator/user_interface.
 function DownloadAppSection() {
   return (
     <React.Fragment>
-        <section className="section border-bottom bg-light">
+        <section className="section border-bottom">
           <Container>
             <Row className="align-items-center">
               <Col

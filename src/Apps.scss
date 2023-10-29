@@ -129,3 +129,48 @@
     right: 17px;
   }
 }
+
+// Nafal
+
+.btn-primary {
+  background-color: #3EBFEE;
+  border-width: "1px";
+  border: #3EBFEE;
+}
+
+.text-primary {
+  color: #3EBFEE !important;
+}
+
+.badge {
+  color: #3EBFEE !important;
+}
+
+.container-filter li.active {
+  color: #3EBFEE !important;
+  border-color: #3EBFEE !important;
+}
+
+.breadcrumb-item {
+  color: #3EBFEE !important;
+}
+
+.uil {
+  color: #3EBFEE !important;
+}
+
+.btn-soft-primary {
+  color: #3EBFEE !important;
+}
+
+
+
+// Nafal hover
+.btn-primary:hover {
+  background-color: #3497C2; 
+}
+
+// .container-filter li.active :hover {
+//   color: #3EBFEE !important;
+//   border-color: #3EBFEE !important;
+// }
