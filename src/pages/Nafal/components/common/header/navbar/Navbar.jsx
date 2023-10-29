@@ -107,13 +107,9 @@ const Navbar = () => {
                 {navItems.map((item, key) => (
                   <li
                     key={key}
-                    className={
-                      item.navheading === 'About Us'
-                        ? 'has-submenu active'
-                        : 'has-submenu'
-                    }
+                    className={window.location.pathname === item?.idnm ? 'has-submenu active' : 'has-submenu'}
                   >
-                    <Link key={key} to={item?.idnm}>
+                    <Link key={key} to={item?.idnm} className={window.location.pathname === item?.idnm ? 'has-submenu-active' : ''}>
                       {' '}
                       {item?.navheading}
                     </Link>
