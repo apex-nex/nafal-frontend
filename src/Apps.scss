@@ -146,7 +146,7 @@
   color: #3EBFEE !important;
 }
 
-.container-filter li.active {
+.container-filter li.active, .btn-outline-primary {
   color: #3EBFEE !important;
   border-color: #3EBFEE !important;
 }
@@ -163,14 +163,27 @@
   color: #3EBFEE !important;
 }
 
-
+#topnav .navigation-menu > li:hover > a, #topnav .navigation-menu > li.active > a {
+  color: #3EBFEE !important;
+}
 
 // Nafal hover
 .btn-primary:hover {
   background-color: #3497C2; 
 }
 
-// .container-filter li.active :hover {
-//   color: #3EBFEE !important;
-//   border-color: #3EBFEE !important;
-// }
+
+.container-filter li:hover {
+  color: #3EBFEE !important;
+  border-color: #3EBFEE !important;
+}
+
+.btn-soft-primary:hover, .btn-soft-primary:focus, .btn-soft-primary:active, .btn-soft-primary.active, .btn-soft-primary.focus, .btn-outline-primary:hover {
+  background-color: #3EBFEE !important;
+  border-color: #3497C2 !important;
+  color: #f5e0e0 !important;
+}
+
+.breadcrumb .breadcrumb-item :hover {
+  color: #3497C2 !important;
+}
