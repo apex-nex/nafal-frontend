@@ -159,7 +159,7 @@ const ServiceSection = () => {
                       <Card className="border-0 work-container work-classic shadow overflow-hidden">
                         <CardBody className="p-0">
                           <Link to="page-work-detail">
-                            <img src={image} className="img-fluid work-image" alt="Landrick" />
+                            <img src={image} className="img-fluid work-image" alt="Nafal" />
                           </Link>
                           <div className="content p-4">
                             <h5 className="mb-0">

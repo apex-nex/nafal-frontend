@@ -21,7 +21,7 @@ class SectionTitle extends Component {
                 name="sectiondesc"
               >
                 Start working with{" "}
-                <span className="text-primary fw-bold">Landrick</span>{" "}
+                <span className="text-primary fw-bold">Nafal</span>{" "}
                 {this.props.desc}
               </p>
             </div>
@@ -39,7 +39,7 @@ class SectionTitle extends Component {
                 }
                 name="sectiondesc"
               >Start working with {" "}
-                <span className="text-primary fw-bold">Landrick</span> {this.props.desc}</p>
+                <span className="text-primary fw-bold">Nafal</span> {this.props.desc}</p>
             </div>
           </Col>
         </Row>
