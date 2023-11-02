@@ -18,7 +18,7 @@ function DownloadAppSection() {
                 <img
                   src={userInterface}
                   className="img-fluid mx-auto d-block"
-                  alt="Landrick"
+                  alt="Nafal"
                 />
               </Col>
               <Col

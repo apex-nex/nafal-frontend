@@ -92,6 +92,26 @@ export default function FormSection() {
                       </Col>
                       <Col md={12}>
                         <div className="mb-3">
+                          <Label className="form-label">Mobile</Label>
+                          <div className="form-icon position-relative">
+                            <i>
+                              <FeatherIcon
+                                icon="phone"
+                                className="fea icon-sm icons"
+                              />
+                            </i>
+                          </div>
+                          <Input
+                            name="subject"
+                            id="subject"
+                            className="form-control ps-5"
+                            placeholder="Your subject :"
+                            required
+                          />
+                        </div>
+                      </Col>
+                      <Col md={12}>
+                        <div className="mb-3">
                           <Label className="form-label">Subject</Label>
                           <div className="form-icon position-relative">
                             <i>
@@ -154,7 +174,7 @@ export default function FormSection() {
           <Col lg={7} md={{ size: 6, order: 2 }} xs={{ order: 1 }}>
             <Card className="border-0">
               <CardBody className="p-0">
-                <img src={contact} className="img-fluid" alt="Landrick" />
+                <img src={contact} className="img-fluid" alt="Nafal" />
               </CardBody>
             </Card>
           </Col>
