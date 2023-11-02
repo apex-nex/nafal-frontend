@@ -100,7 +100,7 @@ const About = () => {
                 <h4 className="title mb-4">Our Story</h4>
                 <p className="text-muted">
                   Start working with{' '}
-                  <span className="text-primary fw-bold">Landrick</span> that
+                  <span className="text-primary fw-bold">Nafal</span> that
                   can provide everything you need to generate awareness, drive
                   traffic, connect. Dummy text is text that is used in the
                   publishing industry or by web designers to occupy the space
@@ -147,7 +147,7 @@ const About = () => {
                 </h4>
                 <p className="text-muted para-desc mx-auto">
                   Start working with{' '}
-                  <span className="text-primary fw-bold">Landrick</span> that
+                  <span className="text-primary fw-bold">Nafal</span> that
                   can provide everything you need to generate awareness, drive
                   traffic, connect.
                 </p>

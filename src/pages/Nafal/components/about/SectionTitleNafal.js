@@ -16,7 +16,7 @@ export default function SectionTitleNafal(props) {
                 }
                 name="sectiondesc"
               >Start working with {" "}
-                <span className="text-primary fw-bold">Landrick</span> {props.desc}</p>
+                <span className="text-primary fw-bold">Nafal</span> {props.desc}</p>
             </div>
           </Col>
         </Row>

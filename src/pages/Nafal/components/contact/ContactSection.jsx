@@ -18,7 +18,7 @@ export default function ContactSection() {
                   Start working with Nafal that can provide everything
                 </p>
                 <Link to="#" className="text-primary">
-                  +152 534-468-854
+                  +966 51 014 9313
                 </Link>
               </div>
             </Card>
@@ -35,7 +35,7 @@ export default function ContactSection() {
                   Start working with Nafal that can provide everything
                 </p>
                 <Link to="#" className="text-primary">
-                  contact@example.com
+                  info@nafal-hvac.sa
                 </Link>
               </div>
             </Card>
@@ -49,8 +49,8 @@ export default function ContactSection() {
               <div className="content mt-4">
                 <h5 className="fw-bold">Location</h5>
                 <p className="text-muted">
-                  C/54 Northwest Freeway, Suite 558, <br />
-                  Houston, USA 485
+                  Talha bin Ubaidullah, 7946, Al-Fayhaa  <br />
+                  Riyadh 14253, Saudi Arabia
                 </p>
                 <Link to="#" className="video-play-icon h6 text-primary">
                   View on Google map
