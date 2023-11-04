@@ -13,7 +13,7 @@ import {
 
 //Import Icons
 import FeatherIcon from 'feather-icons-react';
-import contact from '../../../../assets/images/contact.svg';
+import contact from '../../../../assets/images/nafal/contact/contact.svg';
 
 export default function FormSection() {
   const [contactvisible, setContactvisible] = useState(false);
@@ -70,7 +70,7 @@ export default function FormSection() {
                       <Col md={6}>
                         <div className="mb-3">
                           <Label className="form-label">
-                            Your Email <span className="text-danger">*</span>
+                            Your Email
                           </Label>
                           <div className="form-icon position-relative">
                             <i>
@@ -86,13 +86,14 @@ export default function FormSection() {
                             type="email"
                             className="form-control ps-5"
                             placeholder="Your email :"
-                            required
                           />
                         </div>
                       </Col>
                       <Col md={12}>
                         <div className="mb-3">
-                          <Label className="form-label">Mobile</Label>
+                          <Label className="form-label">
+                            Mobile <span className="text-danger">*</span>
+                          </Label>
                           <div className="form-icon position-relative">
                             <i>
                               <FeatherIcon
@@ -102,10 +103,10 @@ export default function FormSection() {
                             </i>
                           </div>
                           <Input
-                            name="subject"
-                            id="subject"
+                            name="mobile"
+                            id="mobile"
                             className="form-control ps-5"
-                            placeholder="Your subject :"
+                            placeholder="Your mobile :"
                             required
                           />
                         </div>
@@ -132,7 +133,9 @@ export default function FormSection() {
                       </Col>
                       <Col md={12}>
                         <div className="mb-3">
-                          <Label className="form-label">Comments</Label>
+                          <Label className="form-label">
+                            Comments <span className="text-danger">*</span>
+                          </Label>
                           <div className="form-icon position-relative">
                             <i>
                               <FeatherIcon
@@ -147,6 +150,7 @@ export default function FormSection() {
                             rows="4"
                             className="form-control ps-5"
                             placeholder="Your Message :"
+                            required
                           ></textarea>
                         </div>
                       </Col>
