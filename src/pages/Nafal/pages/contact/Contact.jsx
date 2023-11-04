@@ -4,17 +4,17 @@ import HeadingSection from '../../components/contact/HeadingSection';
 import ContactSection from '../../components/contact/ContactSection';
 import FormSection from '../../components/contact/FormSection';
 import MapSection from '../../components/contact/MapSection';
+import { MetaTags } from 'react-meta-tags';
 
 const Contact = () => {
-  useEffect(() => {
-    document.title = 'Contactus | Nafal';
-  }, []);
   return (
     <React.Fragment>
+      <MetaTags>
+        <title>Contact Us | Nafal</title>
+      </MetaTags>
       <div className="heading-section">
         <HeadingSection />
       </div>
-
       <section className="section pb-0">
         <div className="contact-section">
           <ContactSection />

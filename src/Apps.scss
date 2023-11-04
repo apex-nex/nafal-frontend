@@ -167,6 +167,11 @@
   color: #3EBFEE !important;
 }
 
+.pagination .page-item.active .page-link {
+  background: #3EBFEE !important;
+  border-color: #3EBFEE !important;
+}
+
 // Nafal hover
 .btn-primary:hover {
   background-color: #3497C2; 
@@ -189,4 +194,24 @@
 
 a.text-primary:hover, a.text-primary:focus {
   color: #3497C2 !important;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #3EBFEE !important;
+  border-color: #3497C2 !important;
+}
+
+// dashbaord search box
+.search-box{
+  .form-control{
+      border-radius: 30px;
+      padding-left: 40px;
+  }
+  .search-icon{
+      font-size: 16px;    
+      position: absolute;
+      left: 13px;
+      top: 0;
+      line-height: 38px;
+  }
 }
