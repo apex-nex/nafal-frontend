@@ -10,7 +10,7 @@ import DownloadAppSection from '../../components/home/DownloadAppSection'
 const Home = () => {
   return (
     <React.Fragment>
-      
+
       <div className="page-content">
         <MetaTags>
           <title>Home | Nafal</title>
@@ -26,13 +26,13 @@ const Home = () => {
         </div>
       </div>
       <div className='services-container'>
-     <ServicesSection/>
+        <ServicesSection />
       </div>
       <div className='clients-section'>
-          <ClientSection/>
+        <ClientSection />
       </div>
       <div className='DownloadAppSection-container'>
-     <DownloadAppSection/>
+        <DownloadAppSection />
       </div>
     </React.Fragment>
   );
