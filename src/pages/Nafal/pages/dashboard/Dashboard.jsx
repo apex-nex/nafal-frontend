@@ -1,12 +1,24 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import MetaTags from "react-meta-tags"
-import {Button, Col, Container, Row, Table, Input, Card, CardBody,  Pagination, PaginationItem, PaginationLink, Badge, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, InputGroup} from "reactstrap"
+import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, Badge, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
+import moment from 'moment';
+import SweetAlert from "react-bootstrap-sweetalert"
 
 const Dashboard = () => {
+  const dateRangeRef = useRef()
   const [data, setData] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
+  const [period, setPeriod] = useState({})
+  const [defaultDate, setDefaultDate] = useState([])
+  const [toggle, setToggle] = useState(false)
+  const [message, setMessage] = useState(null)
+  const [modal, setModal] = useState(false);
+  function tog_modal() {
+    setModal(!modal)
+  };
+
   const nafalData = [
     {
       "Name": "John Doe",
@@ -114,13 +126,11 @@ const Dashboard = () => {
       "Message": "This is a sample message 15."
     }
   ]
-  
-
 
   const searchBar = (event) => {
     const value = event.target.value.trim()
     if (value === "" || value.length > 1) {
-        //api call
+      //api call
     }
   }
 
@@ -131,8 +141,31 @@ const Dashboard = () => {
     }
   }
 
+  const onPeriodChange = (period) => {
+    let now = moment.utc();
+    let start, end;
+
+    start = now.clone().subtract(period, 'days').format('YYYY-MM-DD');
+    end = now.clone().format('YYYY-MM-DD');
+
+    // onDaterangeChange([start, end]);
+    // dateRangeRef.current.flatpickr.clear();
+    setPeriod({
+      value: period,
+      start: start,
+      end: end
+    });
+    setDefaultDate([start, end]);
+  }
+
+  const handleClick = (msg) => {
+    setMessage(msg)
+    tog_modal()
+  }
+
+
   return (
-    <div className="page-content" style={{marginTop:"60px"}}>
+    <div className="page-content" style={{ marginTop: "60px" }}>
       <MetaTags>
         <title>Admin Dashboard | Nafal</title>
       </MetaTags>
@@ -154,30 +187,53 @@ const Dashboard = () => {
                             onInput={searchBar}
                             placeholder={"Search here..."}
                           />
-                          <i className="bx bx-search-alt search-icon" />
+                          <i className="uil uil-search search-icon" style={{ marginTop: "2px" }}></i>
                         </div>
                       </div>
                     </Col>
                     <Col>
                       <div className="d-flex justify-content-end">
-                        <Button color="primary" className="btn-sm" id="sa-success" onClick={()=>{}}>
+                        <Button color="primary" className="btn btn-primary btn-sm me-2" id="sa-success" onClick={() => { }}>
                           Refresh
                         </Button>
                         <div className="ms-2">
-                            <InputGroup>
-                              <Flatpickr
-                                className="form-control form-control-sm"
-                                placeholder="Select daterange range"
-                                options={{
-                                  mode: "range",
-                                  dateFormat: "Y-m-d",
-                                  minDate: "2000-01",
-                                  maxDate: "today",
-                                  defaultDate: "11-02-2023"
-                                }}
-                              />
-                            </InputGroup>
-                          </div>
+                          <InputGroup>
+                            <Flatpickr
+                              className="form-control form-control-sm"
+                              placeholder="Select daterange range"
+                              options={{
+                                mode: "range",
+                                dateFormat: "Y-m-d",
+                                minDate: "2000-01",
+                                maxDate: "today",
+                                defaultDate: "11-02-2023"
+                              }}
+                            />
+                          </InputGroup>
+                        </div>
+                        <div className="ms-2">
+                          <Button
+                            className="btn-sm me-1"
+                            color={period.value === 30 ? 'primary' : 'light'}
+                            onClick={() => onPeriodChange(30)}
+                          >
+                            1 Month
+                          </Button>
+                          <Button
+                            className="btn-sm me-1"
+                            color={period.value === 60 ? 'primary' : 'light'}
+                            onClick={() => onPeriodChange(60)}
+                          >
+                            3 Months
+                          </Button>
+                          <Button
+                            className="btn-sm"
+                            color={period.value === 90 ? 'primary' : 'light'}
+                            onClick={() => onPeriodChange(90)}
+                          >
+                            6 Months
+                          </Button>
+                        </div>
                       </div>
                     </Col>
                   </Row>
@@ -196,60 +252,95 @@ const Dashboard = () => {
                             </tr>
                           </thead>
                           <tbody>
-                          {!isEmpty(nafalData) ? (
-                            
-                                nafalData.map((item, index) => (
-                                    <tr key={index}>        
-                                      <td>{index + 1}</td>
-                                      <td>{item.Name}</td>
-                                      <td>{item.Email}</td>
-                                      <td>{item.Mobile}</td>
-                                      <td>{item.Subject}</td>
-                                      <td>{item.Message}</td>
-                                    </tr>
-                                )
-                          )
-                          ) : (
-                            <tr>
-                              <td colSpan="6" className="react-bs-table-no-data" style={{padding:"3px"}}>
-                                <p className="text-center">Records not found</p>
-                              </td>
-                            </tr>
-                          )}
+                            {!isEmpty(nafalData) ? (
+
+                              nafalData.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{index + 1}</td>
+                                  <td>{item.Name}</td>
+                                  <td>{item.Email}</td>
+                                  <td>{item.Mobile}</td>
+                                  <td>{item.Subject}</td>
+                                  <td>
+                                    {item.Message.substring(0, 25)}
+                                    <span className="text-primary" onClick={()=>handleClick(item.Message)}>
+                                      ... View More
+                                    </span>
+                                  </td>
+                                </tr>
+                              )
+                              )
+                            ) : (
+                              <tr>
+                                <td colSpan="6" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                  <p className="text-center">Records not found</p>
+                                </td>
+                              </tr>
+                            )}
                           </tbody>
                         </Table>
                       </div>
                     </Col>
-                          <Col xs="12">
-                            <Pagination className="pagination justify-content-end mb-0">
-                                                <PaginationItem>
-                                                    <PaginationLink href="#" previous
-                                                    >
-                                                        Prev
-                                                    </PaginationLink>
-                                                </PaginationItem>
-                                                <PaginationItem active>
-                                                    <PaginationLink href="#">
-                                                        1
-                                                    </PaginationLink>
-                                                </PaginationItem>
-                                                <PaginationItem>
-                                                    <PaginationLink href="#">
-                                                        2
-                                                    </PaginationLink>
-                                                </PaginationItem>
-                                                <PaginationItem>
-                                                    <PaginationLink href="#">
-                                                        3
-                                                    </PaginationLink>
-                                                </PaginationItem>
-                                                <PaginationItem>
-                                                    <PaginationLink href="#" next>
-                                                        Next
-                                                    </PaginationLink>
-                                                </PaginationItem>
-                                            </Pagination>
-                          </Col>
+                    <Col xs="12">
+                      <Pagination className="pagination justify-content-end mb-0">
+                        <PaginationItem>
+                          <PaginationLink href="#" previous
+                          >
+                            Prev
+                          </PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem active>
+                          <PaginationLink href="#">
+                            1
+                          </PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationLink href="#">
+                            2
+                          </PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationLink href="#">
+                            3
+                          </PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationLink href="#" next>
+                            Next
+                          </PaginationLink>
+                        </PaginationItem>
+                      </Pagination>
+                    </Col>
+
+                    {modal ? (
+                      <Modal
+                        id="LoginForm"
+                        tabIndex="-1"
+                        isOpen={modal}
+                        toggle={() => {
+                          tog_modal()
+                        }}
+                        centered
+                      >
+                        <ModalHeader
+                          toggle={tog_modal}
+                          role="dialog"
+                          autoFocus={true}
+                          className="border-bottom"
+                        >
+                          Full Message
+                        </ModalHeader>
+                        <ModalBody>
+                          <div className="bg-white p-3 rounded box-shadow">
+                            <p className="text-muted mb-0">{message}</p>
+                          </div>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button color="secondary" onClick={tog_modal} type="button">Close</Button>
+                        </ModalFooter>
+
+                      </Modal>
+                    ) : null}
                   </Row>
                 </CardBody>
               </Card>
