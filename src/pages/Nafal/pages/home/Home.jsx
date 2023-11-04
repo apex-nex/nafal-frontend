@@ -10,7 +10,6 @@ import DownloadAppSection from '../../components/home/DownloadAppSection'
 const Home = () => {
   return (
     <React.Fragment>
-
       <div className="page-content">
         <MetaTags>
           <title>Home | Nafal</title>
