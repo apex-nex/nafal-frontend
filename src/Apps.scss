@@ -172,7 +172,6 @@
   background-color: #3497C2; 
 }
 
-
 .container-filter li:hover {
   color: #3EBFEE !important;
   border-color: #3EBFEE !important;
@@ -185,5 +184,9 @@
 }
 
 .breadcrumb .breadcrumb-item :hover {
+  color: #3497C2 !important;
+}
+
+a.text-primary:hover, a.text-primary:focus {
   color: #3497C2 !important;
 }
