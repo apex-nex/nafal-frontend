@@ -82,9 +82,9 @@ const ServiceSection = () => {
         <Row>
           <Col lg={4} md={6}>
             <div className="section-title sticky-bar position-sticky">
-              <span className="badge rounded-pill bg-soft-primary">Projects</span>
+              <span className="badge rounded-pill bg-soft-primary">Services</span>
               <h4 className="title mt-3 mb-4">
-                Experience Our HVAC Projects
+                Experience Our HVAC Services
               </h4>
               <p className="text-muted para-desc mb-0">
                 Discover the quality and reliability of our HVAC services at{" "}
