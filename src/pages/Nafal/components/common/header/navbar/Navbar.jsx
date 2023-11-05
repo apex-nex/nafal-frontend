@@ -54,7 +54,7 @@ const Navbar = () => {
         <Container>
           <div>
             <Link className="logo" to="/">
-              <img src={logoNafal} height="24" alt="" />
+              <img src={logoNafal} height="26" alt="Nafal" />
             </Link>
           </div>
           {/* Dekstop Nav */}

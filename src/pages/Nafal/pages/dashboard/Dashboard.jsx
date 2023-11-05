@@ -4,7 +4,7 @@ import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, 
 import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
-import SweetAlert from "react-bootstrap-sweetalert"
+import { Link } from "react-router-dom"
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
@@ -193,14 +193,22 @@ const Dashboard = () => {
                     </Col>
                     <Col>
                       <div className="d-flex justify-content-end">
+                        <div className="ms-2">
+                        <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
+                          Delete
+                        </Button>
+                        <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
+                          Download
+                        </Button>
                         <Button color="primary" className="btn btn-primary btn-sm me-2" id="sa-success" onClick={() => { }}>
                           Refresh
                         </Button>
-                        <div className="ms-2">
+                        </div>
+                        <div className="ms-2 me-2">
                           <InputGroup>
                             <Flatpickr
                               className="form-control form-control-sm"
-                              placeholder="Select daterange range"
+                              placeholder="Select date range"
                               options={{
                                 mode: "range",
                                 dateFormat: "Y-m-d",
@@ -213,14 +221,14 @@ const Dashboard = () => {
                         </div>
                         <div className="ms-2">
                           <Button
-                            className="btn-sm me-1"
+                            className="btn-sm me-1 mb-1"
                             color={period.value === 30 ? 'primary' : 'light'}
                             onClick={() => onPeriodChange(30)}
                           >
                             1 Month
                           </Button>
                           <Button
-                            className="btn-sm me-1"
+                            className="btn-sm me-1 mb-1"
                             color={period.value === 60 ? 'primary' : 'light'}
                             onClick={() => onPeriodChange(60)}
                           >
@@ -243,12 +251,14 @@ const Dashboard = () => {
                         <Table>
                           <thead className="thead-light text-capitalize">
                             <tr>
-                              <th>S.No</th>
+                              <th>Select</th>
                               <th>Name</th>
                               <th>Email</th>
                               <th>Mobile</th>
                               <th>Subject</th>
+                              <th>Status</th>
                               <th>Message</th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -256,16 +266,39 @@ const Dashboard = () => {
 
                               nafalData.map((item, index) => (
                                 <tr key={index}>
-                                  <td>{index + 1}</td>
-                                  <td>{item.Name}</td>
+                                  <td>
+                                    <Input
+                                      style={{ borderColor: "black" }}
+                                      type="checkbox"
+                                    // onChange={() => toggleRow(item.id, item)}
+                                    // checked={selectedRows.includes(item.id)}
+                                    />
+                                  </td>
+                                  <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.Name}</Link></td>
                                   <td>{item.Email}</td>
                                   <td>{item.Mobile}</td>
                                   <td>{item.Subject}</td>
+                                  <td>pending</td>
                                   <td>
                                     {item.Message.substring(0, 25)}
-                                    <span className="text-primary" onClick={()=>handleClick(item.Message)}>
-                                      ... View More
-                                    </span>
+                                  </td>
+                                  <td>
+                                    <UncontrolledDropdown className="ms-auto">
+                                      <DropdownToggle
+                                        className="text-muted font-size-16"
+                                        color="white"
+                                      >
+                                        <i className="mdi mdi-dots-horizontal"></i>
+                                      </DropdownToggle>
+                                      <DropdownMenu className="dropdown-menu-end">
+                                        <Link className="dropdown-item" to="#" onClick={()=>handleClick(item.Message)}>
+                                          View
+                                        </Link>
+                                        <Link className="dropdown-item" to="#" onClick={() => { }}>
+                                          Remove
+                                        </Link>
+                                      </DropdownMenu>
+                                    </UncontrolledDropdown>
                                   </td>
                                 </tr>
                               )
@@ -341,6 +374,8 @@ const Dashboard = () => {
 
                       </Modal>
                     ) : null}
+
+
                   </Row>
                 </CardBody>
               </Card>
