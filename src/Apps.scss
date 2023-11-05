@@ -151,6 +151,12 @@
   border-color: #3EBFEE !important;
 }
 
+// check box
+.form-check-input.form-check-input:checked {
+  background-color: #3EBFEE !important;
+  border-color: #3EBFEE !important;
+}
+
 .breadcrumb-item {
   color: #3EBFEE !important;
 }
@@ -215,3 +221,12 @@ a.text-primary:hover, a.text-primary:focus {
       line-height: 38px;
   }
 }
+
+// contact us map
+.map iframe {
+  width: 100% !important;
+}
+
+  // html, body {
+  //   overflow-x: hidden !important;
+  // }
