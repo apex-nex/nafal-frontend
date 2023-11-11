@@ -319,6 +319,7 @@ import AboutUsNafal from '../pages/Nafal/pages/about/about'
 import ContactUsNafal from '../pages/Nafal/pages/contact/Contact'
 import AppComingSoon from '../pages/Nafal/components/comingsoon/AppComingSoon';
 import Dashboard from '../pages/Nafal/pages/dashboard/Dashboard';
+import Login from '../pages/Nafal/pages/login/Login';
 
 const routes = [
   //routes without Layout
@@ -693,6 +694,7 @@ const routes = [
   { path: "/contact-us", component: ContactUsNafal ,isWithoutLayout: false },
   { path: "/app-comingsoon", component: AppComingSoon ,isWithoutLayout: false },
   { path: "/admin/dashboard", component: Dashboard ,isWithoutLayout: false },
+  { path: "/admin/login", component: Login ,isWithoutLayout: true },
 
   //Index Main
   // { path: "/", exact: true, component: () => <Redirect to="/index" />},

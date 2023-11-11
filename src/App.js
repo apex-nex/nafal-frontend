@@ -50,15 +50,24 @@ class App extends Component {
       <React.Fragment>
         <Router>
           <Suspense fallback={this.Loader()}>
-            <Switch>
-              {routes1.map((route, idx) => (
-                <Route
+          <Switch>
+              {routes1.map((route, idx) =>
+                route.isWithoutLayout ? (
+                  <Route
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                    key={idx}
+                  />
+                ) : (
+                  <Route
                   path={route.path}
                   exact
                   component={withLayout(route.component)}
                   key={idx}
                 />
-              ))}
+                )
+              )}
             </Switch>
           </Suspense>
         </Router>
