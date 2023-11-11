@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://nafal.onrender.com/api';
+const baseURL = "http://localhost:8000/api" || 'https://nafal.onrender.com/api';
 
 const api = axios.create({
     baseURL,
@@ -14,7 +14,7 @@ export const get = async (url, params = {}) => {
     console.log("url", url)
     try {
         const response = await api.get(url, { params });
-        return response.data;
+        return response.data;   
     } catch (error) {
         throw error;
     }
