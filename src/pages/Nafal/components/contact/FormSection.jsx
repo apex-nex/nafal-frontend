@@ -14,14 +14,24 @@ import {
 //Import Icons
 import FeatherIcon from 'feather-icons-react';
 import contact from '../../../../assets/images/nafal/contact/contact.svg';
+import { post } from '../helpers/api_helper';
 
 export default function FormSection() {
   const [contactvisible, setContactvisible] = useState(false);
+  const [values, setValues] = useState(null);
+
+  const postData = async (values) => {
+    try {
+        const data = await post('/form', { values });
+        setValues(data);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
   const onSubmit = (e, v) => {
     e.preventDefault()
-    console.log("e", e)
-    console.log("v", v)
+    postData(values)
   }
 
   return (
@@ -71,6 +81,7 @@ export default function FormSection() {
                             className="form-control ps-5"
                             placeholder="First Name :"
                             required
+                            onChange={(e) => setValues({ ...values, name: e.target.value })}
                           />
                         </div>
                       </Col>
@@ -93,6 +104,7 @@ export default function FormSection() {
                             type="email"
                             className="form-control ps-5"
                             placeholder="Your email :"
+                            onChange={(e) => setValues({ ...values, email: e.target.value })}
                           />
                         </div>
                       </Col>
@@ -115,6 +127,7 @@ export default function FormSection() {
                             className="form-control ps-5"
                             placeholder="Your mobile :"
                             required
+                            onChange={(e) => setValues({ ...values, mobile: e.target.value })}
                           />
                         </div>
                       </Col>
@@ -135,6 +148,7 @@ export default function FormSection() {
                             className="form-control ps-5"
                             placeholder="Your subject :"
                             required
+                            onChange={(e) => setValues({ ...values, subject: e.target.value })}
                           />
                         </div>
                       </Col>
@@ -158,6 +172,7 @@ export default function FormSection() {
                             className="form-control ps-5"
                             placeholder="Your Message :"
                             required
+                            onChange={(e) => setValues({ ...values, comments: e.target.value })}
                           ></textarea>
                         </div>
                       </Col>
