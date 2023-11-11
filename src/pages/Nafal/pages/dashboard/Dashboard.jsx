@@ -5,6 +5,7 @@ import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
+import { get } from "../../components/helpers/api_helper"
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
@@ -19,113 +20,18 @@ const Dashboard = () => {
     setModal(!modal)
   };
 
-  const nafalData = [
-    {
-      "Name": "John Doe",
-      "Email": "johndoe@example.com",
-      "Mobile": "(123) 456-7890",
-      "Subject": "Inquiry 1",
-      "Message": "This is a sample message 1."
-    },
-    {
-      "Name": "Jane Smith",
-      "Email": "janesmith@example.com",
-      "Mobile": "(987) 654-3210",
-      "Subject": "Question 2",
-      "Message": "This is a sample message 2."
-    },
-    {
-      "Name": "Alice Johnson",
-      "Email": "alice@example.com",
-      "Mobile": "(555) 123-4567",
-      "Subject": "Feedback",
-      "Message": "This is a sample message 3."
-    },
-    {
-      "Name": "Bob Brown",
-      "Email": "bob@example.com",
-      "Mobile": "(999) 888-7777",
-      "Subject": "Support Request",
-      "Message": "This is a sample message 4."
-    },
-    {
-      "Name": "Eva Wilson",
-      "Email": "eva@example.com",
-      "Mobile": "(111) 222-3333",
-      "Subject": "Product Inquiry",
-      "Message": "This is a sample message 5."
-    },
-    {
-      "Name": "Michael Lee",
-      "Email": "michael@example.com",
-      "Mobile": "(444) 555-6666",
-      "Subject": "Question about Services",
-      "Message": "This is a sample message 6."
-    },
-    {
-      "Name": "Emily Davis",
-      "Email": "emily@example.com",
-      "Mobile": "(777) 888-9999",
-      "Subject": "General Inquiry",
-      "Message": "This is a sample message 7."
-    },
-    {
-      "Name": "Daniel Hernandez",
-      "Email": "daniel@example.com",
-      "Mobile": "(222) 333-4444",
-      "Subject": "Technical Support",
-      "Message": "This is a sample message 8."
-    },
-    {
-      "Name": "Olivia White",
-      "Email": "olivia@example.com",
-      "Mobile": "(666) 777-8888",
-      "Subject": "Billing Issue",
-      "Message": "This is a sample message 9."
-    },
-    {
-      "Name": "Liam Anderson",
-      "Email": "liam@example.com",
-      "Mobile": "(999) 111-2222",
-      "Subject": "Account Problem",
-      "Message": "This is a sample message 10."
-    },
-    {
-      "Name": "Sophia Hall",
-      "Email": "sophia@example.com",
-      "Mobile": "(333) 444-5555",
-      "Subject": "Order Status",
-      "Message": "This is a sample message 11."
-    },
-    {
-      "Name": "William Adams",
-      "Email": "william@example.com",
-      "Mobile": "(888) 999-0000",
-      "Subject": "Feedback",
-      "Message": "This is a sample message 12."
-    },
-    {
-      "Name": "Ava Moore",
-      "Email": "ava@example.com",
-      "Mobile": "(444) 555-6666",
-      "Subject": "Support Request",
-      "Message": "This is a sample message 13."
-    },
-    {
-      "Name": "James Parker",
-      "Email": "james@example.com",
-      "Mobile": "(222) 333-4444",
-      "Subject": "Product Inquiry",
-      "Message": "This is a sample message 14."
-    },
-    {
-      "Name": "Mia Wilson",
-      "Email": "mia@example.com",
-      "Mobile": "(777) 888-9999",
-      "Subject": "Question about Services",
-      "Message": "This is a sample message 15."
+  const fetchData = async () => {
+    try {
+      const data = await get('/form');
+      setData(data);
+    } catch (error) {
+      console.error(error);
     }
-  ]
+  };
+
+  useEffect(()=>{
+    fetchData()
+  },[])
 
   const searchBar = (event) => {
     const value = event.target.value.trim()
@@ -194,15 +100,15 @@ const Dashboard = () => {
                     <Col>
                       <div className="d-flex justify-content-end">
                         <div className="ms-2">
-                        <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
-                          Delete
-                        </Button>
-                        <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
-                          Download
-                        </Button>
-                        <Button color="primary" className="btn btn-primary btn-sm me-2" id="sa-success" onClick={() => { }}>
-                          Refresh
-                        </Button>
+                          <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
+                            Delete
+                          </Button>
+                          <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
+                            Download
+                          </Button>
+                          <Button color="primary" className="btn btn-primary btn-sm me-2" id="sa-success" onClick={() => { }}>
+                            Refresh
+                          </Button>
                         </div>
                         <div className="ms-2 me-2">
                           <InputGroup>
@@ -262,9 +168,8 @@ const Dashboard = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {!isEmpty(nafalData) ? (
-
-                              nafalData.map((item, index) => (
+                            {!isEmpty(data) ? (
+                              data?.results?.map((item, index) => (
                                 <tr key={index}>
                                   <td>
                                     <Input
@@ -274,13 +179,13 @@ const Dashboard = () => {
                                     // checked={selectedRows.includes(item.id)}
                                     />
                                   </td>
-                                  <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.Name}</Link></td>
-                                  <td>{item.Email}</td>
-                                  <td>{item.Mobile}</td>
-                                  <td>{item.Subject}</td>
+                                  <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name}</Link></td>
+                                  <td>{item.email}</td>
+                                  <td>{item.mobile}</td>
+                                  <td>{item.subject}</td>
                                   <td>pending</td>
                                   <td>
-                                    {item.Message.substring(0, 25)}
+                                    {item.comments}
                                   </td>
                                   <td>
                                     <UncontrolledDropdown className="ms-auto">
@@ -291,7 +196,7 @@ const Dashboard = () => {
                                         <i className="mdi mdi-dots-horizontal"></i>
                                       </DropdownToggle>
                                       <DropdownMenu className="dropdown-menu-end">
-                                        <Link className="dropdown-item" to="#" onClick={()=>handleClick(item.Message)}>
+                                        <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
                                           View
                                         </Link>
                                         <Link className="dropdown-item" to="#" onClick={() => { }}>

@@ -17,6 +17,13 @@ import contact from '../../../../assets/images/nafal/contact/contact.svg';
 
 export default function FormSection() {
   const [contactvisible, setContactvisible] = useState(false);
+
+  const onSubmit = (e, v) => {
+    e.preventDefault()
+    console.log("e", e)
+    console.log("v", v)
+  }
+
   return (
     <React.Fragment>
       <Container className="mt-100 mt-60">
@@ -42,7 +49,7 @@ export default function FormSection() {
                   >
                     Contact details send successfully.
                   </Alert>
-                  <Form method="post" name="contact-form" id="contact-form">
+                  <Form method="post" name="contact-form" id="contact-form" onSubmit={onSubmit}>
                     <Row>
                       <Col md={6}>
                         <div className="mb-3">
