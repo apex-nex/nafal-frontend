@@ -8,6 +8,7 @@ import FeatherIcon from "feather-icons-react";
 
 // import images
 import img2 from "../../../../assets/images/2.jpg";
+import img from "../../../../assets/images/nafal/home/video/img.svg";
 
 // Modal Video
 import ModalVideo from "react-modal-video";
@@ -26,7 +27,7 @@ function Vision () {
       <Container fluid>
         <div
           className="bg-cta shadow rounded card overflow-hidden"
-          style={{ background: `url(${img2}) center center` }}
+          style={{ background: `url(${img}) center center` }}
           id="cta"
         >
           <div className="bg-overlay"></div>

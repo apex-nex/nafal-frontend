@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
 //import images
-import about from "../../../../assets/images/coworking/about.jpg";
+// import about from "../../../../assets/images/coworking/about.jpg";
+import about from "../../../../assets/images/nafal/home/about/about.jpg";
 
 function AboutSection() {
   return (
@@ -30,7 +31,7 @@ function AboutSection() {
                 to ensure your home's comfort and efficiency. Our team of experts
                 is committed to delivering outstanding service and reliability.
               </p>
-              <Link to="/service" className="btn btn-primary mt-3">
+              <Link to="/about" className="btn btn-primary mt-3">
                 Read more
               </Link>
             </div>
