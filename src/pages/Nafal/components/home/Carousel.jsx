@@ -6,10 +6,8 @@ import Slider from 'react-slick';
 // import ModalVideo from 'react-modal-video';
 import 'react-modal-video/scss/modal-video.scss';
 
-import bg01 from '../../../../assets/images/blog/bg1.jpg';
-import bg02 from '../../../../assets/images/blog/bg2.jpg';
-import bg03 from '../../../../assets/images/blog/bg3.jpg';
-// import bg04 from '../../../../assets/images/blog/bg3.jpg';
+// import bg01 from '../../../../assets/images/blog/bg1.jpg';
+import bg01 from '../../../../assets/images/nafal/home/carousel/bg1.jpg'
 
 const Carousel = () => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -23,28 +21,28 @@ const Carousel = () => {
       btnclass: 'btn btn-icon btn-pills btn-primary lightbox',
       link: '#contact-us',
     },
-    {
-      id: 2,
-      image: bg02,
-      h1: 'Meet Our Team of HVAC Experts',
-      p: 'Our dedicated team of professionals is ready to serve you. Learn more about our experienced technicians, our commitment to quality, and our passion for exceptional HVAC services.',
-      btnclass: 'btn btn-primary',
-      btntext: 'About Us',
-      link: '/about-us',
-      iClass: 'mdi mdi-tools',
+    // {
+    //   id: 2,
+    //   image: bg02,
+    //   h1: 'Meet Our Team of HVAC Experts',
+    //   p: 'Our dedicated team of professionals is ready to serve you. Learn more about our experienced technicians, our commitment to quality, and our passion for exceptional HVAC services.',
+    //   btnclass: 'btn btn-primary',
+    //   btntext: 'About Us',
+    //   link: '/about-us',
+    //   iClass: 'mdi mdi-tools',
       
-    },
-    {
-      id: 3,
-      image: bg03,
-      h1: 'Meet Our Team of HVAC Experts',
-      p: 'Our dedicated team of professionals is ready to serve you. Learn more about our experienced technicians, our commitment to quality, and our passion for exceptional HVAC services.',
-      btnclass: 'btn btn-primary mouse-down',
-      btntext: 'Contact Us',
-      link: '#contact-us',
-      iClass: 'mdi mdi-home-thermostat',
+    // },
+    // {
+    //   id: 3,
+    //   image: bg03,
+    //   h1: 'Meet Our Team of HVAC Experts',
+    //   p: 'Our dedicated team of professionals is ready to serve you. Learn more about our experienced technicians, our commitment to quality, and our passion for exceptional HVAC services.',
+    //   btnclass: 'btn btn-primary mouse-down',
+    //   btntext: 'Contact Us',
+    //   link: '#contact-us',
+    //   iClass: 'mdi mdi-home-thermostat',
       
-    },
+    // },
   ];
 
   useEffect(() => {
@@ -53,8 +51,8 @@ const Carousel = () => {
       var e1 = document.getElementsByClassName('slick-slide');
       for (var i = 0; i < 3; i++) {
         if (i === 0) e1[i].style.backgroundImage = `url(${bg01})`;
-        if (i === 1) e1[i].style.backgroundImage = `url(${bg02})`;
-        if (i === 2) e1[i].style.backgroundImage = `url(${bg03})`;
+        // if (i === 1) e1[i].style.backgroundImage = `url(${bg02})`;
+        // if (i === 2) e1[i].style.backgroundImage = `url(${bg03})`;
       }
 
       // document.getElementById('btn1').addEventListener('click', openModal);

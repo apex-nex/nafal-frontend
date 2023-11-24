@@ -3,12 +3,12 @@ import { Container, Row, Col, Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 import FadeIn from "react-fade-in";
-import work1 from "../../../../assets/images/construction/o1.jpg";
-import work2 from "../../../../assets/images/construction/b1.jpg";
-import work3 from "../../../../assets/images/construction/r1.jpg";
-import work4 from "../../../../assets/images/construction/b2.jpg";
-import work5 from "../../../../assets/images/construction/r2.jpg";
-import work6 from "../../../../assets/images/construction/o2.jpg";
+import work1 from "../../../../assets/images/nafal/home/services/work1.jpg";
+import work2 from "../../../../assets/images/nafal/home/services/work2.avif";
+import work3 from "../../../../assets/images/nafal/home/services/work3.jpg";
+import work4 from "../../../../assets/images/nafal/home/services/work4.avif";
+import work5 from "../../../../assets/images/nafal/home/services/work5.jpg";
+import work6 from "../../../../assets/images/nafal/home/services/work6.avif";
 
 const ServiceSection = () => {
   const [displayCategory, setDisplayCategory] = useState("All");
