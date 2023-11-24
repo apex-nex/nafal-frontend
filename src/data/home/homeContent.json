@@ -1,37 +1,160 @@
 {
-  "name": "Home-Page",
   "status": true,
-  "section": {
-    "name": "Carousel-Section",
-    "carouselItems": [
-      {
-        "id": 1,
-        "image": "bg01",
-        "h1": "Experience Comfort All Year Round",
-        "p": "Transform your home's climate with our expert HVAC services. We specialize in providing efficient heating, cooling, and ventilation solutions for your comfort.",
-        "btnclass": "btn btn-icon btn-pills btn-primary lightbox",
-        "link": "#contact-us"
-      },
-      {
-        "id": 2,
-        "image": "bg02",
-        "h1": "Meet Our Team of HVAC Experts",
-        "p": "Our dedicated team of professionals is ready to serve you. Learn more about our experienced technicians, our commitment to quality, and our passion for exceptional HVAC services.",
-        "btnclass": "btn btn-primary",
-        "btntext": "About Us",
-        "link": "/about-us",
-        "iClass": "mdi mdi-tools"
-      },
-      {
-        "id": 3,
-        "image": "bg03",
-        "h1": "Meet Our Team of HVAC Experts",
-        "p": "Our dedicated team of professionals is ready to serve you. Learn more about our experienced technicians, our commitment to quality, and our passion for exceptional HVAC services.",
-        "btnclass": "btn btn-primary mouse-down",
-        "btntext": "Contact Us",
-        "link": "#contact-us",
-        "iClass": "mdi mdi-home-thermostat"
+  "data": {
+    "homePage": {
+      "name": "Home-Page",
+      "sections": {
+        "carouselSection": {
+          "name": "Carousel-Section",
+          "carouselItems": [
+            {
+              "id": 1,
+              "image": "bg1.jpg",
+              "h1": "Experience Comfort All Year Round",
+              "p": "Transform your home's climate with our expert HVAC services. We specialize in providing efficient heating, cooling, and ventilation solutions for your comfort.",
+              "btnclass": "btn btn-icon btn-pills btn-primary lightbox",
+              "link": "#contact-us"
+            }
+          ]
+        },
+        "aboutSection": {
+          "name": "About-Section",
+          "heading": "About us",
+          "image": "about.jpg",
+          "titles": [
+            {
+              "title": "We Lead the Way",
+              "highlight": false,
+              "breakPoint": false
+            },
+            { "title": " in the", "highlight": false, "breakPoint": true },
+            {
+              "title": " HVAC Services",
+              "highlight": true,
+              "breakPoint": false
+            }
+          ],
+          "description": [
+            {
+              "content": "Experience the best in HVAC services with ",
+              "highlight": false
+            },
+            { "content": "Your HVAC Company ", "highlight": true },
+            {
+              "content": "We provide top-notch heating, cooling, and ventilation solutions to ensure your home's comfort and efficiency. Our team of experts is committed to delivering outstanding service and reliability.",
+              "highlight": false
+            }
+          ]
+        },
+        "visionSection": {
+          "name": "Vision-Section",
+          "title": "Your Trusted HVAC Experts",
+          "description": "Experience the difference with Your HVAC Company. We provide innovative solutions for all your heating, cooling, and ventilation needs.",
+          "videoId": "4z_odywmsyM"
+        
+        },
+        "servicesSection": {
+          "name": "Services-Section",
+          "heading": "Services",
+          "title": "Experience Our HVAC Services",
+          "description": [
+            {
+              "content": "Discover the quality and reliability of our HVAC services at ",
+              "highlight": false
+            },
+            { "content": "NAFAL HVAC ", "highlight": true },
+            {
+              "content": "We provide everything you need to ensure your home's comfort and efficiency.",
+              "highlight": false
+            }
+          ],
+          "works": [
+            {
+              "image": "work1.jpg",
+              "title": "Home Conditioners",
+              "subtitle": "Cooling Solutions",
+              "category": "Residential"
+            },
+            {
+              "image": "work2.avif",
+              "title": "Package AC",
+              "subtitle": "Commercial HVAC",
+              "category": "Commercial"
+            },
+            {
+              "image": "work3.jpg",
+              "title": "Air20",
+              "subtitle": "Innovative HVAC",
+              "category": "Infrastructure"
+            },
+            {
+              "image": "work4.avif",
+              "title": "Concealed",
+              "subtitle": "Building Solutions",
+              "category": "Commercial"
+            },
+            {
+              "image": "work5.jpg",
+              "title": "Duct Construction And Design",
+              "subtitle": "Architectural HVAC",
+              "category": "Infrastructure"
+            },
+            {
+              "image": "work6.avif",
+              "title": "Duct Construction And Design",
+              "subtitle": "Project Showcase",
+              "category": "Residential"
+            }
+          ]
+        },
+        "clientSection": {
+          "name": "Client-Section",
+          "title": "Our Clients",
+          "description": "At NAFAL HVAC, our clients' satisfaction is our ultimate goal.We are dedicated to providing exceptional products services customized to their specific requirements. Their happiness and contentment inspire us to consistently surpass expectations.",
+          "clients": [
+            {
+              "badgeNo": 1,
+              "img": "01.jpg",
+              "title": "Ahmed Al-Malik"
+            },
+            {
+              "badgeNo": 2,
+              "img": "02.jpg",
+              "title": "Sara Al-Murad"
+            },
+            {
+              "badgeNo": 3,
+              "img": "03.jpg",
+              "title": "Nora Al-Mutairi"
+            },
+            {
+              "badgeNo": 4,
+              "img": "04.jpg",
+              "title": "Layla Al-Omari"
+            },
+            {
+              "badgeNo": 5,
+              "img": "05.jpg",
+              "title": "Fatimah Al-Saud"
+            },
+            {
+              "badgeNo": 6,
+              "img": "06.jpg",
+              "title": "Abdullah Al-Rashid"
+            },
+            {
+              "badgeNo": 7,
+              "img": "07.jpg",
+              "title": "Hassan Al-Mansoor"
+            },
+            {
+              "badgeNo": 8,
+              "img": "08.jpg",
+              "title": "Mohammed Abdulaziz"
+            }
+          ]
+        }
       }
-    ]
+    }
   }
 }

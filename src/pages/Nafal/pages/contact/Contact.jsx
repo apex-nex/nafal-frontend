@@ -5,8 +5,12 @@ import ContactSection from '../../components/contact/ContactSection';
 import FormSection from '../../components/contact/FormSection';
 import MapSection from '../../components/contact/MapSection';
 import { MetaTags } from 'react-meta-tags';
+import contactPageContent from '../../../../data/contact-page/contactPageContent.json'
+
+const contactSectionContent = contactPageContent?.data?.contactUsPage?.sections?.contactSection;
 
 const Contact = () => {
+
   return (
     <React.Fragment>
       <MetaTags>
@@ -17,7 +21,7 @@ const Contact = () => {
       </div>
       <section className="section pb-0">
         <div className="contact-section">
-          <ContactSection />
+          <ContactSection contactSectionContent={contactSectionContent} />
         </div>
         <div className="form-section">
           <FormSection />
