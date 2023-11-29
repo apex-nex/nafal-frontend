@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import KeyFeatureBox from '../../components/about/KeyFeatureBoxNafal';
 import SectionTitle from '../../components/about/SectionTitleNafal';
-import ModalVideo from 'react-modal-video';
-import about from '../../../../assets/images/about.jpg';
-import '../../../../../node_modules/react-modal-video/scss/modal-video.scss';
+import about from '../../../../assets/images/nafal/about/logo.svg';
 import about_us_cms_data from '../../../../data/about/cms_about.json'
 
 
@@ -13,7 +11,7 @@ import about_us_cms_data from '../../../../data/about/cms_about.json'
 const About = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [aboutCmsData, setaboutCmsData] = useState({});
-  const [isSeeMore,setIsseeMore]=useState(false)
+  const [isSeeMore, setIsseeMore] = useState(false)
 
   const openModal = () => {
     setIsOpen(true);
@@ -63,32 +61,12 @@ const About = () => {
             </svg>
           </div>
         </div>
-
-        <ModalVideo
-          channel="youtube"
-          isOpen={isOpen}
-          videoId={aboutCmsData?.aboutUsCmsData?.our_story?.video_id}
-          onClose={() => setIsOpen(false)}
-        />
         <section className="section">
           <Container>
             <Row className="align-items-center">
               <Col lg={5} md={5} className="mt-4 pt-2 mt-sm-0 pt-sm-0">
                 <div className="position-relative">
-                  <img
-                    src={about} 
-                    className="rounded img-fluid mx-auto d-block"
-                    alt=""
-                  />
-                  <div className="play-icon">
-                    <Link
-                      onClick={openModal}
-                      to="#"
-                      className="play-btn lightbox border-0"
-                    >
-                      <i className="mdi mdi-play text-primary rounded-circle shadow"></i>
-                    </Link>
-                  </div>
+                  <img src={about} className="rounded img-fluid mx-auto d-block" alt="Nafal" />
                 </div>
               </Col>
 
@@ -103,72 +81,40 @@ const About = () => {
                         : null
                     }
                   </p>
-                  {/* <Link to="#" className="btn btn-primary mt-3">
-                    Buy Now <i className="uil uil-angle-right-b"></i>
-                  </Link> */}
                 </div>
               </Col>
             </Row>
           </Container>
 
-          <Container className="mt-100 mt-60">
+          <Container className="mt-100 mt-60" style={{marginTop: "50px"}}>
             {/* Render Section Title */}
-            { aboutCmsData?.aboutUsCmsData?.key_features ? 
-            <SectionTitle
-              isLeft={false}
-              keyFeatures={aboutCmsData?.aboutUsCmsData?.key_features}
-            />
-            :
-            null
+            {aboutCmsData?.aboutUsCmsData?.key_features ?
+              <SectionTitle
+                isLeft={false}
+                keyFeatures={aboutCmsData?.aboutUsCmsData?.key_features}
+              />
+              :
+              null
             }
 
             <Row>
               {/* key features */}
-           {  aboutCmsData?.aboutUsCmsData?.key_features?.key_features_list?   
-              <KeyFeatureBox
-              isSeeMore={isSeeMore}
-              keyfeatures={aboutCmsData?.aboutUsCmsData?.key_features?.key_features_list}
+              {aboutCmsData?.aboutUsCmsData?.key_features?.key_features_list ?
+                <KeyFeatureBox
+                  isSeeMore={isSeeMore}
+                  keyfeatures={aboutCmsData?.aboutUsCmsData?.key_features?.key_features_list}
                 />
-          :null}
+                : null}
               <Col xs={12} className="text-center mt-4 pt-2">
-                <Link to="#" className="btn btn-primary" 
-                onClick={()=>{setIsseeMore(!isSeeMore)}}
+                <Link to="#" className="btn btn-primary"
+                  onClick={() => { setIsseeMore(!isSeeMore) }}
                 >
-                  {isSeeMore ? "Hide More":"See More"} <i className={`mdi mdi-arrow-${isSeeMore?'up':'down'}`}></i>
+                  {isSeeMore ? "Hide More" : "See More"} <i className={`mdi mdi-arrow-${isSeeMore ? 'up' : 'down'}`}></i>
                 </Link>
               </Col>
             </Row>
           </Container>
         </section>
-
-        {/* <section className="section bg-light">
-          <Container className="mt-100 mt-60">
-            <Row className="justify-content-center">
-              <Col className="text-center">
-                <div className="section-title">
-                  <h4 className="title mb-4">
-                    See everything about your employee at one place.
-                  </h4>
-                  <p className="text-muted para-desc mx-auto">
-                    Start working with{' '}
-                    <span className="text-primary fw-bold">Nafal</span> that
-                    can provide everything you need to generate awareness, drive
-                    traffic, connect.
-                  </p>
-                  <div className="mt-4">
-                    <Link to="#" className="btn btn-primary mt-2 me-2">
-                      Get Started Now
-                    </Link>
-                    &nbsp;
-                    <Link to="#" className="btn btn-outline-primary mt-2">
-                      Free Trial
-                    </Link>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section> */}
       </> : null}
     </React.Fragment>
   );
