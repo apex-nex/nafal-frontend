@@ -27,7 +27,11 @@
               "highlight": false,
               "breakPoint": false
             },
-            { "title": " in the", "highlight": false, "breakPoint": true },
+            {
+              "title": " in the",
+              "highlight": false,
+              "breakPoint": true
+            },
             {
               "title": " HVAC Services",
               "highlight": true,
@@ -39,7 +43,10 @@
               "content": "Experience the best in HVAC services with ",
               "highlight": false
             },
-            { "content": "Your HVAC Company ", "highlight": true },
+            {
+              "content": "Your HVAC Company ",
+              "highlight": true
+            },
             {
               "content": "We provide top-notch heating, cooling, and ventilation solutions to ensure your home's comfort and efficiency. Our team of experts is committed to delivering outstanding service and reliability.",
               "highlight": false
@@ -50,8 +57,7 @@
           "name": "Vision-Section",
           "title": "Your Trusted HVAC Experts",
           "description": "Experience the difference with Your HVAC Company. We provide innovative solutions for all your heating, cooling, and ventilation needs.",
-          "videoId": "4z_odywmsyM"
-        
+          "videoId": "m9hFu8kbX1I"
         },
         "servicesSection": {
           "name": "Services-Section",
@@ -62,7 +68,10 @@
               "content": "Discover the quality and reliability of our HVAC services at ",
               "highlight": false
             },
-            { "content": "NAFAL HVAC ", "highlight": true },
+            {
+              "content": "NAFAL HVAC ",
+              "highlight": true
+            },
             {
               "content": "We provide everything you need to ensure your home's comfort and efficiency.",
               "highlight": false
@@ -95,15 +104,15 @@
             },
             {
               "image": "work5.jpg",
-              "title": "Duct Construction And Design",
+              "title": "AC Maintenance",
               "subtitle": "Architectural HVAC",
-              "category": "Infrastructure"
+              "category": "Residential"
             },
             {
               "image": "work6.avif",
               "title": "Duct Construction And Design",
               "subtitle": "Project Showcase",
-              "category": "Residential"
+              "category": "Infrastructure"
             }
           ]
         },

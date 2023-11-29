@@ -3,12 +3,6 @@ import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 import FadeIn from 'react-fade-in';
-// import work1 from '../../../../assets/images/nafal/home/services/work1.jpg';
-// import work2 from '../../../../assets/images/nafal/home/services/work2.avif';
-// import work3 from '../../../../assets/images/nafal/home/services/work3.jpg';
-// import work4 from '../../../../assets/images/nafal/home/services/work4.avif';
-// import work5 from '../../../../assets/images/nafal/home/services/work5.jpg';
-// import work6 from '../../../../assets/images/nafal/home/services/work6.avif';
 
 const ServiceSection = (props) => {
   const { servicesSectionContent } = props;
@@ -51,23 +45,19 @@ const ServiceSection = (props) => {
                     {servicesSectionContent?.title}
                   </h4>
                   <p className="text-muted para-desc mb-0">
-                    {/* Discover the quality and reliability of our HVAC services at{' '}
-                    <span className="text-primary fw-bold">NAFAL HVAC</span>. We
-                    provide everything you need to ensure your home's comfort
-                    and efficiency. */}
                     {servicesSectionContent?.description
                       ? servicesSectionContent?.description?.map(
-                          (ele, index) => (
-                            <span
-                              className={
-                                ele.highlight ? 'text-primary fw-bold' : ''
-                              }
-                              key={index}
-                            >
-                              {ele.content}
-                            </span>
-                          ),
-                        )
+                        (ele, index) => (
+                          <span
+                            className={
+                              ele.highlight ? 'text-primary fw-bold' : ''
+                            }
+                            key={index}
+                          >
+                            {ele.content}
+                          </span>
+                        ),
+                      )
                       : null}
                   </p>
 
@@ -139,48 +129,49 @@ const ServiceSection = (props) => {
                 <Row className="projects-wrapper">
                   {servicesSectionContent?.works
                     ? servicesSectionContent?.works
-                        .filter(
-                          ({ category }) =>
-                            displayCategory === category ||
-                            displayCategory === 'All',
-                        )
-                        .map(({ title, image, subtitle }, key) => (
-                          <Col
-                            key={key}
-                            lg={6}
-                            xs={12}
-                            className="mt-4 pt-2 offices"
-                          >
-                            <FadeIn delay={100}>
-                              <Card className="border-0 work-container work-classic shadow overflow-hidden">
-                                <CardBody className="p-0">
-                                  <Link to="page-work-detail">
-                                    <img
-                                      src={require(
-                                        `../../../../assets/images/nafal/home/services/${image}`,
-                                      )}
-                                      className="img-fluid work-image"
-                                      alt="Nafal"
-                                    />
-                                  </Link>
-                                  <div className="content p-4">
-                                    <h5 className="mb-0">
-                                      <Link
-                                        to="page-work-detail"
-                                        className="text-dark title"
-                                      >
-                                        {title}
-                                      </Link>
-                                    </h5>
-                                    <h6 className="text-muted tag mb-0">
-                                      {subtitle}
-                                    </h6>
-                                  </div>
-                                </CardBody>
-                              </Card>
-                            </FadeIn>
-                          </Col>
-                        ))
+                      .filter(
+                        ({ category }) =>
+                          displayCategory === category ||
+                          displayCategory === 'All',
+                      )
+                      .map(({ title, image, subtitle }, key) => (
+                        <Col
+                          key={key}
+                          lg={6}
+                          xs={12}
+                          className="mt-4 pt-2 offices"
+                        >
+                          <FadeIn delay={100}>
+                            <Card className="border-0 work-container work-classic shadow overflow-hidden">
+                              <CardBody className="p-0">
+                                <Link to="page-work-detail">
+                                  <img
+                                    src={require(
+                                      `../../../../assets/images/nafal/home/services/${image}`,
+                                    )}
+                                    className="img-fluid work-image"
+                                    alt="Nafal"
+                                    style={{height:"260px"}}
+                                  />
+                                </Link>
+                                <div className="content p-4">
+                                  <h5 className="mb-0">
+                                    <Link
+                                      to="page-work-detail"
+                                      className="text-dark title"
+                                    >
+                                      {title}
+                                    </Link>
+                                  </h5>
+                                  <h6 className="text-muted tag mb-0">
+                                    {subtitle}
+                                  </h6>
+                                </div>
+                              </CardBody>
+                            </Card>
+                          </FadeIn>
+                        </Col>
+                      ))
                     : null}
                 </Row>
               </Col>
