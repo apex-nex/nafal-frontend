@@ -72,7 +72,16 @@ const Navbar = () => {
                       : 'has-submenu'
                   }
                 >
-                  <Link key={key} to={item?.idnm}>
+                  <Link
+                    key={key}
+                    to={item?.idnm}
+                    onClick={() => {
+                      if (item.navheading === 'Home') {
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                      }
+                    }}
+                  >
                     {' '}
                     {item?.navheading}
                   </Link>
@@ -107,9 +116,21 @@ const Navbar = () => {
                 {navItems.map((item, key) => (
                   <li
                     key={key}
-                    className={window.location.pathname === item?.idnm ? 'has-submenu active' : 'has-submenu'}
+                    className={
+                      window.location.pathname === item?.idnm
+                        ? 'has-submenu active'
+                        : 'has-submenu'
+                    }
                   >
-                    <Link key={key} to={item?.idnm} className={window.location.pathname === item?.idnm ? 'has-submenu-active' : ''}>
+                    <Link
+                      key={key}
+                      to={item?.idnm}
+                      className={
+                        window.location.pathname === item?.idnm
+                          ? 'has-submenu-active'
+                          : ''
+                      }
+                    >
                       {' '}
                       {item?.navheading}
                     </Link>
