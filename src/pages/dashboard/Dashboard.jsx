@@ -5,7 +5,7 @@ import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
-import { get } from "../../../../components/helpers/api_helper"
+import { get } from "../../components/helpers/api_helper"
 import 'flatpickr/dist/flatpickr.min.css';
 
 const Dashboard = () => {
