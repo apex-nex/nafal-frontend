@@ -46,7 +46,7 @@ const ClientSection = (props) => {
                         slidesPerView: 3,
                       },
                       1400: {
-                        slidesPerView: 5,
+                        slidesPerView: clientSectionConent?.clients.length < 5 ? clientSectionConent.clients.length : 5,
                       },
                     }}
                     autoplay={{
@@ -60,33 +60,29 @@ const ClientSection = (props) => {
                     <div className="tiny-slide">
                       {clientSectionConent?.clients
                         ? clientSectionConent?.clients?.map((client, key) => (
-                            <SwiperSlide key={key}>
-                              <Card className="nft nft-primary nft-creator border-0 rounded-md shadow m-2">
-                                <CardBody className="p-3">
-                                  <div className="content mt-3">
-                                    <div className="position-relative text-center">
-                                      <img
-                                        src={require(
-                                          `../../../../assets/images/client/${client.img}`,
-                                        )}
-                                        className="avatar avatar-small rounded-pill shadow"
-                                        alt=""
-                                      />
-
-                                      <div className="author mt-2">
-                                        <Link
-                                          to="#"
-                                          className="text-dark h6 name"
-                                        >
-                                          {client.title}
-                                        </Link>
-                                      </div>
+                          <SwiperSlide key={key}>
+                            <Card className="nft nft-primary nft-creator border-0 rounded-md shadow m-2">
+                              <CardBody className="p-3">
+                                <div className="content mt-3">
+                                  <div className="position-relative text-center">
+                                    <img src={require(`../../../../assets/images/nafal/home/clients/${client.img}`)}
+                                      className="avatar avatar-small rounded-pill shadow"
+                                      alt="logo"
+                                    />
+                                    <div className="author mt-2">
+                                      <Link
+                                        to="#"
+                                        className="text-dark h6 name"
+                                      >
+                                        {client.title}
+                                      </Link>
                                     </div>
                                   </div>
-                                </CardBody>
-                              </Card>
-                            </SwiperSlide>
-                          ))
+                                </div>
+                              </CardBody>
+                            </Card>
+                          </SwiperSlide>
+                        ))
                         : null}
                     </div>
                   </Swiper>

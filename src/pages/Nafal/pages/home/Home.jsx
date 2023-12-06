@@ -22,7 +22,7 @@ const Home = () => {
           <title>Home | Nafal</title>
         </MetaTags>
         <div className="carousel">
-          <Carousel carouselSectionContent={carouselSectionContent}/>
+          <Carousel carouselSectionContent={carouselSectionContent} />
         </div>
         <div className="about-section">
           <AboutSection aboutSectionContent={aboutSectionContent} />
@@ -35,7 +35,7 @@ const Home = () => {
         <ServicesSection servicesSectionContent={servicesSectionContent} />
       </div>
       <div className="clients-section">
-        <ClientSection clientSectionConent = {clientSectionConent} />
+        <ClientSection clientSectionConent={clientSectionConent} />
       </div>
       <div className="DownloadAppSection-container">
         <DownloadAppSection />

@@ -12,7 +12,6 @@ const api = axios.create({
 
 // Function to handle GET requests
 export const get = async (url, params = {}) => {
-    console.log("url", url)
     try {
         const response = await api.get(url, { params });
         return response.data;

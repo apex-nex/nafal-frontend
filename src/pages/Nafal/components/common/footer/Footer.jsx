@@ -1,6 +1,7 @@
-import React, {  Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
+import { FaSnapchat } from 'react-icons/fa';
 
 //Import Icons
 import FeatherIcon from 'feather-icons-react';
@@ -29,14 +30,14 @@ const Footer = () => {
                 <Col sm={6}>
                   <div className="text-sm-start">
                     <p className="mb-0">
-                      © {new Date().getFullYear()} NAFAL HVAC. {' '}
+                      © {new Date().getFullYear()} NAFAL HVAC.{' '}
                       <Link
                         to="/"
                         target="_blank"
                         rel="noreferrer"
                         className="text-reset"
                       >
-                      All rights reserved.
+                        All rights reserved.
                       </Link>
                       .
                     </p>
@@ -46,7 +47,7 @@ const Footer = () => {
                 <Col sm={6} className="mt-4 mt-sm-0 pt-2 pt-sm-0">
                   <ul className="list-unstyled social-icon foot-social-icon text-sm-end mb-0">
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="rounded">
+                      <Link to={{ pathname: 'https://www.facebook.com/NAFAL.HVAC' }} target="_blank" rel="noopener noreferrer" className="rounded">
                         <FeatherIcon
                           icon="facebook"
                           className="fea icon-sm fea-social"
@@ -54,7 +55,7 @@ const Footer = () => {
                       </Link>
                     </li>{' '}
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="rounded">
+                      <Link to={{ pathname: 'https://www.instagram.com/nafal.hvac/' }} target="_blank" rel="noopener noreferrer" className="rounded">
                         <FeatherIcon
                           icon="instagram"
                           className="fea icon-sm fea-social"
@@ -62,7 +63,7 @@ const Footer = () => {
                       </Link>
                     </li>{' '}
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="rounded">
+                      <Link to={{ pathname: 'https://twitter.com/NAFALHVAC' }} target="_blank" rel="noopener noreferrer" className="rounded">
                         <FeatherIcon
                           icon="twitter"
                           className="fea icon-sm fea-social"
@@ -70,11 +71,16 @@ const Footer = () => {
                       </Link>
                     </li>{' '}
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="rounded">
+                      <Link to={{ pathname: 'https://www.linkedin.com/in/nafal-hvac-6937472a1' }} target="_blank" rel="noopener noreferrer" className="rounded">
                         <FeatherIcon
                           icon="linkedin"
                           className="fea icon-sm fea-social"
                         />
+                      </Link>
+                    </li>{' '}
+                    <li className="list-inline-item mb-0">
+                      <Link to={{ pathname: 'https://www.snapchat.com/add/nafal.hvac' }} target="_blank" rel="noopener noreferrer" className="rounded">
+                        <FaSnapchat className="fea icon-sm fea-social" />
                       </Link>
                     </li>
                   </ul>
