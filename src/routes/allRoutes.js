@@ -6,7 +6,7 @@ import ServicesNafal from '../pages/Nafal/pages/services/Services'
 import AboutUsNafal from '../pages/Nafal/pages/about/about'
 import ContactUsNafal from '../pages/Nafal/pages/contact/Contact'
 import AppComingSoon from '../pages/comingsoon/AppComingSoon';
-import Dashboard from '../pages/Nafal/pages/dashboard/Dashboard';
+import Dashboard from '../pages/dashboard/Dashboard';
 import Login from '../pages/Nafal/pages/login/Login';
 
 const routes = [
