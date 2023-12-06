@@ -10,9 +10,9 @@ import work2 from "../../../../assets/images/work/2.jpg";
 import work3 from "../../../../assets/images/work/3.jpg";
 import work4 from "../../../../assets/images/work/4.jpg";
 
-import ServicesSection from '../../components/home/ServicesSection';
+import ServicesSection from '../../../../components/home/ServicesSection';
 import homeContent from '../../../../data/home/homeContent.json';
-import ClientSection from '../../components/home/ClientSection';
+import ClientSection from '../../../../components/home/ClientSection';
 import { useState } from 'react';
 
 import FeatherIcon from 'feather-icons-react';

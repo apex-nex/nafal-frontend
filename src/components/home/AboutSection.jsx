@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
-//import images
-// import about from "../../../../assets/images/coworking/about.jpg";
-// import about from '../../../../assets/images/nafal/home/about/about.jpg';
-
 function AboutSection(props) {
   const { aboutSectionContent } = props;
 
@@ -18,9 +14,7 @@ function AboutSection(props) {
               <Row className="align-items-center">
                 <Col lg="5" md="6" xs="12">
                   <img
-                    src={require(
-                      `../../../../assets/images/nafal/home/about/${aboutSectionContent?.image}`,
-                    )}
+                    src={require( `../../assets/images/nafal/home/about/${aboutSectionContent?.image}`)}
                     className="img-fluid rounded"
                     alt="Server error!"
                   />

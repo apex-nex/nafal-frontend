@@ -6,18 +6,16 @@ import { Link } from 'react-router-dom';
 import FeatherIcon from "feather-icons-react";
 //import Images
 import logoNafal from '../../../../assets/images/nafal/logo/nafal-logo.png';
-import { post } from '../../components/helpers/api_helper';
+import { post } from '../../../../components/helpers/api_helper';
 import { useState, useEffect } from 'react';
 
 const Login = () => {
     const [values, setValues] = useState({})
     const [data, setData] = useState({})
 
-    useEffect(()=>{
-        if (data.message === "Login Successful") {
-            window.location.replace("/admin/dashboard")
-        }
-    },[data])
+    useEffect(() => {
+        if (data.message === "Login Successful") window.location.replace("/admin/dashboard")
+    }, [data])
 
     const postData = async (values) => {
         try {
