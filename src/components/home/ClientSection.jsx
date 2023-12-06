@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import "../../../../../node_modules/swiper/swiper.scss";
+import "../../../node_modules/swiper/swiper.scss";
 
 const ClientSection = (props) => {
   const { clientSectionContent } = props;
@@ -65,7 +65,7 @@ const ClientSection = (props) => {
                               <CardBody className="p-3">
                                 <div className="content mt-3">
                                   <div className="position-relative text-center">
-                                    <img src={require(`../../../../assets/images/nafal/home/clients/${client.img}`)}
+                                    <img src={require(`../../assets/images/nafal/home/clients/${client.img}`)}
                                       className="avatar avatar-small rounded-pill shadow"
                                       alt="logo"
                                     />

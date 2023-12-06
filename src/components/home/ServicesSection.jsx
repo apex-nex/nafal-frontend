@@ -147,7 +147,7 @@ const ServiceSection = (props) => {
                                 <Link to="page-work-detail">
                                   <img
                                     src={require(
-                                      `../../../../assets/images/nafal/home/services/${image}`,
+                                      `../../assets/images/nafal/home/services/${image}`,
                                     )}
                                     className="img-fluid work-image"
                                     alt="Nafal"
