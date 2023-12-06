@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
-import HeadingSection from '../../../../components/contact/HeadingSection';
-import ContactSection from '../../../../components/contact/ContactSection';
-import FormSection from '../../../../components/contact/FormSection';
-import MapSection from '../../../../components/contact/MapSection';
+import HeadingSection from '../../components/contact/HeadingSection';
+import ContactSection from '../../components/contact/ContactSection';
+import FormSection from '../../components/contact/FormSection';
+import MapSection from '../../components/contact/MapSection';
 import { MetaTags } from 'react-meta-tags';
-import contactPageContent from '../../../../data/contact-page/contactPageContent.json'
+import contactPageContent from '../../data/contact-page/contactPageContent.json'
 
 const contactSectionContent = contactPageContent?.data?.contactUsPage?.sections?.contactSection;
 

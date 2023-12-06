@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
-import KeyFeatureBox from '../../../../components/about/KeyFeatureBoxNafal';
-import SectionTitle from '../../../../components/about/SectionTitleNafal';
-import about from '../../../../assets/images/nafal/about/logo.svg';
-import about_us_cms_data from '../../../../data/about/cms_about.json'
+import KeyFeatureBox from '../../components/about/KeyFeatureBoxNafal';
+import SectionTitle from '../../components/about/SectionTitleNafal';
+import about from '../../assets/images/nafal/about/logo.svg';
+import about_us_cms_data from '../../data/about/cms_about.json'
 
 
 
