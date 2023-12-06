@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 //Import Icons
 import FeatherIcon from "feather-icons-react";
 //import Images
-import logoNafal from '../../../../assets/images/nafal/logo/nafal-logo.png';
-import { post } from '../../../../components/helpers/api_helper';
+import logoNafal from '../../assets/images/nafal/logo/nafal-logo.png';
+import { post } from '../../components/helpers/api_helper';
 import { useState, useEffect } from 'react';
 
 const Login = () => {

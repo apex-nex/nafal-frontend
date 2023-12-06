@@ -1,13 +1,13 @@
 import React from 'react'
 import { Redirect } from "react-router-dom";
 
-import HomeNafal from '../pages/Nafal/pages/home/Home';
-import ServicesNafal from '../pages/Nafal/pages/services/Services'
-import AboutUsNafal from '../pages/Nafal/pages/about/about'
-import ContactUsNafal from '../pages/Nafal/pages/contact/Contact'
+import HomeNafal from '../pages/home/Home';
+import ServicesNafal from '../pages/services/Services'
+import AboutUsNafal from '../pages/about/about'
+import ContactUsNafal from '../pages/contact/Contact'
 import AppComingSoon from '../pages/comingsoon/AppComingSoon';
-import Dashboard from '../pages/Nafal/pages/dashboard/Dashboard';
-import Login from '../pages/Nafal/pages/login/Login';
+import Dashboard from '../pages/dashboard/Dashboard';
+import Login from '../pages/login/Login';
 
 const routes = [
   //Nafal routes without Layout
