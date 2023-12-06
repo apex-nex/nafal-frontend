@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 //Import Images
-import logoNafal from '../../../../../../assets/images/nafal/logo/nafal-logo.png';
+import logoNafal from '../../assets/images/nafal/logo/nafal-logo.png';
 import { useState } from 'react';
 import { useEffect } from 'react';
 

@@ -13,7 +13,7 @@ import {
 
 //Import Icons
 import FeatherIcon from 'feather-icons-react';
-import contact from '../../../../assets/images/nafal/contact/contact.svg';
+import contact from '../../assets/images/nafal/contact/contact.svg';
 import { post } from '../helpers/api_helper';
 
 export default function FormSection() {

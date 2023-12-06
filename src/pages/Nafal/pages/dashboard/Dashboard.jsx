@@ -5,7 +5,7 @@ import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
-import { get } from "../../components/helpers/api_helper"
+import { get } from "../../../../components/helpers/api_helper"
 import 'flatpickr/dist/flatpickr.min.css';
 
 const Dashboard = () => {
@@ -211,7 +211,7 @@ const Dashboard = () => {
                               )
                             ) : (
                               <tr>
-                                <td colSpan="6" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                <td colSpan="8" className="react-bs-table-no-data" style={{ padding: "3px" }}>
                                   <p className="text-center">Records not found</p>
                                 </td>
                               </tr>

@@ -1,11 +1,11 @@
 import React from 'react';
-import Carousel from '../../components/home/Carousel';
-import AboutSection from '../../components/home/AboutSection';
-import Vision from '../../components/home/Vision';
-import ServicesSection from '../../components/home/ServicesSection';
+import Carousel from '../../../../components/home/Carousel';
+import AboutSection from '../../../../components/home/AboutSection';
+import Vision from '../../../../components/home/Vision';
+import ServicesSection from '../../../../components/home/ServicesSection';
 import MetaTags from 'react-meta-tags';
-import ClientSection from '../../components/home/ClientSection';
-import DownloadAppSection from '../../components/home/DownloadAppSection';
+import ClientSection from '../../../../components/home/ClientSection';
+import DownloadAppSection from '../../../../components/home/DownloadAppSection';
 import homeContent from '../../../../data/home/homeContent.json';
 
 const carouselSectionContent = homeContent?.data?.homePage?.sections?.carouselSection;

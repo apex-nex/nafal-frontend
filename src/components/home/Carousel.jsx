@@ -6,8 +6,7 @@ import Slider from 'react-slick';
 // import ModalVideo from 'react-modal-video';
 import 'react-modal-video/scss/modal-video.scss';
 
-// import bg01 from '../../../../assets/images/blog/bg1.jpg';
-import bg01 from '../../../../assets/images/nafal/home/carousel/bg1.jpg';
+import bg01 from '../../assets/images/nafal/home/carousel/bg1.jpg';
 
 const Carousel = (props) => {
   // const [isOpen, setIsOpen] = useState(false);
