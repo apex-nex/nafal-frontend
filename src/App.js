@@ -1,12 +1,7 @@
 import React, { Component, Suspense } from 'react';
 // import Layout from "./components/Layout/";
-import Layout1 from './pages/Nafal/layout/index';
-import {
-  Route,
-  Switch,
-  BrowserRouter as Router,
-  withRouter,
-} from 'react-router-dom';
+import Layout from './pages/Nafal/layout/index';
+import { Route, Switch, BrowserRouter as Router, withRouter } from 'react-router-dom';
 
 // Import Css
 import './assets/css/materialdesignicons.min.css';
@@ -16,7 +11,6 @@ import './Apps.scss';
 
 // Include Routes
 import routes from './routes/allRoutes';
-import routes1 from './routes/nafalAllRoutes';
 
 function withLayout(WrappedComponent) {
   // ...and returns another component...
@@ -24,9 +18,9 @@ function withLayout(WrappedComponent) {
   return class extends React.Component {
     render() {
       return (
-        <Layout1>
+        <Layout>
           <WrappedComponent></WrappedComponent>
-        </Layout1>
+        </Layout>
       );
     }
   };
@@ -50,8 +44,8 @@ class App extends Component {
       <React.Fragment>
         <Router>
           <Suspense fallback={this.Loader()}>
-          <Switch>
-              {routes1.map((route, idx) =>
+            <Switch>
+              {routes.map((route, idx) =>
                 route.isWithoutLayout ? (
                   <Route
                     path={route.path}
@@ -61,11 +55,11 @@ class App extends Component {
                   />
                 ) : (
                   <Route
-                  path={route.path}
-                  exact
-                  component={withLayout(route.component)}
-                  key={idx}
-                />
+                    path={route.path}
+                    exact
+                    component={withLayout(route.component)}
+                    key={idx}
+                  />
                 )
               )}
             </Switch>

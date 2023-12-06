@@ -12,7 +12,7 @@ const carouselSectionContent = homeContent?.data?.homePage?.sections?.carouselSe
 const aboutSectionContent = homeContent?.data?.homePage?.sections?.aboutSection;
 const visionSectionContent = homeContent?.data?.homePage?.sections?.visionSection
 const servicesSectionContent = homeContent?.data?.homePage?.sections?.servicesSection
-const clientSectionConent = homeContent?.data?.homePage?.sections?.clientSection
+const clientSectionContent = homeContent?.data?.homePage?.sections?.clientSection
 
 const Home = () => {
   return (
@@ -35,7 +35,7 @@ const Home = () => {
         <ServicesSection servicesSectionContent={servicesSectionContent} />
       </div>
       <div className="clients-section">
-        <ClientSection clientSectionConent={clientSectionConent} />
+        <ClientSection clientSectionContent={clientSectionContent} />
       </div>
       <div className="DownloadAppSection-container">
         <DownloadAppSection />
