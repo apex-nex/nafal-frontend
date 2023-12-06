@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react"
 import MetaTags from "react-meta-tags"
-import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, Badge, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
 import { get } from "../../components/helpers/api_helper"
+import 'flatpickr/dist/flatpickr.min.css';
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
