@@ -57,7 +57,7 @@
           "name": "Vision-Section",
           "title": "Your Trusted HVAC Experts",
           "description": "Experience the difference with Your HVAC Company. We provide innovative solutions for all your heating, cooling, and ventilation needs.",
-          "videoId": "m9hFu8kbX1I"
+          "videoId": "8_FJEMH8hx0"
         },
         "servicesSection": {
           "name": "Services-Section",
@@ -123,43 +123,13 @@
           "clients": [
             {
               "badgeNo": 1,
-              "img": "01.jpg",
-              "title": "Ahmed Al-Malik"
+              "img": "01.png",
+              "title": "Al - Etimad"
             },
             {
               "badgeNo": 2,
               "img": "02.jpg",
-              "title": "Sara Al-Murad"
-            },
-            {
-              "badgeNo": 3,
-              "img": "03.jpg",
-              "title": "Nora Al-Mutairi"
-            },
-            {
-              "badgeNo": 4,
-              "img": "04.jpg",
-              "title": "Layla Al-Omari"
-            },
-            {
-              "badgeNo": 5,
-              "img": "05.jpg",
-              "title": "Fatimah Al-Saud"
-            },
-            {
-              "badgeNo": 6,
-              "img": "06.jpg",
-              "title": "Abdullah Al-Rashid"
-            },
-            {
-              "badgeNo": 7,
-              "img": "07.jpg",
-              "title": "Hassan Al-Mansoor"
-            },
-            {
-              "badgeNo": 8,
-              "img": "08.jpg",
-              "title": "Mohammed Abdulaziz"
+              "title": "Sara Auto Parts"
             }
           ]
         }

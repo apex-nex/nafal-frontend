@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, CardBody } from 'reactstrap';
+import MetaTags from 'react-meta-tags';
 
 //Import Images
 import work1 from "../../../../assets/images/work/1.jpg";
@@ -28,7 +29,7 @@ const Services = () => {
         { title: "Concealed", description: "Smart building solutions with discreet HVAC integration.", icon: 'uil uil-building' },
         { title: "AC Maintenance", description: "Proactive maintenance services for architectural HVAC systems.", icon: 'mdi mdi-air-conditioner' },
         { title: "Duct Construction And Design", description: "Showcasing exceptional projects through expert duct construction and design.", icon: 'uil uil-drafting-compass' },
-      ]);
+    ]);
 
     const features = [
         { id: 1, icon: 'uil uil-edit-alt h2 text-primary', title: "Design & Development", description: "Nisi aenean vulputate eleifend tellus vitae eleifend enim a Aliquam aenean elementum semper." },
@@ -86,47 +87,51 @@ const Services = () => {
 
     return (
         <React.Fragment>
-            <section className="bg-half-170 bg-light d-table w-100">
-                <Container>
-                    <Row className="mt-5 justify-content-center">
-                        <Col lg={12} className="text-center">
-                            <div className="pages-heading">
-                                <h4 className="title mb-0"> Services </h4>
-                            </div>
-                        </Col>
-                    </Row>
+            <div className="page-content">
+                <MetaTags>
+                    <title>Services | Nafal</title>
+                </MetaTags>
+                <section className="bg-half-170 bg-light d-table w-100">
+                    <Container>
+                        <Row className="mt-5 justify-content-center">
+                            <Col lg={12} className="text-center">
+                                <div className="pages-heading">
+                                    <h4 className="title mb-0"> Services </h4>
+                                </div>
+                            </Col>
+                        </Row>
 
-                    <div className="position-breadcrumb">
-                        <nav aria-label="breadcrumb" className="d-inline-block">
-                            <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
-                                <li className="breadcrumb-item"><Link to="/">Nafal</Link></li>{" "}
-                                <li className="breadcrumb-item"><Link to="#">Page</Link></li>{" "}
-                                <li className="breadcrumb-item active" aria-current="page">Services</li>
-                            </ul>
-                        </nav>
+                        <div className="position-breadcrumb">
+                            <nav aria-label="breadcrumb" className="d-inline-block">
+                                <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
+                                    <li className="breadcrumb-item"><Link to="/">Nafal</Link></li>{" "}
+                                    <li className="breadcrumb-item"><Link to="#">Page</Link></li>{" "}
+                                    <li className="breadcrumb-item active" aria-current="page">Services</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </Container>
+                </section>
+
+                <div className="position-relative">
+                    <div className="shape overflow-hidden text-white">
+                        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                        </svg>
                     </div>
-                </Container>
-            </section>
-
-            <div className="position-relative">
-                <div className="shape overflow-hidden text-white">
-                    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
-                    </svg>
                 </div>
+
+                <section className="section">
+                    <Container>
+                        <div className="services-container">
+                            <ServicesSection servicesSectionContent={servicesSectionContent} />
+                        </div>
+                        <div className="clients-section">
+                            <ClientSection clientSectionConent={clientSectionConent} />
+                        </div>
+                    </Container>
+                </section>
             </div>
-
-            <section className="section">
-                <Container>
-                    <div className="services-container">
-                        <ServicesSection servicesSectionContent={servicesSectionContent} />
-                    </div>
-                    <div className="clients-section">
-                        <ClientSection clientSectionConent={clientSectionConent} />
-                    </div>
-                </Container>
-            </section>
-
         </React.Fragment>
     );
 }

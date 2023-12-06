@@ -688,13 +688,13 @@ const routes = [
   { path: "/widget", component: Widget, isTopbarDark: true },
 
   // Nafal 
-  { path: "/", component: HomeNafal ,isWithoutLayout: false},
-  { path: "/services", component: ServicesNafal ,isWithoutLayout: false },
-  { path: "/about", component: AboutUsNafal ,isWithoutLayout: false },
-  { path: "/contact-us", component: ContactUsNafal ,isWithoutLayout: false },
-  { path: "/app-comingsoon", component: AppComingSoon ,isWithoutLayout: false },
-  { path: "/admin/dashboard", component: Dashboard ,isWithoutLayout: false },
-  { path: "/admin/login", component: Login ,isWithoutLayout: true },
+  { path: "/", component: HomeNafal, isWithoutLayout: false },
+  { path: "/services", component: ServicesNafal, isWithoutLayout: false },
+  { path: "/about", component: AboutUsNafal, isWithoutLayout: false },
+  { path: "/contact", component: ContactUsNafal, isWithoutLayout: false },
+  { path: "/app-comingsoon", component: AppComingSoon, isWithoutLayout: false },
+  { path: "/admin/dashboard", component: Dashboard, isWithoutLayout: false },
+  { path: "/admin/login", component: Login, isWithoutLayout: true },
 
   //Index Main
   // { path: "/", exact: true, component: () => <Redirect to="/index" />},

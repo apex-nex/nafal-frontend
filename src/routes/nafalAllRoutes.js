@@ -7,14 +7,14 @@ import Dashboard from '../pages/Nafal/pages/dashboard/Dashboard';
 import Login from '../pages/Nafal/pages/login/Login';
 
 const routes = [
-   // Nafal Project
-  { path: '/', component: HomeNafal ,isWithoutLayout: false },
-  { path: '/services', component: ServicesNafal ,isWithoutLayout: false },
-  { path: '/about', component: AboutUsNafal ,isWithoutLayout: false },
-  { path: '/contact-us', component: ContactUsNafal ,isWithoutLayout: false },
-  { path: "/app-comingsoon", component: AppComingSoon ,isWithoutLayout: true },
-  { path: "/admin/dashboard", component: Dashboard ,isWithoutLayout: true },
-  { path: "/admin/login", component: Login ,isWithoutLayout: true },
+  // Nafal Project
+  { path: '/', component: HomeNafal, isWithoutLayout: false },
+  { path: '/services', component: ServicesNafal, isWithoutLayout: false },
+  { path: '/about', component: AboutUsNafal, isWithoutLayout: false },
+  { path: '/contact', component: ContactUsNafal, isWithoutLayout: false },
+  { path: "/app-comingsoon", component: AppComingSoon, isWithoutLayout: true },
+  { path: "/admin/dashboard", component: Dashboard, isWithoutLayout: true },
+  { path: "/admin/login", component: Login, isWithoutLayout: true },
 ];
 
 export default routes;
