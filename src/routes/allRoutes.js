@@ -12,7 +12,6 @@ import PageError from '../pages/error/PageError';
 
 const routes = [
   //Nafal routes without Layout
-  // { path: "/index-forums", component: Forums, isTopbarDark: true, isWithoutLayout: true },
   { path: "/app-comingsoon", component: AppComingSoon, isWithoutLayout: true },
   { path: "/admin/dashboard", component: Dashboard, isWithoutLayout: true },
   { path: "/admin/login", component: Login, isWithoutLayout: true },
