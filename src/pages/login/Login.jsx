@@ -13,9 +13,9 @@ const Login = () => {
     const [user, setUser] = useState({ email: "", password: "" })
     const [data, setData] = useState({})
 
-    useEffect(() => {
-        if (data.message === "Login Successful") window.location.replace("/admin/dashboard")
-    }, [data])
+    // useEffect(() => {
+    //     if (data.message === "Login Successful") window.location.replace("/admin/dashboard")
+    // }, [data])
 
     // handling the input values
     const handleInput = (e) => {
@@ -34,6 +34,14 @@ const Login = () => {
         try {
             const data = await post('/admin/login', user);
             setData(data)
+
+
+            if (data?.ok) {
+                setUser({
+                    email: "",
+                    password: "",
+                })
+            }
         } catch (error) {
             console.log(error);
         }

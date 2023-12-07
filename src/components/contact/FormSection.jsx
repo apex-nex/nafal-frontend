@@ -7,20 +7,6 @@ import { post } from '../helpers/api_helper';
 const FormSection = () => {
   const [contactvisible, setContactvisible] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", mobile: "", subject: "", comments: "" });
-  const [response, setResponse] = useState(null)
-
-  useEffect(() => {
-    if (response?.ok) {
-      setForm({
-        name: "",
-        email: "",
-        mobile: "",
-        subject: "",
-        comments: "",
-      });
-    }
-  }, [response]);
-  
 
   // handling the input values
   const handleInput = (e) => {
@@ -38,7 +24,16 @@ const FormSection = () => {
     e.preventDefault();
     try {
       const data = await post('/form', form);
-      setResponse(data)
+
+      if (data?.ok) {
+        setForm({
+          name: "",
+          email: "",
+          mobile: "",
+          subject: "",
+          comments: "",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
