@@ -11,7 +11,7 @@ import work3 from "../../assets/images/work/3.jpg";
 import work4 from "../../assets/images/work/4.jpg";
 
 import ServicesSection from '../../components/home/ServicesSection';
-import homeContent from '../../data/home/homeContent.json';
+import homeContent from '../../common/data/home/homeContent.json';
 import ClientSection from '../../components/home/ClientSection';
 import { useState } from 'react';
 
