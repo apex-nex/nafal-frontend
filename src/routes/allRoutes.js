@@ -9,23 +9,26 @@ import AppComingSoon from '../pages/comingsoon/AppComingSoon';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Login from '../pages/login/Login';
 import PageError from '../pages/error/PageError';
+import Logout from '../pages/logout/Logout';
 
 const routes = [
   //Nafal routes without Layout
   { path: "/app-comingsoon", component: AppComingSoon, isWithoutLayout: true },
   { path: "/admin/dashboard", component: Dashboard, isWithoutLayout: true },
   { path: "/admin/login", component: Login, isWithoutLayout: true },
-  
-  
-  
+  { path: "/admin/logout", component: Logout, isWithoutLayout: true },
+
+
   // Nafal routes with Layout
   { path: '/', component: HomeNafal, isWithoutLayout: false },
   { path: '/services', component: ServicesNafal, isWithoutLayout: false },
   { path: '/about', component: AboutUsNafal, isWithoutLayout: false },
   { path: '/contact', component: ContactUsNafal, isWithoutLayout: false },
-  
+
+
   // Nafal 404 page
   { path: "*", component: PageError, isWithoutLayout: true },
+
 
   //Index Main
   // { path: "/", exact: true, component: () => <Redirect to="/index" />},

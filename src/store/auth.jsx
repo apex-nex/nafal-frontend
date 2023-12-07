@@ -1,16 +1,24 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    // localStorage.removeItem("token", response.token);
 
-    const storeTokenInLS = (token) => {
-        return localStorage.setItem("token", token);
+    const [token, setToken] = useState(localStorage.getItem("token"))
+    const storeTokenInLS = (serverToken) => {
+        return localStorage.setItem("token", serverToken);
+    }
+
+    let isLoggedIn = true
+
+    // logout functionality 
+    const LogoutUser = () => {
+        setToken("")
+        return localStorage.removeItem("token");
     }
 
     return (
-        <AuthContext.Provider value={{ storeTokenInLS }}>
+        <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, LogoutUser }}>
             {children}
         </AuthContext.Provider>
     )
