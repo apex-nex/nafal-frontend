@@ -53,8 +53,8 @@
             }
           ]
         },
-        "visionSection": {
-          "name": "Vision-Section",
+        "videoSection": {
+          "name": "video-Section",
           "title": "Your Trusted HVAC Experts",
           "description": "Experience the difference with Your HVAC Company. We provide innovative solutions for all your heating, cooling, and ventilation needs.",
           "videoId": "8_FJEMH8hx0"
