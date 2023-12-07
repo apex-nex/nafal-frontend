@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const baseURL = "http://localhost:8000/api";
-const baseURL = 'https://nafal.onrender.com/api';
+const baseURL = "http://localhost:8000/api";
+// const baseURL = 'https://nafal.onrender.com/api';
 
 const api = axios.create({
     baseURL,
