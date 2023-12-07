@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from '../../components/home/Carousel';
 import AboutSection from '../../components/home/AboutSection';
-import Vision from '../../components/home/Vision';
+import VideoSection from '../../components/home/VideoSection';
 import ServicesSection from '../../components/home/ServicesSection';
 import MetaTags from 'react-meta-tags';
 import ClientSection from '../../components/home/ClientSection';
@@ -10,7 +10,7 @@ import homeContent from '../../common/data/home/homeContent.json';
 
 const carouselSectionContent = homeContent?.data?.homePage?.sections?.carouselSection;
 const aboutSectionContent = homeContent?.data?.homePage?.sections?.aboutSection;
-const visionSectionContent = homeContent?.data?.homePage?.sections?.visionSection
+const videoSectionContent = homeContent?.data?.homePage?.sections?.videoSection
 const servicesSectionContent = homeContent?.data?.homePage?.sections?.servicesSection
 const clientSectionContent = homeContent?.data?.homePage?.sections?.clientSection
 
@@ -27,8 +27,8 @@ const Home = () => {
         <div className="about-section">
           <AboutSection aboutSectionContent={aboutSectionContent} />
         </div>
-        <div className="vision-container mb-5">
-          <Vision visionSectionContent={visionSectionContent} />
+        <div className="video-container mb-5">
+          <VideoSection videoSectionContent={videoSectionContent} />
         </div>
       </div>
       <div className="services-container">

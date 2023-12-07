@@ -10,28 +10,34 @@ import { post } from '../../components/helpers/api_helper';
 import { useState, useEffect } from 'react';
 
 const Login = () => {
-    const [values, setValues] = useState({})
+    const [user, setUser] = useState({ email: "", password: "" })
     const [data, setData] = useState({})
 
     useEffect(() => {
         if (data.message === "Login Successful") window.location.replace("/admin/dashboard")
     }, [data])
 
-    const postData = async (values) => {
+    // handling the input values
+    const handleInput = (e) => {
+        let name = e.target.name
+        let value = e.target.value
+
+        setUser({
+            ...user,
+            [name]: value,
+        })
+    }
+
+    // handling the login submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const data = await post('/admin/login', { values });
-            setData(data);
+            const data = await post('/admin/login', user);
+            setData(data)
         } catch (error) {
             console.log(error);
         }
     };
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        postData(values)
-        // console.log(values)
-    }
 
     return (
         <React.Fragment>
@@ -61,14 +67,30 @@ const Login = () => {
                                             <Row>
                                                 <Col lg={12}>
                                                     <div className="form-floating mb-2">
-                                                        <Input type="email" className="form-control" id="LoginEmail" placeholder="name@example.com" onChange={(e) => setValues({ ...values, email: e.target.value })} />
+                                                        <Input
+                                                            name="email"
+                                                            type="email"
+                                                            className="form-control"
+                                                            id="LoginEmail"
+                                                            placeholder="name@example.com"
+                                                            value={user.email}
+                                                            onChange={handleInput}
+                                                        />
                                                         <Label htmlFor="LoginEmail">Email Address:</Label>
                                                     </div>
                                                 </Col>
 
                                                 <Col lg={12}>
                                                     <div className="form-floating mb-3">
-                                                        <Input type="password" className="form-control" id="LoginPassword" placeholder="Password" onChange={(e) => setValues({ ...values, password: e.target.value })} />
+                                                        <Input
+                                                            name="password"
+                                                            type="password"
+                                                            className="form-control"
+                                                            id="LoginPassword"
+                                                            placeholder="Password"
+                                                            value={user.password}
+                                                            onChange={handleInput}
+                                                        />
                                                         <Label htmlFor="LoginPassword">Password:</Label>
                                                     </div>
                                                 </Col>
