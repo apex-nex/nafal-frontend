@@ -5,7 +5,7 @@ import MetaTags from 'react-meta-tags';
 import KeyFeatureBox from '../../components/about/KeyFeatureBoxNafal';
 import SectionTitle from '../../components/about/SectionTitleNafal';
 import about from '../../assets/images/nafal/about/logo.svg';
-import about_us_cms_data from '../../data/about/cms_about.json'
+import about_us_cms_data from '../../common/data/about/cms_about.json'
 
 
 
