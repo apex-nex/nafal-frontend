@@ -1,38 +1,43 @@
-import React, { useState } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Alert,
-  Form,
-  Input,
-  Label,
-  Card,
-  CardBody,
-} from 'reactstrap';
-
-//Import Icons
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Alert, Form, Input, Label, Card, CardBody } from 'reactstrap';
 import FeatherIcon from 'feather-icons-react';
 import contact from '../../assets/images/nafal/contact/contact.svg';
 import { post } from '../helpers/api_helper';
 
-export default function FormSection() {
+const FormSection = () => {
   const [contactvisible, setContactvisible] = useState(false);
-  const [values, setValues] = useState(null);
+  const [form, setForm] = useState({ name: "", email: "", mobile: "", subject: "", comments: "" });
 
-  const postData = async (values) => {
-    try {
-        const data = await post('/form', { values });
-        setValues(data);
-    } catch (error) {
-        console.log(error);
-    }
-};
+  // handling the input values
+  const handleInput = (e) => {
+    let name = e.target.name
+    let value = e.target.value
 
-  const onSubmit = (e, v) => {
-    e.preventDefault()
-    postData(values)
+    setForm({
+      ...form,
+      [name]: value,
+    })
   }
+
+  // handling the form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await post('/form', form);
+
+      if (data?.ok) {
+        setForm({
+          name: "",
+          email: "",
+          mobile: "",
+          subject: "",
+          comments: "",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -59,7 +64,7 @@ export default function FormSection() {
                   >
                     Contact details send successfully.
                   </Alert>
-                  <Form method="post" name="contact-form" id="contact-form" onSubmit={onSubmit}>
+                  <Form method="post" name="contact-form" id="contact-form" onSubmit={handleSubmit}>
                     <Row>
                       <Col md={6}>
                         <div className="mb-3">
@@ -80,8 +85,9 @@ export default function FormSection() {
                             type="text"
                             className="form-control ps-5"
                             placeholder="First Name :"
+                            value={form?.name}
                             required
-                            onChange={(e) => setValues({ ...values, name: e.target.value })}
+                            onChange={handleInput}
                           />
                         </div>
                       </Col>
@@ -104,7 +110,8 @@ export default function FormSection() {
                             type="email"
                             className="form-control ps-5"
                             placeholder="Your email :"
-                            onChange={(e) => setValues({ ...values, email: e.target.value })}
+                            value={form?.email}
+                            onChange={handleInput}
                           />
                         </div>
                       </Col>
@@ -126,14 +133,15 @@ export default function FormSection() {
                             id="mobile"
                             className="form-control ps-5"
                             placeholder="Your mobile :"
+                            value={form?.mobile}
                             required
-                            onChange={(e) => setValues({ ...values, mobile: e.target.value })}
+                            onChange={handleInput}
                           />
                         </div>
                       </Col>
                       <Col md={12}>
                         <div className="mb-3">
-                          <Label className="form-label">Subject</Label>
+                          <Label className="form-label">Subject <span className="text-danger">*</span></Label>
                           <div className="form-icon position-relative">
                             <i>
                               <FeatherIcon
@@ -147,8 +155,9 @@ export default function FormSection() {
                             id="subject"
                             className="form-control ps-5"
                             placeholder="Your subject :"
+                            value={form?.subject}
                             required
-                            onChange={(e) => setValues({ ...values, subject: e.target.value })}
+                            onChange={handleInput}
                           />
                         </div>
                       </Col>
@@ -171,8 +180,9 @@ export default function FormSection() {
                             rows="4"
                             className="form-control ps-5"
                             placeholder="Your Message :"
+                            value={form?.comments}
                             required
-                            onChange={(e) => setValues({ ...values, comments: e.target.value })}
+                            onChange={handleInput}
                           ></textarea>
                         </div>
                       </Col>
@@ -209,3 +219,5 @@ export default function FormSection() {
     </React.Fragment>
   );
 }
+
+export default FormSection
