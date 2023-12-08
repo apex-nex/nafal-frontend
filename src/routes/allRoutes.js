@@ -15,7 +15,7 @@ const routes = [
   //Nafal routes without Layout
   { path: "/app-comingsoon", component: AppComingSoon, isWithoutLayout: true },
   { path: "/admin/dashboard", dashboard: true, component: Dashboard, isWithoutLayout: true },
-  { path: "/admin/login", login: true, access: Dashboard, component: Login, isWithoutLayout: true },
+  { path: "/admin/login", login: true, component: Login, isWithoutLayout: true },
   { path: "/admin/logout", component: Logout, isWithoutLayout: true },
 
 
