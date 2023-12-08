@@ -34,6 +34,7 @@ const Login = () => {
             if (response?.ok) {
                 setUser({ email: "", password: "" })
                 storeTokenInLS(response.token)
+                window.location.replace("/admin/dashboard")
             }
         } catch (error) {
             console.log(error);
@@ -49,9 +50,8 @@ const Login = () => {
                     </i>
                 </Link>
             </div>
-            <section className="position-relative">
-                <div className="wrapper bg-gradient-primary"></div>
-                <div className="bg-overlay bg-linear-gradient-2"></div>
+            <section className="position-relative bg-home bg-circle-gradiant d-flex align-items-center">
+                <div className="bg-overlay bg-overlay-white"></div>
                 <Container fluid>
                     <Row>
                         <Col className="col-12 p-0">
@@ -105,9 +105,9 @@ const Login = () => {
                                     </Card>
                                 </div>
                                 <div className="text-center">
-                                    <p className="mb-0 text-white">© {new Date().getFullYear()}{" "}
+                                    <p className="mb-0">© {new Date().getFullYear()}{" "}
                                         Nafal. Design with <i className="mdi mdi-heart text-danger"></i> by {" "}
-                                        <Link to="https://nafal-project.web.app" target="_blank" className="text-reset">Nafal</Link>.</p>
+                                        <Link to="/" target="_blank" className="text-reset">Nafal</Link>.</p>
                                 </div>
                             </div>
                         </Col>

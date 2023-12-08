@@ -8,7 +8,7 @@ const api = axios.create({
 });
 
 // Set the content type for POST and PUT requests
-api.defaults.headers['Content-Type'] = 'application/json';
+// api.defaults.headers['Content-Type'] = 'application/json';
 
 // Function to handle GET requests
 export const get = async (url, params = {}) => {
