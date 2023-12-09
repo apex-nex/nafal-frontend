@@ -119,7 +119,7 @@ function AdminNavBar(props) {
   return (
     <React.Fragment>
       <header id="topnav" className="defaultscroll sticky">
-        <div style={{padding: "0 24px"}}>
+        <div style={{ padding: "0 24px" }}>
           <Link className="logo" to="/">
             <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
           </Link>
