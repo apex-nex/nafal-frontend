@@ -11,8 +11,8 @@ import { post } from '../../components/helpers/api_helper';
 import { useState, useEffect } from 'react';
 
 const Login = () => {
-    const [user, setUser] = useState({ email: "", password: "" })
     const { storeTokenInLS } = useAuth()
+    const [user, setUser] = useState({ email: "", password: "" })
 
     // handling the input values
     const handleInput = (e) => {
