@@ -5,9 +5,10 @@ import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
-import { get } from "../../components/helpers/api_helper"
+import { get, remove } from "../../components/helpers/api_helper"
 import 'flatpickr/dist/flatpickr.min.css';
 import AdminNavBar from "../../components/navbar/AdminNavBar"
+import Footer from "../../components/footer/AdminFooter"
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
@@ -18,6 +19,8 @@ const Dashboard = () => {
   const [toggle, setToggle] = useState(false)
   const [message, setMessage] = useState(null)
   const [modal, setModal] = useState(false);
+  const [ids, setIds] = useState([])
+
   function tog_modal() {
     setModal(!modal)
   };
@@ -71,11 +74,23 @@ const Dashboard = () => {
     tog_modal()
   }
 
+  const onStatusChange = (evt) => { }
+
+  const onDelete = (id) => {
+    if (ids.length > 1) {
+      remove("/form/items", ids)
+    } else if (id) {
+      remove("/form/items", [id])
+    } else {
+      console.log("Error")
+    }
+  }
+
 
   return (
     <React.Fragment>
       <AdminNavBar />
-      <div className="page-content" style={{ marginTop: "60px" }}>
+      <div className="page-content wrapper bg-light" style={{ marginTop: "60px" }}>
         <MetaTags>
           <title>Admin Dashboard | Nafal</title>
         </MetaTags>
@@ -139,8 +154,8 @@ const Dashboard = () => {
                             </Button>
                             <Button
                               className="btn-sm me-1 mb-1"
-                              color={period.value === 60 ? 'primary' : 'light'}
-                              onClick={() => onPeriodChange(60)}
+                              color={period.value === 90 ? 'primary' : 'light'}
+                              onClick={() => onPeriodChange(90)}
                             >
                               3 Months
                             </Button>
@@ -167,6 +182,7 @@ const Dashboard = () => {
                                 <th>Mobile</th>
                                 <th>Subject</th>
                                 <th>Status</th>
+                                <th>Created Time</th>
                                 <th>Message</th>
                                 <th>Action</th>
                               </tr>
@@ -183,14 +199,38 @@ const Dashboard = () => {
                                       // checked={selectedRows.includes(item.id)}
                                       />
                                     </td>
-                                    <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name}</Link></td>
-                                    <td>{item.email}</td>
-                                    <td>{item.mobile}</td>
+                                    <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
+                                    <td>{item.email?.substring(0, 25)}</td>
+                                    <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
                                     <td>{item.subject}</td>
-                                    <td>pending</td>
                                     <td>
-                                      {item.comments}
+                                      <select
+                                        value={""}
+                                        onChange={onStatusChange}
+                                        style={{
+                                          border: 'none',
+                                          outline: 'none',
+                                          backgroundColor: 'transparent',
+                                          padding: '0',
+                                        }}
+                                        className="text-start"
+                                      >
+                                        <option value="">Status</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="contacted">Contacted</option>
+                                        <option value="resolved">Resolved</option>
+                                      </select>
                                     </td>
+                                    <td>
+                                      <Link
+                                        title={moment('2023-12-08').format('lll')}
+                                        to="#"
+                                        className="text-reset"
+                                      >
+                                        {moment('2023-12-08').format('MMM D, YYYY')}
+                                      </Link>
+                                    </td>
+                                    <td>{item.comments.substring(0, 10)}</td>
                                     <td>
                                       <UncontrolledDropdown className="ms-auto">
                                         <DropdownToggle
@@ -203,7 +243,7 @@ const Dashboard = () => {
                                           <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
                                             View
                                           </Link>
-                                          <Link className="dropdown-item" to="#" onClick={() => { }}>
+                                          <Link className="dropdown-item" to="#" onClick={(e)=>{onDelete(item._id)}}>
                                             Remove
                                           </Link>
                                         </DropdownMenu>
@@ -280,11 +320,14 @@ const Dashboard = () => {
                           <ModalFooter>
                             <Button color="secondary" onClick={tog_modal} type="button">Close</Button>
                           </ModalFooter>
-
                         </Modal>
                       ) : null}
 
-
+                    </Row>
+                    <Row>
+                      <Col>
+                        <Footer />
+                      </Col>
                     </Row>
                   </CardBody>
                 </Card>

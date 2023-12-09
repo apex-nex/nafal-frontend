@@ -20,7 +20,7 @@
 // @import './assets/scss/style-dark.scss';
 
 //features scss
-@import "./assets/scss/features"; 
+@import "./assets/scss/features";
 
 // drawer
 .react-drawer-drawer {
@@ -146,7 +146,8 @@
   color: #3EBFEE !important;
 }
 
-.container-filter li.active, .btn-outline-primary {
+.container-filter li.active,
+.btn-outline-primary {
   color: #3EBFEE !important;
   border-color: #3EBFEE !important;
 }
@@ -169,7 +170,8 @@
   color: #3EBFEE !important;
 }
 
-#topnav .navigation-menu > li:hover > a, #topnav .navigation-menu > li.active > a {
+#topnav .navigation-menu>li:hover>a,
+#topnav .navigation-menu>li.active>a {
   color: #3EBFEE !important;
 }
 
@@ -180,7 +182,7 @@
 
 // Nafal hover start
 .btn-primary:hover {
-  background-color: #3497C2; 
+  background-color: #3497C2;
 }
 
 .container-filter li:hover {
@@ -188,7 +190,12 @@
   border-color: #3EBFEE !important;
 }
 
-.btn-soft-primary:hover, .btn-soft-primary:focus, .btn-soft-primary:active, .btn-soft-primary.active, .btn-soft-primary.focus, .btn-outline-primary:hover {
+.btn-soft-primary:hover,
+.btn-soft-primary:focus,
+.btn-soft-primary:active,
+.btn-soft-primary.active,
+.btn-soft-primary.focus,
+.btn-outline-primary:hover {
   background-color: #3EBFEE !important;
   border-color: #3497C2 !important;
   color: #f5e0e0 !important;
@@ -198,7 +205,8 @@
   color: #3497C2 !important;
 }
 
-a.text-primary:hover, a.text-primary:focus {
+a.text-primary:hover,
+a.text-primary:focus {
   color: #3497C2 !important;
 }
 
@@ -214,17 +222,18 @@ a.text-primary:hover, a.text-primary:focus {
 // hover end
 
 // dashbaord search box
-.search-box{
-  .form-control{
-      border-radius: 30px;
-      padding-left: 40px;
+.search-box {
+  .form-control {
+    border-radius: 30px;
+    padding-left: 40px;
   }
-  .search-icon{
-      font-size: 16px;    
-      position: absolute;
-      left: 13px;
-      top: 0;
-      line-height: 38px;
+
+  .search-icon {
+    font-size: 16px;
+    position: absolute;
+    left: 13px;
+    top: 0;
+    line-height: 38px;
   }
 }
 
@@ -233,6 +242,6 @@ a.text-primary:hover, a.text-primary:focus {
   width: 100% !important;
 }
 
-  // html, body {
-  //   overflow-x: hidden !important;
-  // }
+// html, body {
+//   overflow-x: hidden !important;
+// }
