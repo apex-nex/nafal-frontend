@@ -17,7 +17,7 @@ const clientSectionContent = homeContent?.data?.homePage?.sections?.clientSectio
 const Home = () => {
   return (
     <React.Fragment>
-      <div className="page-content">
+      <div className="page-content wrapper bg-light">
         <MetaTags>
           <title>Home | Nafal</title>
         </MetaTags>

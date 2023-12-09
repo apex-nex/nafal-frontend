@@ -11,8 +11,7 @@ import {
 } from 'reactstrap';
 
 //import images
-import logoDark from '../../assets/images/nafal/logo/nafal-logo.png';
-import logoLight from '../../assets/images/nafal/logo/nafal-logo.png';
+import logo from '../../assets/images/nafal/logo/nafal-logo.png';
 
 //Import Icons
 import FeatherIcon from 'feather-icons-react';
@@ -144,8 +143,7 @@ function AdminNavBar(props) {
       <header id="topnav" className="defaultscroll sticky">
         <div className="container">
           <Link className="logo" to="/">
-            <img src={logoDark} height="24" className="logo-light-mode" alt="" />
-            <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
+            <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
           </Link>
 
           <div className="menu-extras">
@@ -168,16 +166,19 @@ function AdminNavBar(props) {
           <ul className="buy-button list-inline mb-0">
             <li className="list-inline-item mb-0 pe-1">
               <div className="dropdown d-none d-lg-inline-block ms-1">
-                <Link
-                  to="#"
-                  className="btn btn-icon btn-pills btn-primary"
+                <div
+                  color=""
+                  className="text-primary btn btn-icon btn-pills"
                   onClick={() => {
                     toggleFullscreen()
                   }}
                   data-toggle="fullscreen"
                 >
-                  <i className="mdi mdi-fullscreen" />
-                </Link>
+                  <FeatherIcon
+                    icon="maximize"
+                    className="fea fea-social"
+                  />
+                </div>
               </div>
             </li>{" "}
             <li className="list-inline-item mb-0">

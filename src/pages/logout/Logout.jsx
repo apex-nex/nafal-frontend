@@ -7,7 +7,7 @@ const Logout = () => {
         LogoutUser();
     }, [LogoutUser])
 
-    return (window.location.replace("/admin/login"))
+    return window.location.replace("/admin/login")
 }
 
 export default Logout
