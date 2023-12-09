@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
         return localStorage.setItem("token", serverToken);
     }
 
-    let isLoggedIn = true
+    let isLoggedIn = !!token
 
     // logout functionality 
     const LogoutUser = () => {

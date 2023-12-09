@@ -79,8 +79,16 @@ const Footer = () => {
                       </Link>
                     </li>{' '}
                     <li className="list-inline-item mb-0">
-                      <Link to={{ pathname: 'https://www.snapchat.com/add/nafal.hvac' }} target="_blank" rel="noopener noreferrer" className="rounded">
+                      <Link to={{ pathname: 'https://www.snapchat.com/add/nafal.hvac' }} target="_blank" rel="noopener noreferrer" className="rounded snapIcon">
                         <FaSnapchat className="fea icon-sm fea-social" />
+                      </Link>
+                    </li>{' '}
+                    <li className="list-inline-item mb-0">
+                      <Link to={{ pathname: 'https://www.youtube.com/channel/UCt4ij1e-w2XfbUtfTptwfKQ' }} target="_blank" rel="noopener noreferrer" className="rounded">
+                        <FeatherIcon
+                          icon="youtube"
+                          className="fea icon-sm fea-social"
+                        />
                       </Link>
                     </li>
                   </ul>

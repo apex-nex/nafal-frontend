@@ -1,57 +1,71 @@
-import React, { Component, Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import Layout from "./components/Layout/";
 import { Route, Switch, BrowserRouter as Router, withRouter } from 'react-router-dom';
+import routes from './routes/allRoutes';
 
 // Import Css
 import './assets/css/materialdesignicons.min.css';
 import './Apps.scss';
-
-// import "./assets/css/colors/default.css";
-
-// Include Routes
-import routes from './routes/allRoutes';
+import { useAuth } from './store/auth';
 
 function withLayout(WrappedComponent) {
-  // ...and returns another component...
-  /* eslint-disable react/display-name */
-  return class extends React.Component {
-    render() {
-      return (
-        <Layout>
-          <WrappedComponent></WrappedComponent>
-        </Layout>
-      );
-    }
+  return function WithLayoutComponent() {
+    return (
+      <Layout>
+        <WrappedComponent />
+      </Layout>
+    );
   };
 }
 
-class App extends Component {
-  Loader = () => {
-    return (
-      <div id="">
-        <div id="status">
-          <div className="spinner">
-            <div className="double-bounce1"></div>
-            <div className="double-bounce2"></div>
-          </div>
+const Loader = () => {
+  return (
+    <div id="">
+      <div id="status">
+        <div className="spinner">
+          <div className="double-bounce1"></div>
+          <div className="double-bounce2"></div>
         </div>
       </div>
-    );
-  };
-  render() {
-    return (
-      <React.Fragment>
-        <Router>
-          <Suspense fallback={this.Loader()}>
-            <Switch>
-              {routes.map((route, idx) =>
+    </div>
+  );
+};
+
+const App = () => {
+  const { isLoggedIn } = useAuth()
+
+  return (
+    <React.Fragment>
+      <Router>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            {routes.map((route, idx) => {
+              return (
                 route.isWithoutLayout ? (
-                  <Route
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.component}
-                    key={idx}
-                  />
+                  route.dashboard ? (
+                    <Route
+                      path={route.path}
+                      exact={route.exact}
+                      component={isLoggedIn ? route.component : () => window.location.replace("/admin/login")}
+                      key={idx}
+                    />
+                  ) : (
+                    route.login ? (
+                      <Route
+                        path={route.path}
+                        exact={route.exact}
+                        component={isLoggedIn ? () => window.location.replace("/admin/dashboard") : route.component}
+                        key={idx}
+                      />
+                    ) : (
+                      <Route
+                        path={route.path}
+                        exact={route.exact}
+                        component={route.component}
+                        key={idx}
+                      />
+                    )
+                  )
                 ) : (
                   <Route
                     path={route.path}
@@ -60,13 +74,13 @@ class App extends Component {
                     key={idx}
                   />
                 )
-              )}
-            </Switch>
-          </Suspense>
-        </Router>
-      </React.Fragment>
-    );
-  }
-}
+              );
+            })}
+          </Switch>
+        </Suspense>
+      </Router>
+    </React.Fragment>
+  );
+};
 
 export default withRouter(App);
