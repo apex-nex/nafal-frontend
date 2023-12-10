@@ -1,93 +1,115 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import logoDark from "../../assets/images/nafal/logo/nafal-logo.png";
+import logoLight from "../../assets/images/nafal/logo/nafal-logo.png";
 
-//Import Images
-import logoNafal from '../../assets/images/nafal/logo/nafal-logo.png';
-import { useState } from 'react';
-import { useEffect } from 'react';
+const NavBar = (props) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [modal, setModal] = useState(false);
 
-const navItems = [
-  { id: 1, idnm: '/', navheading: 'Home' },
-  { id: 2, idnm: '/about', navheading: 'About Us' },
-  { id: 3, idnm: '/services', navheading: 'Services' },
-  { id: 4, idnm: '/contact', navheading: 'Contact Us' },
-];
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
-const Navbar = () => {
-  const [scroll, setScroll] = useState(0);
-  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(true);
+  const toggleModal = () => {
+    setModal((prevModal) => !prevModal);
+  };
 
   useEffect(() => {
-    const mediaQueryDesktop = window.matchMedia('(min-width: 992px)');
-    const handelMediaQuerry = (mediaQuerry) => {
-      setIsDesktop(mediaQueryDesktop.matches);
-    };
-    handelMediaQuerry(mediaQueryDesktop);
-    mediaQueryDesktop.addListener(handelMediaQuerry);
-    const handelScroll = () => {
-      setScroll(window.scrollY);
+    const handleScroll = () => {
+      const navBar = document.getElementById("topnav");
+      const shoppingBtn = document.querySelector(".shoppingbtn");
+      const doc = document.documentElement;
+      const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+
+      if (navBar) {
+        if (top > 80) {
+          navBar.classList.add("nav-sticky");
+        } else {
+          navBar.classList.remove("nav-sticky");
+          if (shoppingBtn) {
+            shoppingBtn.classList.add("btn-primary");
+            shoppingBtn.classList.remove("btn-light");
+          }
+        }
+      }
     };
 
-    window.addEventListener('scroll', handelScroll);
+    window.scrollTo(0, 0);
+    document.body.classList = "";
+    const shoppingBtn = document.querySelector(".shoppingbtn");
+    if (shoppingBtn) {
+      shoppingBtn.classList.add("btn-primary");
+      shoppingBtn.classList.remove("btn-light");
+    }
+    window.addEventListener("scroll", handleScroll, true);
 
     return () => {
-      window.removeEventListener('scroll', handelScroll);
-      mediaQueryDesktop.removeListener(handelMediaQuerry);
+      window.removeEventListener("scroll", handleScroll, true);
     };
-  }, []);
+  }, [props.type]);
 
-  const handelNavMenu = () => {
-    setIsNavMenuOpen(!isNavMenuOpen);
+  useEffect(() => {
+    activateMenu();
+  }, [props.type]);
+
+  const activateMenu = () => {
+    const menuItems = document.getElementsByClassName("sub-menu-item");
+    if (menuItems) {
+      let matchingMenuItem = null;
+      for (let idx = 0; idx < menuItems.length; idx++) {
+        if (menuItems[idx].href === window.location.href) {
+          matchingMenuItem = menuItems[idx];
+        }
+      }
+      if (matchingMenuItem) {
+        matchingMenuItem.classList.add('active');
+        const immediateParent = matchingMenuItem.closest('li');
+        if (immediateParent) {
+          immediateParent.classList.add('active');
+        }
+        const parent = matchingMenuItem.closest(".parent-menu-item");
+        if (parent) {
+          parent.classList.add('active');
+        }
+      }
+    }
+  };
+
+  const isToggleMenu = () => {
+    const isToggle = document.getElementById("isToggle");
+    if (isToggle) {
+      isToggle.classList.toggle("open");
+      const isOpen = document.getElementById('navigation');
+      if (isOpen.style.display === "block") {
+        isOpen.style.display = "none";
+      } else {
+        isOpen.style.display = "block";
+      }
+    }
   };
 
   return (
     <React.Fragment>
-      <header
-        id="topnav"
-        className={`defaultscroll sticky ${window.location.pathname == '/' ? scroll > 120 && 'bg-light' : 'bg-light'} `}
-      >
-        <Container>
-          <div>
+      <header id="topnav" className="defaultscroll sticky">
+        <div className="container">
+          {props.isLight ?
             <Link className="logo" to="/">
-              <img src={logoNafal} height="26" alt="Nafal" />
+              <span className="logo-light-mode">
+                <img src={logoDark} height="24" className="l-dark" alt="" />
+                <img src={logoLight} height="24" className="l-light" alt="" />
+              </span>
+              <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
             </Link>
-          </div>
-          {/* Dekstop Nav */}
-          <div
-            id="navigation"
-            style={{ display: isDesktop ? 'block' : 'none' }}
-          >
-            <ul className="navigation-menu">
-              {navItems.map((item, key) => (
-                <li key={key} className={window.location.pathname === item.idnm ? 'has-submenu active' : 'has-submenu'}
-                >
-                  <Link
-                    key={key}
-                    to={item?.idnm}
-                    onClick={() => {
-                      if (item.navheading) {
-                        document.body.scrollTop = 0;
-                        document.documentElement.scrollTop = 0;
-                      }
-                    }}
-                  >
-                    {' '}
-                    {item?.navheading}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* Mobile Nav */}
-          <div
-            className="menu-extras"
-            style={{ display: isDesktop ? 'none' : 'block' }}
-          >
-            <div className="menu-item mt-3" onClick={handelNavMenu}>
-              <Link to="#" onClick={handelNavMenu} className={isNavMenuOpen ? 'navbar-toggle open' : 'navbar-toggle'}
-              >
+            :
+            <Link className="logo" to="/">
+              <img src={logoDark} height="24" className="logo-light-mode" alt="" />
+              <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
+            </Link>
+          }
+          <div className="menu-extras">
+            <div className="menu-item">
+              <Link to="#" className="navbar-toggle" id="isToggle" onClick={isToggleMenu}>
                 <div className="lines">
                   <span></span>
                   <span></span>
@@ -96,23 +118,52 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          {isNavMenuOpen && (
-            <div id="navigation" style={{ display: 'block' }}>
-              <ul className="navigation-menu">
-                {navItems.map((item, key) => (
-                  <li key={key} className={window.location.pathname === item?.idnm ? 'has-submenu active' : 'has-submenu'}>
-                    <Link key={key} to={item?.idnm} className={window.location.pathname === item?.idnm ? 'has-submenu-active' : ''}>
-                      {' '}{item?.navheading}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Container>
+
+          <ul className="buy-button list-inline mb-0">
+            <li className="list-inline-item mb-0" id="buyButton">
+              <Link to={{ pathname: 'https://api.whatsapp.com/send/?phone=966510149313&text&app_absent=0' }} target="_blank" rel="noopener noreferrer">
+                <div className="login-btn-primary">
+                  <span className="btn btn-icon btn-pills btn-soft-primary">
+                    <i className="mdi mdi-whatsapp" />
+                  </span>
+                </div>
+              </Link>
+              <Link to={{ pathname: 'https://api.whatsapp.com/send/?phone=966510149313&text&app_absent=0' }} target="_blank" rel="noopener noreferrer">
+                <div className="login-btn-light">
+                  <span className="btn btn-icon btn-pills btn-light">
+                    <i className="mdi mdi-whatsapp" />
+                  </span>
+                </div>
+              </Link>
+            </li>{" "}
+            <li className="list-inline-item ps-1 mb-0">
+              <a href="tel:+966510149313">
+                <div className="login-btn-primary">
+                  <span className="btn btn-icon btn-pills btn-primary">
+                    <i className="mdi mdi-phone" />
+                  </span>
+                </div>
+                <div className="login-btn-light">
+                  <span className="btn btn-icon btn-pills btn-light">
+                    <i className="mdi mdi-phone" />
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
+
+          <div id="navigation">
+            <ul className="navigation-menu">
+              <li><Link to="/" className="sub-menu-item">Home</Link></li>
+              <li><Link to="/about" className="sub-menu-item">ABOUT US</Link></li>
+              <li><Link to="/services" className="sub-menu-item">SERVICES</Link></li>
+              <li><Link to="/contact" className="sub-menu-item">CONTACT US</Link></li>
+            </ul>
+          </div>
+        </div>
       </header>
     </React.Fragment>
   );
 };
 
-export default Navbar;
+export default NavBar;

@@ -1,55 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Button,
-  Dropdown,
-  DropdownMenu,
-  DropdownToggle,
-  Form,
-  Modal,
-  ModalBody,
-} from 'reactstrap';
-
-//import images
+import { Button, Dropdown, DropdownMenu, DropdownToggle, Form, Modal, ModalBody } from 'reactstrap';
 import logo from '../../assets/images/nafal/logo/nafal-logo.png';
-
-//Import Icons
 import FeatherIcon from 'feather-icons-react';
+import { useAuth } from "../../store/auth"
 
 function AdminNavBar(props) {
-  const [dropdownOpenShop, setDropdownOpenShop] = useState(false);
-  const [wishlistModal, setWishlistModal] = useState(false);
-  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
+  const { user } = useAuth()
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [userData, setUserData] = useState({ name: "User" })
+  const [flag, setFlag] = useState(true)
+
+  if (flag && user) {
+    setUserData(user)
+    setFlag(false)
+  }
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
-  };
-
-  const toggleDropdownShop = () => {
-    setDropdownOpenShop(!dropdownOpenShop);
-  };
-
-  const toggleWishlistModal = () => {
-    setWishlistModal(prevState => !prevState);
-  };
-
-  const toggleDropdownIsOpen = () => {
-    setDropdownIsOpen(!dropdownIsOpen);
   };
 
   const scrollNavigation = () => {
     const doc = document.documentElement;
     const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     const topNav = document.getElementById('topnav');
-    const settingBtn = document.querySelector('.settingbtn');
     if (top > 80) {
       topNav.classList.add('nav-sticky');
-      settingBtn.classList.add('btn-primary');
     } else {
       topNav?.classList.remove('nav-sticky');
-      settingBtn?.classList.add('btn-primary');
-      settingBtn?.classList.remove('btn-soft-primary');
     }
   };
 
@@ -141,7 +119,7 @@ function AdminNavBar(props) {
   return (
     <React.Fragment>
       <header id="topnav" className="defaultscroll sticky">
-        <div className="container">
+        <div style={{ padding: "0 24px" }}>
           <Link className="logo" to="/">
             <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
           </Link>
@@ -167,12 +145,10 @@ function AdminNavBar(props) {
             <li className="list-inline-item mb-0 pe-1">
               <div className="dropdown d-none d-lg-inline-block ms-1">
                 <div
-                  color=""
-                  className="text-primary btn btn-icon btn-pills"
-                  onClick={() => {
-                    toggleFullscreen()
-                  }}
+                  className="text-muted font-size-16"
+                  onClick={() => { toggleFullscreen() }}
                   data-toggle="fullscreen"
+                  style={{ cursor: 'pointer' }}
                 >
                   <FeatherIcon
                     icon="maximize"
@@ -182,14 +158,16 @@ function AdminNavBar(props) {
               </div>
             </li>{" "}
             <li className="list-inline-item mb-0">
-              <Dropdown color="primary" isOpen={dropdownIsOpen} toggle={toggleDropdownIsOpen}>
+              <Dropdown color="primary" isOpen={dropdownOpen} toggle={toggleDropdown}>
                 <DropdownToggle
-                  type="button"
-                  color="primary"
-                  id="buyButton"
-                  className="btn btn-icon btn-pills settingbtn"
+                  className="text-muted font-size-16"
+                  color="white"
                 >
                   <FeatherIcon icon="user" className="icons" />
+                  <span className="d-none d-xl-inline-block ms-2 me-1" >
+                    {`Hi ${userData.name}`}
+                  </span>
+                  <i className="mdi mdi-chevron-down d-none d-xl-inline-block" ></i>
                 </DropdownToggle>
                 <DropdownMenu
                   direction="start"
@@ -224,37 +202,6 @@ function AdminNavBar(props) {
           </div>
         </div>
       </header>
-      <Modal
-        isOpen={wishlistModal}
-        tabIndex="-1"
-        centered
-        contentClassName="rounded shadow-lg border-0 overflow-hidden"
-        toggle={toggleWishlistModal}
-      >
-        <ModalBody className="py-5">
-          <div className="text-center">
-            <div
-              className="icon d-flex align-items-center justify-content-center bg-soft-danger rounded-circle mx-auto"
-              style={{ height: '95px', width: '95px' }}
-            >
-              <h1 className="mb-0">
-                <i className="uil uil-heart-break align-middle"></i>
-              </h1>
-            </div>
-            <div className="mt-4">
-              <h4>Your wishlist is empty.</h4>
-              <p className="text-muted">
-                Create your first wishlist request...
-              </p>
-              <div className="mt-4">
-                <Link to="#" className="btn btn-outline-primary">
-                  + Create new wishlist
-                </Link>
-              </div>
-            </div>
-          </div>
-        </ModalBody>
-      </Modal>
     </React.Fragment>
   );
 }
