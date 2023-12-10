@@ -121,14 +121,14 @@ const NavBar = (props) => {
 
           <ul className="buy-button list-inline mb-0">
             <li className="list-inline-item mb-0" id="buyButton">
-              <Link to="#">
+              <Link to={{ pathname: 'https://api.whatsapp.com/send/?phone=966510149313&text&app_absent=0' }} target="_blank" rel="noopener noreferrer">
                 <div className="login-btn-primary">
                   <span className="btn btn-icon btn-pills btn-soft-primary">
                     <i className="mdi mdi-whatsapp" />
                   </span>
                 </div>
               </Link>
-              <Link to="#">
+              <Link to={{ pathname: 'https://api.whatsapp.com/send/?phone=966510149313&text&app_absent=0' }} target="_blank" rel="noopener noreferrer">
                 <div className="login-btn-light">
                   <span className="btn btn-icon btn-pills btn-light">
                     <i className="mdi mdi-whatsapp" />
@@ -136,9 +136,8 @@ const NavBar = (props) => {
                 </div>
               </Link>
             </li>{" "}
-
             <li className="list-inline-item ps-1 mb-0">
-              <Link to="#" target="_blank">
+              <a href="tel:+1234567890">
                 <div className="login-btn-primary">
                   <span className="btn btn-icon btn-pills btn-primary">
                     <i className="mdi mdi-phone" />
@@ -149,7 +148,7 @@ const NavBar = (props) => {
                     <i className="mdi mdi-phone" />
                   </span>
                 </div>
-              </Link>
+              </a>
             </li>
           </ul>
 

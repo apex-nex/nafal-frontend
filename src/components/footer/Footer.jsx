@@ -32,7 +32,7 @@ const Footer = () => {
                     <p className="mb-0">
                       © {new Date().getFullYear()} NAFAL HVAC.{' '}
                       <Link
-                        to="/"
+                        to="#"
                         target="_blank"
                         rel="noreferrer"
                         className="text-reset"
