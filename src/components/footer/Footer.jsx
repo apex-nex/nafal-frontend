@@ -25,15 +25,15 @@ const Footer = () => {
       <Suspense fallback={Loader()}>
         <footer className="footer footer-bar">
           <div className="footer-py-30">
-            <Container className="text-center">
+            <Container className="text-between">
               <Row className="align-items-center">
-                <Col sm={6}>
+              
+              <Col lg={6} md={6} sm={6}>
                   <div className="text-sm-start">
                     <p className="mb-0">
                       © {new Date().getFullYear()} NAFAL HVAC.{' '}
                       <Link
-                        to="#"
-                        target="_blank"
+                        to="/"
                         rel="noreferrer"
                         className="text-reset"
                       >
@@ -44,7 +44,14 @@ const Footer = () => {
                   </div>
                 </Col>
 
-                <Col sm={6} className="mt-4 mt-sm-0 pt-2 pt-sm-0">
+                <Col lg={3} md={2} sm={3}>
+                  <ul className="list-unstyled footer-list terms-service mb-0">
+                    <li className="list-inline-item mb-0"><Link to="/privacy" className="text-foot me-2">Privacy</Link></li>{" "}
+                    <li className="list-inline-item mb-0"><Link to="/terms" className="text-foot me-2">Terms</Link></li>{" "}
+                  </ul>
+                </Col>
+
+                <Col lg={3} md={4} sm={3}>
                   <ul className="list-unstyled social-icon foot-social-icon text-sm-end mb-0">
                     <li className="list-inline-item mb-0">
                       <Link to={{ pathname: 'https://www.facebook.com/NAFAL.HVAC' }} target="_blank" rel="noopener noreferrer" className="rounded">

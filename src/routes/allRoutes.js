@@ -10,6 +10,8 @@ import Dashboard from '../pages/dashboard/Dashboard';
 import Login from '../pages/login/Login';
 import PageError from '../pages/error/PageError';
 import Logout from '../pages/logout/Logout';
+import PagePrivacy from '../pages/privacy/PagePrivacy';
+import PageTerms from '../pages/terms/PageTerms';
 
 const routes = [
   //Nafal routes without Layout
@@ -24,6 +26,8 @@ const routes = [
   { path: '/services', component: ServicesNafal, isWithoutLayout: false },
   { path: '/about', component: AboutUsNafal, isWithoutLayout: false },
   { path: '/contact', component: ContactUsNafal, isWithoutLayout: false },
+  { path: '/privacy', component: PagePrivacy, isWithoutLayout: false },
+  { path: '/terms', component: PageTerms, isWithoutLayout: false },
 
 
   // Nafal 404 page
