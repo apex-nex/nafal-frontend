@@ -137,7 +137,7 @@ const NavBar = (props) => {
               </Link>
             </li>{" "}
             <li className="list-inline-item ps-1 mb-0">
-              <a href="tel:+1234567890">
+              <a href="tel:+966510149313">
                 <div className="login-btn-primary">
                   <span className="btn btn-icon btn-pills btn-primary">
                     <i className="mdi mdi-phone" />
