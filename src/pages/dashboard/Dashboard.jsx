@@ -243,7 +243,7 @@ const Dashboard = () => {
                                           <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
                                             View
                                           </Link>
-                                          <Link className="dropdown-item" to="#" onClick={(e)=>{onDelete(item._id)}}>
+                                          <Link className="dropdown-item" to="#" onClick={(e) => { onDelete(item._id) }}>
                                             Remove
                                           </Link>
                                         </DropdownMenu>
@@ -255,7 +255,7 @@ const Dashboard = () => {
                               ) : (
                                 <tr>
                                   <td colSpan="8" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                    <p className="text-center">Records not found</p>
+                                    <p className="text-center mt-3">Records not found</p>
                                   </td>
                                 </tr>
                               )}
