@@ -90,7 +90,7 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       <AdminNavBar />
-      <div className="page-content wrapper bg-light" style={{ marginTop: "60px" }}>
+      <div className="page-content wrapper bg-light d-flex flex-column" style={{ marginTop: "60px", minHeight: "83vh" }}>
         <MetaTags>
           <title>Admin Dashboard | Nafal</title>
         </MetaTags>
@@ -98,7 +98,7 @@ const Dashboard = () => {
           <Row>
             <Col xs="12">
               {false ? (
-                <p className="text-center text-danger">{"error"}</p>
+                <p className="text-center text-danger mt-4">{"error"}</p>
               ) : (
                 <Card>
                   <CardBody>
@@ -223,11 +223,11 @@ const Dashboard = () => {
                                     </td>
                                     <td>
                                       <Link
-                                        title={moment('2023-12-08').format('lll')}
+                                        title={moment(item?.date).format('lll')}
                                         to="#"
                                         className="text-reset"
                                       >
-                                        {moment('2023-12-08').format('MMM D, YYYY')}
+                                        {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Date not Available"}
                                       </Link>
                                     </td>
                                     <td>{item.comments.substring(0, 10)}</td>
@@ -254,8 +254,8 @@ const Dashboard = () => {
                                 )
                               ) : (
                                 <tr>
-                                  <td colSpan="8" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                    <p className="text-center mt-3">Records not found</p>
+                                  <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                    <p className="text-center mt-3">{data?.message}</p>
                                   </td>
                                 </tr>
                               )}
@@ -263,36 +263,42 @@ const Dashboard = () => {
                           </Table>
                         </div>
                       </Col>
-                      <Col xs="12">
-                        <Pagination className="pagination justify-content-end mb-0">
-                          <PaginationItem>
-                            <PaginationLink href="#" previous
-                            >
-                              Prev
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem active>
-                            <PaginationLink href="#">
-                              1
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem>
-                            <PaginationLink href="#">
-                              2
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem>
-                            <PaginationLink href="#">
-                              3
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem>
-                            <PaginationLink href="#" next>
-                              Next
-                            </PaginationLink>
-                          </PaginationItem>
-                        </Pagination>
-                      </Col>
+                      <div className="pagination-container">
+                        <Container fluid>
+                          <Row>
+                            <Col xs="12">
+                            <Pagination className="pagination justify-content-end mb-0">
+                                <PaginationItem>
+                                  <PaginationLink href="#" previous
+                                  >
+                                    Prev
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem active>
+                                  <PaginationLink href="#">
+                                    1
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                  <PaginationLink href="#">
+                                    2
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                  <PaginationLink href="#">
+                                    3
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                  <PaginationLink href="#" next>
+                                    Next
+                                  </PaginationLink>
+                                </PaginationItem>
+                              </Pagination>
+                            </Col>
+                          </Row>
+                        </Container>
+                      </div>
 
                       {modal ? (
                         <Modal
@@ -326,7 +332,6 @@ const Dashboard = () => {
                     </Row>
                     <Row>
                       <Col>
-                        <Footer />
                       </Col>
                     </Row>
                   </CardBody>
@@ -336,6 +341,7 @@ const Dashboard = () => {
           </Row>
         </Container>
       </div>
+      <Footer />
     </React.Fragment>
   )
 }

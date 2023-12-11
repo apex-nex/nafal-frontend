@@ -90,7 +90,7 @@ const PagePrivacy = () => {
                             <Card className="card shadow rounded border-0">
                                 <CardBody>
                                     {/* Introduction */}
-                                    <h5 className="card-title">Introduction:</h5>
+                                    <h5 className="card-title">Introduction :</h5>
                                     <p className="text-muted">
                                         Our privacy policy outlines how we collect, store, and use your personal information. This includes data associated with a specific person, used for identification. Anonymized information, which cannot identify a specific person, is not considered personal information.
                                     </p>
@@ -99,13 +99,13 @@ const PagePrivacy = () => {
                                     </p>
 
                                     {/* Our collection of your personal information */}
-                                    <h5 className="card-title">Our collection of your personal information:</h5>
+                                    <h5 className="card-title">Our collection of your personal information :</h5>
                                     <p className="text-muted">
                                         When using the site, we'll ask for personal details like your name, address, email, and phone number. To verify your identity, we may request proof like a passport copy. Financial info is needed in the "My Account" section for billing and order fulfillment. Keep personal and financial details in the My Account section to prevent fraud. We gather transactional data based on your site activities. Your IP address helps us analyze trends and manage the site. We may collect additional info, like your interaction with customer support or survey responses, to enhance your experience.
                                     </p>
 
                                     {/* Our use of your personal information */}
-                                    <h5 className="card-title">Our use of your personal information:</h5>
+                                    <h5 className="card-title">Our use of your personal information :</h5>
                                     <p className="text-muted">
                                         We use your personal information to provide services, support, and enhance your experience. This includes preventing illegal activities and complying with our User Agreement. We may share information with third parties for verification and fraud prevention. While we prioritize privacy, disclosure may occur in legal or law enforcement situations.
                                     </p>
@@ -117,44 +117,44 @@ const PagePrivacy = () => {
                                     </p>
 
                                     {/* Your use of your and other users’ personal information */}
-                                    <h5 className="card-title">Your use of your and other users’ personal information:</h5>
+                                    <h5 className="card-title">Your use of your and other users’ personal information :</h5>
                                     <p className="text-muted">
                                         Site members may share personal and financial details for transactions, and it's crucial to respect their privacy. We can't guarantee the privacy of your information when shared with other members, so always check their privacy and security policies before sharing. This policy doesn't cover your release of personal info to another member. Agree to use shared info solely for the transaction, following applicable laws. Your commitment to respecting privacy ensures a secure and trustworthy community.
                                     </p>
 
                                     {/* Accessing, reviewing and amending your personal information */}
-                                    <h5 className="card-title">Accessing, reviewing and amending your personal information:</h5>
+                                    <h5 className="card-title">Accessing, reviewing and amending your personal information :</h5>
 
                                     <p className="text-muted">
                                         The Site may contains links to other websites. Please be aware that we are not responsible for the privacy practices of such other websites. We encourage you when you leave the Site to read the privacy statements of each and every website you visit if you intend to provide personal information to that website. Our privacy policy applies solely to your personal information that we collect on the Site.
                                     </p>
 
                                     {/* Third party website links */}
-                                    <h5 className="card-title">Third party website links:</h5>
+                                    <h5 className="card-title">Third party website links :</h5>
                                     <p className="text-muted">
                                         The Site may contain links to other websites. Please be aware that we are not responsible for the privacy practices of such other websites...
                                     </p>
 
                                     {/* Cookies */}
-                                    <h5 className="card-title">Cookies:</h5>
+                                    <h5 className="card-title">Cookies :</h5>
                                     <p className="text-muted">
                                         The site utilizes 'cookie' technology, small files on your computer's hard drive. These cookies, identified by a unique, random number, enhance your site experience and provide insights into popular sections. They don't disclose personal information. You can decline cookies if your browser allows, but it may affect your site usage. Your control over cookie preferences ensures a personalized and efficient browsing experience.
                                     </p>
 
                                     {/* No spam or spoof emails */}
-                                    <h5 className="card-title">No spam or spoof emails:</h5>
+                                    <h5 className="card-title">No spam or spoof emails :</h5>
                                     <p className="text-muted">
                                         We do not tolerate spam. To report Site related spam or spoof emails, please forward the email to info@nafal-hvac.sa.sa
                                     </p>
 
                                     {/* Protecting your personal information */}
-                                    <h5 className="card-title">Protecting your personal information:</h5>
+                                    <h5 className="card-title">Protecting your personal information :</h5>
                                     <p className="text-muted">
                                         By providing us with your personal information, you acknowledge and consent to the transfer of such information beyond the borders of the Kingdom of Saudi Arabia...
                                     </p>
 
                                     {/* How you can contact us about privacy questions */}
-                                    <h5 className="card-title">How you can contact us about privacy questions:</h5>
+                                    <h5 className="card-title">How you can contact us about privacy questions :</h5>
                                     <p className="text-muted">
                                         If you have questions or concerns about our collection and use of your personal information, please contact our customer support team at the "info@nafal-hvac.sa".
                                     </p>
