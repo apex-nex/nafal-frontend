@@ -81,37 +81,37 @@
             {
               "image": "work1.jpg",
               "title": "Home Conditioners",
-              "subtitle": "Cooling Solutions",
+              "subtitle": "Cooling Solutions for Residential Comfort",
               "category": "Residential"
             },
             {
               "image": "work2.avif",
               "title": "Package AC",
-              "subtitle": "Commercial HVAC",
+              "subtitle": "Tailored Commercial HVAC Solutions",
               "category": "Commercial"
             },
             {
               "image": "work3.jpg",
               "title": "Air20",
-              "subtitle": "Innovative HVAC",
+              "subtitle": "Innovative HVAC for Infrastructure",
               "category": "Infrastructure"
             },
             {
               "image": "work4.avif",
-              "title": "Concealed",
-              "subtitle": "Building Solutions",
+              "title": "Cassette",
+              "subtitle": "Efficient Building Solutions",
               "category": "Commercial"
             },
             {
               "image": "work5.jpg",
               "title": "AC Maintenance",
-              "subtitle": "Architectural HVAC",
+              "subtitle": "Architectural HVAC Care",
               "category": "Residential"
             },
             {
               "image": "work6.avif",
               "title": "Duct Construction And Design",
-              "subtitle": "Project Showcase",
+              "subtitle": "Expert Infrastructure Solutions",
               "category": "Infrastructure"
             }
           ]
@@ -124,12 +124,12 @@
             {
               "badgeNo": 1,
               "img": "01.png",
-              "title": "Al - Etimad"
+              "title": "Sara Auto Parts"
             },
             {
               "badgeNo": 2,
               "img": "02.jpg",
-              "title": "Sara Auto Parts"
+              "title": "Al - Etimad"
             }
           ]
         }

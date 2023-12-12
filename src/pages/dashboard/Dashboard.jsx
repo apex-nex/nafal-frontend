@@ -9,6 +9,7 @@ import { get, remove } from "../../components/helpers/api_helper"
 import 'flatpickr/dist/flatpickr.min.css';
 import AdminNavBar from "../../components/navbar/AdminNavBar"
 import Footer from "../../components/footer/AdminFooter"
+import { toast } from "react-toastify"
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
@@ -20,23 +21,24 @@ const Dashboard = () => {
   const [message, setMessage] = useState(null)
   const [modal, setModal] = useState(false);
   const [ids, setIds] = useState([])
+  const [response, setResponse] = useState({})
+
+  console.log("ids", ids)
 
   function tog_modal() {
     setModal(!modal)
   };
 
-  const fetchData = async () => {
-    try {
-      const data = await get('/form');
-      setData(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData()
+  useEffect(async function () {
+    const data = await get('/form');
+    setData(data);
   }, [])
+
+  // useEffect(() => {
+  //   if (response.ok) {
+  //     toast.success("Record deleted successfully!");
+  //   }
+  // }, [response])
 
   const searchBar = (event) => {
     const value = event.target.value.trim()
@@ -76,21 +78,32 @@ const Dashboard = () => {
 
   const onStatusChange = (evt) => { }
 
-  const onDelete = (id) => {
-    if (ids.length > 1) {
-      remove("/form/items", ids)
-    } else if (id) {
-      remove("/form/items", [id])
+  const onDelete = async () => {
+    let updatedData = [...data.results];
+
+    try {
+      const response = await remove("/form/items", ids);
+
+    if (response.ok) {
+      // Remove deleted records from the state
+      updatedData = updatedData.filter((item) => !ids.flat().includes(item._id));
+
+      setData({ ...data, results: updatedData });
+      toast.success("Record deleted successfully!");
     } else {
-      console.log("Error")
+      toast.error("Error deleting record");
     }
-  }
+    } catch (error) {
+     console.log(error) 
+    }
+  };
+
 
 
   return (
     <React.Fragment>
       <AdminNavBar />
-      <div className="page-content wrapper bg-light" style={{ marginTop: "60px" }}>
+      <div className="page-content wrapper bg-light d-flex flex-column" style={{ marginTop: "60px", minHeight: "83vh" }}>
         <MetaTags>
           <title>Admin Dashboard | Nafal</title>
         </MetaTags>
@@ -98,7 +111,7 @@ const Dashboard = () => {
           <Row>
             <Col xs="12">
               {false ? (
-                <p className="text-center text-danger">{"error"}</p>
+                <p className="text-center text-danger mt-4">{"error"}</p>
               ) : (
                 <Card>
                   <CardBody>
@@ -119,7 +132,7 @@ const Dashboard = () => {
                       <Col>
                         <div className="d-flex justify-content-end">
                           <div className="ms-2">
-                            <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
+                            <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => onDelete(ids)}>
                               Delete
                             </Button>
                             <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
@@ -195,13 +208,22 @@ const Dashboard = () => {
                                       <Input
                                         style={{ borderColor: "black" }}
                                         type="checkbox"
-                                      // onChange={() => toggleRow(item.id, item)}
-                                      // checked={selectedRows.includes(item.id)}
+                                        onChange={(e) => {
+                                          if (e.target.checked) {
+                                            setIds([...ids, item?._id]);
+                                          } else {
+                                            setIds(ids.filter((id) => id !== item?._id));
+                                          }
+                                        }}
+                                        checked={ids.includes(item?._id)}
                                       />
+
+
+
                                     </td>
                                     <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
                                     <td>{item.email?.substring(0, 25)}</td>
-                                    <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
+                                    <td>{item?.mobile?.toString()?.slice(0, 15)}</td>
                                     <td>{item.subject}</td>
                                     <td>
                                       <select
@@ -223,27 +245,24 @@ const Dashboard = () => {
                                     </td>
                                     <td>
                                       <Link
-                                        title={moment('2023-12-08').format('lll')}
+                                        title={item?.date && moment(item?.date).format('lll')}
                                         to="#"
                                         className="text-reset"
                                       >
-                                        {moment('2023-12-08').format('MMM D, YYYY')}
+                                        {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available"}
                                       </Link>
                                     </td>
-                                    <td>{item.comments.substring(0, 10)}</td>
+                                    <td>{item.comments.substring(0, 25)}</td>
                                     <td>
                                       <UncontrolledDropdown className="ms-auto">
-                                        <DropdownToggle
-                                          className="text-muted font-size-16"
-                                          color="white"
-                                        >
+                                        <DropdownToggle className="text-muted font-size-16" color="white">
                                           <i className="mdi mdi-dots-horizontal"></i>
                                         </DropdownToggle>
                                         <DropdownMenu className="dropdown-menu-end">
                                           <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
                                             View
                                           </Link>
-                                          <Link className="dropdown-item" to="#" onClick={(e) => { onDelete(item._id) }}>
+                                          <Link className="dropdown-item" to="#" onClick={(e) => onDelete([item._id])}>
                                             Remove
                                           </Link>
                                         </DropdownMenu>
@@ -254,8 +273,8 @@ const Dashboard = () => {
                                 )
                               ) : (
                                 <tr>
-                                  <td colSpan="8" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                    <p className="text-center mt-3">Records not found</p>
+                                  <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                    <p className="text-center mt-3">{data?.message}</p>
                                   </td>
                                 </tr>
                               )}
@@ -263,36 +282,42 @@ const Dashboard = () => {
                           </Table>
                         </div>
                       </Col>
-                      <Col xs="12">
-                        <Pagination className="pagination justify-content-end mb-0">
-                          <PaginationItem>
-                            <PaginationLink href="#" previous
-                            >
-                              Prev
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem active>
-                            <PaginationLink href="#">
-                              1
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem>
-                            <PaginationLink href="#">
-                              2
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem>
-                            <PaginationLink href="#">
-                              3
-                            </PaginationLink>
-                          </PaginationItem>
-                          <PaginationItem>
-                            <PaginationLink href="#" next>
-                              Next
-                            </PaginationLink>
-                          </PaginationItem>
-                        </Pagination>
-                      </Col>
+                      <div className="pagination-container">
+                        <Container fluid>
+                          <Row>
+                            <Col xs="12">
+                              <Pagination className="pagination justify-content-end mb-0">
+                                <PaginationItem>
+                                  <PaginationLink href="#" previous
+                                  >
+                                    Prev
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem active>
+                                  <PaginationLink href="#">
+                                    1
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                  <PaginationLink href="#">
+                                    2
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                  <PaginationLink href="#">
+                                    3
+                                  </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                  <PaginationLink href="#" next>
+                                    Next
+                                  </PaginationLink>
+                                </PaginationItem>
+                              </Pagination>
+                            </Col>
+                          </Row>
+                        </Container>
+                      </div>
 
                       {modal ? (
                         <Modal
@@ -326,7 +351,6 @@ const Dashboard = () => {
                     </Row>
                     <Row>
                       <Col>
-                        <Footer />
                       </Col>
                     </Row>
                   </CardBody>
@@ -336,6 +360,7 @@ const Dashboard = () => {
           </Row>
         </Container>
       </div>
+      <Footer />
     </React.Fragment>
   )
 }

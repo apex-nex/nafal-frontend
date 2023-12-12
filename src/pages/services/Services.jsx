@@ -26,7 +26,7 @@ const Services = () => {
         { title: "Home Conditioners", description: "Efficient cooling solutions for residential spaces.", icon: 'uil-air-conditioner' },
         { title: "Package AC", description: "High-performance commercial HVAC systems for businesses.", icon: 'uil uil-store-alt' },
         { title: "Air20", description: "Cutting-edge and innovative HVAC technology for advanced cooling.", icon: 'uil uil-windsock' },
-        { title: "Concealed", description: "Smart building solutions with discreet HVAC integration.", icon: 'uil uil-building' },
+        { title: "Cassette", description: "Smart building solutions with discreet HVAC integration.", icon: 'uil uil-building' },
         { title: "AC Maintenance", description: "Proactive maintenance services for architectural HVAC systems.", icon: 'mdi mdi-air-conditioner' },
         { title: "Duct Construction And Design", description: "Showcasing exceptional projects through expert duct construction and design.", icon: 'uil uil-drafting-compass' },
     ]);
