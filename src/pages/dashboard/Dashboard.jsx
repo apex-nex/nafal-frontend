@@ -9,6 +9,7 @@ import { get, remove } from "../../components/helpers/api_helper"
 import 'flatpickr/dist/flatpickr.min.css';
 import AdminNavBar from "../../components/navbar/AdminNavBar"
 import Footer from "../../components/footer/AdminFooter"
+import { toast } from "react-toastify"
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
@@ -20,23 +21,24 @@ const Dashboard = () => {
   const [message, setMessage] = useState(null)
   const [modal, setModal] = useState(false);
   const [ids, setIds] = useState([])
+  const [response, setResponse] = useState({})
+
+  console.log("ids", ids)
 
   function tog_modal() {
     setModal(!modal)
   };
 
-  const fetchData = async () => {
-    try {
-      const data = await get('/form');
-      setData(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData()
+  useEffect(async function () {
+    const data = await get('/form');
+    setData(data);
   }, [])
+
+  // useEffect(() => {
+  //   if (response.ok) {
+  //     toast.success("Record deleted successfully!");
+  //   }
+  // }, [response])
 
   const searchBar = (event) => {
     const value = event.target.value.trim()
@@ -76,15 +78,26 @@ const Dashboard = () => {
 
   const onStatusChange = (evt) => { }
 
-  const onDelete = (id) => {
-    if (ids.length > 1) {
-      remove("/form/items", ids)
-    } else if (id) {
-      remove("/form/items", [id])
+  const onDelete = async () => {
+    let updatedData = [...data.results];
+
+    try {
+      const response = await remove("/form/items", ids);
+
+    if (response.ok) {
+      // Remove deleted records from the state
+      updatedData = updatedData.filter((item) => !ids.flat().includes(item._id));
+
+      setData({ ...data, results: updatedData });
+      toast.success("Record deleted successfully!");
     } else {
-      console.log("Error")
+      toast.error("Error deleting record");
     }
-  }
+    } catch (error) {
+     console.log(error) 
+    }
+  };
+
 
 
   return (
@@ -119,7 +132,7 @@ const Dashboard = () => {
                       <Col>
                         <div className="d-flex justify-content-end">
                           <div className="ms-2">
-                            <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
+                            <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => onDelete(ids)}>
                               Delete
                             </Button>
                             <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
@@ -195,13 +208,22 @@ const Dashboard = () => {
                                       <Input
                                         style={{ borderColor: "black" }}
                                         type="checkbox"
-                                      // onChange={() => toggleRow(item.id, item)}
-                                      // checked={selectedRows.includes(item.id)}
+                                        onChange={(e) => {
+                                          if (e.target.checked) {
+                                            setIds([...ids, item?._id]);
+                                          } else {
+                                            setIds(ids.filter((id) => id !== item?._id));
+                                          }
+                                        }}
+                                        checked={ids.includes(item?._id)}
                                       />
+
+
+
                                     </td>
                                     <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
                                     <td>{item.email?.substring(0, 25)}</td>
-                                    <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
+                                    <td>{item?.mobile?.toString()?.slice(0, 15)}</td>
                                     <td>{item.subject}</td>
                                     <td>
                                       <select
@@ -223,27 +245,24 @@ const Dashboard = () => {
                                     </td>
                                     <td>
                                       <Link
-                                        title={moment(item?.date).format('lll')}
+                                        title={item?.date && moment(item?.date).format('lll')}
                                         to="#"
                                         className="text-reset"
                                       >
-                                        {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Date not Available"}
+                                        {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available"}
                                       </Link>
                                     </td>
-                                    <td>{item.comments.substring(0, 10)}</td>
+                                    <td>{item.comments.substring(0, 25)}</td>
                                     <td>
                                       <UncontrolledDropdown className="ms-auto">
-                                        <DropdownToggle
-                                          className="text-muted font-size-16"
-                                          color="white"
-                                        >
+                                        <DropdownToggle className="text-muted font-size-16" color="white">
                                           <i className="mdi mdi-dots-horizontal"></i>
                                         </DropdownToggle>
                                         <DropdownMenu className="dropdown-menu-end">
                                           <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
                                             View
                                           </Link>
-                                          <Link className="dropdown-item" to="#" onClick={(e) => { onDelete(item._id) }}>
+                                          <Link className="dropdown-item" to="#" onClick={(e) => onDelete([item._id])}>
                                             Remove
                                           </Link>
                                         </DropdownMenu>
@@ -267,7 +286,7 @@ const Dashboard = () => {
                         <Container fluid>
                           <Row>
                             <Col xs="12">
-                            <Pagination className="pagination justify-content-end mb-0">
+                              <Pagination className="pagination justify-content-end mb-0">
                                 <PaginationItem>
                                   <PaginationLink href="#" previous
                                   >

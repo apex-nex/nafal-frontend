@@ -1,12 +1,12 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import Layout from "./components/Layout/";
 import { Route, Switch, BrowserRouter as Router, withRouter } from 'react-router-dom';
 import routes from './routes/allRoutes';
-
-// Import Css
+import { ToastContainer, toast } from 'react-toastify';
+import { useAuth } from './store/auth';
+import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/materialdesignicons.min.css';
 import './Apps.scss';
-import { useAuth } from './store/auth';
 
 function withLayout(WrappedComponent) {
   return function WithLayoutComponent() {
@@ -74,10 +74,11 @@ const App = () => {
                     key={idx}
                   />
                 )
-              );
-            })}
+                );
+              })}
           </Switch>
         </Suspense>
+              <ToastContainer/>
       </Router>
     </React.Fragment>
   );

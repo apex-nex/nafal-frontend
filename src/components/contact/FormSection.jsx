@@ -3,10 +3,12 @@ import { Container, Row, Col, Alert, Form, Input, Label, Card, CardBody } from '
 import FeatherIcon from 'feather-icons-react';
 import contact from '../../assets/images/nafal/contact/contact.svg';
 import { post } from '../helpers/api_helper';
+import { toast } from 'react-toastify';
 
 const FormSection = () => {
-  const [contactvisible, setContactvisible] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", mobile: "", subject: "", comments: "" });
+  const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
+  const [form, setForm] = useState(defaultContactForm);
+  const [formError, setFormError] = useState(defaultContactForm);
 
   // handling the input values
   const handleInput = (e) => {
@@ -23,21 +25,31 @@ const FormSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await post('/form', form);
+      const response = await post('/form', form);
 
-      if (data?.ok) {
-        setForm({
-          name: "",
-          email: "",
-          mobile: "",
-          subject: "",
-          comments: "",
-        });
+      if (response?.ok) {
+        toast.success("Details send successfully.");
+        setForm(defaultContactForm);
+        setFormError(defaultContactForm);
       }
+
     } catch (error) {
       console.log(error);
+      if (error) {
+        setFormError(error)
+        toast.error(error);
+      }
     }
   };
+
+  const ErrorMessageDisplay = ({ error }) => {
+    return (
+      error &&
+      <div className="text-danger small">
+        {error}
+      </div>
+    )
+  }
 
   return (
     <React.Fragment>
@@ -53,22 +65,11 @@ const FormSection = () => {
                 <h4 className="card-title">Get In Touch !</h4>
                 <div className="custom-form mt-3">
                   <div id="message"></div>
-                  <Alert
-                    color="primary"
-                    isOpen={contactvisible}
-                    toggle={() => {
-                      setContactvisible({
-                        contactvisible: !contactvisible,
-                      });
-                    }}
-                  >
-                    Contact details send successfully.
-                  </Alert>
                   <Form method="post" name="contact-form" id="contact-form" onSubmit={handleSubmit}>
                     <Row>
                       <Col md={6}>
                         <div className="mb-3">
-                          <Label className="form-label">
+                          <Label className={formError?.name ? "form-label text-danger" : "form-label"}>
                             Your Name <span className="text-danger">*</span>
                           </Label>
                           <div className="form-icon position-relative">
@@ -83,18 +84,19 @@ const FormSection = () => {
                             name="name"
                             id="name"
                             type="text"
-                            className="form-control ps-5"
+                            className={formError?.name ? "form-control ps-5 is-invalid" : "form-control ps-5"}
                             placeholder="First Name :"
                             value={form?.name}
                             required
                             onChange={handleInput}
                           />
+                          <ErrorMessageDisplay error={formError?.name} />
                         </div>
                       </Col>
                       <Col md={6}>
                         <div className="mb-3">
-                          <Label className="form-label">
-                            Your Email
+                          <Label className={formError?.email ? "form-label text-danger" : "form-label"}>
+                            Your Email <span className="text-danger">*</span>
                           </Label>
                           <div className="form-icon position-relative">
                             <i>
@@ -108,16 +110,18 @@ const FormSection = () => {
                             name="email"
                             id="email"
                             type="email"
-                            className="form-control ps-5"
+                            className={formError?.email ? "form-control ps-5 is-invalid" : "form-control ps-5"}
                             placeholder="Your email :"
                             value={form?.email}
                             onChange={handleInput}
+                            required
                           />
+                          <ErrorMessageDisplay error={formError?.email} />
                         </div>
                       </Col>
                       <Col md={12}>
                         <div className="mb-3">
-                          <Label className="form-label">
+                          <Label className={formError?.mobile ? "form-label text-danger" : "form-label"}>
                             Mobile <span className="text-danger">*</span>
                           </Label>
                           <div className="form-icon position-relative">
@@ -131,17 +135,20 @@ const FormSection = () => {
                           <Input
                             name="mobile"
                             id="mobile"
-                            className="form-control ps-5"
+                            className={formError?.mobile ? "form-control ps-5 is-invalid" : "form-control ps-5"}
                             placeholder="Your mobile :"
                             value={form?.mobile}
                             required
                             onChange={handleInput}
                           />
+                          <ErrorMessageDisplay error={formError?.mobile} />
                         </div>
                       </Col>
                       <Col md={12}>
                         <div className="mb-3">
-                          <Label className="form-label">Subject <span className="text-danger">*</span></Label>
+                          <Label className={formError?.subject ? "form-label text-danger" : "form-label"}>
+                            Subject <span className="text-danger">*</span>
+                          </Label>
                           <div className="form-icon position-relative">
                             <i>
                               <FeatherIcon
@@ -153,17 +160,18 @@ const FormSection = () => {
                           <Input
                             name="subject"
                             id="subject"
-                            className="form-control ps-5"
+                            className={formError?.subject ? "form-control ps-5 is-invalid" : "form-control ps-5"}
                             placeholder="Your subject :"
                             value={form?.subject}
                             required
                             onChange={handleInput}
                           />
+                          <ErrorMessageDisplay error={formError?.subject} />
                         </div>
                       </Col>
                       <Col md={12}>
                         <div className="mb-3">
-                          <Label className="form-label">
+                          <Label className={formError?.comments ? "form-label text-danger" : "form-label"}>
                             Comments <span className="text-danger">*</span>
                           </Label>
                           <div className="form-icon position-relative">
@@ -178,12 +186,13 @@ const FormSection = () => {
                             name="comments"
                             id="comments"
                             rows="4"
-                            className="form-control ps-5"
+                            className={formError?.comments ? "form-control ps-5 is-invalid" : "form-control ps-5"}
                             placeholder="Your Message :"
                             value={form?.comments}
                             required
                             onChange={handleInput}
-                          ></textarea>
+                          />
+                          <ErrorMessageDisplay error={formError?.comments} />
                         </div>
                       </Col>
                     </Row>

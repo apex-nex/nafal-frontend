@@ -16,7 +16,7 @@ export const get = async (url, headers = {}) => {
         const response = await api.get(url, { headers });
         return response.data;
     } catch (error) {
-        throw error;
+        throw error.response.data?.error;
     }
 };
 // Function to handle POST requests
@@ -25,17 +25,17 @@ export const post = async (url, data) => {
         const response = await api.post(url, data);
         return response.data;
     } catch (error) {
-        throw error;
+        throw error.response.data?.error;
     }
 };
 
-// Function to handle PUT requests
-export const put = async (url, data) => {
+// Function to handle PATCH requests
+export const patch = async (url, data) => {
     try {
-        const response = await api.put(url, data);
+        const response = await api.patch(url, data);
         return response.data;
     } catch (error) {
-        throw error;
+        throw error.response.data?.error;
     }
 };
 
@@ -45,6 +45,6 @@ export const remove = async (url, data) => {
         const response = await api.delete(url, {data});
         return response.data;
     } catch (error) {
-        throw error;
+        throw error.response.data?.error;
     }
 };
