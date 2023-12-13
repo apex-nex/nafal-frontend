@@ -62,7 +62,7 @@ const ServiceSection = (props) => {
                   </p>
 
                   <div className="mt-4 d-none d-md-block">
-                    <Link to="#" className="btn btn-soft-primary">
+                    <Link to="/services" className="btn btn-soft-primary">
                       See More{' '}
                       <i>
                         <FeatherIcon
