@@ -7,6 +7,7 @@ import MetaTags from 'react-meta-tags';
 import ClientSection from '../../components/home/ClientSection';
 import DownloadAppSection from '../../components/home/DownloadAppSection';
 import homeContent from '../../common/data/home/homeContent.json';
+import Partners from '../../components/home/Partners';
 
 const carouselSectionContent = homeContent?.data?.homePage?.sections?.carouselSection;
 const aboutSectionContent = homeContent?.data?.homePage?.sections?.aboutSection;
@@ -23,6 +24,9 @@ const Home = () => {
         </MetaTags>
         <div className="carousel">
           <Carousel carouselSectionContent={carouselSectionContent} />
+        </div>
+        <div className="company">
+          <Partners />
         </div>
         <div className="about-section">
           <AboutSection aboutSectionContent={aboutSectionContent} />
