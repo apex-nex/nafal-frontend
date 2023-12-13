@@ -4,6 +4,9 @@ import { Container, Row, Col } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
 import { useState } from 'react';
 import services_cms_data from '../../common/data/services/cms_services.json'
+import ServicesSection from '../../components/home/ServicesSection';
+import homeContent from '../../common/data/home/homeContent.json';
+const servicesSectionContent = homeContent?.data?.homePage?.sections?.servicesSection
 
 const Services = () => {
     const [servicesCmsData, setServicesCmsData] = useState({})
@@ -64,7 +67,7 @@ const Services = () => {
                     <title>Services | Nafal</title>
                 </MetaTags>
                 {servicesCmsData ?
-                    <React.Fragment>
+                    <>
                         <section className="bg-half-170 bg-light d-table w-100">
                             <Container>
                                 <Row className="mt-5 justify-content-center">
@@ -85,6 +88,7 @@ const Services = () => {
                                     </nav>
                                 </div>
                             </Container>
+
                         </section>
                         <div className="position-relative">
                             <div className="shape overflow-hidden text-white">
@@ -93,7 +97,7 @@ const Services = () => {
                                 </svg>
                             </div>
                         </div>
-
+                        <ServicesSection servicesSectionContent={servicesSectionContent} />
                         <section className="section">
                             <Container>
                                 <Row>
@@ -127,14 +131,11 @@ const Services = () => {
                                 <Row className="justify-content-center">
                                     <Col xs="12" className="text-center">
                                         <div className="section-title">
-                                            <h4 className="title mb-4">Experience Comprehensive HVAC Solutions</h4>
-                                            <p className="text-muted para-desc mx-auto">Discover the full spectrum of HVAC services with <span className="text-primary fw-bold">Nafal</span>. We offer everything you need to ensure optimal comfort and efficiency for your space. From installation to maintenance and repairs, trust us for all your HVAC requirements.</p>
-                                            <div className="mt-4">
+                                            <h4 className="title mb-4">Upgrade Your Comfort with Nafal HVAC</h4>
+                                            <p className="text-muted para-desc mx-auto">Discover HVAC excellence with <span className="text-primary fw-bold">Nafal HVAC</span>. Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!</p>
+                                            <div className="mt-4 pt-2">
                                                 <Link to="/contact" className="btn btn-primary mt-2 me-2">
-                                                    Contact Us
-                                                </Link>{" "}
-                                                <Link to="/about" className="btn btn-outline-primary mt-2">
-                                                    About
+                                                    Get in Touch
                                                 </Link>
                                             </div>
                                         </div>
@@ -142,8 +143,7 @@ const Services = () => {
                                 </Row>
                             </Container>
                         </div>
-
-                    </React.Fragment>
+                    </>
                     : null
                 }
             </div>
