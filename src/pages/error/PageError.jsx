@@ -28,14 +28,7 @@ const PageError = () => {
 
           <Row>
             <Col md="12" className="text-center">
-              <Link
-                to="#"
-                onClick={() => props.history.goBack()}
-                className="btn btn-outline-primary mt-4"
-              >
-                Go Back
-              </Link>{" "}
-              <Link to="/" className="btn btn-primary mt-4 ms-2">
+              <Link to="/" className="btn btn-primary">
                 Go To Home
               </Link>
             </Col>
