@@ -150,8 +150,7 @@ const ServiceSection = (props) => {
                                       `../../assets/images/nafal/home/services/${image}`,
                                     )}
                                     className="img-fluid work-image"
-                                    alt="Nafal"
-                                    style={{height:"260px"}}
+                                    alt={`Service ${key}`}
                                   />
                                 </Link>
                                 <div className="content p-4">
