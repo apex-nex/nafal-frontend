@@ -144,20 +144,19 @@ const ServiceSection = (props) => {
                           <FadeIn delay={100}>
                             <Card className="border-0 work-container work-classic shadow overflow-hidden">
                               <CardBody className="p-0">
-                                <Link to="page-work-detail">
+                                <Link to="#">
                                   <img
                                     src={require(
                                       `../../assets/images/nafal/home/services/${image}`,
                                     )}
                                     className="img-fluid work-image"
-                                    alt="Nafal"
-                                    style={{height:"260px"}}
+                                    alt={`Service ${key}`}
                                   />
                                 </Link>
                                 <div className="content p-4">
                                   <h5 className="mb-0">
                                     <Link
-                                      to="page-work-detail"
+                                      to="#"
                                       className="text-dark title"
                                     >
                                       {title}

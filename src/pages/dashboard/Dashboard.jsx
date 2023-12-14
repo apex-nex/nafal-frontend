@@ -28,11 +28,19 @@ const Dashboard = () => {
   function tog_modal() {
     setModal(!modal)
   };
+  const fetchData = async () => {
+    try {
+      const data = await get('/form');
+      setData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-  useEffect(async function () {
-    const data = await get('/form');
-    setData(data);
-  }, [])
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
 
   // useEffect(() => {
   //   if (response.ok) {
@@ -84,17 +92,16 @@ const Dashboard = () => {
     try {
       const response = await remove("/form/items", ids);
 
-    if (response.ok) {
-      // Remove deleted records from the state
-      updatedData = updatedData.filter((item) => !ids.flat().includes(item._id));
+      if (response.ok) {
+        updatedData = updatedData.filter((item) => !ids.flat().includes(item._id));
 
-      setData({ ...data, results: updatedData });
-      toast.success("Record deleted successfully!");
-    } else {
-      toast.error("Error deleting record");
-    }
+        setData({ ...data, results: updatedData });
+        toast.success("Record deleted successfully!");
+      } else {
+        toast.error("Error deleting record");
+      }
     } catch (error) {
-     console.log(error) 
+      console.log(error)
     }
   };
 
