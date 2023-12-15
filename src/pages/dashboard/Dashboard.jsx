@@ -282,14 +282,11 @@ const Dashboard = () => {
                                         }}
                                         checked={ids.includes(item?._id)}
                                       />
-
-
-
                                     </td>
                                     <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
                                     <td>{item.email?.substring(0, 25)}</td>
                                     <td>{item?.mobile?.toString()?.slice(0, 15)}</td>
-                                    <td>{item.subject}</td>
+                                    <td>{item.subject?.substring(0, 25)}</td>
                                     <td>
                                       <select
                                         value={""}
