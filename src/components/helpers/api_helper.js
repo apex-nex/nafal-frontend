@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const baseURL = "http://localhost:8000/api";
-const baseURL = 'https://nafal.onrender.com/api';
+const baseURL = "http://localhost:8000/api";
+// const baseURL = 'https://nafal.onrender.com/api';
 
 const api = axios.create({
     baseURL,
@@ -25,6 +25,7 @@ export const post = async (url, data) => {
         const response = await api.post(url, data);
         return response.data;
     } catch (error) {
+        console.log("error", error)
         throw error.response.data?.error;
     }
 };
@@ -40,7 +41,7 @@ export const patch = async (url, data) => {
 };
 
 // Function to handle DELETE requests
-export const remove = async (url, data) => {
+export const remove = async (url, data=[]) => {
     try {
         const response = await api.delete(url, {data});
         return response.data;
