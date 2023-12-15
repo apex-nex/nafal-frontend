@@ -10,6 +10,8 @@ import 'flatpickr/dist/flatpickr.min.css';
 import AdminNavBar from "../../components/navbar/AdminNavBar"
 import Footer from "../../components/footer/AdminFooter"
 import { toast } from "react-toastify"
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
@@ -22,8 +24,7 @@ const Dashboard = () => {
   const [modal, setModal] = useState(false);
   const [ids, setIds] = useState([])
   const [response, setResponse] = useState({})
-
-  console.log("ids", ids)
+  const [pdfData, setPdfData] = useState([])
 
   function tog_modal() {
     setModal(!modal)
@@ -40,13 +41,6 @@ const Dashboard = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  
-
-  // useEffect(() => {
-  //   if (response.ok) {
-  //     toast.success("Record deleted successfully!");
-  //   }
-  // }, [response])
 
   const searchBar = (event) => {
     const value = event.target.value.trim()
@@ -105,6 +99,70 @@ const Dashboard = () => {
     }
   };
 
+  const generatePDF = () => {
+    const headers = ['Index', 'Name', 'Email', 'Mobile', 'Subject', 'Status', 'Created Date', 'Message'];
+    const doc = new jsPDF('l');
+
+    const headStyles = { fillColor: [62, 191, 238] };
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(62, 191, 238);
+    doc.text('NAFAL HVAC', 14, 10);
+    doc.setTextColor(0);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12);
+    doc.text('Generated on: ' + moment().format('lll'), 14, 22);
+    doc.text('Duration: 1 April 2020 to 31 March 2021', 14, 16);
+
+    const modifiedData = pdfData.map((item, index) => ([
+      1 + index,
+      item.name,
+      item.email,
+      item?.mobile,
+      item.subject,
+      item.status,
+      item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available",
+      item.comments,
+    ]));
+
+    const columnStyles = {
+      0: { cellWidth: 14 },
+      1: { cellWidth: 35 },
+      2: { cellWidth: 60 },
+      3: { cellWidth: 28 },
+      4: { cellWidth: 38 },
+      5: { cellWidth: 18 },
+      6: { cellWidth: 26 },
+      7: { cellWidth: 52 },
+    };
+
+    doc.autoTable({
+      head: [headers],
+      body: modifiedData,
+      startY: 25,
+      rowPageBreak: 'auto',
+      bodyStyles: { valign: 'top' },
+      columnStyles: columnStyles,
+      theme: 'grid',
+      headStyles,
+      startY: 35,
+    });
+
+    if (isEmpty(pdfData)) {
+      // Show message when no records are found
+      const text = 'No records found';
+      const textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+      const x = (doc.internal.pageSize.width - textWidth) / 2;
+      const y = doc.internal.pageSize.height / 2;
+
+      doc.setFontSize(14);
+      doc.text(text, x, y);
+      doc.save('empty_table.pdf');
+      return;
+    }
+
+    doc.save('table.pdf');
+  };
 
 
   return (
@@ -142,10 +200,10 @@ const Dashboard = () => {
                             <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => onDelete(ids)}>
                               Delete
                             </Button>
-                            <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={() => { }}>
+                            <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={generatePDF}>
                               Download
                             </Button>
-                            <Button color="primary" className="btn btn-primary btn-sm me-2" id="sa-success" onClick={() => { }}>
+                            <Button color="primary" className="btn btn-primary btn-sm me-2" id="sa-success">
                               Refresh
                             </Button>
                           </div>
@@ -193,7 +251,7 @@ const Dashboard = () => {
                     <Row>
                       <Col>
                         <div className="table-responsive">
-                          <Table>
+                          <Table id="dashboard-table">
                             <thead className="thead-light text-capitalize">
                               <tr>
                                 <th>Select</th>
