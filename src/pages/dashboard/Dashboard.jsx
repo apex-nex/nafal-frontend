@@ -5,7 +5,7 @@ import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
-import { get, remove } from "../../components/helpers/api_helper"
+import { get, patch, remove } from "../../components/helpers/api_helper"
 import 'flatpickr/dist/flatpickr.min.css';
 import AdminNavBar from "../../components/navbar/AdminNavBar"
 import Footer from "../../components/footer/AdminFooter"
@@ -15,16 +15,24 @@ import autoTable from 'jspdf-autotable'
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
-  const [data, setData] = useState([])
+  const [data, setData] = useState({})
   const [currentPage, setCurrentPage] = useState(1);
   const [period, setPeriod] = useState({})
   const [defaultDate, setDefaultDate] = useState([])
-  const [toggle, setToggle] = useState(false)
   const [message, setMessage] = useState(null)
   const [modal, setModal] = useState(false);
-  const [ids, setIds] = useState([])
-  const [response, setResponse] = useState({})
-  const [pdfData, setPdfData] = useState([])
+  const [id, setId] = useState([])
+  const [deleteModal, setDeleteModal] = useState(false)
+  const [deleteEnabled, setDeleteEnabled] = useState(false)
+
+  function toggleDelete(state = true) {
+    setDeleteModal(!state)
+  }
+
+  const handleDelete = (id) => {
+    setId(id)
+    toggleDelete(false)
+  }
 
   function tog_modal() {
     setModal(!modal)
@@ -78,26 +86,26 @@ const Dashboard = () => {
     tog_modal()
   }
 
-  const onStatusChange = (evt) => { }
-
   const onDelete = async () => {
     let updatedData = [...data.results];
 
     try {
-      const response = await remove("/form/items", ids);
+      const response = await remove("/form/items", [id]);
 
       if (response.ok) {
-        updatedData = updatedData.filter((item) => !ids.flat().includes(item._id));
-
+        updatedData = updatedData.filter((item) => item._id !== id);
+        toggleDelete()
+        setDeleteEnabled(false)
         setData({ ...data, results: updatedData });
         toast.success("Record deleted successfully!");
       } else {
         toast.error("Error deleting record");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
+
 
   const generatePDF = () => {
     const headers = ['Index', 'Name', 'Email', 'Mobile', 'Subject', 'Status', 'Created Date', 'Message'];
@@ -114,7 +122,7 @@ const Dashboard = () => {
     doc.text('Generated on: ' + moment().format('lll'), 14, 22);
     doc.text('Duration: 1 April 2020 to 31 March 2021', 14, 16);
 
-    const modifiedData = pdfData.map((item, index) => ([
+    const modifiedData = data?.results?.map((item, index) => ([
       1 + index,
       item.name,
       item.email,
@@ -128,10 +136,10 @@ const Dashboard = () => {
     const columnStyles = {
       0: { cellWidth: 14 },
       1: { cellWidth: 35 },
-      2: { cellWidth: 60 },
+      2: { cellWidth: 59 },
       3: { cellWidth: 28 },
       4: { cellWidth: 38 },
-      5: { cellWidth: 18 },
+      5: { cellWidth: 19 },
       6: { cellWidth: 26 },
       7: { cellWidth: 52 },
     };
@@ -148,7 +156,7 @@ const Dashboard = () => {
       startY: 35,
     });
 
-    if (isEmpty(pdfData)) {
+    if (isEmpty(data?.results)) {
       // Show message when no records are found
       const text = 'No records found';
       const textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
@@ -163,6 +171,33 @@ const Dashboard = () => {
 
     doc.save('table.pdf');
   };
+
+  const updateStatusById = (id, newStatus) => {
+    setData(prevData => ({
+      ...prevData,
+      results: prevData.results.map(item => (
+        item._id === id ? { ...item, status: newStatus } : item
+      )),
+    }));
+  };
+
+  const updateStatus = async (id, selectedStatus) => {
+    if (!selectedStatus) {
+      toast.error('Please select a status before updating.');
+      return;
+    }
+
+    try {
+      const response = await patch('/form/update/status', { id, status: selectedStatus })
+      if (response?.ok) {
+        toast.success('Status updated successfully');
+        updateStatusById(id, response?.result?.status)
+      }
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
 
 
   return (
@@ -196,18 +231,16 @@ const Dashboard = () => {
                       </Col>
                       <Col>
                         <div className="d-flex justify-content-end">
-                          <div className="ms-2">
-                            <Button color="danger" className="btn btn-danger btn-sm me-2 mb-1" id="sa-success" onClick={() => onDelete(ids)}>
-                              Delete
+                          <div className="ms-2 text-start">
+                            <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success">
+                              Refresh
                             </Button>
                             <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={generatePDF}>
                               Download
                             </Button>
-                            <Button color="primary" className="btn btn-primary btn-sm me-2" id="sa-success">
-                              Refresh
-                            </Button>
+
                           </div>
-                          <div className="ms-2 me-2">
+                          <div className="ms-2 me-2 text-center">
                             <InputGroup>
                               <Flatpickr
                                 className="form-control form-control-sm"
@@ -222,7 +255,7 @@ const Dashboard = () => {
                               />
                             </InputGroup>
                           </div>
-                          <div className="ms-2">
+                          <div className="ms-2 text-end">
                             <Button
                               className="btn-sm me-1 mb-1"
                               color={period.value === 30 ? 'primary' : 'light'}
@@ -238,7 +271,7 @@ const Dashboard = () => {
                               3 Months
                             </Button>
                             <Button
-                              className="btn-sm"
+                              className="btn-sm mb-1"
                               color={period.value === 90 ? 'primary' : 'light'}
                               onClick={() => onPeriodChange(90)}
                             >
@@ -254,7 +287,7 @@ const Dashboard = () => {
                           <Table id="dashboard-table">
                             <thead className="thead-light text-capitalize">
                               <tr>
-                                <th>Select</th>
+                                <th>Index</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
@@ -269,37 +302,18 @@ const Dashboard = () => {
                               {!isEmpty(data) ? (
                                 data?.results?.map((item, index) => (
                                   <tr key={index}>
-                                    <td>
-                                      <Input
-                                        style={{ borderColor: "black" }}
-                                        type="checkbox"
-                                        onChange={(e) => {
-                                          if (e.target.checked) {
-                                            setIds([...ids, item?._id]);
-                                          } else {
-                                            setIds(ids.filter((id) => id !== item?._id));
-                                          }
-                                        }}
-                                        checked={ids.includes(item?._id)}
-                                      />
-                                    </td>
+                                    <td>{1 + index}</td>
                                     <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
-                                    <td>{item.email?.substring(0, 25)}</td>
-                                    <td>{item?.mobile?.toString()?.slice(0, 15)}</td>
-                                    <td>{item.subject?.substring(0, 25)}</td>
+                                    <td>{item.email?.substring(0, 30)}</td>
+                                    <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
+                                    <td>{item.subject?.substring(0, 20)}</td>
                                     <td>
                                       <select
-                                        value={""}
-                                        onChange={onStatusChange}
-                                        style={{
-                                          border: 'none',
-                                          outline: 'none',
-                                          backgroundColor: 'transparent',
-                                          padding: '0',
-                                        }}
+                                        value={item?.status}
+                                        onChange={(e) => updateStatus(item?._id, e.target.value)}
+                                        style={{ border: 'none', outline: 'none', backgroundColor: 'transparent', padding: '0' }}
                                         className="text-start"
                                       >
-                                        <option value="">Status</option>
                                         <option value="pending">Pending</option>
                                         <option value="contacted">Contacted</option>
                                         <option value="resolved">Resolved</option>
@@ -314,7 +328,7 @@ const Dashboard = () => {
                                         {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available"}
                                       </Link>
                                     </td>
-                                    <td>{item.comments.substring(0, 25)}</td>
+                                    <td>{item.comments.substring(0, 20)}</td>
                                     <td>
                                       <UncontrolledDropdown className="ms-auto">
                                         <DropdownToggle className="text-muted font-size-16" color="white">
@@ -324,7 +338,7 @@ const Dashboard = () => {
                                           <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
                                             View
                                           </Link>
-                                          <Link className="dropdown-item" to="#" onClick={(e) => onDelete([item._id])}>
+                                          <Link className="dropdown-item" to="#" onClick={() => handleDelete(item._id)}>
                                             Remove
                                           </Link>
                                         </DropdownMenu>
@@ -423,6 +437,55 @@ const Dashboard = () => {
         </Container>
       </div>
       <Footer />
+
+      <Modal isOpen={deleteModal} toggle={toggleDelete} backdrop="static">
+        <ModalHeader toggle={toggleDelete} tag="h5">
+          Warning: Before deleting the record, please consider the following:
+        </ModalHeader>
+        <ModalBody>
+          <Row>
+            <Col className="col-12">
+              {false &&
+                <p className="text-danger text-center"></p>
+              }
+              <>
+                <ul>
+                  <li>If the record is removed, you cannot recover it.</li>
+                  <li>If any data linked to this record will be permanently deleted.</li>
+                </ul>
+              </>
+              <p>Type <i><b>delete permanently</b></i> to proceed with the delete operation</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="col-12">
+              <div className="mb-3">
+                <Input
+                  name="confirmation-text"
+                  type="text"
+                  className="form-control border-1 border-secondary"
+                  required={false}
+                  onChange={(e) => setDeleteEnabled(e.target.value === "delete permanently")}
+                  placeholder="Type 'delete permanently' here"
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row className="float-end">
+            <Col>
+              <button type="button" className="btn btn-danger btn-sm me-2"
+                disabled={!deleteEnabled}
+                onClick={onDelete}>
+                Confirm Deletion
+              </button>
+              <button type="button" className="btn btn-light btn-sm" onClick={toggleDelete}>
+                Cancel
+              </button>
+            </Col>
+          </Row>
+        </ModalBody>
+      </Modal>
+
     </React.Fragment>
   )
 }

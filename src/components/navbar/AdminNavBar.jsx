@@ -124,7 +124,7 @@ function AdminNavBar(props) {
             <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
           </Link>
 
-          <div className="menu-extras">
+          {/* <div className="menu-extras">
             <div className="menu-item">
               <Link
                 to="#"
@@ -139,7 +139,7 @@ function AdminNavBar(props) {
                 </div>
               </Link>
             </div>
-          </div>
+          </div> */}
 
           <ul className="buy-button list-inline mb-0">
             <li className="list-inline-item mb-0 pe-1">
@@ -183,7 +183,7 @@ function AdminNavBar(props) {
             </li>
           </ul>
 
-          <div id="navigation">
+          {/* <div id="navigation">
             <ul className="navigation-menu">
               <li>
                 <Link to="/index-shop" className="sub-menu-item">
@@ -199,7 +199,7 @@ function AdminNavBar(props) {
               </li>
 
             </ul>
-          </div>
+          </div> */}
         </div>
       </header>
     </React.Fragment>
