@@ -4,6 +4,7 @@ import FeatherIcon from 'feather-icons-react';
 import contact from '../../assets/images/nafal/contact/contact.svg';
 import { post } from '../helpers/api_helper';
 import { toast } from 'react-toastify';
+import { ErrorMessageDisplay } from '../../common/data/utility/common';
 
 const FormSection = () => {
   const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
@@ -41,15 +42,6 @@ const FormSection = () => {
       }
     }
   };
-
-  const ErrorMessageDisplay = ({ error }) => {
-    return (
-      error &&
-      <div className="text-danger small">
-        {error}
-      </div>
-    )
-  }
 
   return (
     <React.Fragment>
