@@ -2,17 +2,18 @@ import React from 'react';
 import { Card, Col, Container, Form, Input, Label, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from "../../store/auth"
-
-//Import Icons
+import { toast } from 'react-toastify';
 import FeatherIcon from "feather-icons-react";
-//import Images
 import logoNafal from '../../assets/images/nafal/logo/nafal-logo.png';
 import { post } from '../../components/helpers/api_helper';
 import { useState, useEffect } from 'react';
+import { ErrorMessageDisplay } from '../../common/data/utility/common';
 
 const Login = () => {
     const { storeTokenInLS } = useAuth()
-    const [user, setUser] = useState({ email: "", password: "" })
+    const defaultLoginForm = { email: "", password: "" }
+    const [user, setUser] = useState(defaultLoginForm)
+    const [formError, setFormError] = useState(defaultLoginForm);
 
     // handling the input values
     const handleInput = (e) => {
@@ -32,12 +33,15 @@ const Login = () => {
             const response = await post('/admin/login', user);
 
             if (response?.ok) {
-                setUser({ email: "", password: "" })
+                setUser(defaultLoginForm)
                 storeTokenInLS(response.token)
-                window.location.replace("/admin/dashboard")
+                toast.success("Login successful redirecting to dashboard.");
+                setTimeout(() => { window.location.replace("/admin/dashboard") }, 2000)
+                setFormError(defaultContactForm);
             }
         } catch (error) {
-            console.log(error);
+            setFormError(error)
+            toast.error(error);
         }
     };
 
@@ -69,13 +73,16 @@ const Login = () => {
                                                         <Input
                                                             name="email"
                                                             type="email"
-                                                            className="form-control"
+                                                            className={formError?.email ? "form-control is-invalid" : "form-control"}
                                                             id="LoginEmail"
                                                             placeholder="name@example.com"
                                                             value={user.email}
                                                             onChange={handleInput}
                                                         />
-                                                        <Label htmlFor="LoginEmail">Email Address:</Label>
+                                                        <Label htmlFor="LoginEmail" className={formError?.email ? "form-label text-danger" : "form-label"}>
+                                                            Email Address:
+                                                        </Label>
+                                                        <ErrorMessageDisplay error={formError?.email} />
                                                     </div>
                                                 </Col>
                                                 <Col lg={12}>
@@ -83,13 +90,16 @@ const Login = () => {
                                                         <Input
                                                             name="password"
                                                             type="password"
-                                                            className="form-control"
+                                                            className={formError?.password ? "form-control is-invalid" : "form-control"}
                                                             id="LoginPassword"
                                                             placeholder="Password"
                                                             value={user.password}
                                                             onChange={handleInput}
                                                         />
-                                                        <Label htmlFor="LoginPassword">Password:</Label>
+                                                        <ErrorMessageDisplay error={formError?.password} />
+                                                        <Label htmlFor="LoginPassword" className={formError?.password ? "form-label text-danger" : "form-label"}>
+                                                            Password:
+                                                        </Label>
                                                     </div>
                                                 </Col>
                                                 <Col lg={12}>
