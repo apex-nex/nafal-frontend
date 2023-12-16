@@ -16,7 +16,6 @@ import autoTable from 'jspdf-autotable'
 const Dashboard = () => {
   const dateRangeRef = useRef()
   const [data, setData] = useState({})
-  const [currentPage, setCurrentPage] = useState(1);
   const [period, setPeriod] = useState({})
   const [defaultDate, setDefaultDate] = useState([])
   const [message, setMessage] = useState(null)
@@ -24,6 +23,9 @@ const Dashboard = () => {
   const [id, setId] = useState([])
   const [deleteModal, setDeleteModal] = useState(false)
   const [deleteEnabled, setDeleteEnabled] = useState(false)
+  const [nextPage, setNextPage] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   function toggleDelete(state = true) {
     setDeleteModal(!state)
@@ -37,13 +39,21 @@ const Dashboard = () => {
   function tog_modal() {
     setModal(!modal)
   };
-  const fetchData = async () => {
+
+  const fetchData = async (url = '/form') => {
     try {
-      const data = await get('/form');
+      const data = await get(url);
       setData(data);
+      setNextPage(data.next);
+      setPrevPage(data.previous);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+  };
+
+  const handlePageChange = (pageUrl, newPage) => {
+    fetchData(pageUrl);
+    setCurrentPage(newPage);
   };
 
   useEffect(() => {
@@ -363,32 +373,36 @@ const Dashboard = () => {
                           <Row>
                             <Col xs="12">
                               <Pagination className="pagination justify-content-end mb-0">
-                                <PaginationItem>
-                                  <PaginationLink href="#" previous
-                                  >
-                                    Prev
-                                  </PaginationLink>
-                                </PaginationItem>
-                                <PaginationItem active>
-                                  <PaginationLink href="#">
-                                    1
-                                  </PaginationLink>
-                                </PaginationItem>
-                                <PaginationItem>
-                                  <PaginationLink href="#">
-                                    2
-                                  </PaginationLink>
-                                </PaginationItem>
-                                <PaginationItem>
-                                  <PaginationLink href="#">
-                                    3
-                                  </PaginationLink>
-                                </PaginationItem>
-                                <PaginationItem>
-                                  <PaginationLink href="#" next>
-                                    Next
-                                  </PaginationLink>
-                                </PaginationItem>
+                                {
+                                  !isEmpty(prevPage) && (
+                                    <PaginationItem disabled={!prevPage}>
+                                      <PaginationLink previous href="#" onClick={() => handlePageChange(prevPage, currentPage - 1)}>
+                                        Prev
+                                      </PaginationLink>
+                                    </PaginationItem>
+                                  )
+                                }
+
+                                {Array.from({ length: Math.ceil(data?.count / 10) }, (_, index) => (
+                                  <PaginationItem key={index + 1} active={index + 1 === currentPage}>
+                                    <PaginationLink
+                                      href="#"
+                                      onClick={() => handlePageChange(`/form?page=${index + 1}&limit=10`, index + 1)}
+                                    >
+                                      {index + 1}
+                                    </PaginationLink>
+                                  </PaginationItem>
+                                ))}
+
+                                {
+                                  !isEmpty(nextPage) && (
+                                    <PaginationItem disabled={!nextPage}>
+                                      <PaginationLink next href="#" onClick={() => handlePageChange(nextPage, currentPage + 1)}>
+                                        Next
+                                      </PaginationLink>
+                                    </PaginationItem>
+                                  )
+                                }
                               </Pagination>
                             </Col>
                           </Row>

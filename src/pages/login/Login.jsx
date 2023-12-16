@@ -7,7 +7,7 @@ import FeatherIcon from "feather-icons-react";
 import logoNafal from '../../assets/images/nafal/logo/nafal-logo.png';
 import { post } from '../../components/helpers/api_helper';
 import { useState, useEffect } from 'react';
-import { ErrorMessageDisplay } from '../../common/data/utility/common';
+import { ErrorMessageDisplay } from '../../common/data/utils/common';
 
 const Login = () => {
     const { storeTokenInLS } = useAuth()
