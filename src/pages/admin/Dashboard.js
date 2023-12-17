@@ -58,12 +58,17 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  const searchBar = (event) => {
-    const value = event.target.value.trim()
-    if (value === "" || value.length > 1) {
-      //api call
+  var suTo = null;
+
+  const searchBar = (value) => {
+    value = value.trim();
+    if (value == '' || value.length > 1) {
+      clearTimeout(suTo);
+      suTo = setTimeout(() => {
+        fetchData(`/form/?search=${value}`)
+      }, 200);
     }
-  }
+  };
 
   const loadPage = (page) => {
     if (page && page !== currentPage) {
@@ -229,7 +234,7 @@ const Dashboard = () => {
                             <input
                               className="form-control"
                               type="search"
-                              onInput={searchBar}
+                              onInput={(e) => searchBar(e.target.value)}
                               placeholder={"Search here..."}
                             />
                             <i className="uil uil-search search-icon" style={{ marginTop: "2px" }}></i>
@@ -369,38 +374,40 @@ const Dashboard = () => {
                         <Container fluid>
                           <Row>
                             <Col xs="12">
-                              <Pagination className="pagination justify-content-end mb-0">
-                                {
-                                  !isEmpty(prevPage) && (
-                                    <PaginationItem disabled={!prevPage}>
-                                      <PaginationLink previous href="#" onClick={() => handlePageChange(prevPage, currentPage - 1)}>
-                                        Prev
+                              {data?.count > 10 && (
+                                <Pagination className="pagination justify-content-end mb-0">
+                                  {
+                                    !isEmpty(prevPage) && (
+                                      <PaginationItem disabled={!prevPage}>
+                                        <PaginationLink previous href="#" onClick={() => handlePageChange(prevPage, currentPage - 1)}>
+                                          Prev
+                                        </PaginationLink>
+                                      </PaginationItem>
+                                    )
+                                  }
+
+                                  {Array.from({ length: Math.ceil(data?.count / 10) }, (_, index) => (
+                                    <PaginationItem key={index + 1} active={index + 1 === currentPage}>
+                                      <PaginationLink
+                                        href="#"
+                                        onClick={() => handlePageChange(`/form?page=${index + 1}&limit=10`, index + 1)}
+                                      >
+                                        {index + 1}
                                       </PaginationLink>
                                     </PaginationItem>
-                                  )
-                                }
+                                  ))}
 
-                                {Array.from({ length: Math.ceil(data?.count / 10) }, (_, index) => (
-                                  <PaginationItem key={index + 1} active={index + 1 === currentPage}>
-                                    <PaginationLink
-                                      href="#"
-                                      onClick={() => handlePageChange(`/form?page=${index + 1}&limit=10`, index + 1)}
-                                    >
-                                      {index + 1}
-                                    </PaginationLink>
-                                  </PaginationItem>
-                                ))}
-
-                                {
-                                  !isEmpty(nextPage) && (
-                                    <PaginationItem disabled={!nextPage}>
-                                      <PaginationLink next href="#" onClick={() => handlePageChange(nextPage, currentPage + 1)}>
-                                        Next
-                                      </PaginationLink>
-                                    </PaginationItem>
-                                  )
-                                }
-                              </Pagination>
+                                  {
+                                    !isEmpty(nextPage) && (
+                                      <PaginationItem disabled={!nextPage}>
+                                        <PaginationLink next href="#" onClick={() => handlePageChange(nextPage, currentPage + 1)}>
+                                          Next
+                                        </PaginationLink>
+                                      </PaginationItem>
+                                    )
+                                  }
+                                </Pagination>
+                              )}
                             </Col>
                           </Row>
                         </Container>
