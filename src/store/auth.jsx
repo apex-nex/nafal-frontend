@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
     let isLoggedIn = !!token
 
     // logout functionality 
-    const LogoutUser = () => {
+    const logoutUser = () => {
         setToken("")
         return localStorage.removeItem("token");
     }
@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     // JWT Authentication - verify user
 
     const userAuthentication = async () => {
+        console.log("token", token)
         try {
             const data = await get('/admin/auth', {"Authorization": `Bearer ${token}`});
             setUser(data)
@@ -37,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     },[])
 
     return (
-        <AuthContext.Provider value={{ user, isLoggedIn, storeTokenInLS, LogoutUser }}>
+        <AuthContext.Provider value={{ user, isLoggedIn, storeTokenInLS, logoutUser }}>
             {children}
         </AuthContext.Provider>
     )

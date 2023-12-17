@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 
 //Import Images
-import userInterface from "../../assets/images/illustrator/user_interface.svg";
+import userInterface from "../../assets/images/nafal/home/download/user_interface.svg";
 function DownloadAppSection() {
   return (
     <React.Fragment>

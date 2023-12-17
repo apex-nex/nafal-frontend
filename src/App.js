@@ -1,25 +1,18 @@
-import React, { Suspense } from 'react';
-import Layout from "./components/Layout/";
-import { Route, Switch, BrowserRouter as Router, withRouter } from 'react-router-dom';
-import routes from './routes/allRoutes';
-import { ToastContainer, toast } from 'react-toastify';
-import { useAuth } from './store/auth';
+import React, { Suspense } from "react";
+import Layout from "./components/Layout/index";
+import { Navigate, Route, Routes } from "react-router-dom";
+import "./assets/css/materialdesignicons.min.css"
+import "./Apps.scss";
+// import "./assets/css/colors/default.css";
+import routes from "./routes/allRoutes";
+import withRouter from "./common/data/withRouter";
 import 'react-toastify/dist/ReactToastify.css';
-import './assets/css/materialdesignicons.min.css';
-import './Apps.scss';
+import { ToastContainer } from "react-toastify";
+import { useAuth } from "./store/auth";
 
-function withLayout(WrappedComponent) {
-  return function WithLayoutComponent() {
-    return (
-      <Layout>
-        <WrappedComponent />
-      </Layout>
-    );
-  };
-}
-
-const Loader = () => {
-  return (
+const App = () => {
+  const { isLoggedIn } = useAuth()
+  const LoaderComponent = () => (
     <div id="">
       <div id="status">
         <div className="spinner">
@@ -29,59 +22,44 @@ const Loader = () => {
       </div>
     </div>
   );
-};
-
-const App = () => {
-  const { isLoggedIn } = useAuth()
 
   return (
     <React.Fragment>
-      <Router>
-        <Suspense fallback={<Loader />}>
-          <Switch>
-            {routes.map((route, idx) => {
-              return (
-                route.isWithoutLayout ? (
-                  route.dashboard ? (
-                    <Route
-                      path={route.path}
-                      exact={route.exact}
-                      component={isLoggedIn ? route.component : () => window.location.replace("/admin/login")}
-                      key={idx}
-                    />
+      <Suspense fallback={<LoaderComponent />}>
+        <Routes>
+          {routes.map((route, idx) =>
+            route.isWithoutLayout ? (
+              <Route
+                path={route.path}
+                element={
+                  route.path === "/auth-login" ? (
+                    !isLoggedIn ? route.component : <Navigate to="/admin-dashboard" />
                   ) : (
-                    route.login ? (
-                      <Route
-                        path={route.path}
-                        exact={route.exact}
-                        component={isLoggedIn ? () => window.location.replace("/admin/dashboard") : route.component}
-                        key={idx}
-                      />
-                    ) : (
-                      <Route
-                        path={route.path}
-                        exact={route.exact}
-                        component={route.component}
-                        key={idx}
-                      />
-                    )
+                    route.component
                   )
-                ) : (
-                  <Route
-                    path={route.path}
-                    exact
-                    component={withLayout(route.component)}
-                    key={idx}
-                  />
-                )
-                );
-              })}
-          </Switch>
-        </Suspense>
-              <ToastContainer/>
-      </Router>
+                }
+                key={idx} />
+            ) : (
+              <Route
+                path={route.path}
+                element={
+                  <Layout>
+                    {route.path === "/admin-dashboard" ? (
+                      isLoggedIn ? route.component : <Navigate to="/auth-login" />
+                    ) : (
+                      route.component
+                    )}
+                  </Layout>
+                }
+                key={idx}
+              />
+            )
+          )}
+        </Routes>
+      </Suspense>
+      <ToastContainer />
     </React.Fragment>
   );
-};
+}
 
 export default withRouter(App);
