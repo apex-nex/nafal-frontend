@@ -19,3 +19,16 @@ export const LoaderComponent = () => (
         </div>
     </div>
 );
+
+export const getStatusClass = (status) => {
+    switch (status) {
+        case 'pending':
+            return 'btn-warning';
+        case 'contacted':
+            return 'btn-info';
+        case 'resolved':
+            return 'btn-success';
+        default:
+            return 'btn-default';
+    }
+}

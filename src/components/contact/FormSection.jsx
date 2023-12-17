@@ -128,7 +128,7 @@ const FormSection = () => {
                             name="mobile"
                             id="mobile"
                             className={formError?.mobile ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="Your mobile :"
+                            placeholder="+966 Your mobile :"
                             value={form?.mobile}
                             required
                             onChange={handleInput}
