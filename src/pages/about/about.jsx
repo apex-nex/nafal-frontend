@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
 import KeyFeatureBox from '../../components/about/KeyFeatureBoxNafal';
 import SectionTitle from '../../components/about/SectionTitleNafal';
-import about from '../../assets/images/nafal/about/about.jpg';
+import about from '../../assets/images/about/about.jpg';
 import about_us_cms_data from '../../common/data/about/cms_about.json'
 
 

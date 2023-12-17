@@ -14,7 +14,7 @@ function AboutSection(props) {
               <Row className="align-items-center">
                 <Col lg="5" md="6" xs="12">
                   <img
-                    src={require( `../../assets/images/nafal/home/about/${aboutSectionContent?.image}`)}
+                    src={require( `../../assets/images/home/about/${aboutSectionContent?.image}`)}
                     className="img-fluid rounded"
                     alt="Server error!"
                   />

@@ -3,11 +3,11 @@ import Carousel from '../../components/home/Carousel';
 import AboutSection from '../../components/home/AboutSection';
 import VideoSection from '../../components/home/VideoSection';
 import ServicesSection from '../../components/home/ServicesSection';
-import MetaTags from 'react-meta-tags';
 import ClientSection from '../../components/home/ClientSection';
 import DownloadAppSection from '../../components/home/DownloadAppSection';
 import homeContent from '../../common/data/home/homeContent.json';
 import Partners from '../../components/home/Partners';
+import MetaTags from 'react-meta-tags';
 
 const carouselSectionContent = homeContent?.data?.homePage?.sections?.carouselSection;
 const aboutSectionContent = homeContent?.data?.homePage?.sections?.aboutSection;
@@ -22,27 +22,27 @@ const Home = () => {
         <MetaTags>
           <title>Home | Nafal</title>
         </MetaTags>
-        <div className="carousel">
-          <Carousel carouselSectionContent={carouselSectionContent} />
-        </div>
-        <div className="company">
-          <Partners />
-        </div>
-        <div className="about-section">
-          <AboutSection aboutSectionContent={aboutSectionContent} />
-        </div>
-        <div className="video-container mb-5">
-          <VideoSection videoSectionContent={videoSectionContent} />
-        </div>
-      </div>
-      <div className="services-container">
+
+        {/* {carousel} */}
+        <Carousel carouselSectionContent={carouselSectionContent} />
+
+        {/* {company} */}
+        <Partners />
+        {/* {about} */}
+        <AboutSection aboutSectionContent={aboutSectionContent} />
+
+        {/* {video} */}
+        <VideoSection videoSectionContent={videoSectionContent} />
+
+        {/* {services} */}
         <ServicesSection servicesSectionContent={servicesSectionContent} />
-      </div>
-      <div className="clients-section">
+
+        {/* {clients} */}
         <ClientSection clientSectionContent={clientSectionContent} />
-      </div>
-      <div className="DownloadAppSection-container">
+
+        {/* {DownloadAppSection} */}
         <DownloadAppSection />
+
       </div>
     </React.Fragment>
   );

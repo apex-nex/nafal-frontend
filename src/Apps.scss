@@ -20,7 +20,7 @@
 // @import './assets/scss/style-dark.scss';
 
 //features scss
-@import "./assets/scss/features";
+@import "./assets/scss/features"; 
 
 // drawer
 .react-drawer-drawer {
@@ -130,96 +130,12 @@
   }
 }
 
-// Nafal
+//NAFAL CSS
 
-.btn-primary {
-  background-color: #3EBFEE;
-  border-width: "1px";
-  border: #3EBFEE;
-}
-
-.text-primary {
-  color: #3EBFEE !important;
-}
-
-.badge {
-  color: #3EBFEE !important;
-}
-
-.container-filter li.active,
-.btn-outline-primary {
-  color: #3EBFEE !important;
-  border-color: #3EBFEE !important;
-}
-
-// check box
-.form-check-input.form-check-input:checked {
-  background-color: #3EBFEE !important;
-  border-color: #3EBFEE !important;
-}
-
-.breadcrumb-item {
-  color: #3EBFEE !important;
-}
-
+// icons
 .uil {
   color: #3EBFEE !important;
 }
-
-.btn-soft-primary {
-  color: #3EBFEE !important;
-}
-
-#topnav .navigation-menu>li:hover>a,
-#topnav .navigation-menu>li.active>a {
-  color: #3EBFEE !important;
-}
-
-.pagination .page-item.active .page-link {
-  background: #3EBFEE !important;
-  border-color: #3EBFEE !important;
-}
-
-// Nafal hover start
-.btn-primary:hover {
-  background-color: #3497C2;
-}
-
-.container-filter li:hover {
-  color: #3EBFEE !important;
-  border-color: #3EBFEE !important;
-}
-
-.btn-soft-primary:hover,
-.btn-soft-primary:focus,
-.btn-soft-primary:active,
-.btn-soft-primary.active,
-.btn-soft-primary.focus,
-.btn-outline-primary:hover {
-  background-color: #3EBFEE !important;
-  border-color: #3497C2 !important;
-  color: #f5e0e0 !important;
-}
-
-.breadcrumb .breadcrumb-item :hover {
-  color: #3497C2 !important;
-}
-
-a.text-primary:hover,
-a.text-primary:focus {
-  color: #3497C2 !important;
-}
-
-.pagination .page-item .page-link:hover {
-  background-color: #3EBFEE !important;
-  border-color: #3497C2 !important;
-}
-
-.snapIcon:hover {
-  background-color: #adb5bd !important;
-}
-
-// hover end
 
 // dashbaord search box
 .search-box {
@@ -241,7 +157,3 @@ a.text-primary:focus {
 .map iframe {
   width: 100% !important;
 }
-
-// html, body {
-//   overflow-x: hidden !important;
-// }

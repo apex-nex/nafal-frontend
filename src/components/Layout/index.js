@@ -1,18 +1,62 @@
 import React, { Component, Suspense } from "react";
-import { withRouter } from "react-router-dom";
 import BackToTop from "./backToTop";
-import NavBarNafal from '../../components/navbar/Navbar'
-import FooterNafal from '../footer/Footer'
+import withRouter from "../../common/data/withRouter";
+import NavbarAdmin from "./NavbarAdmin";
+import FooterAdmin from "./FooterAdmin";
 
-function Layout(props) {
+// Layout Components  
+const Navbar = React.lazy(() => import("./Navbar"));
+const Footer = React.lazy(() => import("./Footer"));
+
+const Loader = () => {
   return (
-    <React.Fragment>
-      <NavBarNafal />
-      <div style={{ width: "100%" }}>{props.children}</div>
-      <FooterNafal />
-      <BackToTop />
-    </React.Fragment>
+    <div id="preloader">
+      <div id="status">
+        <div className="spinner">
+          <div className="double-bounce1"></div>
+          <div className="double-bounce2"></div>
+        </div>
+      </div>
+    </div>
   );
+};
+
+class Layout extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Suspense fallback={Loader()}>
+
+          {(() => {
+            if (
+              this.props.router.location.pathname === "/admin-dashboard"
+            ) {
+              return <NavbarAdmin />;
+            }
+            else {
+              return <Navbar />;
+            }
+          })()}
+
+          {this.props.children}
+
+          {(() => {
+            if (
+              this.props.router.location.pathname === "/admin-dashboard"
+            ) {
+              return <FooterAdmin />;
+            }
+            else {
+              return <Footer />;
+            }
+          })()}
+
+          <BackToTop />
+        </Suspense>
+
+      </React.Fragment>
+    );
+  }
 }
 
 export default withRouter(Layout);
