@@ -8,9 +8,9 @@ import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import FeatherIcon from "feather-icons-react";
 
-import bg01 from "../../assets/images/nafal/home/carousel/bg1.jpg";
-import bg02 from "../../assets/images/nafal/home/carousel/bg1.jpg";
-import bg03 from "../../assets/images/nafal/home/carousel/bg1.jpg";
+import bg01 from "../../assets/images/home/carousel/bg1.jpg";
+import bg02 from "../../assets/images/home/carousel/bg1.jpg";
+import bg03 from "../../assets/images/home/carousel/bg1.jpg";
 
 const Carousel = () => {
   const [isOpen, setIsOpen] = useState(false);

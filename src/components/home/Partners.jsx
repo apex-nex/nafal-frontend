@@ -2,12 +2,12 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 // Import Images
-import trane from "../../assets/images/client/trane.png";
-import daikin from "../../assets/images/client/daikin.svg";
-import gree from "../../assets/images/client/gree.svg";
-import midea from "../../assets/images/client/midea.svg";
-import fuji from "../../assets/images/client/fuji.svg";
-import lg from "../../assets/images/client/lg.svg";
+import trane from "../../assets/images/home/companies/trane.png";
+import daikin from "../../assets/images/home/companies/daikin.svg";
+import gree from "../../assets/images/home/companies/gree.svg";
+import midea from "../../assets/images/home/companies/midea.svg";
+import fuji from "../../assets/images/home/companies/fuji.svg";
+import lg from "../../assets/images/home/companies/lg.svg";
 
 const Partners = () => {
     const partnersData = [
