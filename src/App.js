@@ -9,19 +9,10 @@ import withRouter from "./common/data/withRouter";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "./store/auth";
+import { LoaderComponent } from "./common/data/utils/common";
 
 const App = () => {
   const { isLoggedIn } = useAuth()
-  const LoaderComponent = () => (
-    <div id="">
-      <div id="status">
-        <div className="spinner">
-          <div className="double-bounce1"></div>
-          <div className="double-bounce2"></div>
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <React.Fragment>

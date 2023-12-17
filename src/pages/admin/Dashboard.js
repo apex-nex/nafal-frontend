@@ -24,6 +24,7 @@ const Dashboard = () => {
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false)
 
   function toggleDelete(state = true) {
     setDeleteModal(!state)
@@ -39,13 +40,16 @@ const Dashboard = () => {
   };
 
   const fetchData = async (url = '/form') => {
+    setLoading(true)
     try {
       const data = await get(url);
       setData(data);
       setNextPage(data.next);
       setPrevPage(data.previous);
+      setLoading(false)
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false)
     }
   };
 
@@ -311,61 +315,71 @@ const Dashboard = () => {
                               </tr>
                             </thead>
                             <tbody>
-                              {!isEmpty(data) ? (
-                                data?.results?.map((item, index) => (
-                                  <tr key={index}>
-                                    <td>{1 + index}</td>
-                                    <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
-                                    <td>{item.email?.substring(0, 30)}</td>
-                                    <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
-                                    <td>{item.subject?.substring(0, 20)}</td>
-                                    <td>
-                                      <select
-                                        value={item?.status}
-                                        onChange={(e) => updateStatus(item?._id, e.target.value)}
-                                        style={{ border: 'none', outline: 'none', backgroundColor: 'transparent', padding: '0' }}
-                                        className="text-start"
-                                      >
-                                        <option value="pending">Pending</option>
-                                        <option value="contacted">Contacted</option>
-                                        <option value="resolved">Resolved</option>
-                                      </select>
-                                    </td>
-                                    <td>
-                                      <Link
-                                        title={item?.date && moment(item?.date).format('lll')}
-                                        to="#"
-                                        className="text-reset"
-                                      >
-                                        {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available"}
-                                      </Link>
-                                    </td>
-                                    <td>{item.comments.substring(0, 20)}</td>
-                                    <td>
-                                      <UncontrolledDropdown className="ms-auto">
-                                        <DropdownToggle className="text-muted font-size-16" color="white">
-                                          <i className="mdi mdi-dots-horizontal"></i>
-                                        </DropdownToggle>
-                                        <DropdownMenu className="dropdown-menu-end">
-                                          <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
-                                            View
-                                          </Link>
-                                          <Link className="dropdown-item" to="#" onClick={() => handleDelete(item._id)}>
-                                            Remove
-                                          </Link>
-                                        </DropdownMenu>
-                                      </UncontrolledDropdown>
+                              {
+                                loading ? (
+                                  <tr>
+                                    <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                      <p className="text-center mt-3">Fetching contact form data... Please wait.</p>
                                     </td>
                                   </tr>
+                                ) : (
+                                  data?.results?.length > 0 ? (
+                                    data?.results?.map((item, index) => (
+                                      <tr key={index}>
+                                        <td>{1 + index}</td>
+                                        <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
+                                        <td>{item.email?.substring(0, 30)}</td>
+                                        <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
+                                        <td>{item.subject?.substring(0, 20)}</td>
+                                        <td>
+                                          <select
+                                            value={item?.status}
+                                            onChange={(e) => updateStatus(item?._id, e.target.value)}
+                                            style={{ border: 'none', outline: 'none', backgroundColor: 'transparent', padding: '0' }}
+                                            className="text-start"
+                                          >
+                                            <option value="pending">Pending</option>
+                                            <option value="contacted">Contacted</option>
+                                            <option value="resolved">Resolved</option>
+                                          </select>
+                                        </td>
+                                        <td>
+                                          <Link
+                                            title={item?.date && moment(item?.date).format('lll')}
+                                            to="#"
+                                            className="text-reset"
+                                          >
+                                            {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available"}
+                                          </Link>
+                                        </td>
+                                        <td>{item.comments.substring(0, 20)}</td>
+                                        <td>
+                                          <UncontrolledDropdown className="ms-auto">
+                                            <DropdownToggle className="text-muted font-size-16" color="white">
+                                              <i className="mdi mdi-dots-horizontal"></i>
+                                            </DropdownToggle>
+                                            <DropdownMenu className="dropdown-menu-end">
+                                              <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
+                                                View
+                                              </Link>
+                                              <Link className="dropdown-item" to="#" onClick={() => handleDelete(item._id)}>
+                                                Remove
+                                              </Link>
+                                            </DropdownMenu>
+                                          </UncontrolledDropdown>
+                                        </td>
+                                      </tr>
+                                    )
+                                    )
+                                  ) : (
+                                    <tr>
+                                      <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                        <p className="text-center mt-3">No Data Available!</p>
+                                      </td>
+                                    </tr>
+                                  )
                                 )
-                                )
-                              ) : (
-                                <tr>
-                                  <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                    <p className="text-center mt-3">{data?.message}</p>
-                                  </td>
-                                </tr>
-                              )}
+                              }
                             </tbody>
                           </Table>
                         </div>
