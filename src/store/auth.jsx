@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     // JWT Authentication - verify user
-
     const userAuthentication = async () => {
         console.log("token", token)
         try {

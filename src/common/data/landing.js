@@ -1577,7 +1577,7 @@ const eventPricingsData = [
     price: "09",
     duration: "Day",
     desc:
-      "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.",
+      "Start working with Nafal that can provide everything you need to generate awareness, drive traffic, connect.",
   },
   {
     id: 2,
@@ -1586,7 +1586,7 @@ const eventPricingsData = [
     price: "24",
     duration: "Full",
     desc:
-      "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.",
+      "Start working with Nafal that can provide everything you need to generate awareness, drive traffic, connect.",
     isActive: true,
   },
   {
@@ -1596,7 +1596,7 @@ const eventPricingsData = [
     price: "16",
     duration: "Day",
     desc:
-      "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.",
+      "Start working with Nafal that can provide everything you need to generate awareness, drive traffic, connect.",
   },
 ];
 
