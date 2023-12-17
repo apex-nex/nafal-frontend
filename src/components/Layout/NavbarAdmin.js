@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Dropdown, DropdownMenu, DropdownToggle, Form, Modal, ModalBody } from 'reactstrap';
-import logo from '../../assets/images/nafal/logo/nafal-logo.png';
+import logo from '../../assets/images/logo/nafal-logo.png';
 import FeatherIcon from 'feather-icons-react';
 import { useAuth } from "../../store/auth"
 

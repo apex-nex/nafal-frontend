@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import FeatherIcon from "feather-icons-react";
-import img404 from "../../assets/images/nafal/error/404.svg";
+import img404 from "../../assets/images/error/404.svg";
 
 const PageError = () => {
   return (

@@ -65,7 +65,7 @@ const ClientSection = (props) => {
                               <CardBody className="p-3">
                                 <div className="content mt-3">
                                   <div className="position-relative text-center">
-                                    <img src={require(`../../assets/images/nafal/home/clients/${client.img}`)}
+                                    <img src={require(`../../assets/images/home/clients/${client.img}`)}
                                       className="avatar avatar-small rounded-pill shadow"
                                       alt="logo"
                                     />

@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Input, Label, Button, Card, CardBody, FormFe
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import FeatherIcon from "feather-icons-react";
-import loginImg from "../../assets/images/nafal/admin/login.svg";
+import loginImg from "../../assets/images/admin/login.svg";
 import { post } from "../../components/helpers/api_helper";
 import { toast } from 'react-toastify';
 import MetaTags from 'react-meta-tags';

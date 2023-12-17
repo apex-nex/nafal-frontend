@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 
 // import images
-import img from '../../assets/images/nafal/home/video/img.svg';
+import img from '../../assets/images/home/video/img.svg';
 
 // Modal Video
 import ModalVideo from 'react-modal-video';

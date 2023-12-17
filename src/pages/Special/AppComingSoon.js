@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import FeatherIcon from "feather-icons-react";
-import logoNafal from '../../assets/images/nafal/logo/nafal-logo.png';
+import logoNafal from '../../assets/images/logo/nafal-logo.png';
 
 const AppComingSoon = () => {
   return (

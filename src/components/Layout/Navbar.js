@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logoDark from "../../assets/images/nafal/logo/nafal-logo.png";
-import logoLight from "../../assets/images/nafal/logo/nafal-logo.png";
+import logoDark from "../../assets/images/logo/nafal-logo.png";
+import logoLight from "../../assets/images/logo/nafal-logo.png";
 
 const Navbar = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
