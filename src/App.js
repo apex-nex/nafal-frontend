@@ -3,7 +3,7 @@ import Layout from "./components/Layout/index";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./assets/css/materialdesignicons.min.css"
 import "./Apps.scss";
-// import "./assets/css/colors/default.css";
+import "./assets/css/colors/skyblue.css";
 import routes from "./routes/allRoutes";
 import withRouter from "./common/data/withRouter";
 import 'react-toastify/dist/ReactToastify.css';
