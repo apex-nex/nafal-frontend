@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import MetaTags from "react-meta-tags"
-import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
@@ -10,13 +10,14 @@ import { get, patch, remove } from "../../components/helpers/api_helper"
 import { toast } from "react-toastify"
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
+import { getStatusClass } from "../../common/data/utils/common"
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
   const [data, setData] = useState({})
   const [period, setPeriod] = useState({})
   const [defaultDate, setDefaultDate] = useState([])
-  const [message, setMessage] = useState(null)
+  const [viewRecord, setViewRecord] = useState({})
   const [modal, setModal] = useState(false);
   const [id, setId] = useState([])
   const [deleteModal, setDeleteModal] = useState(false)
@@ -24,6 +25,7 @@ const Dashboard = () => {
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false)
 
   function toggleDelete(state = true) {
     setDeleteModal(!state)
@@ -39,19 +41,24 @@ const Dashboard = () => {
   };
 
   const fetchData = async (url = '/form') => {
+    setLoading(true)
     try {
       const data = await get(url);
       setData(data);
       setNextPage(data.next);
       setPrevPage(data.previous);
+      setLoading(false)
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false)
     }
   };
 
-  const handlePageChange = (pageUrl, newPage) => {
-    fetchData(pageUrl);
-    setCurrentPage(newPage);
+  const loadPage = (pageUrl, newPage) => {
+    if (newPage && newPage !== currentPage) {
+      fetchData(pageUrl);
+      setCurrentPage(newPage);
+    }
   };
 
   useEffect(() => {
@@ -70,13 +77,6 @@ const Dashboard = () => {
     }
   };
 
-  const loadPage = (page) => {
-    if (page && page !== currentPage) {
-      //api call
-      setCurrentPage(page)
-    }
-  }
-
   const onPeriodChange = (period) => {
     let now = moment.utc();
     let start, end;
@@ -84,8 +84,8 @@ const Dashboard = () => {
     start = now.clone().subtract(period, 'days').format('YYYY-MM-DD');
     end = now.clone().format('YYYY-MM-DD');
 
-    // onDaterangeChange([start, end]);
-    // dateRangeRef.current.flatpickr.clear();
+    onDateRangeChange([start, end]);
+    dateRangeRef.current.flatpickr.clear();
     setPeriod({
       value: period,
       start: start,
@@ -94,8 +94,8 @@ const Dashboard = () => {
     setDefaultDate([start, end]);
   }
 
-  const handleClick = (msg) => {
-    setMessage(msg)
+  const handleClick = (obj) => {
+    setViewRecord(obj)
     tog_modal()
   }
 
@@ -211,6 +211,15 @@ const Dashboard = () => {
     }
   };
 
+  const onDateRangeChange = (dateRange) => {
+    if (!isEmpty(dateRange)) {
+      let [start_date, end_date] = [moment(dateRange[0]), moment(dateRange[1])]
+      let date_ranges = [start_date.format("YYYY-MM-DD"), end_date.format("YYYY-MM-DD")]
+      console.log("date_ranges", date_ranges)
+      fetchData(`/form/?date=${date_ranges[0]}&date_end=${date_ranges[1]}`)
+      setPeriod({})
+    }
+  }
 
 
   return (
@@ -244,7 +253,7 @@ const Dashboard = () => {
                       <Col>
                         <div className="d-flex justify-content-end">
                           <div className="ms-2 text-start">
-                            <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success">
+                            <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success" onClick={() => fetchData()}>
                               Refresh
                             </Button>
                             <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={generatePDF}>
@@ -262,8 +271,10 @@ const Dashboard = () => {
                                   dateFormat: "Y-m-d",
                                   minDate: "2000-01",
                                   maxDate: "today",
-                                  defaultDate: "11-02-2023"
+                                  defaultDate: !isEmpty(defaultDate) ? defaultDate : []
                                 }}
+                                ref={dateRangeRef}
+                                onClose={onDateRangeChange}
                               />
                             </InputGroup>
                           </div>
@@ -311,61 +322,71 @@ const Dashboard = () => {
                               </tr>
                             </thead>
                             <tbody>
-                              {!isEmpty(data) ? (
-                                data?.results?.map((item, index) => (
-                                  <tr key={index}>
-                                    <td>{1 + index}</td>
-                                    <td><Link to="#" onClick={() => handleClick(item.Message)}>{item.name?.substring(0, 22)}</Link></td>
-                                    <td>{item.email?.substring(0, 30)}</td>
-                                    <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
-                                    <td>{item.subject?.substring(0, 20)}</td>
-                                    <td>
-                                      <select
-                                        value={item?.status}
-                                        onChange={(e) => updateStatus(item?._id, e.target.value)}
-                                        style={{ border: 'none', outline: 'none', backgroundColor: 'transparent', padding: '0' }}
-                                        className="text-start"
-                                      >
-                                        <option value="pending">Pending</option>
-                                        <option value="contacted">Contacted</option>
-                                        <option value="resolved">Resolved</option>
-                                      </select>
-                                    </td>
-                                    <td>
-                                      <Link
-                                        title={item?.date && moment(item?.date).format('lll')}
-                                        to="#"
-                                        className="text-reset"
-                                      >
-                                        {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available"}
-                                      </Link>
-                                    </td>
-                                    <td>{item.comments.substring(0, 20)}</td>
-                                    <td>
-                                      <UncontrolledDropdown className="ms-auto">
-                                        <DropdownToggle className="text-muted font-size-16" color="white">
-                                          <i className="mdi mdi-dots-horizontal"></i>
-                                        </DropdownToggle>
-                                        <DropdownMenu className="dropdown-menu-end">
-                                          <Link className="dropdown-item" to="#" onClick={() => handleClick(item.Message)}>
-                                            View
-                                          </Link>
-                                          <Link className="dropdown-item" to="#" onClick={() => handleDelete(item._id)}>
-                                            Remove
-                                          </Link>
-                                        </DropdownMenu>
-                                      </UncontrolledDropdown>
+                              {
+                                loading ? (
+                                  <tr>
+                                    <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                      <p className="text-center mt-3">Fetching contact form data... Please wait.</p>
                                     </td>
                                   </tr>
+                                ) : (
+                                  data?.results?.length > 0 ? (
+                                    data?.results?.map((item, index) => (
+                                      <tr key={index}>
+                                        <td>{1 + index}</td>
+                                        <td><Link to="#" onClick={() => handleClick(item)}>{item.name?.substring(0, 22)}</Link></td>
+                                        <td>{item.email?.substring(0, 30)}</td>
+                                        <td>{item?.mobile?.toString()?.slice(0, 12)}</td>
+                                        <td>{item.subject?.substring(0, 20)}</td>
+                                        <td>
+                                          <select
+                                            value={item?.status}
+                                            onChange={(e) => updateStatus(item?._id, e.target.value)}
+                                            style={{ border: 'none', outline: 'none', backgroundColor: 'transparent', padding: '0' }}
+                                            className="text-start"
+                                          >
+                                            <option value="pending">Pending</option>
+                                            <option value="contacted">Contacted</option>
+                                            <option value="resolved">Resolved</option>
+                                          </select>
+                                        </td>
+                                        <td>
+                                          <Link
+                                            title={item?.date && moment(item?.date).format('lll')}
+                                            to="#"
+                                            className="text-reset"
+                                          >
+                                            {item?.date ? moment(item?.date).format('MMM D, YYYY') : "Not Available"}
+                                          </Link>
+                                        </td>
+                                        <td>{item.comments.substring(0, 20)}</td>
+                                        <td>
+                                          <UncontrolledDropdown className="ms-auto">
+                                            <DropdownToggle className="text-muted font-size-16" color="white">
+                                              <i className="mdi mdi-dots-horizontal"></i>
+                                            </DropdownToggle>
+                                            <DropdownMenu className="dropdown-menu-end">
+                                              <Link className="dropdown-item" to="#" onClick={() => handleClick(item)}>
+                                                View
+                                              </Link>
+                                              <Link className="dropdown-item" to="#" onClick={() => handleDelete(item._id)}>
+                                                Remove
+                                              </Link>
+                                            </DropdownMenu>
+                                          </UncontrolledDropdown>
+                                        </td>
+                                      </tr>
+                                    )
+                                    )
+                                  ) : (
+                                    <tr>
+                                      <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
+                                        <p className="text-center mt-3">No Data Available!</p>
+                                      </td>
+                                    </tr>
+                                  )
                                 )
-                                )
-                              ) : (
-                                <tr>
-                                  <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                    <p className="text-center mt-3">{data?.message}</p>
-                                  </td>
-                                </tr>
-                              )}
+                              }
                             </tbody>
                           </Table>
                         </div>
@@ -379,7 +400,7 @@ const Dashboard = () => {
                                   {
                                     !isEmpty(prevPage) && (
                                       <PaginationItem disabled={!prevPage}>
-                                        <PaginationLink previous href="#" onClick={() => handlePageChange(prevPage, currentPage - 1)}>
+                                        <PaginationLink previous href="#" onClick={() => loadPage(prevPage, currentPage - 1)}>
                                           Prev
                                         </PaginationLink>
                                       </PaginationItem>
@@ -390,7 +411,7 @@ const Dashboard = () => {
                                     <PaginationItem key={index + 1} active={index + 1 === currentPage}>
                                       <PaginationLink
                                         href="#"
-                                        onClick={() => handlePageChange(`/form?page=${index + 1}&limit=10`, index + 1)}
+                                        onClick={() => loadPage(`/form?page=${index + 1}&limit=10`, index + 1)}
                                       >
                                         {index + 1}
                                       </PaginationLink>
@@ -400,7 +421,7 @@ const Dashboard = () => {
                                   {
                                     !isEmpty(nextPage) && (
                                       <PaginationItem disabled={!nextPage}>
-                                        <PaginationLink next href="#" onClick={() => handlePageChange(nextPage, currentPage + 1)}>
+                                        <PaginationLink next href="#" onClick={() => loadPage(nextPage, currentPage + 1)}>
                                           Next
                                         </PaginationLink>
                                       </PaginationItem>
@@ -429,11 +450,23 @@ const Dashboard = () => {
                             autoFocus={true}
                             className="border-bottom"
                           >
-                            Full Message
+                            {viewRecord?.name}
+                            <Link
+                              to="#"
+                              className={`btn ms-4 btn-sm ${getStatusClass(viewRecord?.status)}`}
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="left"
+                              title={viewRecord?.date && moment(viewRecord?.date).format('lll')}
+                            >
+                              {viewRecord?.status}
+                            </Link>
                           </ModalHeader>
                           <ModalBody>
-                            <div className="bg-white p-3 rounded box-shadow">
-                              <p className="text-muted mb-0">{message}</p>
+                            <div className="bg-light p-4 rounded box-shadow">
+                              <p className="mb-2">Subject: {viewRecord?.subject}</p>
+                              <p className="mb-2">Email: {viewRecord?.email}</p>
+                              <p className="mb-2">Mobile: {viewRecord?.mobile}</p>
+                              <p className="mb-0">Message: {viewRecord?.comments}</p>
                             </div>
                           </ModalBody>
                           <ModalFooter>
