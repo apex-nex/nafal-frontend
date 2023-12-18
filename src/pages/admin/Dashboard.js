@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import MetaTags from "react-meta-tags"
-import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
@@ -84,8 +84,8 @@ const Dashboard = () => {
     start = now.clone().subtract(period, 'days').format('YYYY-MM-DD');
     end = now.clone().format('YYYY-MM-DD');
 
-    // onDateRangeChange([start, end]);
-    // dateRangeRef.current.flatpickr.clear();
+    onDateRangeChange([start, end]);
+    dateRangeRef.current.flatpickr.clear();
     setPeriod({
       value: period,
       start: start,
@@ -216,6 +216,7 @@ const Dashboard = () => {
       let [start_date, end_date] = [moment(dateRange[0]), moment(dateRange[1])]
       let date_ranges = [start_date.format("YYYY-MM-DD"), end_date.format("YYYY-MM-DD")]
       console.log("date_ranges", date_ranges)
+      fetchData(`/form/?date=${date_ranges[0]}&date_end=${date_ranges[1]}`)
       setPeriod({})
     }
   }
@@ -270,7 +271,7 @@ const Dashboard = () => {
                                   dateFormat: "Y-m-d",
                                   minDate: "2000-01",
                                   maxDate: "today",
-                                  defaultDate: "11-02-2023"
+                                  defaultDate: !isEmpty(defaultDate) ? defaultDate : []
                                 }}
                                 ref={dateRangeRef}
                                 onClose={onDateRangeChange}
