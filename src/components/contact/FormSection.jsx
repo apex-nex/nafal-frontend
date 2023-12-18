@@ -10,6 +10,7 @@ const FormSection = () => {
   const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
   const [form, setForm] = useState(defaultContactForm);
   const [formError, setFormError] = useState(defaultContactForm);
+  const [loading, setLoading] = useState(false)
 
   // handling the input values
   const handleInput = (e) => {
@@ -25,6 +26,7 @@ const FormSection = () => {
   // handling the form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await post('/form', form);
 
@@ -40,6 +42,8 @@ const FormSection = () => {
         setFormError(error)
         toast.error(error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -196,7 +200,8 @@ const FormSection = () => {
                             id="submit"
                             name="send"
                             className="submitBnt btn btn-primary"
-                            value="Send Message"
+                            value={loading ? "Sending..." : "Send Message"}
+                            disabled={loading}
                           />
                         </div>
                         <div id="simple-msg"></div>
