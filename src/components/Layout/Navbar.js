@@ -89,7 +89,7 @@ const Navbar = (props) => {
     }
 
     // Close the mobile menu
-    isToggleMenu();
+    hideToggleMenu();
   };
 
 
@@ -103,6 +103,16 @@ const Navbar = (props) => {
       } else {
         isOpen.style.display = "block";
       }
+    }
+  };
+
+  const hideToggleMenu = () => {
+    const isToggle = document.getElementById("isToggle");
+    const isOpen = document.getElementById('navigation');
+  
+    if (isToggle && isOpen) {
+      isToggle.classList.remove("open");
+      isOpen.style.display = "none";
     }
   };
 
