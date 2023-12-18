@@ -88,8 +88,8 @@ const Navbar = (props) => {
       }
     }
 
-    // Close the mobile menu
-    isToggleMenu();
+    // Close the mobile menu by updating the state directly
+    setDropdownOpen(false);
   };
 
 
