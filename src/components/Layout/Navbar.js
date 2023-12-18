@@ -55,7 +55,7 @@ const Navbar = (props) => {
 
   const activateMenu = () => {
     const menuItems = document.getElementsByClassName("sub-menu-item");
-  
+
     // Remove 'active' class from all menu items
     for (let i = 0; i < menuItems.length; i++) {
       menuItems[i].classList.remove('active');
@@ -68,7 +68,7 @@ const Navbar = (props) => {
         parent.classList.remove('active');
       }
     }
-  
+
     // Add 'active' class to the matching menu item
     let matchingMenuItem = null;
     for (let idx = 0; idx < menuItems.length; idx++) {
@@ -87,8 +87,11 @@ const Navbar = (props) => {
         parent.classList.add('active');
       }
     }
+
+    // Close the mobile menu
+    isToggleMenu();
   };
-  
+
 
   const isToggleMenu = () => {
     const isToggle = document.getElementById("isToggle");
