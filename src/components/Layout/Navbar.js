@@ -47,34 +47,48 @@ const Navbar = (props) => {
     return () => {
       window.removeEventListener("scroll", handleScroll, true);
     };
-  }, [props.type]);
+  }, [window.location.href]);
 
   useEffect(() => {
     activateMenu();
-  }, [props.type]);
+  }, [window.location.href]);
 
   const activateMenu = () => {
     const menuItems = document.getElementsByClassName("sub-menu-item");
-    if (menuItems) {
-      let matchingMenuItem = null;
-      for (let idx = 0; idx < menuItems.length; idx++) {
-        if (menuItems[idx].href === window.location.href) {
-          matchingMenuItem = menuItems[idx];
-        }
+  
+    // Remove 'active' class from all menu items
+    for (let i = 0; i < menuItems.length; i++) {
+      menuItems[i].classList.remove('active');
+      const immediateParent = menuItems[i].closest('li');
+      if (immediateParent) {
+        immediateParent.classList.remove('active');
       }
-      if (matchingMenuItem) {
-        matchingMenuItem.classList.add('active');
-        const immediateParent = matchingMenuItem.closest('li');
-        if (immediateParent) {
-          immediateParent.classList.add('active');
-        }
-        const parent = matchingMenuItem.closest(".parent-menu-item");
-        if (parent) {
-          parent.classList.add('active');
-        }
+      const parent = menuItems[i].closest(".parent-menu-item");
+      if (parent) {
+        parent.classList.remove('active');
+      }
+    }
+  
+    // Add 'active' class to the matching menu item
+    let matchingMenuItem = null;
+    for (let idx = 0; idx < menuItems.length; idx++) {
+      if (menuItems[idx].href === window.location.href) {
+        matchingMenuItem = menuItems[idx];
+      }
+    }
+    if (matchingMenuItem) {
+      matchingMenuItem.classList.add('active');
+      const immediateParent = matchingMenuItem.closest('li');
+      if (immediateParent) {
+        immediateParent.classList.add('active');
+      }
+      const parent = matchingMenuItem.closest(".parent-menu-item");
+      if (parent) {
+        parent.classList.add('active');
       }
     }
   };
+  
 
   const isToggleMenu = () => {
     const isToggle = document.getElementById("isToggle");
