@@ -119,8 +119,21 @@ const Dashboard = () => {
     }
   };
 
+  const formatDateRange = (dateStrings) => {
+    const dates = dateStrings.map((dateString) => moment(dateString));
+    const minDate = moment.min(dates);
+    const maxDate = moment.max(dates);
+    const formattedMinDate = minDate.format('D MMMM YYYY');
+    const formattedMaxDate = maxDate.format('D MMMM YYYY');
+    const output = `${formattedMinDate} to ${formattedMaxDate}`;
+    return output;
+  };
+
 
   const generatePDF = () => {
+    const dateStrings = data?.results?.map((item) => item.date);
+    const duration = formatDateRange(dateStrings);
+
     const headers = ['Index', 'Name', 'Email', 'Mobile', 'Subject', 'Status', 'Created Date', 'Message'];
     const doc = new jsPDF('l');
 
@@ -133,7 +146,7 @@ const Dashboard = () => {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
     doc.text('Generated on: ' + moment().format('lll'), 14, 22);
-    doc.text('Duration: 1 April 2020 to 31 March 2021', 14, 16);
+    doc.text(`Duration: ${duration}`, 14, 16);
 
     const modifiedData = data?.results?.map((item, index) => ([
       1 + index,
@@ -149,7 +162,7 @@ const Dashboard = () => {
     const columnStyles = {
       0: { cellWidth: 14 },
       1: { cellWidth: 35 },
-      2: { cellWidth: 59 },
+      2: { cellWidth: 58 },
       3: { cellWidth: 28 },
       4: { cellWidth: 38 },
       5: { cellWidth: 19 },
@@ -182,7 +195,7 @@ const Dashboard = () => {
       return;
     }
 
-    doc.save('table.pdf');
+    doc.save(`contact_form_${moment().format("YYYY-MM-DD")}.pdf`);
   };
 
   const updateStatusById = (id, newStatus) => {
@@ -253,7 +266,10 @@ const Dashboard = () => {
                       <Col>
                         <div className="d-flex justify-content-end">
                           <div className="ms-2 text-start">
-                            <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success" onClick={() => fetchData()}>
+                            <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success"
+                              onClick={() => fetchData()}
+                              disabled={loading}
+                            >
                               Refresh
                             </Button>
                             <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={generatePDF}>
@@ -326,7 +342,10 @@ const Dashboard = () => {
                                 loading ? (
                                   <tr>
                                     <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                      <p className="text-center mt-3">Fetching contact form data... Please wait.</p>
+                                      <p className="text-center mt-5 mb-5">
+                                        <i className="mdi mdi-loading mdi-spin font-size-16 align-middle me-2"></i>{" "}
+                                        Fetching contact form data...
+                                      </p>
                                     </td>
                                   </tr>
                                 ) : (
@@ -381,7 +400,9 @@ const Dashboard = () => {
                                   ) : (
                                     <tr>
                                       <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                        <p className="text-center mt-3">No Data Available!</p>
+                                        <p className="text-center mt-5 mb-5">
+                                          No records existed
+                                        </p>
                                       </td>
                                     </tr>
                                   )
