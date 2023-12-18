@@ -26,6 +26,7 @@ const Dashboard = () => {
   const [prevPage, setPrevPage] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false)
+  const [isFilterMode, setIsFilterMode] = useState(false)
 
   function toggleDelete(state = true) {
     setDeleteModal(!state)
@@ -47,6 +48,7 @@ const Dashboard = () => {
       setData(data);
       setNextPage(data.next);
       setPrevPage(data.previous);
+      setIsFilterMode(data.isFiler)
       setLoading(false)
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -73,6 +75,7 @@ const Dashboard = () => {
       clearTimeout(suTo);
       suTo = setTimeout(() => {
         fetchData(`/form/?search=${value}`)
+        setCurrentPage(1)
       }, 200);
     }
   };
@@ -119,8 +122,21 @@ const Dashboard = () => {
     }
   };
 
+  const formatDateRange = (dateStrings) => {
+    const dates = dateStrings.map((dateString) => moment(dateString));
+    const minDate = moment.min(dates);
+    const maxDate = moment.max(dates);
+    const formattedMinDate = minDate.format('D MMMM YYYY');
+    const formattedMaxDate = maxDate.format('D MMMM YYYY');
+    const output = `${formattedMinDate} to ${formattedMaxDate}`;
+    return output;
+  };
+
 
   const generatePDF = () => {
+    const dateStrings = data?.results?.map((item) => item.date);
+    const duration = formatDateRange(dateStrings);
+
     const headers = ['Index', 'Name', 'Email', 'Mobile', 'Subject', 'Status', 'Created Date', 'Message'];
     const doc = new jsPDF('l');
 
@@ -133,7 +149,7 @@ const Dashboard = () => {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
     doc.text('Generated on: ' + moment().format('lll'), 14, 22);
-    doc.text('Duration: 1 April 2020 to 31 March 2021', 14, 16);
+    doc.text(`Duration: ${duration}`, 14, 16);
 
     const modifiedData = data?.results?.map((item, index) => ([
       1 + index,
@@ -149,7 +165,7 @@ const Dashboard = () => {
     const columnStyles = {
       0: { cellWidth: 14 },
       1: { cellWidth: 35 },
-      2: { cellWidth: 59 },
+      2: { cellWidth: 58 },
       3: { cellWidth: 28 },
       4: { cellWidth: 38 },
       5: { cellWidth: 19 },
@@ -182,7 +198,7 @@ const Dashboard = () => {
       return;
     }
 
-    doc.save('table.pdf');
+    doc.save(`contact_form_${moment().format("YYYY-MM-DD")}.pdf`);
   };
 
   const updateStatusById = (id, newStatus) => {
@@ -215,8 +231,8 @@ const Dashboard = () => {
     if (!isEmpty(dateRange)) {
       let [start_date, end_date] = [moment(dateRange[0]), moment(dateRange[1])]
       let date_ranges = [start_date.format("YYYY-MM-DD"), end_date.format("YYYY-MM-DD")]
-      console.log("date_ranges", date_ranges)
-      fetchData(`/form/?date=${date_ranges[0]}&date_end=${date_ranges[1]}`)
+      setDefaultDate([date_ranges[0], date_ranges[1]])
+      fetchData(`/form/filter?date=${date_ranges[0]}&date_end=${date_ranges[1]}`)
       setPeriod({})
     }
   }
@@ -253,13 +269,25 @@ const Dashboard = () => {
                       <Col>
                         <div className="d-flex justify-content-end">
                           <div className="ms-2 text-start">
-                            <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success" onClick={() => fetchData()}>
+                            <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success"
+                              onClick={() => {
+                                fetchData()
+                                setCurrentPage(1)
+                                dateRangeRef.current.flatpickr.clear();
+                              }}
+                              disabled={loading}
+                            >
                               Refresh
                             </Button>
-                            <Button color="success" className="btn btn-success btn-sm me-2 mb-1" id="sa-success" onClick={generatePDF}>
+                            <Button
+                              color="success"
+                              className="btn btn-success btn-sm me-2 mb-1"
+                              id="sa-success"
+                              onClick={generatePDF}
+                              disabled={loading}
+                            >
                               Download
                             </Button>
-
                           </div>
                           <div className="ms-2 me-2 text-center">
                             <InputGroup>
@@ -271,9 +299,10 @@ const Dashboard = () => {
                                   dateFormat: "Y-m-d",
                                   minDate: "2000-01",
                                   maxDate: "today",
-                                  defaultDate: !isEmpty(defaultDate) ? defaultDate : []
+                                  defaultDate: []
                                 }}
                                 ref={dateRangeRef}
+                                value={defaultDate || []}
                                 onClose={onDateRangeChange}
                               />
                             </InputGroup>
@@ -283,6 +312,7 @@ const Dashboard = () => {
                               className="btn-sm me-1 mb-1"
                               color={period.value === 30 ? 'primary' : 'light'}
                               onClick={() => onPeriodChange(30)}
+                              disabled={loading}
                             >
                               1 Month
                             </Button>
@@ -290,13 +320,15 @@ const Dashboard = () => {
                               className="btn-sm me-1 mb-1"
                               color={period.value === 90 ? 'primary' : 'light'}
                               onClick={() => onPeriodChange(90)}
+                              disabled={loading}
                             >
                               3 Months
                             </Button>
                             <Button
                               className="btn-sm mb-1"
-                              color={period.value === 90 ? 'primary' : 'light'}
-                              onClick={() => onPeriodChange(90)}
+                              color={period.value === 180 ? 'primary' : 'light'}
+                              onClick={() => onPeriodChange(180)}
+                              disabled={loading}
                             >
                               6 Months
                             </Button>
@@ -326,7 +358,10 @@ const Dashboard = () => {
                                 loading ? (
                                   <tr>
                                     <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                      <p className="text-center mt-3">Fetching contact form data... Please wait.</p>
+                                      <p className="text-center mt-5 mb-5">
+                                        <i className="mdi mdi-loading mdi-spin font-size-16 align-middle me-2"></i>{" "}
+                                        Fetching contact form data...
+                                      </p>
                                     </td>
                                   </tr>
                                 ) : (
@@ -381,7 +416,9 @@ const Dashboard = () => {
                                   ) : (
                                     <tr>
                                       <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                        <p className="text-center mt-3">No Data Available!</p>
+                                        <p className="text-center mt-5 mb-5">
+                                          No records existed
+                                        </p>
                                       </td>
                                     </tr>
                                   )
@@ -411,7 +448,14 @@ const Dashboard = () => {
                                     <PaginationItem key={index + 1} active={index + 1 === currentPage}>
                                       <PaginationLink
                                         href="#"
-                                        onClick={() => loadPage(`/form?page=${index + 1}&limit=10`, index + 1)}
+                                        onClick={() => {
+                                          const pageNo = index + 1
+                                          const endpoint = isFilterMode
+                                            ? `/form/filter?page=${pageNo}&date=${defaultDate[0]}&date_end=${defaultDate[1]}`
+                                            : `/form?page=${pageNo}`;
+
+                                          loadPage(endpoint, pageNo)
+                                        }}
                                       >
                                         {index + 1}
                                       </PaginationLink>
