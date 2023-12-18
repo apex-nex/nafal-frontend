@@ -25,7 +25,6 @@ export const post = async (url, data) => {
         const response = await api.post(url, data);
         return response.data;
     } catch (error) {
-        console.log("error", error)
         throw error?.response?.data?.error;
     }
 };

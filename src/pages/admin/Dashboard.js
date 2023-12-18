@@ -49,10 +49,10 @@ const Dashboard = () => {
       setNextPage(data.next);
       setPrevPage(data.previous);
       setIsFilterMode(data.isFiler)
-      setLoading(false)
     } catch (error) {
       console.error("Error fetching data:", error);
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -348,7 +348,7 @@ const Dashboard = () => {
                                 <th>Mobile</th>
                                 <th>Subject</th>
                                 <th>Status</th>
-                                <th>Created Time</th>
+                                <th>Created At</th>
                                 <th>Message</th>
                                 <th>Action</th>
                               </tr>

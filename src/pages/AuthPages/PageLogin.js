@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Form, Input, Label, Button, Card, CardBody, FormFeedback} from "reactstrap";
+import { Container, Row, Col, Form, Input, Label, Button, Card, CardBody, FormFeedback } from "reactstrap";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import FeatherIcon from "feather-icons-react";
@@ -15,6 +15,7 @@ const PageLogin = () => {
   const defaultLoginForm = { email: "", password: "" }
   const [user, setUser] = useState(defaultLoginForm)
   const [formError, setFormError] = useState(defaultLoginForm);
+  const [loading, setLoading] = useState(false)
 
   const validation = useFormik({
     enableReinitialize: true,
@@ -36,6 +37,7 @@ const PageLogin = () => {
 
   // handling the login submission
   const handleSubmit = async (values) => {
+    setLoading(true);
     try {
       const response = await post('/admin/login', values);
       if (response?.ok) {
@@ -48,6 +50,8 @@ const PageLogin = () => {
     } catch (error) {
       setFormError(error)
       toast.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -183,7 +187,7 @@ const PageLogin = () => {
                       </Col>
                       <Col lg={12} className="mb-0">
                         <div className="d-grid">
-                          <Button color="primary">
+                          <Button color="primary" disabled={loading}>
                             Sign in
                           </Button>
                         </div>
