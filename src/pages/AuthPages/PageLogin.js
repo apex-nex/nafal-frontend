@@ -187,9 +187,16 @@ const PageLogin = () => {
                       </Col>
                       <Col lg={12} className="mb-0">
                         <div className="d-grid">
-                          <Button color="primary" disabled={loading}>
-                            Log in
-                          </Button>
+                          {loading ?
+                            <Button color="primary" disabled>
+                              Log in
+                              <i className="bx bx-loader bx-spin font-size-16 align-middle ms-2"></i>
+                            </Button>
+                            :
+                            <Button color="primary" >
+                              Log in
+                            </Button>
+                          }
                         </div>
                       </Col>
                     </Row>

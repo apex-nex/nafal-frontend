@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Alert, Form, Input, Label, Card, CardBody } from 'reactstrap';
+import { Container, Row, Col, Alert, Form, Input, Label, Card, CardBody, Button } from 'reactstrap';
 import FeatherIcon from 'feather-icons-react';
 import contact from '../../assets/images/contact/contact.svg';
 import { post } from '../helpers/api_helper';
@@ -195,14 +195,24 @@ const FormSection = () => {
                     <Row>
                       <Col sm={12} className="text-center">
                         <div className="d-grid">
-                          <input
+                          {/* <input
                             type="submit"
                             id="submit"
                             name="send"
                             className="submitBnt btn btn-primary"
                             value={loading ? "Sending..." : "Send Message"}
                             disabled={loading}
-                          />
+                          /> */}
+                          {loading ?
+                            <Button color="primary" disabled>
+                              Send Message
+                              <i className="bx bx-loader bx-spin font-size-16 align-middle ms-2"></i>
+                            </Button>
+                            :
+                            <Button color="primary" type="submit">
+                              Send Message
+                            </Button>
+                          }
                         </div>
                         <div id="simple-msg"></div>
                       </Col>

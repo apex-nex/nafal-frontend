@@ -359,10 +359,9 @@ const Dashboard = () => {
                                 loading ? (
                                   <tr>
                                     <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                      <p className="text-center mt-5 mb-5">
-                                        <i className="mdi mdi-loading mdi-spin font-size-16 align-middle me-2"></i>{" "}
-                                        Fetching contact form data...
-                                      </p>
+                                        <p className="text-center mt-5 mb-5">
+                                          Fetching data... <i className="bx bx-hourglass bx-spin font-size-16 align-middle me-2"></i>
+                                          </p>
                                     </td>
                                   </tr>
                                 ) : (
