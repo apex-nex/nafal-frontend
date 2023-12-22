@@ -6325,7 +6325,7 @@ ul {
 .work-process.process-arrow:after {
     right: 80%;
     left: 0 !important;
-    background: url("../images/process-rtl.png") center center no-repeat
+    /* background: url("../images/process-rtl.png") center center no-repeat */
 }
 
 .bg-animation-left:after {
