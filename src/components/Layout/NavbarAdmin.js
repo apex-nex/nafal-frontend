@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
-import logo from '../../assets/images/logo/nafal-logo.png';
+import logoLight from '../../assets/images/logo/nafal-logo.png';
+import logoDark from '../../assets/images/logo/nafal-logo.png';
 import FeatherIcon from 'feather-icons-react';
 import { useAuth } from "../../store/auth"
 
@@ -109,9 +110,20 @@ function NavbarAdmin(props) {
         <React.Fragment>
             <header id="topnav" className="defaultscroll sticky bg-light">
                 <div style={{ padding: "0 24px" }}>
-                    <Link className="logo" to="/">
-                        <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
-                    </Link>
+                    {props.isLight ?
+                        <Link className="logo" to="/">
+                            <span className="logo-light-mode">
+                                <img src={logoDark} height="24" className="l-dark" alt="" />
+                                <img src={logoLight} height="24" className="l-light" alt="" />
+                            </span>
+                            <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
+                        </Link>
+                        :
+                        <Link className="logo" to="/">
+                            <img src={logoDark} height="24" className="logo-light-mode" alt="Nafal" />
+                            <img src={logoLight} height="24" className="logo-dark-mode" alt="Nafal" />
+                        </Link>
+                    }
                     <ul className="buy-button list-inline mb-0">
                         <li className="list-inline-item mb-0 pe-1">
                             <div className="dropdown d-none d-lg-inline-block ms-1">

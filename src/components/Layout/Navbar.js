@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from "../../assets/images/logo/nafal-logo.png";
+import logoDark from "../../assets/images/logo/nafal-logo.png";
+import logoLight from "../../assets/images/logo/nafal-logo.png";
 
 const Navbar = (props) => {
 
@@ -109,9 +110,20 @@ const Navbar = (props) => {
     <React.Fragment>
       <header id="topnav" className="defaultscroll sticky">
         <div className="container">
-          <Link className="logo" to="/">
-            <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
-          </Link>
+          {props.isLight ?
+            <Link className="logo" to="/">
+              <span className="logo-light-mode">
+                <img src={logoDark} height="24" className="l-dark" alt="" />
+                <img src={logoLight} height="24" className="l-light" alt="" />
+              </span>
+              <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
+            </Link>
+            :
+            <Link className="logo" to="/">
+              <img src={logoDark} height="24" className="logo-light-mode" alt="Nafal" />
+              <img src={logoLight} height="24" className="logo-dark-mode" alt="Nafal" />
+            </Link>
+          }
           <div className="menu-extras">
             <div className="menu-item">
               <Link to="#" className="navbar-toggle" id="isToggle" onClick={isToggleMenu}>
