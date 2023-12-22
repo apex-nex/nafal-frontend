@@ -165,8 +165,8 @@ const Dashboard = () => {
     const columnStyles = {
       0: { cellWidth: 14 },
       1: { cellWidth: 35 },
-      2: { cellWidth: 58 },
-      3: { cellWidth: 28 },
+      2: { cellWidth: 57 },
+      3: { cellWidth: 29 },
       4: { cellWidth: 38 },
       5: { cellWidth: 19 },
       6: { cellWidth: 26 },

@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logoDark from "../../assets/images/logo/nafal-logo.png";
-import logoLight from "../../assets/images/logo/nafal-logo.png";
+import logo from "../../assets/images/logo/nafal-logo.png";
 
 const Navbar = (props) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [modal, setModal] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const toggleModal = () => {
-    setModal((prevModal) => !prevModal);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,7 +98,7 @@ const Navbar = (props) => {
   const hideToggleMenu = () => {
     const isToggle = document.getElementById("isToggle");
     const isOpen = document.getElementById('navigation');
-  
+
     if (isToggle && isOpen) {
       isToggle.classList.remove("open");
       isOpen.style.display = "none";
@@ -120,20 +109,9 @@ const Navbar = (props) => {
     <React.Fragment>
       <header id="topnav" className="defaultscroll sticky">
         <div className="container">
-          {props.isLight ?
-            <Link className="logo" to="/">
-              <span className="logo-light-mode">
-                <img src={logoDark} height="24" className="l-dark" alt="" />
-                <img src={logoLight} height="24" className="l-light" alt="" />
-              </span>
-              <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
-            </Link>
-            :
-            <Link className="logo" to="/">
-              <img src={logoDark} height="24" className="logo-light-mode" alt="Nafal" />
-              <img src={logoLight} height="24" className="logo-dark-mode" alt="Nafal" />
-            </Link>
-          }
+          <Link className="logo" to="/">
+            <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
+          </Link>
           <div className="menu-extras">
             <div className="menu-item">
               <Link to="#" className="navbar-toggle" id="isToggle" onClick={isToggleMenu}>

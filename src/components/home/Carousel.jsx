@@ -9,8 +9,6 @@ import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import FeatherIcon from "feather-icons-react";
 
 import bg01 from "../../assets/images/home/carousel/bg1.jpg";
-import bg02 from "../../assets/images/home/carousel/bg1.jpg";
-import bg03 from "../../assets/images/home/carousel/bg1.jpg";
 
 const Carousel = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +25,7 @@ const Carousel = () => {
     },
     {
       id: 2,
-      image: bg02,
+      image: bg01,
       h1: "Explore Reliable Climate Solutions",
       p: "Discover HVAC solutions tailored to your needs. Benefit from our expertise in designing and managing climate control systems.",
       btnclass: "btn btn-primary",
@@ -38,7 +36,7 @@ const Carousel = () => {
     },
     {
       id: 3,
-      image: bg03,
+      image: bg01,
       h1: "Contact Nafal HVAC Experts",
       p: "Get in touch with our HVAC experts for personalized solutions. We provide professional services to ensure your indoor environment is comfortable.",
       btnclass: "btn btn-primary mouse-down",
@@ -55,8 +53,8 @@ const Carousel = () => {
     var e1 = document.getElementsByClassName("slick-slide");
     for (var i = 0; i < 3; i++) {
       if (i === 0) e1[i].style.backgroundImage = `url(${bg01})`;
-      if (i === 1) e1[i].style.backgroundImage = `url(${bg02})`;
-      if (i === 2) e1[i].style.backgroundImage = `url(${bg03})`;
+      if (i === 1) e1[i].style.backgroundImage = `url(${bg01})`;
+      if (i === 2) e1[i].style.backgroundImage = `url(${bg01})`;
     }
 
     const openModal = () => setIsOpen(true);
