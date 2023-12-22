@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import Layout from "./components/Layout/index";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./assets/css/materialdesignicons.min.css"
@@ -6,13 +6,24 @@ import "./Apps.scss";
 import "./assets/css/colors/skyblue.css";
 import routes from "./routes/allRoutes";
 import withRouter from "./common/data/withRouter";
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "./store/auth";
 import { LoaderComponent } from "./common/data/utils/common";
 
 const App = () => {
-  const { isLoggedIn } = useAuth()
+  const { isLoggedIn, isDarkMode } = useAuth()
+
+  useEffect(() => {
+    // Dynamically import styles based on isDarkMode
+    const importStyles = async () => {
+      if (isDarkMode) {
+        await import('./assets/scss/bootstrap-dark.scss');
+        await import('./assets/scss/style-dark.scss');
+      }
+    };
+
+    importStyles();
+  }, [isDarkMode]);
 
   return (
     <React.Fragment>

@@ -282,7 +282,7 @@
         &:after {    
             right: 80%;
             left: 0 !important;
-            background: url("../../images/process-rtl.png") center center no-repeat;
+            // background: url("../../images/process-rtl.png") center center no-repeat;
         }
     }
 }
@@ -400,7 +400,7 @@
 
 //Personal
 .rtl-personal-hero {
-    background-image: url("../../images/personal/rtl-bg01.png") !important;
+    // background-image: url("../../images/personal/rtl-bg01.png") !important;
 }
 
 //Medical
@@ -537,13 +537,13 @@
     .slide {
         .bg-home {
             &.slider-rtl-1 {
-                background-image: url("../../images/shop/rtl-bg1.jpg") !important;
+                // background-image: url("../../images/shop/rtl-bg1.jpg") !important;
             }
             &.slider-rtl-2 {
-                background-image: url("../../images/shop/rtl-bg2.jpg") !important;
+                // background-image: url("../../images/shop/rtl-bg2.jpg") !important;
             }
             &.slider-rtl-3 {
-                background-image: url("../../images/shop/rtl-bg3.jpg") !important;
+                // background-image: url("../../images/shop/rtl-bg3.jpg") !important;
             }
         }
     }

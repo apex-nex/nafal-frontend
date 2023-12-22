@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
-import { FaSnapchat } from 'react-icons/fa';
 import FeatherIcon from 'feather-icons-react';
 
 const Loader = () => {
@@ -54,7 +53,7 @@ const Footer = () => {
 
                 <Col lg={3} md={4} sm={12} xs={12}>
                   <ul className="list-unstyled social-icon foot-social-icon text-sm-end mb-2">
-                    <li className="list-inline-item mb-0">
+                    <li className="list-inline-item mb-0 me-1">
                       <Link
                         to={'https://www.facebook.com/NAFAL.HVAC'}
                         target="_blank"
@@ -64,7 +63,7 @@ const Footer = () => {
                         <FeatherIcon icon="facebook" className="fea icon-sm fea-social" />
                       </Link>
                     </li>
-                    <li className="list-inline-item mb-0">
+                    <li className="list-inline-item mb-0 me-1">
                       <Link
                         to={'https://www.instagram.com/nafal.hvac/'}
                         target="_blank"
@@ -74,7 +73,7 @@ const Footer = () => {
                         <FeatherIcon icon="instagram" className="fea icon-sm fea-social" />
                       </Link>
                     </li>
-                    <li className="list-inline-item mb-0">
+                    <li className="list-inline-item mb-0 me-1">
                       <Link
                         to={'https://twitter.com/NAFALHVAC'}
                         target="_blank"
@@ -84,7 +83,7 @@ const Footer = () => {
                         <FeatherIcon icon="twitter" className="fea icon-sm fea-social" />
                       </Link>
                     </li>
-                    <li className="list-inline-item mb-0">
+                    <li className="list-inline-item mb-0 me-1">
                       <Link
                         to={'https://www.linkedin.com/in/nafal-hvac-6937472a1'}
                         target="_blank"
@@ -94,14 +93,14 @@ const Footer = () => {
                         <FeatherIcon icon="linkedin" className="fea icon-sm fea-social" />
                       </Link>
                     </li>
-                    <li className="list-inline-item mb-0">
+                    <li className="list-inline-item mb-0 me-1">
                       <Link
                         to={'https://www.snapchat.com/add/nafal.hvac'}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="rounded"
                       >
-                        <FaSnapchat className="fea icon-sm mdi mdi-snapchat" />
+                        <i className="bx bxl-snapchat"/>
                       </Link>
                     </li>
                     <li className="list-inline-item mb-0">
