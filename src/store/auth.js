@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [user, setUser] = useState(null)
+    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode"));
 
     // set token
     const storeTokenInLS = (serverToken) => {
@@ -24,19 +25,27 @@ export const AuthProvider = ({ children }) => {
     // JWT Authentication - verify user
     const userAuthentication = async () => {
         try {
-            const data = await get('/admin/auth', {"Authorization": `Bearer ${token}`});
+            const data = await get('/admin/auth', { "Authorization": `Bearer ${token}` });
             setUser(data)
         } catch (error) {
             console.log(error)
         }
     }
 
-    useEffect(()=>{
+    // Function to toggle dark mode
+    const toggleDarkMode = (mode = false) => {
+        if (mode) {
+            localStorage.setItem("mode", true)
+        }
+        setIsDarkMode(mode);
+    };
+
+    useEffect(() => {
         userAuthentication()
-    },[])
+    }, [])
 
     return (
-        <AuthContext.Provider value={{ user, isLoggedIn, storeTokenInLS, logoutUser }}>
+        <AuthContext.Provider value={{ user, isLoggedIn, isDarkMode, storeTokenInLS, logoutUser, toggleDarkMode }}>
             {children}
         </AuthContext.Provider>
     )

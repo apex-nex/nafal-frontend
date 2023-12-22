@@ -1,9 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoDark from "../../assets/images/logo/nafal-logo.png";
 import logoLight from "../../assets/images/logo/nafal-logo.png";
+import RightSidebar from './RightSidebar';
+import FeatherIcon from 'feather-icons-react';
+import { Offcanvas } from 'reactstrap';
 
 const Navbar = (props) => {
+  const [open, setOpen] = useState(false);
+
+  const onDrawerClose = () => {
+    setOpen(false);
+  }
+
+  const toggleRightDrawer = () => {
+    setOpen(!open);
+  };
+
+  const isToogleMenu = () => {
+    const isToggle = document.getElementById("isToggle");
+    if (isToggle) {
+      isToggle.classList.toggle("open");
+      var isOpen = document.getElementById('navigation');
+      if (isOpen.style.display === "block") {
+        isOpen.style.display = "none";
+      } else {
+        isOpen.style.display = "block";
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,7 +144,7 @@ const Navbar = (props) => {
               <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
             </Link>
             :
-            <Link className="logo" to="/">
+            <Link className="logo" style={{ marginRight: "0px" }} to="/">
               <img src={logoDark} height="24" className="logo-light-mode" alt="Nafal" />
               <img src={logoLight} height="24" className="logo-dark-mode" alt="Nafal" />
             </Link>
@@ -137,6 +162,20 @@ const Navbar = (props) => {
           </div>
 
           <ul className="buy-button list-inline mb-0">
+            <li className="list-inline-item mb-0">
+              <Link to="#" onClick={toggleRightDrawer} disabled={open}>
+                <div id="buyButton" className="login-btn-primary">
+                  <span className="btn btn-icon btn-pills btn-soft-primary settingbtn">
+                    <FeatherIcon icon="settings" className="fea icon-sm" />
+                  </span>
+                </div>
+                <div className="login-btn-light">
+                  <span className="btn btn-icon btn-pills btn-light">
+                    <FeatherIcon icon="settings" className="fea icon-sm" />
+                  </span>
+                </div>
+              </Link>
+            </li>{" "}
             <li className="list-inline-item mb-0" id="buyButton">
               <Link
                 to={'https://api.whatsapp.com/send/?phone=966510149313&text&app_absent=0'}
@@ -183,6 +222,9 @@ const Navbar = (props) => {
           </div>
         </div>
       </header>
+      <Offcanvas isOpen={open} direction="end" toggle={toggleRightDrawer}>
+        <RightSidebar onClose={onDrawerClose} />
+      </Offcanvas>
     </React.Fragment>
   );
 };

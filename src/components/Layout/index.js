@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import BackToTop from "./backToTop";
 import withRouter from "../../common/data/withRouter";
 import NavbarAdmin from "./NavbarAdmin";
@@ -21,42 +21,23 @@ const Loader = () => {
   );
 };
 
-class Layout extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Suspense fallback={Loader()}>
+const Layout = ({ router, children }) => {
+  const [isDashboard, setIsDashboard] = useState(false);
 
-          {(() => {
-            if (
-              this.props.router.location.pathname === "/admin-dashboard"
-            ) {
-              return <NavbarAdmin />;
-            }
-            else {
-              return <Navbar />;
-            }
-          })()}
+  useEffect(() => {
+    setIsDashboard(router.location.pathname === "/admin-dashboard");
+  }, [router.location.pathname]);
 
-          {this.props.children}
-
-          {(() => {
-            if (
-              this.props.router.location.pathname === "/admin-dashboard"
-            ) {
-              return <FooterAdmin />;
-            }
-            else {
-              return <Footer />;
-            }
-          })()}
-
-          <BackToTop />
-        </Suspense>
-
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <Suspense fallback={Loader()}>
+        {!isDashboard ? <Navbar /> : <NavbarAdmin />}
+        {children}
+        {!isDashboard ? <Footer /> : <FooterAdmin />}
+        <BackToTop />
+      </Suspense>
+    </React.Fragment>
+  );
+};
 
 export default withRouter(Layout);
