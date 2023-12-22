@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Dropdown, DropdownMenu, DropdownToggle, Form, Modal, ModalBody } from 'reactstrap';
-import logo from '../../assets/images/logo/nafal-logo.png';
+import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
+import logoLight from '../../assets/images/logo/nafal-logo.png';
+import logoDark from '../../assets/images/logo/nafal-logo.png';
 import FeatherIcon from 'feather-icons-react';
 import { useAuth } from "../../store/auth"
 
@@ -28,17 +29,6 @@ function NavbarAdmin(props) {
             topNav.classList.add('nav-sticky');
         } else {
             topNav?.classList.remove('nav-sticky');
-        }
-    };
-
-    const isToggleMenu = () => {
-        const isToggle = document.getElementById('isToggle');
-        isToggle.classList.toggle('open');
-        const isOpen = document.getElementById('navigation');
-        if (isOpen.style.display === 'block') {
-            isOpen.style.display = 'none';
-        } else {
-            isOpen.style.display = 'block';
         }
     };
 
@@ -120,27 +110,20 @@ function NavbarAdmin(props) {
         <React.Fragment>
             <header id="topnav" className="defaultscroll sticky bg-light">
                 <div style={{ padding: "0 24px" }}>
-                    <Link className="logo" to="/">
-                        <img src={logo} height="24" className="logo-light-mode" alt="Nafal" />
-                    </Link>
-
-                    {/* <div className="menu-extras">
-            <div className="menu-item">
-              <Link
-                to="#"
-                className="navbar-toggle"
-                id="isToggle"
-                onClick={isToggleMenu}
-              >
-                <div className="lines">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </Link>
-            </div>
-          </div> */}
-
+                    {props.isLight ?
+                        <Link className="logo" to="/">
+                            <span className="logo-light-mode">
+                                <img src={logoDark} height="24" className="l-dark" alt="" />
+                                <img src={logoLight} height="24" className="l-light" alt="" />
+                            </span>
+                            <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
+                        </Link>
+                        :
+                        <Link className="logo" to="/">
+                            <img src={logoDark} height="24" className="logo-light-mode" alt="Nafal" />
+                            <img src={logoLight} height="24" className="logo-dark-mode" alt="Nafal" />
+                        </Link>
+                    }
                     <ul className="buy-button list-inline mb-0">
                         <li className="list-inline-item mb-0 pe-1">
                             <div className="dropdown d-none d-lg-inline-block ms-1">
@@ -182,24 +165,6 @@ function NavbarAdmin(props) {
                             </Dropdown>
                         </li>
                     </ul>
-
-                    {/* <div id="navigation">
-            <ul className="navigation-menu">
-              <li>
-                <Link to="/index-shop" className="sub-menu-item">
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/shop-aboutus" className="sub-menu-item">
-                  {' '}
-                  Contact Form
-                </Link>
-              </li>
-
-            </ul>
-          </div> */}
                 </div>
             </header>
         </React.Fragment>

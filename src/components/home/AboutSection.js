@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 function AboutSection(props) {
   const { aboutSectionContent } = props;
 
-  return (
+  return ( 
     <React.Fragment>
       {aboutSectionContent ? (
         <React.Fragment>

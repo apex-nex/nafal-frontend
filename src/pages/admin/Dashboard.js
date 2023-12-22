@@ -106,7 +106,7 @@ const Dashboard = () => {
     let updatedData = [...data.results];
 
     try {
-      const response = await remove("/form/items", [id]);
+      const response = await remove("/form/delete", [id]);
 
       if (response.ok) {
         updatedData = updatedData.filter((item) => item._id !== id);
@@ -165,8 +165,8 @@ const Dashboard = () => {
     const columnStyles = {
       0: { cellWidth: 14 },
       1: { cellWidth: 35 },
-      2: { cellWidth: 58 },
-      3: { cellWidth: 28 },
+      2: { cellWidth: 57 },
+      3: { cellWidth: 29 },
       4: { cellWidth: 38 },
       5: { cellWidth: 19 },
       6: { cellWidth: 26 },
@@ -217,7 +217,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await patch('/form/update/status', { id, status: selectedStatus })
+      const response = await patch('/form/update', { id, status: selectedStatus })
       if (response?.ok) {
         toast.success('Status updated successfully');
         updateStatusById(id, response?.result?.status)
@@ -229,6 +229,7 @@ const Dashboard = () => {
 
   const onDateRangeChange = (dateRange) => {
     if (!isEmpty(dateRange)) {
+      setCurrentPage(1)
       let [start_date, end_date] = [moment(dateRange[0]), moment(dateRange[1])]
       let date_ranges = [start_date.format("YYYY-MM-DD"), end_date.format("YYYY-MM-DD")]
       setDefaultDate([date_ranges[0], date_ranges[1]])
@@ -358,10 +359,9 @@ const Dashboard = () => {
                                 loading ? (
                                   <tr>
                                     <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                      <p className="text-center mt-5 mb-5">
-                                        <i className="mdi mdi-loading mdi-spin font-size-16 align-middle me-2"></i>{" "}
-                                        Fetching contact form data...
-                                      </p>
+                                        <p className="text-center mt-5 mb-5">
+                                          Fetching data... <i className="bx bx-hourglass bx-spin font-size-16 align-middle me-2"></i>
+                                          </p>
                                     </td>
                                   </tr>
                                 ) : (
@@ -434,50 +434,46 @@ const Dashboard = () => {
                             <Col xs="12">
                               {data?.count > 10 && (
                                 <Pagination className="pagination justify-content-end mb-0">
-                                  {
-                                    !isEmpty(prevPage) && (
-                                      <PaginationItem disabled={!prevPage}>
-                                        <PaginationLink previous href="#" onClick={() => loadPage(prevPage, currentPage - 1)}>
-                                          Prev
-                                        </PaginationLink>
-                                      </PaginationItem>
-                                    )
-                                  }
-
-                                  {Array.from({ length: Math.ceil(data?.count / 10) }, (_, index) => (
-                                    <PaginationItem key={index + 1} active={index + 1 === currentPage}>
-                                      <PaginationLink
-                                        href="#"
-                                        onClick={() => {
-                                          const pageNo = index + 1
-                                          const endpoint = isFilterMode
-                                            ? `/form/filter?page=${pageNo}&date=${defaultDate[0]}&date_end=${defaultDate[1]}`
-                                            : `/form?page=${pageNo}`;
-
-                                          loadPage(endpoint, pageNo)
-                                        }}
-                                      >
-                                        {index + 1}
+                                  {!isEmpty(prevPage) && (
+                                    <PaginationItem disabled={!prevPage}>
+                                      <PaginationLink previous href="#" onClick={() => loadPage(prevPage, currentPage - 1)}>
+                                        Prev
                                       </PaginationLink>
                                     </PaginationItem>
-                                  ))}
-
-                                  {
-                                    !isEmpty(nextPage) && (
-                                      <PaginationItem disabled={!nextPage}>
-                                        <PaginationLink next href="#" onClick={() => loadPage(nextPage, currentPage + 1)}>
-                                          Next
-                                        </PaginationLink>
-                                      </PaginationItem>
-                                    )
-                                  }
+                                  )}
+                                  {Array.from({ length: Math.ceil(data?.count / 10) }, (_, index) => {
+                                    const pageNo = index + 1;
+                                    const totalPages = Math.ceil(data?.count / 10);
+                                    const visiblePages = 5;
+                                    const startPage = Math.max(1, Math.min(currentPage - Math.floor(visiblePages / 2), totalPages - visiblePages + 1));
+                                    const endPage = Math.min(startPage + visiblePages - 1, totalPages);
+                                    if (pageNo >= startPage && pageNo <= endPage) {
+                                      const endpoint = isFilterMode
+                                        ? `/form/filter?page=${pageNo}&date=${defaultDate[0]}&date_end=${defaultDate[1]}`
+                                        : `/form?page=${pageNo}`;
+                                      return (
+                                        <PaginationItem key={pageNo} active={pageNo === currentPage}>
+                                          <PaginationLink href="#" onClick={() => loadPage(endpoint, pageNo)}>
+                                            {pageNo}
+                                          </PaginationLink>
+                                        </PaginationItem>
+                                      );
+                                    }
+                                    return null;
+                                  })}
+                                  {!isEmpty(nextPage) && (
+                                    <PaginationItem disabled={!nextPage}>
+                                      <PaginationLink next href="#" onClick={() => loadPage(nextPage, currentPage + 1)}>
+                                        Next
+                                      </PaginationLink>
+                                    </PaginationItem>
+                                  )}
                                 </Pagination>
                               )}
                             </Col>
                           </Row>
                         </Container>
                       </div>
-
                       {modal ? (
                         <Modal
                           id="LoginForm"
