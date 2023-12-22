@@ -17,19 +17,6 @@ const Navbar = (props) => {
     setOpen(!open);
   };
 
-  const isToogleMenu = () => {
-    const isToggle = document.getElementById("isToggle");
-    if (isToggle) {
-      isToggle.classList.toggle("open");
-      var isOpen = document.getElementById('navigation');
-      if (isOpen.style.display === "block") {
-        isOpen.style.display = "none";
-      } else {
-        isOpen.style.display = "block";
-      }
-    }
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       const navBar = document.getElementById("topnav");

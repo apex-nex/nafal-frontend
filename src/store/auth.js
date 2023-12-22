@@ -7,7 +7,8 @@ export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [user, setUser] = useState(null)
-    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode"));
+    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkModes"));
+    const [isArabic, setIsArabic] = useState(localStorage.getItem("arabicMode"));
 
     // set token
     const storeTokenInLS = (serverToken) => {
@@ -33,11 +34,19 @@ export const AuthProvider = ({ children }) => {
     }
 
     // Function to toggle dark mode
-    const toggleDarkMode = (mode = false) => {
-        if (mode) {
-            localStorage.setItem("mode", true)
+    const toggleDarkMode = (darkMode = false) => {
+        if (darkMode) {
+            localStorage.setItem("darkMode", true)
         }
-        setIsDarkMode(mode);
+        setIsDarkMode(darkMode);
+    };
+
+    // Function to toggle eng mode
+    const toggleArabic = (arabicMode = false) => {
+        if (arabicMode) {
+            localStorage.setItem("arabicMode", true)
+        }
+        setIsArabic(arabicMode);
     };
 
     useEffect(() => {
@@ -45,7 +54,7 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, isLoggedIn, isDarkMode, storeTokenInLS, logoutUser, toggleDarkMode }}>
+        <AuthContext.Provider value={{ user, isLoggedIn, isDarkMode, isArabic, storeTokenInLS, logoutUser, toggleDarkMode, toggleArabic }}>
             {children}
         </AuthContext.Provider>
     )

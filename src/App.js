@@ -11,7 +11,7 @@ import { useAuth } from "./store/auth";
 import { LoaderComponent } from "./common/data/utils/common";
 
 const App = () => {
-  const { isLoggedIn, isDarkMode } = useAuth()
+  const { isLoggedIn, isDarkMode, isArabic } = useAuth()
 
   useEffect(() => {
     // Dynamically import styles based on isDarkMode
@@ -24,6 +24,19 @@ const App = () => {
 
     importStyles();
   }, [isDarkMode]);
+
+  useEffect(() => {
+    // Dynamically import styles based on language
+    const importStyles = async () => {
+      if (isArabic) {
+        await import('./assets/scss/bootstrap.scss');
+        await import('./assets/scss/style.scss');
+        await import('./assets/scss/style-rtl.scss');
+      }
+    };
+
+    importStyles();
+  }, [isArabic]);
 
   return (
     <React.Fragment>

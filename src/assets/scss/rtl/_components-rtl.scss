@@ -46,7 +46,7 @@
         &:before {
             content: "\F0141";
             font-family: 'Material Design Icons';
-            color: $dark; 
+            color: #333; 
             padding: 0 6px !important;
         }   
         &:after {
@@ -114,7 +114,7 @@
 
 //blockquote
 .blockquote {
-    border-right: 3px solid $gray-300;
+    border-right: 3px solid #999;
     border-left: 0;
 }
 
@@ -221,7 +221,7 @@
 }
 .media-list {
     .sub-comment {
-        border-right: 2px dashed $gray-300;
+        border-right: 2px dashed  #999;
         border-left: 0;
     }
 }
