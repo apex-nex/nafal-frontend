@@ -106,7 +106,7 @@ const Dashboard = () => {
     let updatedData = [...data.results];
 
     try {
-      const response = await remove("/form/items", [id]);
+      const response = await remove("/form/delete", [id]);
 
       if (response.ok) {
         updatedData = updatedData.filter((item) => item._id !== id);
@@ -217,7 +217,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await patch('/form/update/status', { id, status: selectedStatus })
+      const response = await patch('/form/update', { id, status: selectedStatus })
       if (response?.ok) {
         toast.success('Status updated successfully');
         updateStatusById(id, response?.result?.status)
