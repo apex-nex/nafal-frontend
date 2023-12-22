@@ -175,20 +175,20 @@ const PageLogin = () => {
                               </Label>
                             </div>
                           </div>
-                          <p className="forgot-pass mb-0">
+                          {/* <p className="forgot-pass mb-0">
                             <Link
                               to="auth-re-password"
                               className="text-dark fw-bold"
                             >
                               Forgot password ?
                             </Link>
-                          </p>
+                          </p> */}
                         </div>
                       </Col>
                       <Col lg={12} className="mb-0">
                         <div className="d-grid">
                           <Button color="primary" disabled={loading}>
-                            Sign in
+                            Log in
                           </Button>
                         </div>
                       </Col>
