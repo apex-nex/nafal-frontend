@@ -5,12 +5,23 @@ import logoLight from '../../assets/images/logo/nafal-logo.png';
 import logoDark from '../../assets/images/logo/nafal-logo.png';
 import FeatherIcon from 'feather-icons-react';
 import { useAuth } from "../../store/auth"
+import { Offcanvas } from 'reactstrap';
+import RightSidebar from './RightSidebar';
 
 function NavbarAdmin(props) {
     const { user } = useAuth()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [userData, setUserData] = useState({ name: "User" })
     const [flag, setFlag] = useState(true)
+    const [open, setOpen] = useState(false);
+
+    const onDrawerClose = () => {
+        setOpen(false);
+    }
+
+    const toggleRightDrawer = () => {
+        setOpen(!open);
+    };
 
     if (flag && user) {
         setUserData(user)
@@ -125,6 +136,20 @@ function NavbarAdmin(props) {
                         </Link>
                     }
                     <ul className="buy-button list-inline mb-0">
+                        <li className="list-inline-item mb-0">
+                            <Link to="#" onClick={toggleRightDrawer} disabled={open}>
+                                <div id="buyButton" className="login-btn-primary">
+                                    <span className="btn btn-icon btn-pills btn-soft-primary settingbtn">
+                                        <FeatherIcon icon="settings" className="fea icon-sm" />
+                                    </span>
+                                </div>
+                                <div className="login-btn-light">
+                                    <span className="btn btn-icon btn-pills btn-light">
+                                        <FeatherIcon icon="settings" className="fea icon-sm" />
+                                    </span>
+                                </div>
+                            </Link>
+                        </li>{" "}
                         <li className="list-inline-item mb-0 pe-1">
                             <div className="dropdown d-none d-lg-inline-block ms-1">
                                 <div
@@ -167,6 +192,9 @@ function NavbarAdmin(props) {
                     </ul>
                 </div>
             </header>
+            <Offcanvas isOpen={open} direction="end" toggle={toggleRightDrawer}>
+                <RightSidebar onClose={onDrawerClose} />
+            </Offcanvas>
         </React.Fragment>
     );
 }

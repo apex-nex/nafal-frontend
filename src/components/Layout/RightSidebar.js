@@ -9,7 +9,7 @@ import logolight from "../../assets/images/logo/nafal-logo.png";
 import { useAuth } from '../../store/auth';
 
 const RightSidebar = ({ onClose }) => {
-    const { isDarkMode, toggleDarkMode } = useAuth();
+  const { isArabic, toggleArabic, isDarkMode, toggleDarkMode } = useAuth();
 
   const onCloseRightBar = () => {
     onClose();
@@ -23,36 +23,62 @@ const RightSidebar = ({ onClose }) => {
           <img src={logodark} height="24" className="light-version" alt="" />
           <img src={logolight} height="24" className="dark-version" alt="" />
         </h5>
-        <button
-          type="button"
-          onClick={onCloseRightBar}
-          className="btn-close d-flex align-items-center text-dark"
-        ></button>
       </div>
       <div className="bg-light border p-3 pt-2 pb-2">
         <h3 className="title text-center pt-3 mb-0">Theme Option</h3>
         <div className="text-center">
           <Button
             to="#"
-            className={`btn btn-sm w-100 mt-2`}
-            style={{background: isDarkMode ? '#dfe6e9' : '#32c2ec'}}
+            className={`btn btn-sm w-100 mt-2 ${isDarkMode ? 'btn-dark' : 'btn-primary'}`}
             onClick={() => {
-              localStorage.removeItem("mode");
-              window.location.replace('/');
+              localStorage.removeItem("darkModes");
+              window.location.reload();
             }}
+            disabled={!isDarkMode}
           >
             Light
           </Button>
           <Button
             to="#"
-            className={`btn btn-sm w-100 mt-2`}
-            style={{background: isDarkMode ? '#32c2ec' : '#2c3e50' }}
-            onClick={() => toggleDarkMode(true)}
+            className={`btn btn-sm w-100 mt-2 ${isDarkMode ? 'btn-primary' : 'btn-dark' }`}
+            onClick={() => {
+              toggleDarkMode(true)
+              onCloseRightBar()
+            }}
+            disabled={isDarkMode}
           >
             Dark
           </Button>
         </div>
       </div>
+      <div className="bg-light border p-3 pt-2 pb-2">
+        <h3 className="title text-center pt-3 mb-0">Language Option</h3>
+        <div className="text-center">
+          <Button
+            to="#"
+            className={`btn btn-sm w-100 mt-2 ${isArabic ? 'btn-dark' : 'btn-primary'}`}
+            onClick={() => {
+              localStorage.removeItem("arabicMode");
+              window.location.reload();
+            }}
+            disabled={!isArabic}
+          >
+            English
+          </Button>
+          <Button
+            to="#"
+            className={`btn btn-sm w-100 mt-2 ${isArabic ? 'btn-primary' : 'btn-dark' }`}
+            onClick={() => {
+              toggleArabic(true);
+              onCloseRightBar();
+            }}
+            disabled={isArabic}
+          >
+            Arabic
+          </Button>
+        </div>
+      </div>
+
     </>
   );
 };
