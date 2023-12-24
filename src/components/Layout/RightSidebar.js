@@ -31,7 +31,7 @@ const RightSidebar = ({ onClose }) => {
             to="#"
             className={`btn btn-sm w-100 mt-2 ${isDarkMode ? 'btn-dark' : 'btn-primary'}`}
             onClick={() => {
-              localStorage.removeItem("darkModes");
+              localStorage.removeItem("isDarkMode");
               window.location.reload();
             }}
             disabled={!isDarkMode}

@@ -5,7 +5,7 @@ import FeatherIcon from 'feather-icons-react';
 import FadeIn from 'react-fade-in';
 
 const ServiceSection = (props) => {
-  const { servicesSectionContent } = props;
+  const { servicesSectionContent, seeMore = true } = props;
   const [displayCategory, setDisplayCategory] = useState('All');
 
   const setCategory = (category) => {
@@ -61,17 +61,22 @@ const ServiceSection = (props) => {
                       : null}
                   </p>
 
-                  <div className="mt-4 d-none d-md-block">
-                    <Link to="/services" className="btn btn-soft-primary">
-                      See More{' '}
-                      <i>
-                        <FeatherIcon
-                          icon="arrow-right"
-                          className="fea icon-sm"
-                        />
-                      </i>
-                    </Link>
-                  </div>
+                  {
+                    seeMore ?
+                      <div className="mt-4 d-none d-md-block">
+                        <Link to="/services" className="btn btn-soft-primary">
+                          See More{' '}
+                          <i>
+                            <FeatherIcon
+                              icon="arrow-right"
+                              className="fea icon-sm"
+                            />
+                          </i>
+                        </Link>
+                      </div>
+                      :
+                      null
+                  }
                 </div>
               </Col>
               <Col lg={8} md={6} className="mt-4 pt-2 mt-sm-0 pt-sm-0">

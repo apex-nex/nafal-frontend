@@ -14,29 +14,32 @@ const App = () => {
   const { isLoggedIn, isDarkMode, isArabic } = useAuth()
 
   useEffect(() => {
-    // Dynamically import styles based on isDarkMode
+    // Dynamically import styles based on isDarkMode and/or isArabic
     const importStyles = async () => {
-      if (isDarkMode) {
+      if (isArabic && isDarkMode) {
+        // Import styles for Arabic and Dark Mode
         await import('./assets/scss/bootstrap-dark.scss');
         await import('./assets/scss/style-dark.scss');
-      }
-    };
-
-    importStyles();
-  }, [isDarkMode]);
-
-  useEffect(() => {
-    // Dynamically import styles based on language
-    const importStyles = async () => {
-      if (isArabic) {
-        await import('./assets/scss/bootstrap.scss');
-        await import('./assets/scss/style.scss');
         await import('./assets/scss/style-rtl.scss');
+      } else {
+        // Import styles based on isDarkMode
+        if (isDarkMode) {
+          await import('./assets/scss/bootstrap-dark.scss');
+          await import('./assets/scss/style-dark.scss');
+        }
+  
+        // Import styles based on isArabic
+        if (isArabic) {
+          await import('./assets/scss/bootstrap.scss');
+          await import('./assets/scss/style.scss');
+          await import('./assets/scss/style-rtl.scss');
+        }
       }
     };
-
+  
+    // Call the function
     importStyles();
-  }, [isArabic]);
+  }, [isDarkMode, isArabic]);
 
   return (
     <React.Fragment>
