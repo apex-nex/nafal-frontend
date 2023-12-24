@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [user, setUser] = useState(null)
-    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkModes"));
+    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("isDarkMode"));
     const [isArabic, setIsArabic] = useState(localStorage.getItem("arabicMode"));
 
     // set token
@@ -34,11 +34,11 @@ export const AuthProvider = ({ children }) => {
     }
 
     // Function to toggle dark mode
-    const toggleDarkMode = (darkMode = false) => {
-        if (darkMode) {
-            localStorage.setItem("darkMode", true)
+    const toggleDarkMode = (isDarkMode = false) => {
+        if (isDarkMode) {
+            localStorage.setItem("isDarkMode", true)
         }
-        setIsDarkMode(darkMode);
+        setIsDarkMode(isDarkMode);
     };
 
     // Function to toggle eng mode
