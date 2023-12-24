@@ -67,7 +67,7 @@ function AboutSection(props) {
                           )
                         : null}
                     </p>
-                    <Link to="/about" className="btn btn-primary mt-3">
+                    <Link to="/about-us" className="btn btn-primary mt-3">
                       Read more
                     </Link>
                   </div>
