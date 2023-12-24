@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     // JWT Authentication - verify user
     const userAuthentication = async () => {
         try {
-            const data = await get('/admin/auth', { "Authorization": `Bearer ${token}` });
+            const data = await get('/admin/auth');
             setUser(data)
         } catch (error) {
             console.log(error)
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, isLoggedIn, isDarkMode, isArabic, storeTokenInLS, logoutUser, toggleDarkMode, toggleArabic }}>
+        <AuthContext.Provider value={{ token, user, isLoggedIn, isDarkMode, isArabic, storeTokenInLS, logoutUser, toggleDarkMode, toggleArabic }}>
             {children}
         </AuthContext.Provider>
     )

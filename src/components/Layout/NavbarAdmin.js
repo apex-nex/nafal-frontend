@@ -173,7 +173,7 @@ function NavbarAdmin(props) {
                                 >
                                     <FeatherIcon icon="user" className="icons" />
                                     <span className="d-none d-xl-inline-block ms-2 me-1" >
-                                        {`Hi ${userData.name}`}
+                                        {`Hi, ${userData.name}`}
                                     </span>
                                     <i className="mdi mdi-chevron-down d-none d-xl-inline-block" ></i>
                                 </DropdownToggle>
