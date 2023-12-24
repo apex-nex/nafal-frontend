@@ -163,3 +163,8 @@
 .map iframe {
   width: 100% !important;
 }
+
+// carousel 
+.bg-animation-left:after {
+  clip-path: polygon(0 0, 90% 0, 70% 100%, 0% 100%) !important;
+}
