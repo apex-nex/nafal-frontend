@@ -97,7 +97,7 @@ const Services = () => {
                                 </svg>
                             </div>
                         </div>
-                        <ServicesSection servicesSectionContent={servicesSectionContent} />
+                        <ServicesSection servicesSectionContent={servicesSectionContent} seeMore={false} />
                         <section className="section">
                             <Container>
                                 <Row>

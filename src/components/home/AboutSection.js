@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 function AboutSection(props) {
   const { aboutSectionContent } = props;
 
-  return ( 
+  return (
     <React.Fragment>
       {aboutSectionContent ? (
         <React.Fragment>
@@ -14,7 +14,7 @@ function AboutSection(props) {
               <Row className="align-items-center">
                 <Col lg="5" md="6" xs="12">
                   <img
-                    src={require( `../../assets/images/home/about/${aboutSectionContent?.image}`)}
+                    src={require(`../../assets/images/home/about/${aboutSectionContent?.image}`)}
                     className="img-fluid rounded"
                     alt="Server error!"
                   />
@@ -31,43 +31,35 @@ function AboutSection(props) {
                       {aboutSectionContent?.heading}
                     </span>
                     <h4 className="title mt-3 mb-4">
-                      {/* We Lead the Way <br /> in the{" "}
-                  <span className="text-primary">HVAC Services</span> */}
                       {aboutSectionContent?.titles
                         ? aboutSectionContent?.titles?.map((ele, index) => (
-                            <span
-                              key={index}
-                              className={ele.highlight ? 'text-primary' : ''}
-                            >
-                              {ele.breakPoint ? <br /> : null}
-                              {ele.title}
-                            </span>
-                          ))
+                          <span
+                            key={index}
+                            className={ele.highlight ? 'text-primary' : ''}
+                          >
+                            {ele.breakPoint ? <br /> : null}
+                            {ele.title}
+                          </span>
+                        ))
                         : null}
                     </h4>
                     <p className="text-muted">
-                      {/* Experience the best in HVAC services with{' '}
-                <span className="text-primary fw-bold">Your HVAC Company</span>.
-                We provide top-notch heating, cooling, and ventilation solutions
-                to ensure your home's comfort and efficiency. Our team of
-                experts is committed to delivering outstanding service and
-                reliability. */}
                       {aboutSectionContent?.description
                         ? aboutSectionContent?.description?.map(
-                            (ele, index) => (
-                              <span
-                                className={
-                                  ele.highlight ? 'text-primary fw-bold' : ''
-                                }
-                                key={index}
-                              >
-                                {ele.content}
-                              </span>
-                            ),
-                          )
+                          (ele, index) => (
+                            <span
+                              className={
+                                ele.highlight ? 'text-primary fw-bold' : ''
+                              }
+                              key={index}
+                            >
+                              {ele.content}
+                            </span>
+                          ),
+                        )
                         : null}
                     </p>
-                    <Link to="/about" className="btn btn-primary mt-3">
+                    <Link to="/about-us" className="btn btn-primary mt-3">
                       Read more
                     </Link>
                   </div>

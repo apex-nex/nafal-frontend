@@ -123,13 +123,18 @@ const Dashboard = () => {
   };
 
   const formatDateRange = (dateStrings) => {
-    const dates = dateStrings.map((dateString) => moment(dateString));
+    const dates = dateStrings?.map((dateString) => moment(dateString));
     const minDate = moment.min(dates);
     const maxDate = moment.max(dates);
-    const formattedMinDate = minDate.format('D MMMM YYYY');
-    const formattedMaxDate = maxDate.format('D MMMM YYYY');
-    const output = `${formattedMinDate} to ${formattedMaxDate}`;
-    return output;
+    const formattedMinDate = minDate?.format('D MMMM YYYY');
+    const formattedMaxDate = maxDate?.format('D MMMM YYYY');
+
+    if (!formattedMinDate && !formattedMaxDate) {
+      return "Not Available"
+    } else {
+      const output = `${formattedMinDate} to ${formattedMaxDate}`;
+      return output;
+    }
   };
 
 
@@ -204,7 +209,7 @@ const Dashboard = () => {
   const updateStatusById = (id, newStatus) => {
     setData(prevData => ({
       ...prevData,
-      results: prevData.results.map(item => (
+      results: prevData?.results?.map(item => (
         item._id === id ? { ...item, status: newStatus } : item
       )),
     }));
@@ -359,9 +364,9 @@ const Dashboard = () => {
                                 loading ? (
                                   <tr>
                                     <td colSpan="9" className="react-bs-table-no-data" style={{ padding: "3px" }}>
-                                        <p className="text-center mt-5 mb-5">
-                                          Fetching data... <i className="bx bx-hourglass bx-spin font-size-16 align-middle me-2"></i>
-                                          </p>
+                                      <p className="text-center mt-5 mb-5">
+                                        Fetching data... <i className="bx bx-hourglass bx-spin font-size-16 align-middle me-2"></i>
+                                      </p>
                                     </td>
                                   </tr>
                                 ) : (
