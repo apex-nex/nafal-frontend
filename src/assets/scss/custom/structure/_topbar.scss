@@ -37,12 +37,12 @@
             }
             .submenu {
                 li.active > a{
-                    color: $primary !important;
+                    color: #32c2ec !important;
                 }
             }
             &.active {
                 .menu-arrow{
-                    border-color: $primary;
+                    border-color: #32c2ec;
                 }
             }
         }
@@ -67,14 +67,14 @@
                     .has-submenu {
                         &:hover {
                             .submenu-arrow {
-                                border-color: $primary;
+                                border-color: #32c2ec;
                             }
                         }
                     }
                 }
                 &:hover {
                     >.submenu-arrow {
-                        border-color: $primary;
+                        border-color: #32c2ec;
                     }
                 }
             }
@@ -181,7 +181,7 @@
                     transform: rotate(-45deg);
                 }
                 &:hover {
-                    background-color: $primary;
+                    background-color: #32c2ec;
                 }
             }
         }
@@ -206,7 +206,7 @@
             margin: 0 10px;
             &:hover > a,
             &.active > a{
-                color: $primary !important;
+                color: #32c2ec !important;
             }
             > a {
                 display: block;
@@ -222,7 +222,7 @@
                 padding-right: 15px;
                 &:hover,
                 &:active{
-                    color: $primary;    
+                    color: #32c2ec;    
                 }
             }
             .submenu {
@@ -280,10 +280,10 @@
                 }
                 &:hover, &.active {
                     > a {
-                        color: $primary;
+                        color: #32c2ec;
                     }
                     > .menu-arrow {
-                        border-color: $primary;
+                        border-color: #32c2ec;
                     }
                 } 
             } 
@@ -319,16 +319,16 @@
                     }
                     &.active {
                         > a {
-                            color: $primary !important;
+                            color: #32c2ec !important;
                         }      
                     }
                     &:hover, 
                     &.active {
                         > .menu-arrow {
-                            border-color: $primary !important;
+                            border-color: #32c2ec !important;
                         }
                         > a {
-                            color: $primary !important;
+                            color: #32c2ec !important;
                         }
                     }
                 } 
@@ -448,7 +448,7 @@
                             color: $dark !important;
                             transition: all 0.3s;
                             &:hover {
-                                color: $primary !important;
+                                color: #32c2ec !important;
                             }
                         }
                         ul {
@@ -503,12 +503,12 @@
                 }
                 &:hover {
                     > .menu-arrow {
-                        border-color: $primary;
+                        border-color: #32c2ec;
                     }
                 }
                 &:hover > a,
                 &.active > a{
-                    color: $primary !important;
+                    color: #32c2ec !important;
                 }
                 
                 &.last-elements {
@@ -705,7 +705,7 @@
         .navigation-menu > li > a:hover,
         .navigation-menu > li .submenu li a:hover,
         .navigation-menu > li.has-submenu.open > a {
-            color: $primary;
+            color: #32c2ec;
         }
         .menu-extras .menu-item {
             border-color: $muted;
@@ -736,7 +736,7 @@
             }
             &.active {
                 a {
-                    color: $primary;
+                    color: #32c2ec;
                 }
             }
         }
@@ -880,7 +880,7 @@
         &:hover,
         &.active {
             .navbar-link {
-                color: $primary !important;
+                color: #32c2ec !important;
             }
         }
     }
@@ -891,7 +891,7 @@
     li {
         &.active {
             a {
-                color: $primary !important;
+                color: #32c2ec !important;
             }
         }
         &.account-menu {
@@ -899,7 +899,7 @@
             &:hover {
                 .navbar-link {
                     color: $white !important;
-                    background-color: $primary !important;
+                    background-color: #32c2ec !important;
                 }
             }
         }

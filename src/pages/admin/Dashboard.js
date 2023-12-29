@@ -6,7 +6,7 @@ import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
 import 'flatpickr/dist/flatpickr.min.css';
-import { get, patch, remove } from "../../components/helpers/api_helper"
+import { get, update, remove } from "../../components/helpers/api_helper"
 import { toast } from "react-toastify"
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
@@ -50,7 +50,7 @@ const Dashboard = () => {
       setPrevPage(data.previous);
       setIsFilterMode(data.isFiler)
     } catch (error) {
-      console.error("Error fetching data:", error);
+      toast.error("Error fetching data");
     } finally {
       setLoading(false);
     }
@@ -118,7 +118,7 @@ const Dashboard = () => {
         toast.error("Error deleting record");
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
@@ -142,7 +142,7 @@ const Dashboard = () => {
     const dateStrings = data?.results?.map((item) => item.date);
     const duration = formatDateRange(dateStrings);
 
-    const headers = ['Index', 'Name', 'Email', 'Mobile', 'Subject', 'Status', 'Created Date', 'Message'];
+    const headers = ['S.No', 'Name', 'Email', 'Mobile', 'Subject', 'Status', 'Created Date', 'Message'];
     const doc = new jsPDF('l');
 
     const headStyles = { fillColor: [62, 191, 238] };
@@ -222,7 +222,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await patch('/form/update', { id, status: selectedStatus })
+      const response = await update('/form/update', { id, status: selectedStatus })
       if (response?.ok) {
         toast.success('Status updated successfully');
         updateStatusById(id, response?.result?.status)
@@ -348,7 +348,7 @@ const Dashboard = () => {
                           <Table id="dashboard-table">
                             <thead className="thead-light text-capitalize">
                               <tr>
-                                <th>Index</th>
+                                <th>S.No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
@@ -356,7 +356,7 @@ const Dashboard = () => {
                                 <th>Status</th>
                                 <th>Created At</th>
                                 <th>Message</th>
-                                <th>Action</th>
+                                <th></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -401,19 +401,7 @@ const Dashboard = () => {
                                         </td>
                                         <td>{item.comments.substring(0, 20)}</td>
                                         <td>
-                                          <UncontrolledDropdown className="ms-auto">
-                                            <DropdownToggle className="text-muted font-size-16" color="white">
-                                              <i className="mdi mdi-dots-horizontal"></i>
-                                            </DropdownToggle>
-                                            <DropdownMenu className="dropdown-menu-end">
-                                              <Link className="dropdown-item" to="#" onClick={() => handleClick(item)}>
-                                                View
-                                              </Link>
-                                              <Link className="dropdown-item" to="#" onClick={() => handleDelete(item._id)}>
-                                                Remove
-                                              </Link>
-                                            </DropdownMenu>
-                                          </UncontrolledDropdown>
+                                          <i className="bx bx-trash-alt text-danger" onClick={() => handleDelete(item._id)} />
                                         </td>
                                       </tr>
                                     )

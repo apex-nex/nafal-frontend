@@ -317,10 +317,8 @@ const PageTerms = () => {
                           </CardBody>
                         </Collapse>
                       </Card>
-
                       {/* Add more Q&A cards as needed */}
                     </div>
-
                     <div className="mt-3">
                       <Link to="/contact-us" className="btn btn-primary mt-2 me-2">
                         Contact Us

@@ -143,7 +143,7 @@
   color: #3EBFEE !important;
 }
 
-// dashbaord search box
+// dashboard search box
 .search-box {
   .form-control {
     border-radius: 30px;
@@ -162,4 +162,17 @@
 // contact us map
 .map iframe {
   width: 100% !important;
+}
+
+.sub-menu-item .active li.active > a {
+  color: #32c2ec !important;
+}
+
+// carousel 
+.bg-animation-left:after {
+  clip-path: polygon(0 0, 90% 0, 70% 100%, 0% 100%) !important;
+}
+
+.btn-outline-primary:hover {
+  color: #fff !important; /* Text color on hover */
 }
