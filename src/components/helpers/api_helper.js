@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const token = localStorage.getItem("token")
-// const baseURL = "http://localhost:8000/api";
-const baseURL = 'https://nafal.onrender.com/api';
+const baseURL = "http://localhost:8000/api";
+// const baseURL = 'https://nafal.onrender.com/api';
 
 const api = axios.create({
     baseURL,
@@ -10,7 +10,7 @@ const api = axios.create({
 
 // Set default headers
 api.defaults.headers['Content-Type'] = 'application/json';
-api.defaults.headers['Authorization'] = token;
+api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
 // Function to handle GET requests
 export const get = async (url) => {

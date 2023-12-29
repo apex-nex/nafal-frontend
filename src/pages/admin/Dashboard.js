@@ -114,6 +114,7 @@ const Dashboard = () => {
         setDeleteEnabled(false)
         setData({ ...data, results: updatedData });
         toast.success("Record deleted successfully!");
+        fetchData(`/form?page=${currentPage}`)
       } else {
         toast.error("Error deleting record");
       }

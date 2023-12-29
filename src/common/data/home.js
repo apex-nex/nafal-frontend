@@ -7,6 +7,8 @@ import fuji from "../../assets/images/home/companies/fuji.svg";
 import lg from "../../assets/images/home/companies/lg.svg";
 import about from "../../assets/images/home/about/about.jpg";
 
+// id, image, name, link, title, icon, description, date, heading, comment, features, value, postfix, end, imgUrl, btnLink, isActive, duration. img, titleLine1, titleLine2, desc
+
 const CarouselData = [
     {
         id: 1,
