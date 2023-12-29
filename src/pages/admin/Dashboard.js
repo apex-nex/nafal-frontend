@@ -278,8 +278,7 @@ const Dashboard = () => {
                           <div className="ms-2 text-start">
                             <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success"
                               onClick={() => {
-                                fetchData()
-                                setCurrentPage(1)
+                                fetchData(`/form?page=${currentPage}`)
                                 dateRangeRef.current.flatpickr.clear();
                               }}
                               disabled={loading}
