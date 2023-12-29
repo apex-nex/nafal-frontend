@@ -123,7 +123,7 @@ const Navbar = (props) => {
       <header id="topnav" className="defaultscroll sticky">
         <div className="container">
           {props.isLight ?
-            <Link className="logo" to="/">
+            <Link className="logo m-0" to="/">
               <span className="logo-light-mode">
                 <img src={logoDark} height="24" className="l-dark" alt="" />
                 <img src={logoLight} height="24" className="l-light" alt="" />
@@ -131,7 +131,7 @@ const Navbar = (props) => {
               <img src={logoLight} height="24" className="logo-dark-mode" alt="" />
             </Link>
             :
-            <Link className="logo" style={{ marginRight: "0px" }} to="/">
+            <Link className="logo m-0" to="/">
               <img src={logoDark} height="24" className="logo-light-mode" alt="Nafal" />
               <img src={logoLight} height="24" className="logo-dark-mode" alt="Nafal" />
             </Link>

@@ -134,7 +134,7 @@ const Services = () => {
                                             <h4 className="title mb-4">Upgrade Your Comfort with Nafal HVAC</h4>
                                             <p className="text-muted para-desc mx-auto">Discover HVAC excellence with <span className="text-primary fw-bold">Nafal HVAC</span>. Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!</p>
                                             <div className="mt-4 pt-2">
-                                                <Link to="/contact" className="btn btn-primary mt-2 me-2">
+                                                <Link to="/contact-us" className="btn btn-primary mt-2 me-2">
                                                     Get in Touch
                                                 </Link>
                                             </div>

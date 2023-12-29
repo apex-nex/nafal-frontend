@@ -1,23 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-
-// Import Images
-import trane from "../../assets/images/home/companies/trane.png";
-import daikin from "../../assets/images/home/companies/daikin.svg";
-import gree from "../../assets/images/home/companies/gree.svg";
-import midea from "../../assets/images/home/companies/midea.svg";
-import fuji from "../../assets/images/home/companies/fuji.svg";
-import lg from "../../assets/images/home/companies/lg.svg";
+import { partnersData } from '../../common/data';
 
 const Partners = () => {
-    const partnersData = [
-        { id: 2, img: daikin },
-        { id: 1, img: trane },
-        { id: 4, img: midea },
-        { id: 5, img: fuji },
-        { id: 6, img: lg },
-        { id: 3, img: gree },
-    ];
 
     return (
         <React.Fragment>
