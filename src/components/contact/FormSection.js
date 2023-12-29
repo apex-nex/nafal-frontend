@@ -31,7 +31,7 @@ const FormSection = () => {
       const response = await post('/form', form);
 
       if (response?.ok) {
-        toast.success("Details send successfully.");
+        toast.success("Your message was sent successfully.");
         setForm(defaultContactForm);
         setFormError(defaultContactForm);
       }

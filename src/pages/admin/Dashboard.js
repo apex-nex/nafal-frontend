@@ -50,7 +50,7 @@ const Dashboard = () => {
       setPrevPage(data.previous);
       setIsFilterMode(data.isFiler)
     } catch (error) {
-      toast.error("Error fetching data");
+      toast.error("Error fetching data. Please refresh and check your connection.");
     } finally {
       setLoading(false);
     }
@@ -217,7 +217,7 @@ const Dashboard = () => {
 
   const updateStatus = async (id, selectedStatus) => {
     if (!selectedStatus) {
-      toast.error('Please select a status before updating.');
+      toast.error('Select a status before updating.');
       return;
     }
 
@@ -383,7 +383,7 @@ const Dashboard = () => {
                                             value={item?.status}
                                             onChange={(e) => updateStatus(item?._id, e.target.value)}
                                             style={{ border: 'none', outline: 'none', backgroundColor: 'transparent', padding: '0' }}
-                                            className="text-start"
+                                            className="text-start text-dark"
                                           >
                                             <option value="pending">Pending</option>
                                             <option value="contacted">Contacted</option>
@@ -425,7 +425,7 @@ const Dashboard = () => {
                         <Container fluid>
                           <Row>
                             <Col xs="12">
-                              {data?.count > 10 && (
+                              {data?.count > 15 && (
                                 <Pagination className="pagination justify-content-end mb-0">
                                   {!isEmpty(prevPage) && (
                                     <PaginationItem disabled={!prevPage}>
@@ -434,9 +434,9 @@ const Dashboard = () => {
                                       </PaginationLink>
                                     </PaginationItem>
                                   )}
-                                  {Array.from({ length: Math.ceil(data?.count / 10) }, (_, index) => {
+                                  {Array.from({ length: Math.ceil(data?.count / 15) }, (_, index) => {
                                     const pageNo = index + 1;
-                                    const totalPages = Math.ceil(data?.count / 10);
+                                    const totalPages = Math.ceil(data?.count / 15);
                                     const visiblePages = 5;
                                     const startPage = Math.max(1, Math.min(currentPage - Math.floor(visiblePages / 2), totalPages - visiblePages + 1));
                                     const endPage = Math.min(startPage + visiblePages - 1, totalPages);
