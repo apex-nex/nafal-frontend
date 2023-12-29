@@ -6,7 +6,7 @@ import Flatpickr from "react-flatpickr"
 import moment from 'moment';
 import { Link } from "react-router-dom"
 import 'flatpickr/dist/flatpickr.min.css';
-import { get, patch, remove } from "../../components/helpers/api_helper"
+import { get, update, remove } from "../../components/helpers/api_helper"
 import { toast } from "react-toastify"
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
@@ -222,7 +222,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await patch('/form/update', { id, status: selectedStatus })
+      const response = await update('/form/update', { id, status: selectedStatus })
       if (response?.ok) {
         toast.success('Status updated successfully');
         updateStatusById(id, response?.result?.status)
