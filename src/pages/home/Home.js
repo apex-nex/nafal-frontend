@@ -9,7 +9,6 @@ import homeContent from '../../common/data/home/homeContent.json';
 import Partners from '../../components/home/Partners';
 import MetaTags from 'react-meta-tags';
 
-const carouselSectionContent = homeContent?.data?.homePage?.sections?.carouselSection;
 const aboutSectionContent = homeContent?.data?.homePage?.sections?.aboutSection;
 const videoSectionContent = homeContent?.data?.homePage?.sections?.videoSection
 const servicesSectionContent = homeContent?.data?.homePage?.sections?.servicesSection
@@ -24,7 +23,7 @@ const Home = () => {
         </MetaTags>
 
         {/* {carousel} */}
-        <Carousel carouselSectionContent={carouselSectionContent} />
+        <Carousel/>
 
         {/* {company} */}
         <Partners />

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseURL = "http://localhost:8000/api";
 const token = localStorage.getItem("token")
-// const baseURL = 'https://nafal.onrender.com/api';
+// const baseURL = "http://localhost:8000/api";
+const baseURL = 'https://nafal.onrender.com/api';
 
 const api = axios.create({
     baseURL,
@@ -18,6 +18,7 @@ export const get = async (url) => {
         const response = await api.get(url);
         return response.data;
     } catch (error) {
+        console.error("Error in GET request:", error);
         throw error?.response?.data?.error;
     }
 };
@@ -27,16 +28,18 @@ export const post = async (url, data) => {
         const response = await api.post(url, data);
         return response.data;
     } catch (error) {
+        console.error("Error in POST request:", error);
         throw error?.response?.data?.error;
     }
 };
 
 // Function to handle PATCH requests
-export const patch = async (url, data) => {
+export const update = async (url, data) => {
     try {
         const response = await api.patch(url, data);
         return response.data;
     } catch (error) {
+        console.error("Error in PATCH request:", error);
         throw error?.response?.data?.error;
     }
 };
@@ -47,6 +50,7 @@ export const remove = async (url, data=[]) => {
         const response = await api.delete(url, {data});
         return response.data;
     } catch (error) {
+        console.error("Error in DELETE request:", error);
         throw error?.response?.data?.error;
     }
 };

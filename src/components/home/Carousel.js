@@ -7,54 +7,17 @@ import "react-modal-video/scss/modal-video.scss";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import FeatherIcon from "feather-icons-react";
-
-import bg01 from "../../assets/images/home/carousel/bg1.jpg";
+import { CarouselData } from "../../common/data";
 
 const Carousel = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const items = [
-    {
-      id: 1,
-      image: bg01,
-      h1: "Enhance Comfort with Nafal HVAC",
-      p: "Upgrade your indoor environment with our expert HVAC services. We specialize in efficient heating, cooling, and ventilation for your comfort.",
-      btnclass: "btn btn-icon btn-pills btn-primary lightbox",
-      link: "#",
-      isVideo: true,
-    },
-    {
-      id: 2,
-      image: bg01,
-      h1: "Explore Reliable Climate Solutions",
-      p: "Discover HVAC solutions tailored to your needs. Benefit from our expertise in designing and managing climate control systems.",
-      btnclass: "btn btn-primary",
-      btntext: " About Us",
-      link: "/about-us",
-      iClass: "mdi mdi-briefcase",
-      isVideo: false,
-    },
-    {
-      id: 3,
-      image: bg01,
-      h1: "Contact Nafal HVAC Experts",
-      p: "Get in touch with our HVAC experts for personalized solutions. We provide professional services to ensure your indoor environment is comfortable.",
-      btnclass: "btn btn-primary mouse-down",
-      btntext: " Contact Us",
-      link: "/contact-us",
-      iClass: "mdi mdi-phone",
-      isVideo: false,
-    },
-  ];
-
-
-
   useEffect(() => {
     var e1 = document.getElementsByClassName("slick-slide");
     for (var i = 0; i < 3; i++) {
-      if (i === 0) e1[i].style.backgroundImage = `url(${bg01})`;
-      if (i === 1) e1[i].style.backgroundImage = `url(${bg01})`;
-      if (i === 2) e1[i].style.backgroundImage = `url(${bg01})`;
+      if (i === 0) e1[i].style.backgroundImage = `url(${CarouselData[0].image})`;
+      if (i === 1) e1[i].style.backgroundImage = `url(${CarouselData[1].image})`;
+      if (i === 2) e1[i].style.backgroundImage = `url(${CarouselData[2].image})`;
     }
 
     const openModal = () => setIsOpen(true);
@@ -82,7 +45,7 @@ const Carousel = () => {
     pauseOnHover: true,
   };
 
-  const slides = items.map((item, key) => (
+  const slides = CarouselData.map((item, key) => (
     <li
       className="bg-home bg-animation-left d-flex align-items-center"
       key={key}
@@ -114,7 +77,7 @@ const Carousel = () => {
                 </Link>
                 {item.isVideo && (
                   <span className="fw-bold text-uppercase small align-middle ms-2">
-                    Watch Now
+                    {item.buttontext}
                   </span>
                 )}
               </div>
