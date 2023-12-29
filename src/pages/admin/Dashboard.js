@@ -258,7 +258,7 @@ const Dashboard = () => {
               ) : (
                 <Card>
                   <CardBody>
-                    <Row className="mb-2 d-flex justify-content-between">
+                    <Row className="mb-2 d-flex justify-content-between align-items-center">
                       <Col md={"4"}>
                         <div className="search-box mb-2 d-inline-block">
                           <div className="position-relative">
