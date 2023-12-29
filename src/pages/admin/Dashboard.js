@@ -383,7 +383,7 @@ const Dashboard = () => {
                                             value={item?.status}
                                             onChange={(e) => updateStatus(item?._id, e.target.value)}
                                             style={{ border: 'none', outline: 'none', backgroundColor: 'transparent', padding: '0' }}
-                                            className="text-start text-dark"
+                                            className="text-start"
                                           >
                                             <option value="pending">Pending</option>
                                             <option value="contacted">Contacted</option>
