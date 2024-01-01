@@ -145,23 +145,48 @@ const Dashboard = () => {
 
   const generateExcel = () => {
     const excelData = data.results?.map((item) => ({
-      Name: item?.name,
-      Email: item?.email,
-      Mobile: item?.mobile,
-      Subject: item?.subject,
-      Status: item?.status,
-      Date: moment(item?.date).format("MMM D, YYYY"),
-      Comment: item?.comments,
+      "Name": item?.name,
+      "Email": item?.email,
+      "Mobile": item?.mobile,
+      "Subject": item?.subject,
+      "Status": item?.status,
+      "Created At": moment(item?.date).format("MMM D, YYYY"),
+      "Message": item?.comments,
     }));
 
     const ws = XLSX.utils.json_to_sheet(excelData);
+
+    const columnWidths = [
+      { wch: 20 },
+      { wch: 32 },
+      { wch: 15 },
+      { wch: 25 },
+      { wch: 10 },
+      { wch: 13 },
+      { wch: 1000 },
+    ];
+
+    ws["!cols"] = columnWidths;
+
+    const firstRow = 2;
+    const lastRow = firstRow + excelData.length - 1;
+
+    for (let i = firstRow; i <= lastRow; i++) {
+      ["A", "B", "C", "D", "E", "F", "G"].forEach((col) => {
+        const cellRef = col + i;
+        const cell = ws[cellRef];
+
+        cell.s = { alignment: { vertical: 'top', horizontal: 'left' } };
+      });
+    }
+
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
     XLSX.writeFile(wb, `contact_form_${moment().format("YYYY-MM-DD")}.xlsx`);
   };
 
-  const generatePDF = () => {
 
+  const generatePDF = () => {
     if (!data || isEmpty(data.results)) {
       const doc = new jsPDF();
       const text = 'No records found';
