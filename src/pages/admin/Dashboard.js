@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import MetaTags from "react-meta-tags"
-import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Button, Col, Container, Row, Table, Input, Card, CardBody, Pagination, PaginationItem, PaginationLink, InputGroup, Modal, ModalHeader, ModalBody, ModalFooter, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from "reactstrap"
 import { isEmpty } from "lodash"
 import Flatpickr from "react-flatpickr"
 import moment from 'moment';
@@ -11,9 +11,11 @@ import { toast } from "react-toastify"
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import { getStatusClass } from "../../common/data/utils/common"
+import * as XLSX from "xlsx";
 
 const Dashboard = () => {
   const dateRangeRef = useRef()
+  const inputRef = useRef()
   const [data, setData] = useState({})
   const [period, setPeriod] = useState({})
   const [defaultDate, setDefaultDate] = useState([])
@@ -27,6 +29,8 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false)
   const [isFilterMode, setIsFilterMode] = useState(false)
+  const [periodDropdown, setPeriodDropdown] = useState(false);
+  const [downloadDropdown, setDownloadDropdown] = useState(false);
 
   function toggleDelete(state = true) {
     setDeleteModal(!state)
@@ -89,6 +93,7 @@ const Dashboard = () => {
 
     onDateRangeChange([start, end]);
     dateRangeRef.current.flatpickr.clear();
+    inputRef.current.value = '';
     setPeriod({
       value: period,
       start: start,
@@ -138,8 +143,38 @@ const Dashboard = () => {
     }
   };
 
+  const generateExcel = () => {
+    const excelData = data.results?.map((item) => ({
+      Name: item?.name,
+      Email: item?.email,
+      Mobile: item?.mobile,
+      Subject: item?.subject,
+      Status: item?.status,
+      Date: moment(item?.date).format("MMM D, YYYY"),
+      Comment: item?.comments,
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(excelData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
+    XLSX.writeFile(wb, `contact_form_${moment().format("YYYY-MM-DD")}.xlsx`);
+  };
 
   const generatePDF = () => {
+
+    if (!data || isEmpty(data.results)) {
+      const doc = new jsPDF();
+      const text = 'No records found';
+      const textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+      const x = (doc.internal.pageSize.width - textWidth) / 2;
+      const y = doc.internal.pageSize.height / 2;
+
+      doc.setFontSize(14);
+      doc.text(text, x, y);
+      doc.save('empty_table.pdf');
+      return;
+    }
+
     const dateStrings = data?.results?.map((item) => item.date);
     const duration = formatDateRange(dateStrings);
 
@@ -191,19 +226,6 @@ const Dashboard = () => {
       startY: 35,
     });
 
-    if (isEmpty(data?.results)) {
-      // Show message when no records are found
-      const text = 'No records found';
-      const textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-      const x = (doc.internal.pageSize.width - textWidth) / 2;
-      const y = doc.internal.pageSize.height / 2;
-
-      doc.setFontSize(14);
-      doc.text(text, x, y);
-      doc.save('empty_table.pdf');
-      return;
-    }
-
     doc.save(`contact_form_${moment().format("YYYY-MM-DD")}.pdf`);
   };
 
@@ -241,9 +263,16 @@ const Dashboard = () => {
       setDefaultDate([date_ranges[0], date_ranges[1]])
       fetchData(`/form/filter?date=${date_ranges[0]}&date_end=${date_ranges[1]}`)
       setPeriod({})
+      inputRef.current.value = '';
     }
   }
 
+  const handleRefresh = () => {
+    fetchData(`/form?page=${currentPage}`)
+    dateRangeRef.current.flatpickr.clear();
+    inputRef.current.value = '';
+    setPeriod({})
+  }
 
   return (
     <React.Fragment>
@@ -256,41 +285,49 @@ const Dashboard = () => {
             <Col xs="12">
               <Card>
                 <CardBody>
-                  <Row className="mb-2 d-flex justify-content-between align-items-center">
+                  <Row className="d-flex justify-content-between align-items-center">
                     <Col md={"4"}>
-                      <div className="search-box mb-2 d-inline-block">
+                      <div className="search-box mt-2 mb-2 d-inline-block">
                         <div className="position-relative">
                           <input
                             className="form-control"
                             type="search"
                             onInput={(e) => searchBar(e.target.value)}
                             placeholder={"Search here..."}
+                            ref={inputRef}
                           />
                           <i className="uil uil-search search-icon" style={{ marginTop: "2px" }}></i>
                         </div>
                       </div>
                     </Col>
                     <Col>
-                      <div className="d-flex justify-content-end">
+                      <div className={`d-flex ${window.innerWidth <= 767 ? 'justify-content-start' : 'justify-content-end'}`}>
+                        <Button color="primary" className="btn btn-primary btn-sm mb-1" id="sa-success"
+                          onClick={handleRefresh}
+                          disabled={loading}
+                        >
+                          Refresh
+                        </Button>
                         <div className="ms-2 text-start">
-                          <Button color="primary" className="btn btn-primary btn-sm me-2 mb-1" id="sa-success"
-                            onClick={() => {
-                              fetchData(`/form?page=${currentPage}`)
-                              dateRangeRef.current.flatpickr.clear();
-                            }}
-                            disabled={loading}
-                          >
-                            Refresh
-                          </Button>
-                          <Button
-                            color="success"
-                            className="btn btn-success btn-sm me-2 mb-1"
-                            id="sa-success"
-                            onClick={generatePDF}
-                            disabled={loading}
-                          >
-                            Download
-                          </Button>
+                          <Dropdown isOpen={downloadDropdown} toggle={() => setDownloadDropdown(!downloadDropdown)} direction="down">
+                            <DropdownToggle caret color="success" size="sm">
+                              Download &nbsp;<i className="bx bx-caret-down" />
+                            </DropdownToggle>
+                            <DropdownMenu>
+                              <DropdownItem
+                                onClick={generatePDF}
+                                disabled={loading || !data?.results?.length}
+                              >
+                                Export PDF
+                              </DropdownItem>
+                              <DropdownItem
+                                onClick={generateExcel}
+                                disabled={loading || !data?.results?.length}
+                              >
+                                Export Excel
+                              </DropdownItem>
+                            </DropdownMenu>
+                          </Dropdown>
                         </div>
                         <div className="ms-2 me-2 text-center">
                           <InputGroup>
@@ -310,31 +347,35 @@ const Dashboard = () => {
                             />
                           </InputGroup>
                         </div>
-                        <div className="ms-2 text-end">
-                          <Button
-                            className="btn-sm me-1 mb-1"
-                            color={period.value === 30 ? 'primary' : 'light'}
-                            onClick={() => onPeriodChange(30)}
-                            disabled={loading}
-                          >
-                            1 Month
-                          </Button>
-                          <Button
-                            className="btn-sm me-1 mb-1"
-                            color={period.value === 90 ? 'primary' : 'light'}
-                            onClick={() => onPeriodChange(90)}
-                            disabled={loading}
-                          >
-                            3 Months
-                          </Button>
-                          <Button
-                            className="btn-sm mb-1"
-                            color={period.value === 180 ? 'primary' : 'light'}
-                            onClick={() => onPeriodChange(180)}
-                            disabled={loading}
-                          >
-                            6 Months
-                          </Button>
+                        <div className="text-sm">
+                          <Dropdown isOpen={periodDropdown} toggle={() => setPeriodDropdown(!periodDropdown)} direction="down">
+                            <DropdownToggle caret color="primary" size="sm">
+                              Period &nbsp;<i className="bx bx-caret-down" />
+                            </DropdownToggle>
+                            <DropdownMenu>
+                              <DropdownItem
+                                data-toggle="modal"
+                                onClick={() => onPeriodChange(30)}
+                                disabled={period.value === 30 ? true : false}
+                              >
+                                Last Month
+                              </DropdownItem>
+                              <DropdownItem
+                                data-toggle="modal"
+                                onClick={() => onPeriodChange(90)}
+                                disabled={period.value === 90 ? true : false}
+                              >
+                                Last 3 Months
+                              </DropdownItem>
+                              <DropdownItem
+                                data-toggle="modal"
+                                onClick={() => onPeriodChange(180)}
+                                disabled={period.value === 180 ? true : false}
+                              >
+                                Last 6 Months
+                              </DropdownItem>
+                            </DropdownMenu>
+                          </Dropdown>
                         </div>
                       </div>
                     </Col>
@@ -375,7 +416,7 @@ const Dashboard = () => {
                                       <td>{item.email?.substring(0, 30)}</td>
                                       <td>
                                         {localStorage.getItem("arabicMode") ? (item?.mobile?.toString()?.slice(0, 12).replace(/\+/g, '') + '+') : item?.mobile?.toString()?.slice(0, 12)}
-                                        </td>
+                                      </td>
                                       <td>{item.subject?.substring(0, 20)}</td>
                                       <td>
                                         <select
