@@ -7,7 +7,7 @@ import "react-modal-video/scss/modal-video.scss";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import FeatherIcon from "feather-icons-react";
-import { CarouselData } from "../../common/data";
+import { CarouselData } from "../../data";
 
 const Carousel = () => {
   const [isOpen, setIsOpen] = useState(false);
