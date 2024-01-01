@@ -19,7 +19,14 @@ body {
     .t-rtl-light {
         display: none;
     }
+
     .t-ltr-light {
         display: inline-block;
     }
+}
+
+.carousel-arabic {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }

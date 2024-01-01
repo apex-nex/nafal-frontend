@@ -8,7 +8,7 @@ import routes from "./routes/allRoutes";
 import withRouter from "./common/data/withRouter";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "./store/auth";
-import { LoaderComponent } from "./common/data/utils/common";
+import { LoaderComponent } from "./common/utils/common";
 
 const App = () => {
   const { isLoggedIn, isDarkMode, isArabic } = useAuth()

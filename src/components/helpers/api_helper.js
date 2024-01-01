@@ -10,7 +10,7 @@ const api = axios.create({
 
 // Set default headers
 api.defaults.headers['Content-Type'] = 'application/json';
-api.defaults.headers['Authorization'] = token;
+api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
 // Function to handle GET requests
 export const get = async (url) => {

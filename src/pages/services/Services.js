@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
 import { useState } from 'react';
-import services_cms_data from '../../common/data/services/cms_services.json'
 import ServicesSection from '../../components/home/ServicesSection';
-import homeContent from '../../common/data/home/homeContent.json';
+import services_cms_data from '../../data/services/cms_services.json'
+import homeContent from '../../data/home/homeContent.json';
 const servicesSectionContent = homeContent?.data?.homePage?.sections?.servicesSection
 
 const Services = () => {
