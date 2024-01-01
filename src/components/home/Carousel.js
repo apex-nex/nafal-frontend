@@ -7,7 +7,7 @@ import "react-modal-video/scss/modal-video.scss";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import FeatherIcon from "feather-icons-react";
-import { CarouselData } from "../../common/data";
+import { CarouselData } from "../../data";
 
 const Carousel = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +55,7 @@ const Carousel = () => {
       <Container>
         <Row className="align-items-center">
           <Col lg={7} md={7} className="slider-desc">
-            <div className="title-heading position-relative mt-4" style={{ zIndex: "1" }}>
+            <div className="title-heading position-relative mt-4 carousel-arabic" style={{ zIndex: "1" }}>
               <h1
                 className="heading mb-3"
                 dangerouslySetInnerHTML={{ __html: item.h1 }}

@@ -49,7 +49,7 @@ export default function ContactSection(props) {
                               onClickFunctionalities(ele);
                             }}
                           >
-                            {ele.data}
+                            {ele.data.replace(/^(\+)/, '\u202D$1')}
                           </Link>
                         </div>
                       </Card>

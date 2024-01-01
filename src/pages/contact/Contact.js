@@ -3,7 +3,7 @@ import HeadingSection from '../../components/contact/HeadingSection';
 import ContactSection from '../../components/contact/ContactSection';
 import FormSection from '../../components/contact/FormSection';
 import MapSection from '../../components/contact/MapSection';
-import contactPageContent from '../../common/data/contact-page/contactPageContent.json'
+import contactPageContent from '../../data/contact-page/contactPageContent.json'
 import { MetaTags } from 'react-meta-tags';
 
 const contactSectionContent = contactPageContent?.data?.contactUsPage?.sections?.contactSection;

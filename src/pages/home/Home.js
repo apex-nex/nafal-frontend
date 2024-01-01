@@ -5,7 +5,7 @@ import VideoSection from '../../components/home/VideoSection';
 import ServicesSection from '../../components/home/ServicesSection';
 import ClientSection from '../../components/home/ClientSection';
 import DownloadAppSection from '../../components/home/DownloadAppSection';
-import homeContent from '../../common/data/home/homeContent.json';
+import homeContent from '../../data/home/homeContent.json';
 import Partners from '../../components/home/Partners';
 import MetaTags from 'react-meta-tags';
 

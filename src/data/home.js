@@ -1,11 +1,13 @@
-import bg01 from "../../assets/images/home/carousel/bg1.jpg";
-import trane from "../../assets/images/home/companies/trane.png";
-import daikin from "../../assets/images/home/companies/daikin.svg";
-import gree from "../../assets/images/home/companies/gree.svg";
-import midea from "../../assets/images/home/companies/midea.svg";
-import fuji from "../../assets/images/home/companies/fuji.svg";
-import lg from "../../assets/images/home/companies/lg.svg";
-import about from "../../assets/images/home/about/about.jpg";
+import bg01 from "../assets/images/home/carousel/bg1.jpg";
+import trane from "../assets/images/home/companies/trane.png";
+import daikin from "../assets/images/home/companies/daikin.svg";
+import gree from "../assets/images/home/companies/gree.svg";
+import midea from "../assets/images/home/companies/midea.svg";
+import fuji from "../assets/images/home/companies/fuji.svg";
+import lg from "../assets/images/home/companies/lg.svg";
+import about from "../assets/images/home/about/about.jpg";
+
+// id, image, name, link, title, icon, description, date, heading, comment, features, value, postfix, end, imgUrl, btnLink, isActive, duration. img, titleLine1, titleLine2, desc
 
 const CarouselData = [
     {

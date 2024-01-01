@@ -4,7 +4,7 @@ import FeatherIcon from 'feather-icons-react';
 import contact from '../../assets/images/contact/contact.svg';
 import { post } from '../helpers/api_helper';
 import { toast } from 'react-toastify';
-import { ErrorMessageDisplay } from '../../common/data/utils/common';
+import { ErrorMessageDisplay } from '../../common/utils/common';
 
 const FormSection = () => {
   const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
@@ -31,7 +31,7 @@ const FormSection = () => {
       const response = await post('/form', form);
 
       if (response?.ok) {
-        toast.success("Details send successfully.");
+        toast.success("Your message was sent successfully.");
         setForm(defaultContactForm);
         setFormError(defaultContactForm);
       }
@@ -81,7 +81,7 @@ const FormSection = () => {
                             id="name"
                             type="text"
                             className={formError?.name ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="First Name :"
+                            placeholder="Your Name :"
                             value={form?.name}
                             required
                             onChange={handleInput}
