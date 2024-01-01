@@ -440,7 +440,7 @@ const Dashboard = () => {
                                       <td><Link to="#" onClick={() => handleClick(item)}>{item.name?.substring(0, 22)}</Link></td>
                                       <td>{item.email?.substring(0, 30)}</td>
                                       <td>
-                                        {localStorage.getItem("arabicMode") ? (item?.mobile?.toString()?.slice(0, 12).replace(/\+/g, '') + '+') : item?.mobile?.toString()?.slice(0, 12)}
+                                        {item?.mobile?.toString()?.slice(0, 12).replace(/^(\+)/, '\u202D$1')}
                                       </td>
                                       <td>{item.subject?.substring(0, 20)}</td>
                                       <td>

@@ -81,7 +81,7 @@ const FormSection = () => {
                             id="name"
                             type="text"
                             className={formError?.name ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="First Name :"
+                            placeholder="Your Name :"
                             value={form?.name}
                             required
                             onChange={handleInput}
