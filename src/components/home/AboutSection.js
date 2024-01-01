@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
-import { AboutSectionData } from '../../data';
+import { aboutSectionData } from '../../data';
 
 function AboutSection(props) {
 
   return (
     <React.Fragment>
-      {AboutSectionData ? (
+      {aboutSectionData ? (
         <React.Fragment>
           <section className="section">
             <Container>
               <Row className="align-items-center">
                 <Col lg="5" md="6" xs="12">
                   <img
-                    src={AboutSectionData?.image}
+                    src={aboutSectionData?.image}
                     className="img-fluid rounded"
                     alt="Server error!"
                   />
@@ -28,11 +28,11 @@ function AboutSection(props) {
                 >
                   <div className="section-title ms-lg-4">
                     <span className="badge rounded-pill bg-soft-primary">
-                      {AboutSectionData?.badgeText}
+                      {aboutSectionData?.badgeText}
                     </span>
                     <h4 className="title mt-3 mb-4">
-                      {AboutSectionData?.titles
-                        ? AboutSectionData?.titles?.map((ele, index) => (
+                      {aboutSectionData?.titles
+                        ? aboutSectionData?.titles?.map((ele, index) => (
                           <span
                             key={index}
                             className={ele.highlight ? 'text-primary' : ''}
@@ -44,8 +44,8 @@ function AboutSection(props) {
                         : null}
                     </h4>
                     <p className="text-muted">
-                      {AboutSectionData?.description
-                        ? AboutSectionData?.description?.map(
+                      {aboutSectionData?.description
+                        ? aboutSectionData?.description?.map(
                           (ele, index) => (
                             <span
                               className={

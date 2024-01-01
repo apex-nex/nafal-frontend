@@ -3,9 +3,9 @@ import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 import FadeIn from 'react-fade-in';
+import { servicesData } from '../../data';
 
-const ServiceSection = (props) => {
-  const { servicesSectionContent, seeMore = true } = props;
+const ServiceSection = ({seeMore = true}) => {
   const [displayCategory, setDisplayCategory] = useState('All');
 
   const setCategory = (category) => {
@@ -32,21 +32,21 @@ const ServiceSection = (props) => {
 
   return (
     <React.Fragment>
-      {servicesSectionContent ? (
+      {servicesData ? (
         <React.Fragment>
           <Container className="mt-100 mt-60">
             <Row>
               <Col lg={4} md={6}>
                 <div className="section-title sticky-bar position-sticky">
                   <span className="badge rounded-pill bg-soft-primary">
-                    {servicesSectionContent?.heading}
+                    {servicesData?.heading}
                   </span>
                   <h4 className="title mt-3 mb-4">
-                    {servicesSectionContent?.title}
+                    {servicesData?.title}
                   </h4>
                   <p className="text-muted para-desc mb-0">
-                    {servicesSectionContent?.description
-                      ? servicesSectionContent?.description?.map(
+                    {servicesData?.description
+                      ? servicesData?.description?.map(
                         (ele, index) => (
                           <span
                             className={
@@ -132,8 +132,8 @@ const ServiceSection = (props) => {
                   </div>
                 </Row>
                 <Row className="projects-wrapper">
-                  {servicesSectionContent?.works
-                    ? servicesSectionContent?.works
+                  {servicesData?.works
+                    ? servicesData?.works
                       .filter(
                         ({ category }) =>
                           displayCategory === category ||
@@ -151,9 +151,7 @@ const ServiceSection = (props) => {
                               <CardBody className="p-0">
                                 <Link to="#">
                                   <img
-                                    src={require(
-                                      `../../assets/images/home/services/${image}`,
-                                    )}
+                                    src={image}
                                     className="img-fluid work-image"
                                     alt={`Service ${key}`}
                                   />

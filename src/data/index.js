@@ -1,11 +1,12 @@
-import {
-    CarouselData,
-    partnersData,
-    AboutSectionData,
-} from "./home";
+import { carouselData, partnersData, aboutSectionData, videoSectionData, clientsData, appData } from "./home/home";
+import { servicesData } from "./commonData";
 
 export {
-    CarouselData,
+    carouselData,
     partnersData,
-    AboutSectionData,
+    aboutSectionData,
+    videoSectionData,
+    servicesData,
+    clientsData,
+    appData,
 };
