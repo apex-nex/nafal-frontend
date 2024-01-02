@@ -5,8 +5,6 @@ import MetaTags from 'react-meta-tags';
 import { useState } from 'react';
 import ServicesSection from '../../components/home/ServicesSection';
 import services_cms_data from '../../data/services/cms_services.json'
-import homeContent from '../../data/home/homeContent.json';
-const servicesSectionContent = homeContent?.data?.homePage?.sections?.servicesSection
 
 const Services = () => {
     const [servicesCmsData, setServicesCmsData] = useState({})
@@ -97,7 +95,7 @@ const Services = () => {
                                 </svg>
                             </div>
                         </div>
-                        <ServicesSection servicesSectionContent={servicesSectionContent} seeMore={false} />
+                        <ServicesSection seeMore={false} />
                         <section className="section">
                             <Container>
                                 <Row>

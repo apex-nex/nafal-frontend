@@ -5,14 +5,8 @@ import VideoSection from '../../components/home/VideoSection';
 import ServicesSection from '../../components/home/ServicesSection';
 import ClientSection from '../../components/home/ClientSection';
 import DownloadAppSection from '../../components/home/DownloadAppSection';
-import homeContent from '../../data/home/homeContent.json';
 import Partners from '../../components/home/Partners';
 import MetaTags from 'react-meta-tags';
-
-const aboutSectionContent = homeContent?.data?.homePage?.sections?.aboutSection;
-const videoSectionContent = homeContent?.data?.homePage?.sections?.videoSection
-const servicesSectionContent = homeContent?.data?.homePage?.sections?.servicesSection
-const clientSectionContent = homeContent?.data?.homePage?.sections?.clientSection
 
 const Home = () => {
   return (
@@ -23,21 +17,21 @@ const Home = () => {
         </MetaTags>
 
         {/* {carousel} */}
-        <Carousel/>
+        <Carousel />
 
         {/* {company} */}
         <Partners />
         {/* {about} */}
-        <AboutSection aboutSectionContent={aboutSectionContent} />
+        <AboutSection />
 
         {/* {video} */}
-        <VideoSection videoSectionContent={videoSectionContent} />
+        <VideoSection />
 
         {/* {services} */}
-        <ServicesSection servicesSectionContent={servicesSectionContent} />
+        <ServicesSection />
 
         {/* {clients} */}
-        <ClientSection clientSectionContent={clientSectionContent} />
+        <ClientSection />
 
         {/* {DownloadAppSection} */}
         <DownloadAppSection />
