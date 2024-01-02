@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 import FadeIn from 'react-fade-in';
 import { servicesData } from '../../data';
+import { servicesDataArabic } from '../../data/indexArabic';
+import { useAuth } from '../../store/auth';
 
 const ServiceSection = ({seeMore = true}) => {
+  const { isArabic } = useAuth()
+  const data = !isArabic ? servicesData : servicesDataArabic
   const [displayCategory, setDisplayCategory] = useState('All');
 
   const setCategory = (category) => {
@@ -32,21 +36,21 @@ const ServiceSection = ({seeMore = true}) => {
 
   return (
     <React.Fragment>
-      {servicesData ? (
+      {data ? (
         <React.Fragment>
           <Container className="mt-100 mt-60">
             <Row>
               <Col lg={4} md={6}>
                 <div className="section-title sticky-bar position-sticky">
                   <span className="badge rounded-pill bg-soft-primary">
-                    {servicesData?.heading}
+                    {data?.heading}
                   </span>
                   <h4 className="title mt-3 mb-4">
-                    {servicesData?.title}
+                    {data?.title}
                   </h4>
                   <p className="text-muted para-desc mb-0">
-                    {servicesData?.description
-                      ? servicesData?.description?.map(
+                    {data?.description
+                      ? data?.description?.map(
                         (ele, index) => (
                           <span
                             className={
@@ -65,7 +69,7 @@ const ServiceSection = ({seeMore = true}) => {
                     seeMore ?
                       <div className="mt-4 d-none d-md-block">
                         <Link to="/services" className="btn btn-soft-primary">
-                          See More{' '}
+                          {data?.readMore}{' '}
                           <i>
                             <FeatherIcon
                               icon="arrow-right"
@@ -132,8 +136,8 @@ const ServiceSection = ({seeMore = true}) => {
                   </div>
                 </Row>
                 <Row className="projects-wrapper">
-                  {servicesData?.works
-                    ? servicesData?.works
+                  {data?.works
+                    ? data?.works
                       .filter(
                         ({ category }) =>
                           displayCategory === category ||

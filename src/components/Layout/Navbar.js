@@ -5,8 +5,13 @@ import logoLight from "../../assets/images/logo/nafal-logo.png";
 import RightSidebar from './RightSidebar';
 import FeatherIcon from 'feather-icons-react';
 import { Offcanvas } from 'reactstrap';
+import { menuItems } from '../../data';
+import { useAuth } from '../../store/auth';
+import { menuItemsArabic } from '../../data/indexArabic';
 
 const Navbar = (props) => {
+  const {isArabic} = useAuth()
+  const data = !isArabic ? menuItems : menuItemsArabic
   const [open, setOpen] = useState(false);
 
   const onDrawerClose = () => {
@@ -56,16 +61,16 @@ const Navbar = (props) => {
   }, [window.location.href]);
 
   const activateMenu = () => {
-    const menuItems = document.getElementsByClassName("sub-menu-item");
+    const data = document.getElementsByClassName("sub-menu-item");
 
     // Remove 'active' class from all menu items
-    for (let i = 0; i < menuItems.length; i++) {
-      menuItems[i].classList.remove('active');
-      const immediateParent = menuItems[i].closest('li');
+    for (let i = 0; i < data.length; i++) {
+      data[i].classList.remove('active');
+      const immediateParent = data[i].closest('li');
       if (immediateParent) {
         immediateParent.classList.remove('active');
       }
-      const parent = menuItems[i].closest(".parent-menu-item");
+      const parent = data[i].closest(".parent-menu-item");
       if (parent) {
         parent.classList.remove('active');
       }
@@ -73,9 +78,9 @@ const Navbar = (props) => {
 
     // Add 'active' class to the matching menu item
     let matchingMenuItem = null;
-    for (let idx = 0; idx < menuItems.length; idx++) {
-      if (menuItems[idx].href === window.location.href) {
-        matchingMenuItem = menuItems[idx];
+    for (let idx = 0; idx < data.length; idx++) {
+      if (data[idx].href === window.location.href) {
+        matchingMenuItem = data[idx];
       }
     }
     if (matchingMenuItem) {
@@ -201,10 +206,13 @@ const Navbar = (props) => {
 
           <div id="navigation">
             <ul className="navigation-menu">
-              <li><Link to="/" className="sub-menu-item">Home</Link></li>
-              <li><Link to="/about-us" className="sub-menu-item">ABOUT US</Link></li>
-              <li><Link to="/services" className="sub-menu-item">SERVICES</Link></li>
-              <li><Link to="/contact-us" className="sub-menu-item">CONTACT US</Link></li>
+              {data.map((item, index) => (
+                <li key={index}>
+                  <Link to={item.to} className="sub-menu-item">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

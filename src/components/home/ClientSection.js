@@ -5,12 +5,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import "../../../node_modules/swiper/swiper.scss";
 import { clientsData } from '../../data';
+import { clientsDataArabic } from '../../data/indexArabic';
+import { useAuth } from '../../store/auth';
 
 const ClientSection = (props) => {
+  const { isArabic } = useAuth()
+  const data = !isArabic ? clientsData : clientsDataArabic
 
   return (
     <React.Fragment>
-      {clientsData ? (
+      {data ? (
         <React.Fragment>
           <section className="section">
             <Container>
@@ -19,11 +23,11 @@ const ClientSection = (props) => {
                   <div className="section-title mb-4 pb-2 text-center">
                     <h3 className="title mb-4">
                       <span className="text-primary">
-                        {clientsData?.title}
+                        {data?.title}
                       </span>
                     </h3>
                     <p className="text-muted para-desc mb-0 mx-auto">
-                      {clientsData?.description}
+                      {data?.description}
                     </p>
                   </div>
                 </Col>
@@ -46,7 +50,7 @@ const ClientSection = (props) => {
                         slidesPerView: 3,
                       },
                       1400: {
-                        slidesPerView: clientsData?.clients.length < 5 ? clientsData.clients.length : 5,
+                        slidesPerView: data?.clients.length < 5 ? data.clients.length : 5,
                       },
                     }}
                     autoplay={{
@@ -58,8 +62,8 @@ const ClientSection = (props) => {
                     className="tiny-five-item"
                   >
                     <div className="tiny-slide">
-                      {clientsData?.clients
-                        ? clientsData?.clients?.map((client, key) => (
+                      {data?.clients
+                        ? data?.clients?.map((client, key) => (
                           <SwiperSlide key={key}>
                             <Card className="nft nft-primary nft-creator border-0 rounded-md shadow m-2">
                               <CardBody className="p-3">

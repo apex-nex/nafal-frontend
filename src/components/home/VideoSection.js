@@ -5,9 +5,13 @@ import FeatherIcon from 'feather-icons-react';
 import ModalVideo from 'react-modal-video';
 import '../../../node_modules/react-modal-video/scss/modal-video.scss';
 import { videoSectionData } from '../../data';
+import { useAuth } from '../../store/auth';
+import { videoSectionDataArabic } from '../../data/indexArabic';
 
 function VideoSection(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const { isArabic } = useAuth()
+  const data = !isArabic ? videoSectionData : videoSectionDataArabic
 
   const openModal = () => {
     setIsOpen(true);
@@ -15,13 +19,13 @@ function VideoSection(props) {
 
   return (
     <React.Fragment>
-      {videoSectionData ? (
+      {data ? (
         <React.Fragment>
           <Container fluid>
             <div
               className="bg-cta shadow rounded card overflow-hidden"
               style={{
-                background: `url(${videoSectionData?.img}) center center`,
+                background: `url(${data?.img}) center center`,
               }}
               id="cta"
             >
@@ -31,10 +35,10 @@ function VideoSection(props) {
                   <Col xs="12" className="text-center">
                     <div className="section-title">
                       <h4 className="title title-dark text-white mb-4">
-                        {videoSectionData?.title}
+                        {data?.title}
                       </h4>
                       <p className="text-white-50 para-dark para-desc mx-auto">
-                        {videoSectionData?.description}
+                        {data?.description}
                       </p>
                       <Link
                         to="#"
@@ -57,7 +61,7 @@ function VideoSection(props) {
           <ModalVideo
             channel="youtube"
             isOpen={isOpen}
-            videoId={videoSectionData?.videoId}
+            videoId={data?.videoId}
             onClose={() => setIsOpen(false)}
           />
         </React.Fragment>

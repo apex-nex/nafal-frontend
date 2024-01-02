@@ -9,6 +9,7 @@ import aboutImg from '../../assets/images/home/about/about.jpg';
 import videoImg from '../../assets/images/home/video/img.svg';
 import clientImg1 from '../../assets/images/home/clients/01.png';
 import clientImg2 from '../../assets/images/home/clients/02.jpg';
+import userInterface from '../../assets/images/home/download/user_interface.svg';
 
 // id, image, name, link, title, icon, description, date, heading, comment, features, value, postfix, end, imgUrl, btnLink, isActive, duration. img, titleLine1, titleLine2, desc
 
@@ -77,6 +78,7 @@ const partnersData = [
 const aboutSectionData = {
   badgeText: 'About us',
   image: aboutImg,
+  readMore: "Read More",
   titles: [
     {
       title: 'We Lead the Way',
@@ -137,6 +139,7 @@ const clientsData = {
 }
 
 const appData = {
+  img: userInterface,
   title1: "Available for your",
   title2: "Smartphones",
   description1: "Stay connected with",

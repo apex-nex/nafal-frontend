@@ -2,6 +2,9 @@ import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import FeatherIcon from 'feather-icons-react';
+import { useAuth } from '../../store/auth';
+import { footerData } from '../../data';
+import { footerDataArabic } from '../../data/indexArabic';
 
 const Loader = () => {
   return (
@@ -17,6 +20,9 @@ const Loader = () => {
 };
 
 const Footer = () => {
+  const { isArabic } = useAuth()
+  const data = !isArabic ? footerData : footerDataArabic
+
   return (
     <React.Fragment>
       <Suspense fallback={Loader()}>
@@ -29,7 +35,7 @@ const Footer = () => {
                     <p className="mb-1">
                       © {new Date().getFullYear()} NAFAL HVAC.{' '}
                       <Link to="/" rel="noreferrer" className="text-reset">
-                        All rights reserved
+                        {data?.description}
                       </Link>
                       .
                     </p>
@@ -40,12 +46,12 @@ const Footer = () => {
                   <ul className="list-unstyled footer-list terms-service mb-2">
                     <li className="list-inline-item mb-0">
                       <Link to="/privacy" className="text-foot me-2">
-                        Privacy
+                        {data?.PrivacyPage}
                       </Link>
                     </li>
                     <li className="list-inline-item mb-0">
                       <Link to="/terms" className="text-foot me-2">
-                        Terms
+                        {data?.TermsPage}
                       </Link>
                     </li>
                   </ul>
