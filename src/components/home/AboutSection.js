@@ -1,20 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
-import { AboutSectionData } from '../../data';
+import { aboutSectionData } from '../../data';
+import { aboutSectionDataArabic } from '../../data/indexArabic';
+import { useAuth } from '../../store/auth';
 
-function AboutSection(props) {
+const AboutSection = (props) => {
+  const { isArabic } = useAuth()
+  const data = !isArabic ? aboutSectionData : aboutSectionDataArabic
 
   return (
     <React.Fragment>
-      {AboutSectionData ? (
+      {data ? (
         <React.Fragment>
           <section className="section">
             <Container>
               <Row className="align-items-center">
                 <Col lg="5" md="6" xs="12">
                   <img
-                    src={AboutSectionData?.image}
+                    src={data?.image}
                     className="img-fluid rounded"
                     alt="Server error!"
                   />
@@ -28,11 +32,11 @@ function AboutSection(props) {
                 >
                   <div className="section-title ms-lg-4">
                     <span className="badge rounded-pill bg-soft-primary">
-                      {AboutSectionData?.badgeText}
+                      {data?.badgeText}
                     </span>
                     <h4 className="title mt-3 mb-4">
-                      {AboutSectionData?.titles
-                        ? AboutSectionData?.titles?.map((ele, index) => (
+                      {data?.titles
+                        ? data?.titles?.map((ele, index) => (
                           <span
                             key={index}
                             className={ele.highlight ? 'text-primary' : ''}
@@ -44,8 +48,8 @@ function AboutSection(props) {
                         : null}
                     </h4>
                     <p className="text-muted">
-                      {AboutSectionData?.description
-                        ? AboutSectionData?.description?.map(
+                      {data?.description
+                        ? data?.description?.map(
                           (ele, index) => (
                             <span
                               className={
@@ -60,7 +64,7 @@ function AboutSection(props) {
                         : null}
                     </p>
                     <Link to="/about-us" className="btn btn-primary mt-3">
-                      Read more
+                      {data?.readMore}
                     </Link>
                   </div>
                 </Col>

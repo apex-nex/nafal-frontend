@@ -7,17 +7,21 @@ import "react-modal-video/scss/modal-video.scss";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import FeatherIcon from "feather-icons-react";
-import { CarouselData } from "../../data";
+import { carouselData } from "../../data";
+import { carouselDataArabic } from "../../data/indexArabic";
+import { useAuth } from "../../store/auth";
 
 const Carousel = () => {
+  const {isArabic} = useAuth()
+  const data = !isArabic ? carouselData : carouselDataArabic
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     var e1 = document.getElementsByClassName("slick-slide");
     for (var i = 0; i < 3; i++) {
-      if (i === 0) e1[i].style.backgroundImage = `url(${CarouselData[0].image})`;
-      if (i === 1) e1[i].style.backgroundImage = `url(${CarouselData[1].image})`;
-      if (i === 2) e1[i].style.backgroundImage = `url(${CarouselData[2].image})`;
+      if (i === 0) e1[i].style.backgroundImage = `url(${data[0].image})`;
+      if (i === 1) e1[i].style.backgroundImage = `url(${data[1].image})`;
+      if (i === 2) e1[i].style.backgroundImage = `url(${data[2].image})`;
     }
 
     const openModal = () => setIsOpen(true);
@@ -45,11 +49,11 @@ const Carousel = () => {
     pauseOnHover: true,
   };
 
-  const slides = CarouselData.map((item, key) => (
+  const slides = data?.map((item, key) => (
     <li
       className="bg-home bg-animation-left d-flex align-items-center"
       key={key}
-      style={{ backgroundImage: `url(${item.image})` }}
+      style={{ backgroundImage: `url(${item?.image})` }}
     >
 
       <Container>
