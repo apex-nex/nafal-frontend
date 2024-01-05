@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'reactstrap';
+import { contactData } from '../../data/contact-page/contact';
+import { useAuth } from "../../store/auth"
 
 export default function ContactSection(props) {
-  const { contactSectionContent } = props;
+  const { isArabic } = useAuth()
+  const data = !isArabic ? contactData : contactData
+
+  const { } = props;
 
   const onClickFunctionalities = (ele) => {
     if (ele.title === 'Location') {
@@ -16,45 +21,45 @@ export default function ContactSection(props) {
 
   return (
     <React.Fragment>
-      {contactSectionContent ? (
+      {contactData ? (
         <React.Fragment>
           <Container>
             <Row>
-              {contactSectionContent?.content
-                ? contactSectionContent?.content?.map((ele, key) => (
-                    <Col
-                      md={4}
-                      key={key}
-                      className={
-                        ele.sameClassName ? 'mt-4 mt-sm-0 pt-2 pt-sm-0' : ''
-                      }
-                    >
-                      <Card className="border-0 text-center features feature-primary feature-clean">
-                        <div className="icons text-center mx-auto">
-                          <i
-                            className={`uil ${ele.icon} d-block rounded h3 mb-0`}
-                          ></i>
-                        </div>
-                        <div className="content mt-4">
-                          <h5 className="fw-bold">{ele.title}</h5>
-                          <p className="text-muted">{ele.discription}</p>
-                          <Link
-                            to="#"
-                            className={
-                              ele.textBold
-                                ? 'video-play-icon h6 text-primary'
-                                : 'text-primary'
-                            }
-                            onClick={() => {
-                              onClickFunctionalities(ele);
-                            }}
-                          >
-                            {ele.data.replace(/^(\+)/, '\u202D$1')}
-                          </Link>
-                        </div>
-                      </Card>
-                    </Col>
-                  ))
+              {contactData
+                ? contactData?.map((ele, key) => (
+                  <Col
+                    md={4}
+                    key={key}
+                    className={
+                      ele.sameClassName ? 'mt-4 mt-sm-0 pt-2 pt-sm-0' : ''
+                    }
+                  >
+                    <Card className="border-0 text-center features feature-primary feature-clean">
+                      <div className="icons text-center mx-auto">
+                        <i
+                          className={`uil ${ele.icon} d-block rounded h3 mb-0`}
+                        ></i>
+                      </div>
+                      <div className="content mt-4">
+                        <h5 className="fw-bold">{ele.title}</h5>
+                        <p className="text-muted">{ele.discription}</p>
+                        <Link
+                          to="#"
+                          className={
+                            ele.textBold
+                              ? 'video-play-icon h6 text-primary'
+                              : 'text-primary'
+                          }
+                          onClick={() => {
+                            onClickFunctionalities(ele);
+                          }}
+                        >
+                          {ele.data.replace(/^(\+)/, '\u202D$1')}
+                        </Link>
+                      </div>
+                    </Card>
+                  </Col>
+                ))
                 : null}
             </Row>
           </Container>

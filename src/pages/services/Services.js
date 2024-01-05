@@ -4,10 +4,12 @@ import { Container, Row, Col } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
 import { useState } from 'react';
 import ServicesSection from '../../components/home/ServicesSection';
-import services_cms_data from '../../data/services/cms_services.json'
+import { useAuth } from '../../store/auth';
+import { serviceData } from '../../data';
 
 const Services = () => {
-    const [servicesCmsData, setServicesCmsData] = useState({})
+    const { isArabic } = useAuth()
+    const data = !isArabic ? serviceData : serviceData
     const [isSeeMore, setIsseeMore] = useState(false)
 
     useEffect(() => {
@@ -50,32 +52,23 @@ const Services = () => {
         }
     };
 
-    const getServicesCmsData = () => {
-        const data = services_cms_data.data.servicesCmsData
-        setServicesCmsData(data)
-    }
-    useEffect(() => {
-        getServicesCmsData()
-    }, [])
-
     return (
         <React.Fragment>
             <div className="page-content">
                 <MetaTags>
                     <title>Services | Nafal</title>
                 </MetaTags>
-                {servicesCmsData ?
+                {data ?
                     <>
                         <section className="bg-half-170 bg-light d-table w-100">
                             <Container>
                                 <Row className="mt-5 justify-content-center">
                                     <Col lg={12} className="text-center">
                                         <div className="pages-heading">
-                                            <h4 className="title mb-0"> {servicesCmsData?.page_heading} </h4>
+                                            <h4 className="title mb-0"> {data?.page_heading} </h4>
                                         </div>
                                     </Col>
                                 </Row>
-
                                 <div className="position-breadcrumb">
                                     <nav aria-label="breadcrumb" className="d-inline-block">
                                         <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
@@ -86,7 +79,6 @@ const Services = () => {
                                     </nav>
                                 </div>
                             </Container>
-
                         </section>
                         <div className="position-relative">
                             <div className="shape overflow-hidden text-white">
@@ -99,13 +91,12 @@ const Services = () => {
                         <section className="section">
                             <Container>
                                 <Row>
-                                    {servicesCmsData?.features_list ? servicesCmsData?.features_list.slice(0, isSeeMore ? servicesCmsData?.features_list?.length : 6).map((item, key) => (
+                                    {data?.features_list ? data?.features_list.slice(0, isSeeMore ? data?.features_list?.length : 6).map((item, key) => (
                                         <Col key={key} md={4} className="col-12 mt-5">
                                             <div className="features feature-primary">
                                                 <div className="image position-relative d-inline-block">
                                                     <i className={item.icon}></i>
                                                 </div>
-
                                                 <div className="content mt-4">
                                                     <h5>{item.title}</h5>
                                                     <p className="text-muted mb-0">{item.description}</p>
@@ -123,7 +114,6 @@ const Services = () => {
                                 </Row>
                             </Container>
                         </section>
-
                         <div className="section bg-light">
                             <Container>
                                 <Row className="justify-content-center">

@@ -2,6 +2,8 @@ import { carouselData, partnersData, aboutSectionData, videoSectionData, clients
 import { servicesData } from "./common/services/servicesData";
 import {menuItems} from "./common/navbar/navbarData"
 import {footerData} from "./common/footer/footerData"
+import { aboutData } from "./about/about";
+import { serviceData } from "./services/services";
 
 export {
     carouselData,
@@ -13,4 +15,6 @@ export {
     appData,
     menuItems,
     footerData,
+    aboutData,
+    serviceData,
 };
