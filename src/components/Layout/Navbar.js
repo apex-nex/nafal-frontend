@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logoDark from "../../assets/images/logo/nafal-logo.png";
 import logoLight from "../../assets/images/logo/nafal-logo.png";
