@@ -8,14 +8,14 @@ const errorContentArabic = {
     },
     image: {
         src: img404,
-        alt: 'Error 404 Image',
+        alt: 'خطأ 404',
     },
     title: 'Oh ! no',
-    description: 'Page Not Found',
+    description: 'الصفحة غير موجودة',
     goHomeBtn: {
         link: '/',
         btnClass: 'btn btn-primary',
-        text: 'Go To Home',
+        text: 'اذهب إلى المنزل',
     },
 };
 

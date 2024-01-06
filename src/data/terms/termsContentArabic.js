@@ -1,52 +1,52 @@
 const termsContentArabic = {
-    title: "Terms of Services",
+    title: "شروط الخدمة",
     breadcrumb: [
         { name: "Nafal", className: "breadcrumb-item", link: "/" },
-        { name: "Page", className: "breadcrumb-item", link: "#" },
-        { name: "Terms", className: "breadcrumb-item active" }
+        { name: "صفحة", className: "breadcrumb-item", link: "#" },
+        { name: "شروط", className: "breadcrumb-item active" }
     ],
     buttons: [
-        { to: "/contact-us", label: "Contact Us", className: "btn btn-primary mt-2 me-2" },
-        { to: "/services", label: "Services", className: "btn btn-outline-primary mt-2" },
+        { to: "/contact-us", label: "اتصل بنا", className: "btn btn-primary mt-2 me-2" },
+        { to: "/services", label: "خدمات", className: "btn btn-outline-primary mt-2" },
     ],
     welcome: {
-        title: "Welcome to Nafal HVAC :",
-        content: "Discover the best in heating, ventilation, and air conditioning services at Nafal HVAC. We are dedicated to providing unmatched comfort solutions for your indoor spaces.",
+        title: "مرحبا بكم في شركة نافال لأنظمة التدفئة والتهوية وتكييف الهواء :",
+        content: "اكتشف أفضل خدمات التدفئة والتهوية وتكييف الهواء في نافال HVAC. نحن ملتزمون بتوفير حلول راحة لا مثيل لها لمساحاتك الداخلية.",
     },
     commitment: {
-        title: "Our Service Commitment :",
-        content: "At Nafal HVAC, we pledge to provide HVAC services that are reliable and efficient, specifically tailored to meet your unique needs. Our unwavering commitment is to enhance the performance and lifespan of your HVAC systems, ensuring your indoor comfort year-round.",
+        title: "التزامنا بالخدمة:",
+        content: "في شركة نافال للتدفئة والتهوية وتكييف الهواء، نتعهد بتقديم خدمات التدفئة والتهوية وتكييف الهواء الموثوقة والفعالة، والمصممة خصيصًا لتلبية احتياجاتك الفريدة. التزامنا الثابت هو تحسين أداء وعمر أنظمة التدفئة والتهوية وتكييف الهواء HVAC، مما يضمن راحتك الداخلية طوال العام.",
     },
     restrictions: {
-        title: "Service Restrictions :",
-        content: "To ensure the quality and safety of our HVAC services, you are specifically restricted from engaging in the following activities:",
+        title: "قيود الخدمة :",
+        content: "لضمان جودة وسلامة خدمات التدفئة والتهوية وتكييف الهواء HVAC، يُحظر عليك بشكل خاص المشاركة في الأنشطة التالية :",
         listItems: [
-            "Attempting to repair HVAC systems without proper training and certification.",
-            "Modifying or tampering with HVAC components, including internal wiring and refrigerant lines.",
-            "Installing non-approved aftermarket parts or components that may compromise system efficiency.",
-            "Disassembling or cleaning internal HVAC components without professional guidance.",
-            "Neglecting regular maintenance schedules, leading to potential system failures.",
-            "Using unauthorized refrigerants or attempting to recharge the system without proper certification.",
+            "محاولة إصلاح أنظمة التدفئة والتهوية وتكييف الهواء HVAC دون التدريب المناسب والشهادة.",
+            "تعديل أو العبث بمكونات التدفئة والتهوية وتكييف الهواء، بما في ذلك الأسلاك الداخلية وخطوط التبريد.",
+            "تثبيت أجزاء أو مكونات ما بعد البيع غير المعتمدة والتي قد تؤثر على كفاءة النظام.",
+            "تفكيك أو تنظيف مكونات التدفئة والتهوية وتكييف الهواء الداخلية دون توجيهات مهنية.",
+            "إهمال جداول الصيانة الدورية، مما يؤدي إلى أعطال محتملة للنظام.",
+            "استخدام مبردات غير مصرح بها أو محاولة إعادة شحن النظام دون الحصول على الشهادة المناسبة.",
         ],
     },
     faq: {
-        title: "Users Question & Answer :",
+        title: "سؤال وجواب المستخدمين:",
         faqItems: [
             {
-                question: "How often should I service my HVAC system?",
-                answer: "It is recommended to service your HVAC system annually to ensure optimal performance and longevity.",
+                question: "كم مرة يجب عليّ صيانة نظام التدفئة والتهوية وتكييف الهواء HVAC الخاص بي؟",
+                answer: "يوصى بخدمة نظام التدفئة والتهوية وتكييف الهواء HVAC الخاص بك سنويًا لضمان الأداء الأمثل وطول العمر.",
             },
             {
-                question: "What are signs that my HVAC system needs repair?",
-                answer: "Signs include unusual noises, reduced airflow, and inconsistent temperature control.",
+                question: "ما هي العلامات التي تشير إلى أن نظام التدفئة والتهوية وتكييف الهواء HVAC الخاص بي يحتاج إلى إصلاح؟",
+                answer: "تشمل العلامات ضوضاء غير عادية، وانخفاض تدفق الهواء، والتحكم غير المتسق في درجة الحرارة.",
             },
             {
-                question: "How can I improve the energy efficiency of my HVAC system?",
-                answer: "To enhance energy efficiency, regularly clean or replace air filters and consider upgrading to a programmable thermostat.",
+                question: "كيف يمكنني تحسين كفاءة استخدام الطاقة في نظام التدفئة والتهوية وتكييف الهواء HVAC الخاص بي؟",
+                answer: "لتعزيز كفاءة الطاقة، قم بتنظيف أو استبدال مرشحات الهواء بانتظام وفكر في الترقية إلى منظم حرارة قابل للبرمجة.",
             },
             {
-                question: "What is the lifespan of an HVAC system?",
-                answer: "The average lifespan of an HVAC system is around 15 to 20 years, depending on maintenance and usage.",
+                question: "ما هو العمر الافتراضي لنظام التدفئة والتهوية وتكييف الهواء HVAC؟",
+                answer: "يبلغ متوسط ​​عمر نظام التدفئة والتهوية وتكييف الهواء HVAC حوالي 15 إلى 20 عامًا، اعتمادًا على الصيانة والاستخدام.",
             },
             // Add more FAQ items as needed
         ],

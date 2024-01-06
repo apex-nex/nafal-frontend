@@ -1,5 +1,5 @@
 const privacyContent = {
-    title: "Privacy | Nafal",
+    title: "Privacy Policy",
     breadcrumb: [
         { name: "Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },

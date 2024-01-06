@@ -51,7 +51,7 @@ const PagePrivacy = () => {
     return (
         <React.Fragment>
             <MetaTags>
-                <title>{data?.title}</title>
+                <title>{"Privacy | Nafal"}</title>
             </MetaTags>
             <section className="bg-half-170 bg-light d-table w-100 d-print-none">
                 <Container>

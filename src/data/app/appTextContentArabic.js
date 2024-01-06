@@ -11,15 +11,15 @@ const appTextContentArabic = {
     imageSrc: logoNafal,
     alt: 'Nafal Logo',
   },
-  title: 'App Coming Soon...',
-  description: `Start working with Nafal HVAC Company that can provide everything
-    you need to ensure your home's comfort and efficiency. 
-    Experience top-notch heating, cooling, and ventilation solutions.`,
+  title: 'التطبيق قريبا...',
+  description: `ابدأ العمل مع شركة Nafal HVAC التي يمكنها توفير كل شيء
+  تحتاج إلى ضمان راحة منزلك وكفاءته.
+  استمتع بأفضل حلول التدفئة والتبريد والتهوية.`,
   goBackHomeBtn: {
     link: '/',
     btnClass: 'btn btn-primary mt-4',
     iconClass: 'mdi mdi-backup-restore',
-    text: 'Go Back Home',
+    text: 'ارجع الى البيت',
   },
 };
 

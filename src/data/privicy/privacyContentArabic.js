@@ -1,51 +1,51 @@
 const privacyContentArabic = {
-    title: "Privacy | Nafal",
+    title: "سياسة الخصوصية",
     breadcrumb: [
         { name: "Nafal", className: "breadcrumb-item", link: "/" },
-        { name: "Page", className: "breadcrumb-item", link: "#" },
-        { name: "Privacy", className: "breadcrumb-item active" }
+        { name: "صفحة", className: "breadcrumb-item", link: "#" },
+        { name: "خصوصية", className: "breadcrumb-item active" }
     ],
     introduction: {
-        title: "Introduction :",
-        content: "Our privacy policy outlines how we collect, store, and use your personal information. This includes data associated with a specific person, used for identification. Anonymized information, which cannot identify a specific person, is not considered personal information.",
+        title: "مقدمة :",
+        content: "تحدد سياسة الخصوصية الخاصة بنا كيفية جمع معلوماتك الشخصية وتخزينها واستخدامها. يتضمن ذلك البيانات المرتبطة بشخص معين والمستخدمة لتحديد الهوية. المعلومات مجهولة المصدر، التي لا يمكنها التعرف على شخص معين، لا تعتبر معلومات شخصية.",
     },
     collectionInfo: {
-        title: "Our collection of your personal information :",
-        content: "When using the site, we'll ask for personal details like your name, address, email, and phone number. To verify your identity, we may request proof like a passport copy. Financial info is needed in the 'My Account' section for billing and order fulfillment. Keep personal and financial details in the My Account section to prevent fraud. We gather transactional data based on your site activities. Your IP address helps us analyze trends and manage the site. We may collect additional info, like your interaction with customer support or survey responses, to enhance your experience.",
+        title: "مجموعتنا من معلوماتك الشخصية:",
+        content: 'عند استخدام الموقع، سنطلب منك تفاصيل شخصية مثل اسمك وعنوانك وبريدك الإلكتروني ورقم هاتفك. للتحقق من هويتك، قد نطلب إثباتًا مثل نسخة جواز السفر. المعلومات المالية مطلوبة في قسم "حسابي" لإعداد الفواتير وتنفيذ الطلب. احتفظ بالتفاصيل الشخصية والمالية في قسم حسابي لمنع الاحتيال. نقوم بجمع بيانات المعاملات بناءً على أنشطة موقعك. يساعدنا عنوان IP الخاص بك على تحليل الاتجاهات وإدارة الموقع. قد نقوم بجمع معلومات إضافية، مثل تفاعلك مع دعم العملاء أو ردود الاستبيان، لتعزيز تجربتك.',
     },
     useInfo: {
-        title: "Our use of your personal information :",
-        content: "We use your personal information to provide services, support, and enhance your experience. This includes preventing illegal activities and complying with our User Agreement. We may share information with third parties for verification and fraud prevention. While we prioritize privacy, disclosure may occur in legal or law enforcement situations.",
-        content2: "If Nafal is sold, your info may be shared for continued site provision. Personal data may be disclosed in item transactions, but otherwise, only with your explicit permission. We don't sell or rent personal info and only share it as outlined in this policy.",
-        content3: "By registering, you agree to receive promotional emails. You can opt out anytime. Your comments about the site may be used for marketing, with your express consent.",
+        title: "استخدامنا لمعلوماتك الشخصية:",
+        content: "نحن نستخدم معلوماتك الشخصية لتقديم الخدمات والدعم وتعزيز تجربتك. ويشمل ذلك منع الأنشطة غير القانونية والامتثال لاتفاقية المستخدم الخاصة بنا. يجوز لنا مشاركة المعلومات مع أطراف ثالثة للتحقق ومنع الاحتيال. على الرغم من أننا نعطي الأولوية للخصوصية، إلا أن الكشف عنها قد يحدث في المواقف القانونية أو مواقف إنفاذ القانون.",
+        content2: "إذا تم بيع نافال، فقد تتم مشاركة معلوماتك لمواصلة توفير الموقع. قد يتم الكشف عن البيانات الشخصية في معاملات السلعة، ولكن بخلاف ذلك، لا يتم ذلك إلا بإذن صريح منك. نحن لا نبيع أو نؤجر المعلومات الشخصية ونشاركها فقط على النحو المبين في هذه السياسة.",
+        content3: "من خلال التسجيل، فإنك توافق على تلقي رسائل البريد الإلكتروني الترويجية. يمكنك إلغاء الاشتراك في أي وقت. يمكن استخدام تعليقاتك حول الموقع للتسويق، بموافقتك الصريحة.",
     },
     userPersonalInfo: {
-        title: "Your use of your and other users’ personal information :",
-        content: "Site members may share personal and financial details for transactions, and it's crucial to respect their privacy. We can't guarantee the privacy of your information when shared with other members, so always check their privacy and security policies before sharing. This policy doesn't cover your release of personal info to another member. Agree to use shared info solely for the transaction, following applicable laws. Your commitment to respecting privacy ensures a secure and trustworthy community.",
+        title: "استخدامك لمعلوماتك الشخصية ومعلومات المستخدمين الآخرين:",
+        content: "قد يشارك أعضاء الموقع التفاصيل الشخصية والمالية للمعاملات، ومن الضروري احترام خصوصيتهم. لا يمكننا ضمان خصوصية معلوماتك عند مشاركتها مع أعضاء آخرين، لذا تحقق دائمًا من سياسات الخصوصية والأمان الخاصة بهم قبل المشاركة. لا تغطي هذه السياسة إصدار معلوماتك الشخصية لعضو آخر. توافق على استخدام المعلومات المشتركة للمعاملة فقط، وفقًا للقوانين المعمول بها. إن التزامك باحترام الخصوصية يضمن وجود مجتمع آمن وجدير بالثقة.",
     },
     accessingInfo: {
-        title: "Accessing, reviewing and amending your personal information :",
-        content: "The Site may contain links to other websites. Please be aware that we are not responsible for the privacy practices of such other websites. We encourage you when you leave the Site to read the privacy statements of each and every website you visit if you intend to provide personal information to that website. Our privacy policy applies solely to your personal information that we collect on the Site.",
+        title: "الوصول إلى معلوماتك الشخصية ومراجعتها وتعديلها:",
+        content: "قد يحتوي الموقع على روابط لمواقع أخرى. يرجى العلم بأننا لسنا مسؤولين عن ممارسات الخصوصية لهذه المواقع الأخرى. نحن نشجعك عندما تغادر الموقع على قراءة بيانات الخصوصية لكل موقع ويب تزوره إذا كنت تنوي تقديم معلومات شخصية لذلك الموقع. تنطبق سياسة الخصوصية الخاصة بنا فقط على معلوماتك الشخصية التي نجمعها على الموقع.",
     },
     thirdPartyLinks: {
-        title: "Third party website links :",
-        content: "The Site may contain links to other websites. Please be aware that we are not responsible for the privacy practices of such other websites...",
+        title: "روابط مواقع الطرف الثالث:",
+        content: "قد يحتوي الموقع على روابط لمواقع أخرى. يرجى العلم أننا لسنا مسؤولين عن ممارسات الخصوصية لهذه المواقع الأخرى...",
     },
     cookies: {
-        title: "Cookies :",
-        content: "The site utilizes 'cookie' technology, small files on your computer's hard drive. These cookies, identified by a unique, random number, enhance your site experience and provide insights into popular sections. They don't disclose personal information. You can decline cookies if your browser allows, but it may affect your site usage. Your control over cookie preferences ensures a personalized and efficient browsing experience.",
+        title: "كوكي :",
+        content: 'يستخدم الموقع تقنية "ملفات تعريف الارتباط"، وهي ملفات صغيرة موجودة على القرص الصلب بجهاز الكمبيوتر الخاص بك. تعمل ملفات تعريف الارتباط هذه، التي يتم تحديدها برقم عشوائي فريد، على تحسين تجربة موقعك وتقديم نظرة ثاقبة للأقسام الشائعة. لا يكشفون عن المعلومات الشخصية. يمكنك رفض ملفات تعريف الارتباط إذا كان متصفحك يسمح بذلك، ولكن قد يؤثر ذلك على استخدامك للموقع. يضمن تحكمك في تفضيلات ملفات تعريف الارتباط تجربة تصفح مخصصة وفعالة.',
     },
     noSpam: {
-        title: "No spam or spoof emails :",
-        content: "We do not tolerate spam. To report Site related spam or spoof emails, please forward the email to info@nafal-hvac.sa.sa",
+        title: "لا توجد رسائل بريد إلكتروني مزعجة أو مزيفة:",
+        content: "نحن لا نتسامح مع البريد العشوائي. للإبلاغ عن رسائل البريد الإلكتروني العشوائية أو رسائل البريد الإلكتروني المزيفة المتعلقة بالموقع، يرجى إعادة توجيه البريد الإلكتروني إلى info@nafal-hvac.sa.sa",
     },
     protectingInfo: {
-        title: "Protecting your personal information :",
-        content: "By providing us with your personal information, you acknowledge and consent to the transfer of such information beyond the borders of the Kingdom of Saudi Arabia...",
+        title: "حماية معلوماتك الشخصية:",
+        content: "من خلال تزويدنا بمعلوماتك الشخصية، فإنك تقر وتوافق على نقل هذه المعلومات خارج حدود المملكة العربية السعودية...",
     },
     contactUs: {
-        title: "How you can contact us about privacy questions :",
-        content: "If you have questions or concerns about our collection and use of your personal information, please contact our customer support team at the 'info@nafal-hvac.sa'.",
+        title: "كيف يمكنك الاتصال بنا بشأن أسئلة الخصوصية:",
+        content: 'إذا كانت لديك أسئلة أو مخاوف بشأن جمع واستخدام معلوماتك الشخصية، يرجى الاتصال بفريق دعم العملاء لدينا على "info@nafal-hvac.sa".',
     },
 };
 
