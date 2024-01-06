@@ -1,3 +1,5 @@
+import contact from '../../assets/images/contact/contact.svg';
+
 const headingSectionArabic = {
     title: "اتصل بنا",
     breadcrumb: [
@@ -37,6 +39,7 @@ const contactDataArabic = [
 
 const formSectionArabic = {
     title: "ابقى على تواصل!",
+    img: contact,
     formFields: [
         {
             name: 'name',

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Input, Label, Card, CardBody, Button } from 'reactstrap';
 import FeatherIcon from 'feather-icons-react';
-import contact from '../../assets/images/contact/contact.svg';
 import { post } from '../helpers/api_helper';
 import { toast } from 'react-toastify';
 import { ErrorMessageDisplay } from '../../components/utils/common';
@@ -133,7 +132,7 @@ const FormSection = () => {
           <Col lg={7} md={{ size: 6, order: 2 }} xs={{ order: 1 }}>
             <Card className="border-0">
               <CardBody className="p-0">
-                <img src={contact} className="img-fluid" alt="Nafal" />
+                <img src={data?.img} className="img-fluid" alt="Nafal" />
               </CardBody>
             </Card>
           </Col>

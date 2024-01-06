@@ -1,3 +1,5 @@
+import contact from '../../assets/images/contact/contact.svg';
+
 const headingSection = {
     title: "Contact Us",
     breadcrumb: [
@@ -37,6 +39,7 @@ const contactData = [
 
 const formSection = {
     title: "Get In Touch !",
+    img: contact,
     formFields: [
         {
             name: 'name',
