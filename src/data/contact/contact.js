@@ -26,4 +26,13 @@ const contactData = [
     },
 ]
 
-export { contactData }
+const headingSection = {
+    title : "Contact Us",
+    breadcrumb : [
+        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Page", className: "breadcrumb-item", link: "#" },
+        { name: "Contact Us", className: "breadcrumb-item active" }
+    ]
+}
+
+export { contactData, headingSection }

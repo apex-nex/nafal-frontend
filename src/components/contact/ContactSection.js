@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'reactstrap';
-import { contactData } from '../../data/contact-page/contact';
 import { useAuth } from "../../store/auth"
+import { contactData } from '../../data';
 
 export default function ContactSection(props) {
   const { isArabic } = useAuth()
@@ -21,12 +21,12 @@ export default function ContactSection(props) {
 
   return (
     <React.Fragment>
-      {contactData ? (
+      {data ? (
         <React.Fragment>
           <Container>
             <Row>
-              {contactData
-                ? contactData?.map((ele, key) => (
+              {data
+                ? data?.map((ele, key) => (
                   <Col
                     md={4}
                     key={key}

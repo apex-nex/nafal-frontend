@@ -15,7 +15,7 @@ const ClientSection = (props) => {
   return (
     <React.Fragment>
       {data ? (
-        <React.Fragment>
+        <>
           <section className="section">
             <Container>
               <Row className="justify-content-center">
@@ -94,7 +94,7 @@ const ClientSection = (props) => {
               </Row>
             </Container>
           </section>
-        </React.Fragment>
+        </>
       ) : null}
     </React.Fragment>
   );

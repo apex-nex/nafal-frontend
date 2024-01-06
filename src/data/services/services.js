@@ -1,4 +1,10 @@
 const serviceData = {
+    page_heading: "Services",
+    breadcrumb: [
+        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Page", className: "breadcrumb-item", link: "#" },
+        { name: "Services", className: "breadcrumb-item active" }
+    ],
     features_list: [
         {
             id: 1,

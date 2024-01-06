@@ -12,16 +12,16 @@ import { carouselDataArabic } from "../../data/indexArabic";
 import { useAuth } from "../../store/auth";
 
 const Carousel = () => {
-  const {isArabic} = useAuth()
+  const { isArabic } = useAuth()
   const data = !isArabic ? carouselData : carouselDataArabic
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     var e1 = document.getElementsByClassName("slick-slide");
     for (var i = 0; i < 3; i++) {
-      if (i === 0) e1[i].style.backgroundImage = `url(${data[0].image})`;
-      if (i === 1) e1[i].style.backgroundImage = `url(${data[1].image})`;
-      if (i === 2) e1[i].style.backgroundImage = `url(${data[2].image})`;
+      if (i === 0) e1[i].style.backgroundImage = `url(${data[0]?.image})`;
+      if (i === 1) e1[i].style.backgroundImage = `url(${data[1]?.image})`;
+      if (i === 2) e1[i].style.backgroundImage = `url(${data[2]?.image})`;
     }
 
     const openModal = () => setIsOpen(true);
@@ -62,26 +62,26 @@ const Carousel = () => {
             <div className="title-heading position-relative mt-4 carousel-arabic" style={{ zIndex: "1" }}>
               <h1
                 className="heading mb-3"
-                dangerouslySetInnerHTML={{ __html: item.h1 }}
+                dangerouslySetInnerHTML={{ __html: item?.h1 }}
               ></h1>
-              <p className="para-desc">{item.p}</p>
+              <p className="para-desc">{item?.p}</p>
               <div className="mt-4 pt-2">
                 <Link
-                  to={item.link}
-                  id={"btn" + item.id}
-                  className={item.btnclass}
+                  to={item?.link}
+                  id={"btn" + item?.id}
+                  className={item?.btnclass}
                   onClick={openModal}
                 >
-                  {item.isVideo ? (
+                  {item?.isVideo ? (
                     <FeatherIcon icon="video" className="icons" />
                   ) : (
-                    <i className={item.iClass}></i>
+                    <i className={item?.iClass}></i>
                   )}
-                  {item.btntext}
+                  {item?.btntext}
                 </Link>
-                {item.isVideo && (
+                {item?.isVideo && (
                   <span className="fw-bold text-uppercase small align-middle ms-2">
-                    {item.buttontext}
+                    {item?.buttontext}
                   </span>
                 )}
               </div>
@@ -93,7 +93,7 @@ const Carousel = () => {
   ));
 
   return (
-    <>
+    <React.Fragment>
       <section className="main-slider">
         <Slider className="slides" {...settings}>
           {slides}
@@ -106,7 +106,7 @@ const Carousel = () => {
         videoId="8_FJEMH8hx0"
         onClose={() => setIsOpen(false)}
       />
-    </>
+    </React.Fragment>
   );
 };
 

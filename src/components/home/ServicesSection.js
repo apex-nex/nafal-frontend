@@ -37,7 +37,7 @@ const ServiceSection = ({seeMore = true}) => {
   return (
     <React.Fragment>
       {data ? (
-        <React.Fragment>
+        <>
           <Container className="mt-100 mt-60">
             <Row>
               <Col lg={4} md={6}>
@@ -183,7 +183,7 @@ const ServiceSection = ({seeMore = true}) => {
               </Col>
             </Row>
           </Container>
-        </React.Fragment>
+        </>
       ) : null}
     </React.Fragment>
   );

@@ -52,6 +52,14 @@ const Services = () => {
         }
     };
 
+    const title = "Upgrade Your Comfort with Nafal HVAC";
+    const description = [
+        { type: "text", content: "Discover HVAC excellence with" },
+        { type: "highlighted", content: "Nafal HVAC" },
+        { type: "text", content: "Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!" },
+    ];
+    const buttonText = "Get in Touch";
+
     return (
         <React.Fragment>
             <div className="page-content">
@@ -65,16 +73,18 @@ const Services = () => {
                                 <Row className="mt-5 justify-content-center">
                                     <Col lg={12} className="text-center">
                                         <div className="pages-heading">
-                                            <h4 className="title mb-0"> {data?.page_heading} </h4>
+                                            <h4 className="title mb-0"> {data?.page_heading}</h4>
                                         </div>
                                     </Col>
                                 </Row>
                                 <div className="position-breadcrumb">
                                     <nav aria-label="breadcrumb" className="d-inline-block">
                                         <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
-                                            <li className="breadcrumb-item"><Link to="/">Nafal</Link></li>{" "}
-                                            <li className="breadcrumb-item"><Link to="#">Page</Link></li>{" "}
-                                            <li className="breadcrumb-item active" aria-current="page">Services</li>
+                                            {data?.breadcrumb?.map((item, index) => (
+                                                <li className={item?.className} key={index}>
+                                                    {item?.link ? <Link to={item.link}>{item.name}</Link> : item?.name}
+                                                </li>
+                                            ))}
                                         </ul>
                                     </nav>
                                 </div>
@@ -82,8 +92,15 @@ const Services = () => {
                         </section>
                         <div className="position-relative">
                             <div className="shape overflow-hidden text-white">
-                                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                                <svg
+                                    viewBox="0 0 2880 48"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z"
+                                        fill="currentColor"
+                                    ></path>
                                 </svg>
                             </div>
                         </div>
@@ -119,11 +136,19 @@ const Services = () => {
                                 <Row className="justify-content-center">
                                     <Col xs="12" className="text-center">
                                         <div className="section-title">
-                                            <h4 className="title mb-4">Upgrade Your Comfort with Nafal HVAC</h4>
-                                            <p className="text-muted para-desc mx-auto">Discover HVAC excellence with <span className="text-primary fw-bold">Nafal HVAC</span>. Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!</p>
+                                            <h4 className="title mb-4">{title}</h4>
+                                            <p className="text-muted para-desc mx-auto">
+                                                {description.map((item, index) => (
+                                                    item.type === "highlighted" ? (
+                                                        <span key={index} className="text-primary fw-bold">{" "}{item.content}{" "}</span>
+                                                    ) : (
+                                                        <span key={index}>{item.content}</span>
+                                                    )
+                                                ))}
+                                            </p>
                                             <div className="mt-4 pt-2">
                                                 <Link to="/contact-us" className="btn btn-primary mt-2 me-2">
-                                                    Get in Touch
+                                                    {buttonText}
                                                 </Link>
                                             </div>
                                         </div>

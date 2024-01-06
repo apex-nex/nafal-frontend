@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import MetaTags from 'react-meta-tags';
@@ -32,9 +32,11 @@ const About = () => {
               <div className="position-breadcrumb">
                 <nav aria-label="breadcrumb" className="d-inline-block">
                   <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
-                    <li className="breadcrumb-item"><Link to="/">Nafal</Link></li>{" "}
-                    <li className="breadcrumb-item"><Link to="#">Page</Link></li>{" "}
-                    <li className="breadcrumb-item active" aria-current="page">About us</li>
+                    {data?.aboutUsCmsData?.breadcrumb?.map((item, index) => (
+                      <li className={item?.className} key={index}>
+                        {item?.link ? <Link to={item.link}>{item.name}</Link> : item?.name}
+                      </li>
+                    ))}
                   </ul>
                 </nav>
               </div>
