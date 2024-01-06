@@ -7,7 +7,7 @@ import { servicesData } from '../../data';
 import { servicesDataArabic } from '../../data/indexArabic';
 import { useAuth } from '../../store/auth';
 
-const ServiceSection = ({seeMore = true}) => {
+const ServiceSection = ({ seeMore = true }) => {
   const { isArabic } = useAuth()
   const data = !isArabic ? servicesData : servicesDataArabic
   const [displayCategory, setDisplayCategory] = useState('All');
@@ -87,50 +87,17 @@ const ServiceSection = ({seeMore = true}) => {
                 <Row>
                   <div className="col-12 filters-group-wrap">
                     <div className="filters-group">
-                      <ul
-                        className="container-filter list-inline mb-0 filter-options"
-                        id="filter"
-                      >
-                        <li
-                          onClick={() => setCategory('All')}
-                          className={
-                            displayCategory === 'All'
-                              ? 'list-inline-item categories-name border text-dark rounded active'
-                              : 'list-inline-item categories-name border text-dark rounded'
-                          }
-                        >
-                          All
-                        </li>{' '}
-                        <li
-                          onClick={() => setCategory('Residential')}
-                          className={
-                            displayCategory === 'Residential'
-                              ? 'list-inline-item categories-name border text-dark rounded active'
-                              : 'list-inline-item categories-name border text-dark rounded'
-                          }
-                        >
-                          Residential
-                        </li>{' '}
-                        <li
-                          onClick={() => setCategory('Commercial')}
-                          className={
-                            displayCategory === 'Commercial'
-                              ? 'list-inline-item categories-name border text-dark rounded active'
-                              : 'list-inline-item categories-name border text-dark rounded'
-                          }
-                        >
-                          Commercial
-                        </li>{' '}
-                        <li
-                          onClick={() => setCategory('Infrastructure')}
-                          className={
-                            displayCategory === 'Infrastructure'
-                              ? 'list-inline-item categories-name border text-dark rounded active'
-                              : 'list-inline-item categories-name border text-dark rounded'
-                          }
-                        >
-                          Infrastructure
-                        </li>
+                      <ul className="container-filter list-inline mb-0 filter-options" id="filter">
+                        {data?.categories.map((category) => (
+                          <li
+                            key={data?.category}
+                            onClick={() => setCategory(category)}
+                            className={`list-inline-item categories-name border text-dark rounded ${displayCategory === category ? 'active' : ''
+                              }`}
+                          >
+                            {category}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
