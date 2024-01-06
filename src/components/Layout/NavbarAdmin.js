@@ -5,8 +5,6 @@ import logoLight from '../../assets/images/logo/nafal-logo.png';
 import logoDark from '../../assets/images/logo/nafal-logo.png';
 import FeatherIcon from 'feather-icons-react';
 import { useAuth } from "../../store/auth"
-import { Offcanvas } from 'reactstrap';
-import RightSidebar from './RightSidebar';
 
 function NavbarAdmin(props) {
     const { user } = useAuth()
@@ -192,9 +190,6 @@ function NavbarAdmin(props) {
                     </ul>
                 </div>
             </header>
-            <Offcanvas isOpen={open} direction="end" toggle={toggleRightDrawer}>
-                <RightSidebar onClose={onDrawerClose} />
-            </Offcanvas>
         </React.Fragment>
     );
 }
