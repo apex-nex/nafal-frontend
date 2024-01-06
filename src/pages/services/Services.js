@@ -52,14 +52,6 @@ const Services = () => {
         }
     };
 
-    const title = "Upgrade Your Comfort with Nafal HVAC";
-    const description = [
-        { type: "text", content: "Discover HVAC excellence with" },
-        { type: "highlighted", content: "Nafal HVAC" },
-        { type: "text", content: "Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!" },
-    ];
-    const buttonText = "Get in Touch";
-
     return (
         <React.Fragment>
             <div className="page-content">
@@ -136,9 +128,9 @@ const Services = () => {
                                 <Row className="justify-content-center">
                                     <Col xs="12" className="text-center">
                                         <div className="section-title">
-                                            <h4 className="title mb-4">{title}</h4>
+                                            <h4 className="title mb-4">{data?.endSection?.title}</h4>
                                             <p className="text-muted para-desc mx-auto">
-                                                {description.map((item, index) => (
+                                                {data?.endSection?.description.map((item, index) => (
                                                     item.type === "highlighted" ? (
                                                         <span key={index} className="text-primary fw-bold">{" "}{item.content}{" "}</span>
                                                     ) : (
@@ -148,7 +140,7 @@ const Services = () => {
                                             </p>
                                             <div className="mt-4 pt-2">
                                                 <Link to="/contact-us" className="btn btn-primary mt-2 me-2">
-                                                    {buttonText}
+                                                    {data?.endSection?.buttonText}
                                                 </Link>
                                             </div>
                                         </div>

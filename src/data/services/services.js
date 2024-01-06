@@ -123,6 +123,15 @@ const serviceData = {
             },
         ],
     },
+    endSection: {
+        title: "Upgrade Your Comfort with Nafal HVAC",
+        description: [
+            { type: "text", content: "Discover HVAC excellence with" },
+            { type: "highlighted", content: "Nafal HVAC." },
+            { type: "text", content: "Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!" },
+        ],
+        buttonText: "Get in Touch"
+    }
 };
 
 export { serviceData }
