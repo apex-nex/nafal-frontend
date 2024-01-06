@@ -19,7 +19,7 @@ const aboutDataArabic = {
                     highlight: false,
                 },
                 {
-                    content: 'نفل',
+                    content: 'Nafal',
                     highlight: true,
                 },
                 {
@@ -36,7 +36,7 @@ const aboutDataArabic = {
                     highlight: false,
                 },
                 {
-                    content: 'نفل',
+                    content: 'Nafal',
                     highlight: true,
                 },
                 {
