@@ -5,6 +5,10 @@ import {footerDataArabic} from "./common/footer/footerDataArabic"
 import { aboutDataArabic } from "./about/aboutArabic";
 import { servicesPageDataArabic } from "./services/servicesArabic";
 import {headingSectionArabic, contactDataArabic, formSectionArabic} from "./contact/contactArabic"
+import { appTextContentArabic } from "./app/appTextContentArabic";
+import { errorContentArabic } from "./error/errorContentArabic";
+import { privacyContentArabic } from "./privicy/privacyContentArabic";
+import { termsContentArabic } from "./terms/termsContentArabic";
 
 export {
     carouselDataArabic,
@@ -20,4 +24,8 @@ export {
     headingSectionArabic,
     contactDataArabic,
     formSectionArabic,
+    appTextContentArabic,
+    errorContentArabic,
+    privacyContentArabic,
+    termsContentArabic,
 };

@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardHeader,
-  Collapse,
-} from "reactstrap";
-
-// Import Icons
+import { Container, Row, Col, Card, CardBody, CardHeader, Collapse } from "reactstrap";
 import FeatherIcon from "feather-icons-react";
 import MetaTags from 'react-meta-tags';
+import { useAuth } from '../../store/auth';
+import { termsContent } from "../../data";
+import { termsContentArabic } from "../../data/indexArabic";
 
 const PageTerms = () => {
+  const { isArabic } = useAuth()
+  const data = !isArabic ? termsContent : termsContentArabic
+
   const [col1, setCol1] = useState(false);
   const [col2, setCol2] = useState(false);
   const [col3, setCol3] = useState(false);
@@ -88,7 +84,7 @@ const PageTerms = () => {
           <Row className="mt-5 justify-content-center">
             <Col lg={12} className="text-center">
               <div className="pages-heading">
-                <h4 className="title mb-0"> Terms of Services </h4>
+                <h4 className="title mb-0"> {data?.title} </h4>
               </div>
             </Col>
           </Row>
@@ -96,15 +92,11 @@ const PageTerms = () => {
           <div className="position-breadcrumb">
             <nav aria-label="breadcrumb" className="d-inline-block">
               <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
-                <li className="breadcrumb-item">
-                  <Link to="/">Nafal</Link>
-                </li>{" "}
-                <li className="breadcrumb-item">
-                  <Link to="#">Page</Link>
-                </li>{" "}
-                <li className="breadcrumb-item active" aria-current="page">
-                  Terms
-                </li>
+                {data?.breadcrumb?.map((item, index) => (
+                  <li className={item?.className} key={index}>
+                    {item?.link ? <Link to={item.link}>{item.name}</Link> : item?.name}
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
@@ -132,200 +124,66 @@ const PageTerms = () => {
             <Col lg={9}>
               <Card className="shadow border-0 rounded">
                 <CardBody>
-                  <h5 className="card-title">Welcome to Nafal HVAC :</h5>
-                  <p className="text-muted">
-                    Discover the best in heating, ventilation, and air conditioning services at Nafal HVAC. We are dedicated to providing unmatched comfort solutions for your indoor spaces.
-                  </p>
+                  <h5 className="card-title">{data?.welcome?.title}</h5>
+                  <p className="text-muted">{data?.welcome?.content}</p>
 
-                  <h5 className="card-title">Our Service Commitment :</h5>
-                  <p className="text-muted">
-                    At Nafal HVAC, we <strong className="text-danger">pledge</strong> to provide HVAC services that are <strong className="text-danger">reliable</strong> and <strong className="text-danger">efficient</strong>, specifically <strong className="text-danger">tailored</strong> to meet your unique needs. Our unwavering commitment is to enhance the <strong className="text-danger">performance</strong> and <strong className="text-danger">lifespan</strong> of your HVAC systems, ensuring your indoor comfort year-round.
-                  </p>
+                  <h5 className="card-title">{data?.commitment?.title}</h5>
+                  <p className="text-muted">{data?.commitment?.content}</p>
 
-
-                  <h5 className="card-title">Service Restrictions :</h5>
-                  <p className="text-muted">
-                    To ensure the quality and safety of our HVAC services, you are specifically restricted from engaging in the following activities:
-                  </p>
+                  <h5 className="card-title">{data?.restrictions?.title}</h5>
+                  <p className="text-muted">{data?.restrictions?.content}</p>
                   <ul className="list-unstyled feature-list text-muted">
-                    <li>
-                      <i>
-                        <FeatherIcon icon="arrow-right" className="fea icon-sm me-2" />
-                      </i>
-                      Attempting to repair HVAC systems without proper training and certification.
-                    </li>
-                    <li>
-                      <i>
-                        <FeatherIcon icon="arrow-right" className="fea icon-sm me-2" />
-                      </i>
-                      Modifying or tampering with HVAC components, including internal wiring and refrigerant lines.
-                    </li>
-                    <li>
-                      <i>
-                        <FeatherIcon icon="arrow-right" className="fea icon-sm me-2" />
-                      </i>
-                      Installing non-approved aftermarket parts or components that may compromise system efficiency.
-                    </li>
-                    <li>
-                      <i>
-                        <FeatherIcon icon="arrow-right" className="fea icon-sm me-2" />
-                      </i>
-                      Disassembling or cleaning internal HVAC components without professional guidance.
-                    </li>
-                    <li>
-                      <i>
-                        <FeatherIcon icon="arrow-right" className="fea icon-sm me-2" />
-                      </i>
-                      Neglecting regular maintenance schedules, leading to potential system failures.
-                    </li>
-                    <li>
-                      <i>
-                        <FeatherIcon icon="arrow-right" className="fea icon-sm me-2" />
-                      </i>
-                      Using unauthorized refrigerants or attempting to recharge the system without proper certification.
-                    </li>
+                    {data?.restrictions?.listItems?.map((item, index) => (
+                      <li key={index}>
+                        <i>
+                          <FeatherIcon icon="arrow-right" className="fea icon-sm me-2" />
+                        </i>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
 
-
-                  <h5 className="card-title">Users Question & Answer :</h5>
+                  <h5 className="card-title">{data?.faq?.title}</h5>
                   <div className="faq-content mt-4">
                     <div className="accordion" id="accordionExample">
-                      <Card className="border-0 rounded mb-2">
-                        <Link
-                          to="#"
-                          onClick={() => toggleAccordion(1)}
-                          className={
-                            col1
-                              ? "faq position-relative text-primary"
-                              : "faq position-relative text-dark"
-                          }
-                        >
-                          <CardHeader className="border-0 bg-light p-3" id="headingOne">
-                            <h6 className="title mb-0">
-                              How often should I service my HVAC system?
-                              <i
-                                className={
-                                  col1
-                                    ? "mdi mdi-chevron-up float-end"
-                                    : "mdi mdi-chevron-down float-end"
-                                }
-                              ></i>
-                            </h6>
-                          </CardHeader>
-                        </Link>
-                        <Collapse isOpen={col1}>
-                          <CardBody>
-                            <p className="text-muted mb-0 faq-ans">
-                              It is recommended to service your HVAC system annually to ensure optimal performance and longevity.
-                            </p>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-
-                      <Card className="border-0 rounded mb-2">
-                        <Link
-                          to="#"
-                          onClick={() => toggleAccordion(2)}
-                          className={
-                            col2
-                              ? "faq position-relative text-primary"
-                              : "faq position-relative text-dark"
-                          }
-                        >
-                          <CardHeader className="border-0 bg-light p-3" id="headingTwo">
-                            <h6 className="title mb-0">
-                              What are signs that my HVAC system needs repair?
-                              <i
-                                className={
-                                  col2
-                                    ? "mdi mdi-chevron-up float-end"
-                                    : "mdi mdi-chevron-down float-end"
-                                }
-                              ></i>
-                            </h6>
-                          </CardHeader>
-                        </Link>
-                        <Collapse isOpen={col2}>
-                          <CardBody>
-                            <p className="text-muted mb-0 faq-ans">
-                              Signs include unusual noises, reduced airflow, and inconsistent temperature control.
-                            </p>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-
-                      <Card className="border-0 rounded mb-2">
-                        <Link
-                          to="#"
-                          onClick={() => toggleAccordion(3)}
-                          className={
-                            col3
-                              ? "faq position-relative text-primary"
-                              : "faq position-relative text-dark"
-                          }
-                        >
-                          <CardHeader className="border-0 bg-light p-3" id="headingThree">
-                            <h6 className="title mb-0">
-                              How can I improve the energy efficiency of my HVAC system?
-                              <i
-                                className={
-                                  col3
-                                    ? "mdi mdi-chevron-up float-end"
-                                    : "mdi mdi-chevron-down float-end"
-                                }
-                              ></i>
-                            </h6>
-                          </CardHeader>
-                        </Link>
-                        <Collapse isOpen={col3}>
-                          <CardBody>
-                            <p className="text-muted mb-0 faq-ans">
-                              To enhance energy efficiency, regularly clean or replace air filters and consider upgrading to a programmable thermostat.
-                            </p>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-
-                      <Card className="border-0 rounded mb-2">
-                        <Link
-                          to="#"
-                          onClick={() => toggleAccordion(4)}
-                          className={
-                            col4
-                              ? "faq position-relative text-primary"
-                              : "faq position-relative text-dark"
-                          }
-                        >
-                          <CardHeader className="border-0 bg-light p-3" id="headingFour">
-                            <h6 className="title mb-0">
-                              What is the lifespan of an HVAC system?
-                              <i
-                                className={
-                                  col4
-                                    ? "mdi mdi-chevron-up float-end"
-                                    : "mdi mdi-chevron-down float-end"
-                                }
-                              ></i>
-                            </h6>
-                          </CardHeader>
-                        </Link>
-                        <Collapse isOpen={col4}>
-                          <CardBody>
-                            <p className="text-muted mb-0 faq-ans">
-                              The average lifespan of an HVAC system is around 15 to 20 years, depending on maintenance and usage.
-                            </p>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-                      {/* Add more Q&A cards as needed */}
+                      {data?.faq?.faqItems?.map((faqItem, index) => (
+                        <Card key={index} className="border-0 rounded mb-2">
+                          <Link
+                            to="#"
+                            onClick={() => toggleAccordion(index + 1)}
+                            className={
+                              eval(`col${index + 1}`)
+                                ? "faq position-relative text-primary"
+                                : "faq position-relative text-dark"
+                            }
+                          >
+                            <CardHeader className="border-0 bg-light p-3" id={`heading${index + 1}`}>
+                              <h6 className="title mb-0">
+                                {faqItem?.question}
+                                <i
+                                  className={
+                                    eval(`col${index + 1}`)
+                                      ? "mdi mdi-chevron-up float-end"
+                                      : "mdi mdi-chevron-down float-end"
+                                  }
+                                ></i>
+                              </h6>
+                            </CardHeader>
+                          </Link>
+                          <Collapse isOpen={eval(`col${index + 1}`)}>
+                            <CardBody>
+                              <p className="text-muted mb-0 faq-ans">{faqItem?.answer}</p>
+                            </CardBody>
+                          </Collapse>
+                        </Card>
+                      ))}
                     </div>
                     <div className="mt-3">
-                      <Link to="/contact-us" className="btn btn-primary mt-2 me-2">
-                        Contact Us
-                      </Link>{" "}
-                      <Link to="/services" className="btn btn-outline-primary mt-2">
-                        Services
-                      </Link>
+                      {data?.buttons.map((button, index) => (
+                        <Link key={index} to={button.to} className={button.className}>
+                          {button.label}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </CardBody>

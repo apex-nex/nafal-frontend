@@ -5,6 +5,10 @@ import { footerData } from "./common/footer/footerData"
 import { aboutData } from "./about/about";
 import { servicesPageData } from "./services/services";
 import { contactData, headingSection, formSection, mapLocation, mapUrl } from "./contact/contact"
+import { appTextContent } from "./app/appTextContent";
+import { errorContent } from "./error/errorContent";
+import { privacyContent } from "./privicy/privacyContent";
+import { termsContent } from "./terms/termsContent";
 
 export {
     carouselData,
@@ -23,4 +27,8 @@ export {
     formSection,
     mapLocation,
     mapUrl,
+    appTextContent,
+    errorContent,
+    privacyContent,
+    termsContent,
 };
