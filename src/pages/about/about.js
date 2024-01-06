@@ -6,10 +6,11 @@ import KeyFeatureBox from '../../components/about/KeyFeatureBoxNafal';
 import SectionTitle from '../../components/about/SectionTitleNafal';
 import { aboutData } from '../../data';
 import { useAuth } from '../../store/auth';
+import { aboutDataArabic } from '../../data/indexArabic';
 
 const About = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? aboutData : aboutData
+  const data = !isArabic ? aboutData : aboutDataArabic
   const [isSeeMore, setIsseeMore] = useState(false)
 
   return (
@@ -104,7 +105,7 @@ const About = () => {
                   <Link to="#" className="btn btn-primary"
                     onClick={() => { setIsseeMore(!isSeeMore) }}
                   >
-                    {isSeeMore ? "Hide More" : "See More"} <i className={`mdi mdi-arrow-${isSeeMore ? 'up' : 'down'}`}></i>
+                    {isSeeMore ? data?.aboutUsCmsData?.seeMore : data?.aboutUsCmsData?.hideMore} <i className={`mdi mdi-arrow-${isSeeMore ? 'up' : 'down'}`}></i>
                   </Link>
                 </Col>
               </Row>

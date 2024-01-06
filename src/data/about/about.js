@@ -23,13 +23,12 @@ const aboutData = {
                 },
                 {
                     content:
-                        " – your partner in creating a legacy of comfort and innovation. We go beyond merely providing HVAC solutions; we generate awareness, drive traffic, and foster connections. Our story is woven with dedication and expertise. Dummy text is a placeholder used by designers, but our commitment is real. Since our inception, we've embraced the spirit of progress and quality, just as the HVAC industry has evolved since its inception in the 19th century. Join us in shaping the future of climate control.",
+                        " - your partner in creating a legacy of comfort and innovation. We go beyond merely providing HVAC solutions; we generate awareness, drive traffic, and foster connections. Our story is woven with dedication and expertise. Dummy text is a placeholder used by designers, but our commitment is real. Since our inception, we've embraced the spirit of progress and quality, just as the HVAC industry has evolved since its inception in the 19th century. Join us in shaping the future of climate control.",
                     highlight: false,
                 },
             ],
         },
         key_features: {
-            tite: 'Key Features',
             description: [
                 {
                     content: 'Experience the power of cutting-edge HVAC technology with ',
@@ -108,6 +107,8 @@ const aboutData = {
                 },
             ],
         },
+        seeMore: "See More",
+        hideMore: "Hide More",
     },
 };
 

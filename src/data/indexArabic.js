@@ -2,6 +2,7 @@ import { carouselDataArabic, aboutSectionDataArabic, videoSectionDataArabic, cli
 import { servicesDataArabic } from "./common/services/servicesDataArabic";
 import {menuItemsArabic} from "./common/navbar/navbarDataArabic"
 import {footerDataArabic} from "./common/footer/footerDataArabic"
+import { aboutDataArabic } from "./about/aboutArabic";
 
 export {
     carouselDataArabic,
@@ -12,4 +13,5 @@ export {
     appDataArabic,
     menuItemsArabic,
     footerDataArabic,
+    aboutDataArabic,
 };
