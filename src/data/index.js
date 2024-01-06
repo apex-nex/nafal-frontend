@@ -3,7 +3,7 @@ import { servicesData } from "./common/services/servicesData";
 import { menuItems } from "./common/navbar/navbarData"
 import { footerData } from "./common/footer/footerData"
 import { aboutData } from "./about/about";
-import { serviceData } from "./services/services";
+import { servicesPageData } from "./services/services";
 import { contactData, headingSection, formSection, mapLocation, mapUrl } from "./contact/contact"
 
 export {
@@ -17,7 +17,7 @@ export {
     menuItems,
     footerData,
     aboutData,
-    serviceData,
+    servicesPageData,
     contactData,
     headingSection,
     formSection,

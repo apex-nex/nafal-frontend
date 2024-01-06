@@ -2,6 +2,7 @@ import about from "../../assets/images/about/about.jpg"
 const aboutData = {
     aboutUsCmsData: {
         page_heading: 'About us',
+        title: "Our Story",
         breadcrumb: [
             { name: "Nafal", className: "breadcrumb-item", link: "/" },
             { name: "Page", className: "breadcrumb-item", link: "#" },

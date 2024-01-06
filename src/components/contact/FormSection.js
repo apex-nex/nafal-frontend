@@ -7,10 +7,11 @@ import { toast } from 'react-toastify';
 import { ErrorMessageDisplay } from '../../components/utils/common';
 import { useAuth } from "../../store/auth"
 import { formSection } from '../../data';
+import { formSectionArabic } from '../../data/indexArabic';
 
 const FormSection = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? formSection : formSection
+  const data = !isArabic ? formSection : formSectionArabic
   const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
   const [form, setForm] = useState(defaultContactForm);
   const [formError, setFormError] = useState(defaultContactForm);

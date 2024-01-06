@@ -5,11 +5,12 @@ import MetaTags from 'react-meta-tags';
 import { useState } from 'react';
 import ServicesSection from '../../components/home/ServicesSection';
 import { useAuth } from '../../store/auth';
-import { serviceData } from '../../data';
+import { servicesPageData } from '../../data';
+import { servicesPageDataArabic } from '../../data/indexArabic';
 
 const Services = () => {
     const { isArabic } = useAuth()
-    const data = !isArabic ? serviceData : serviceData
+    const data = !isArabic ? servicesPageData : servicesPageDataArabic
     const [isSeeMore, setIsseeMore] = useState(false)
 
     useEffect(() => {
