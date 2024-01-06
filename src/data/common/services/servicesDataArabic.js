@@ -63,6 +63,7 @@ const servicesDataArabic = {
       category: 'بنية تحتية',
     },
   ],
+  categories : ['All', 'Residential', 'Commercial', 'Infrastructure']
 };
 
 export { servicesDataArabic };

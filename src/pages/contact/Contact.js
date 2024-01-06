@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import HeadingSection from '../../components/contact/HeadingSection';
 import ContactSection from '../../components/contact/ContactSection';
 import FormSection from '../../components/contact/FormSection';
 import MapSection from '../../components/contact/MapSection';
-import contactPageContent from '../../data/contact-page/contactPageContent.json'
 import { MetaTags } from 'react-meta-tags';
-
-const contactSectionContent = contactPageContent?.data?.contactUsPage?.sections?.contactSection;
 
 const Contact = () => {
 
@@ -15,20 +12,19 @@ const Contact = () => {
       <MetaTags>
         <title>Contact Us | Nafal</title>
       </MetaTags>
-      <div className="heading-section">
-        <HeadingSection />
-      </div>
-      <section className="section pb-0">
-        <div className="contact-section">
-          <ContactSection contactSectionContent={contactSectionContent} />
-        </div>
-        <div className="form-section">
-          <FormSection />
-        </div>
+      {/* heading-section */}
+      <HeadingSection />
 
-        <div className="map-section">
-          <MapSection />
-        </div>
+      <section className="section pb-0">
+        {/* contact-section */}
+        <ContactSection />
+
+        {/* form-section */}
+        <FormSection />
+
+        {/* map-section */}
+        <MapSection />
+
       </section>
     </React.Fragment>
   );

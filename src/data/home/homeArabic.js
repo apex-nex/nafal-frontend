@@ -1,10 +1,4 @@
 import bg01 from '../../assets/images/home/carousel/bg1.jpg';
-import trane from '../../assets/images/home/companies/trane.png';
-import daikin from '../../assets/images/home/companies/daikin.svg';
-import gree from '../../assets/images/home/companies/gree.svg';
-import midea from '../../assets/images/home/companies/midea.svg';
-import fuji from '../../assets/images/home/companies/fuji.svg';
-import lg from '../../assets/images/home/companies/lg.svg';
 import aboutImg from '../../assets/images/home/about/about.jpg';
 import videoImg from '../../assets/images/home/video/img.svg';
 import clientImg1 from '../../assets/images/home/clients/01.png';
@@ -43,33 +37,6 @@ const carouselDataArabic = [
     link: '/contact-us',
     iClass: 'mdi mdi-phone',
     isVideo: false,
-  },
-];
-
-const partnersDataArabic = [
-  {
-    id: 1,
-    img: daikin,
-  },
-  {
-    id: 2,
-    img: trane,
-  },
-  {
-    id: 3,
-    img: midea,
-  },
-  {
-    id: 4,
-    img: fuji,
-  },
-  {
-    id: 5,
-    img: lg,
-  },
-  {
-    id: 6,
-    img: gree,
   },
 ];
 
@@ -151,7 +118,6 @@ const appDataArabic = {
 
 export {
   carouselDataArabic,
-  partnersDataArabic,
   aboutSectionDataArabic,
   videoSectionDataArabic,
   clientsDataArabic,

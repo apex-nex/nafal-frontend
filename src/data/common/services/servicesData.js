@@ -63,6 +63,7 @@ const servicesData = {
       category: 'Infrastructure',
     },
   ],
+  categories : ['All', 'Residential', 'Commercial', 'Infrastructure']
 };
 
 export { servicesData };

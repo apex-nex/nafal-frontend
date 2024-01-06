@@ -5,10 +5,10 @@ import "./assets/css/materialdesignicons.min.css"
 import "./Apps.scss";
 import "./assets/css/colors/skyblue.css";
 import routes from "./routes/allRoutes";
-import withRouter from "./common/data/withRouter";
+import withRouter from "./components/utils/withRouter";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "./store/auth";
-import { LoaderComponent } from "./common/utils/common";
+import { LoaderComponent } from "./components/utils/common";
 
 const App = () => {
   const { isLoggedIn, isDarkMode, isArabic } = useAuth()

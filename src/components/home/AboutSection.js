@@ -12,7 +12,7 @@ const AboutSection = (props) => {
   return (
     <React.Fragment>
       {data ? (
-        <React.Fragment>
+        <>
           <section className="section">
             <Container>
               <Row className="align-items-center">
@@ -71,7 +71,7 @@ const AboutSection = (props) => {
               </Row>
             </Container>
           </section>
-        </React.Fragment>
+        </>
       ) : null}
     </React.Fragment>
   );

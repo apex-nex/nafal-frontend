@@ -11,8 +11,6 @@ import clientImg1 from '../../assets/images/home/clients/01.png';
 import clientImg2 from '../../assets/images/home/clients/02.jpg';
 import userInterface from '../../assets/images/home/download/user_interface.svg';
 
-// id, image, name, link, title, icon, description, date, heading, comment, features, value, postfix, end, imgUrl, btnLink, isActive, duration. img, titleLine1, titleLine2, desc
-
 const carouselData = [
   {
     id: 1,
