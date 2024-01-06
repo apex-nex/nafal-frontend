@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Alert, Form, Input, Label, Card, CardBody, Button } from 'reactstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Input, Label, Card, CardBody, Button } from 'reactstrap';
 import FeatherIcon from 'feather-icons-react';
 import contact from '../../assets/images/contact/contact.svg';
 import { post } from '../helpers/api_helper';
 import { toast } from 'react-toastify';
-import { ErrorMessageDisplay } from '../../common/utils/common';
+import { ErrorMessageDisplay } from '../../components/utils/common';
+import { useAuth } from "../../store/auth"
+import { formSection } from '../../data';
 
 const FormSection = () => {
+  const { isArabic } = useAuth()
+  const data = !isArabic ? formSection : formSection
   const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
   const [form, setForm] = useState(defaultContactForm);
   const [formError, setFormError] = useState(defaultContactForm);
@@ -58,161 +62,63 @@ const FormSection = () => {
           >
             <Card className="shadow rounded border-0">
               <CardBody className="py-5">
-                <h4 className="card-title">Get In Touch !</h4>
+                <h4 className="card-title">{data?.title}</h4>
                 <div className="custom-form mt-3">
                   <div id="message"></div>
                   <Form method="post" name="contact-form" id="contact-form" onSubmit={handleSubmit}>
                     <Row>
-                      <Col md={6}>
-                        <div className="mb-3">
-                          <Label className={formError?.name ? "form-label text-danger" : "form-label"}>
-                            Your Name <span className="text-danger">*</span>
-                          </Label>
-                          <div className="form-icon position-relative">
-                            <i>
-                              <FeatherIcon
-                                icon="user"
-                                className="fea icon-sm icons"
+                      {data?.formFields.map((field) => (
+                        <Col md={field.name === 'name' || field.name === 'email' ? 6 : 12} key={field.name}>
+                          <div className="mb-3">
+                            <Label className={formError?.[field.name] ? "form-label text-danger" : "form-label"}>
+                              {field.label} <span className="text-danger">*</span>
+                            </Label>
+                            <div className="form-icon position-relative">
+                              <i>
+                                <FeatherIcon icon={field.icon} className="fea icon-sm icons" />
+                              </i>
+                            </div>
+                            {field.type === 'textarea' ? (
+                              <textarea
+                                name={field.name}
+                                id={field.name}
+                                rows="4"
+                                className={formError?.[field.name] ? "form-control ps-5 is-invalid" : "form-control ps-5"}
+                                placeholder={field.placeholder}
+                                value={form?.[field.name]}
+                                required
+                                onChange={handleInput}
                               />
-                            </i>
-                          </div>
-                          <Input
-                            name="name"
-                            id="name"
-                            type="text"
-                            className={formError?.name ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="Your Name :"
-                            value={form?.name}
-                            required
-                            onChange={handleInput}
-                          />
-                          <ErrorMessageDisplay error={formError?.name} />
-                        </div>
-                      </Col>
-                      <Col md={6}>
-                        <div className="mb-3">
-                          <Label className={formError?.email ? "form-label text-danger" : "form-label"}>
-                            Your Email <span className="text-danger">*</span>
-                          </Label>
-                          <div className="form-icon position-relative">
-                            <i>
-                              <FeatherIcon
-                                icon="mail"
-                                className="fea icon-sm icons"
+                            ) : (
+                              <Input
+                                name={field.name}
+                                id={field.name}
+                                type={field.type}
+                                className={formError?.[field.name] ? "form-control ps-5 is-invalid" : "form-control ps-5"}
+                                placeholder={field.placeholder}
+                                value={form?.[field.name]}
+                                onChange={handleInput}
+                                required
                               />
-                            </i>
+                            )}
+                            <ErrorMessageDisplay error={formError?.[field.name]} />
                           </div>
-                          <Input
-                            name="email"
-                            id="email"
-                            type="email"
-                            className={formError?.email ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="Your email :"
-                            value={form?.email}
-                            onChange={handleInput}
-                            required
-                          />
-                          <ErrorMessageDisplay error={formError?.email} />
-                        </div>
-                      </Col>
-                      <Col md={12}>
-                        <div className="mb-3">
-                          <Label className={formError?.mobile ? "form-label text-danger" : "form-label"}>
-                            Mobile <span className="text-danger">*</span>
-                          </Label>
-                          <div className="form-icon position-relative">
-                            <i>
-                              <FeatherIcon
-                                icon="phone"
-                                className="fea icon-sm icons"
-                              />
-                            </i>
-                          </div>
-                          <Input
-                            name="mobile"
-                            id="mobile"
-                            className={formError?.mobile ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="+966 Your mobile :"
-                            value={form?.mobile}
-                            required
-                            onChange={handleInput}
-                          />
-                          <ErrorMessageDisplay error={formError?.mobile} />
-                        </div>
-                      </Col>
-                      <Col md={12}>
-                        <div className="mb-3">
-                          <Label className={formError?.subject ? "form-label text-danger" : "form-label"}>
-                            Subject <span className="text-danger">*</span>
-                          </Label>
-                          <div className="form-icon position-relative">
-                            <i>
-                              <FeatherIcon
-                                icon="book"
-                                className="fea icon-sm icons"
-                              />
-                            </i>
-                          </div>
-                          <Input
-                            name="subject"
-                            id="subject"
-                            className={formError?.subject ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="Your subject :"
-                            value={form?.subject}
-                            required
-                            onChange={handleInput}
-                          />
-                          <ErrorMessageDisplay error={formError?.subject} />
-                        </div>
-                      </Col>
-                      <Col md={12}>
-                        <div className="mb-3">
-                          <Label className={formError?.comments ? "form-label text-danger" : "form-label"}>
-                            Comments <span className="text-danger">*</span>
-                          </Label>
-                          <div className="form-icon position-relative">
-                            <i>
-                              <FeatherIcon
-                                icon="message-circle"
-                                className="fea icon-sm icons"
-                              />
-                            </i>
-                          </div>
-                          <textarea
-                            name="comments"
-                            id="comments"
-                            rows="4"
-                            className={formError?.comments ? "form-control ps-5 is-invalid" : "form-control ps-5"}
-                            placeholder="Your Message :"
-                            value={form?.comments}
-                            required
-                            onChange={handleInput}
-                          />
-                          <ErrorMessageDisplay error={formError?.comments} />
-                        </div>
-                      </Col>
+                        </Col>
+                      ))}
                     </Row>
                     <Row>
                       <Col sm={12} className="text-center">
                         <div className="d-grid">
-                          {/* <input
-                            type="submit"
-                            id="submit"
-                            name="send"
-                            className="submitBnt btn btn-primary"
-                            value={loading ? "Sending..." : "Send Message"}
-                            disabled={loading}
-                          /> */}
-                          {loading ?
+                          {loading ? (
                             <Button color="primary" disabled>
-                              Send Message
+                              {data?.btnText}
                               <i className="bx bx-loader bx-spin font-size-16 align-middle ms-2"></i>
                             </Button>
-                            :
+                          ) : (
                             <Button color="primary" type="submit">
-                              Send Message
+                              {data?.btnText}
                             </Button>
-                          }
+                          )}
                         </div>
                         <div id="simple-msg"></div>
                       </Col>

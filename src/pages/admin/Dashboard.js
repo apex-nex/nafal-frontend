@@ -10,7 +10,7 @@ import { get, update, remove } from "../../components/helpers/api_helper"
 import { toast } from "react-toastify"
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
-import { getStatusClass } from "../../common/utils/common"
+import { getStatusClass } from "../../components/utils/common"
 import * as XLSX from "xlsx";
 
 const Dashboard = () => {

@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap';
 import { partnersData } from '../../data';
 
 const Partners = () => {
-
     return (
         <React.Fragment>
             <section className="py-4 border-bottom border-top bg-light">

@@ -20,7 +20,7 @@ function VideoSection(props) {
   return (
     <React.Fragment>
       {data ? (
-        <React.Fragment>
+        <>
           <Container fluid>
             <div
               className="bg-cta shadow rounded card overflow-hidden"
@@ -64,7 +64,7 @@ function VideoSection(props) {
             videoId={data?.videoId}
             onClose={() => setIsOpen(false)}
           />
-        </React.Fragment>
+        </>
       ) : null}
     </React.Fragment>
   );

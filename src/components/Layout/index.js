@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from "react";
 import BackToTop from "./backToTop";
-import withRouter from "../../common/data/withRouter";
+import withRouter from "../../components/utils/withRouter";
 import NavbarAdmin from "./NavbarAdmin";
 import FooterAdmin from "./FooterAdmin";
 
