@@ -68,7 +68,7 @@ const About = () => {
 
                 <Col lg={7} md={7} className="mt-4 pt-2 mt-sm-0 pt-sm-0">
                   <div className="section-title ms-lg-4">
-                    <h4 className="title mb-4">Our Story</h4>
+                    <h4 className="title mb-4">{data?.aboutUsCmsData?.title}</h4>
                     <p className="text-muted">
                       {
                         data?.aboutUsCmsData?.our_story?.description ? data?.aboutUsCmsData?.our_story?.description.map((ele, index) =>

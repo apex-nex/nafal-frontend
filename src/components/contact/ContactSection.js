@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'reactstrap';
 import { useAuth } from "../../store/auth"
 import { contactData, mapLocation } from '../../data';
+import { contactDataArabic } from '../../data/indexArabic';
 
 export default function ContactSection(props) {
   const { isArabic } = useAuth()
-  const data = !isArabic ? contactData : contactData
+  const data = !isArabic ? contactData : contactDataArabic
 
   const { } = props;
 

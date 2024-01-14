@@ -93,7 +93,7 @@ const Carousel = () => {
   ));
 
   return (
-    <React.Fragment>
+    <>
       <section className="main-slider">
         <Slider className="slides" {...settings}>
           {slides}
@@ -106,7 +106,7 @@ const Carousel = () => {
         videoId="8_FJEMH8hx0"
         onClose={() => setIsOpen(false)}
       />
-    </React.Fragment>
+    </>
   );
 };
 

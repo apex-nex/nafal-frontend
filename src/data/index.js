@@ -3,8 +3,12 @@ import { servicesData } from "./common/services/servicesData";
 import { menuItems } from "./common/navbar/navbarData"
 import { footerData } from "./common/footer/footerData"
 import { aboutData } from "./about/about";
-import { serviceData } from "./services/services";
+import { servicesPageData } from "./services/services";
 import { contactData, headingSection, formSection, mapLocation, mapUrl } from "./contact/contact"
+import { appTextContent } from "./app/appTextContent";
+import { errorContent } from "./error/errorContent";
+import { privacyContent } from "./privicy/privacyContent";
+import { termsContent } from "./terms/termsContent";
 
 export {
     carouselData,
@@ -17,10 +21,14 @@ export {
     menuItems,
     footerData,
     aboutData,
-    serviceData,
+    servicesPageData,
     contactData,
     headingSection,
     formSection,
     mapLocation,
     mapUrl,
+    appTextContent,
+    errorContent,
+    privacyContent,
+    termsContent,
 };
