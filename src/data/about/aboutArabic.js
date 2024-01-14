@@ -2,8 +2,9 @@ import about from "../../assets/images/about/about.jpg"
 const aboutDataArabic = {
     aboutUsCmsData: {
         page_heading: 'من نحن',
+        title: "قصتنا",
         breadcrumb: [
-            { name: "نفل", className: "breadcrumb-item", link: "/" },
+            { name: "Nafal", className: "breadcrumb-item", link: "/" },
             { name: "الصفحة", className: "breadcrumb-item", link: "#" },
             { name: "من نحن", className: "breadcrumb-item active" },
         ],
@@ -18,7 +19,7 @@ const aboutDataArabic = {
                     highlight: false,
                 },
                 {
-                    content: 'نفل',
+                    content: 'Nafal',
                     highlight: true,
                 },
                 {
@@ -35,7 +36,7 @@ const aboutDataArabic = {
                     highlight: false,
                 },
                 {
-                    content: 'نفل',
+                    content: 'Nafal',
                     highlight: true,
                 },
                 {

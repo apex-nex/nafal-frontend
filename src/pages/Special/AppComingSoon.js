@@ -2,42 +2,43 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import FeatherIcon from "feather-icons-react";
-import logoNafal from '../../assets/images/logo/nafal-logo.png';
+import { useAuth } from '../../store/auth';
+import { appTextContent } from "../../data";
+import { appTextContentArabic } from "../../data/indexArabic";
 
 const AppComingSoon = () => {
+  const { isArabic } = useAuth()
+  const data = !isArabic ? appTextContent : appTextContentArabic
+
   return (
     <React.Fragment>
       <div className="back-to-home rounded d-none d-sm-block">
-        <Link to="/" className="btn btn-icon btn-primary">
+        <Link to={data?.backToHome.link} className={data?.backToHome.btnClass}>
           <i>
-            <FeatherIcon icon="arrow-left" className="icons" />
+            <FeatherIcon icon={data?.backToHome.icon} className="icons" />
           </i>
         </Link>
       </div>
-      <section
-        className="bg-home d-flex align-items-center"
-      >
+      <section className="bg-home d-flex align-items-center">
         <div className="bg-wrapper bg-gradient-primary"></div>
         <Container>
           <Row className="justify-content-center">
             <Col lg="8" md="12" className="text-center">
-              <Link to="#" className="logo h5">
-                <img src={logoNafal} height="24" alt="" />
+              <Link to={data?.logo.link} className="logo h5">
+                <img src={data?.logo.imageSrc} height="24" alt={data?.logo.alt} />
               </Link>
               <div className="text-uppercase title-dark text-dark mt-2 mb-4 coming-soon">
-                App Coming Soon...
+                {data?.title}
               </div>
               <p className="text-muted para-desc mb-0 mx-auto">
-                Start working with Nafal HVAC Company that can provide everything
-                you need to ensure your home's comfort and efficiency. 
-                Experience top-notch heating, cooling, and ventilation solutions.
+                {data?.description}
               </p>
             </Col>
           </Row>
           <Row>
             <Col md="12" className="text-center">
-              <Link to="/" className="btn btn-primary mt-4">
-                <i className="mdi mdi-backup-restore"></i> Go Back Home
+              <Link to={data?.goBackHomeBtn.link} className={data?.goBackHomeBtn.btnClass}>
+                <i className={data?.goBackHomeBtn.iconClass}></i> {data?.goBackHomeBtn.text}
               </Link>
             </Col>
           </Row>

@@ -1,4 +1,4 @@
-const serviceData = {
+const servicesPageData = {
     page_heading: "Services",
     breadcrumb: [
         { name: "Nafal", className: "breadcrumb-item", link: "/" },
@@ -134,4 +134,4 @@ const serviceData = {
     }
 };
 
-export { serviceData }
+export { servicesPageData }

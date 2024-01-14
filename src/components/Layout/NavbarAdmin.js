@@ -5,23 +5,12 @@ import logoLight from '../../assets/images/logo/nafal-logo.png';
 import logoDark from '../../assets/images/logo/nafal-logo.png';
 import FeatherIcon from 'feather-icons-react';
 import { useAuth } from "../../store/auth"
-import { Offcanvas } from 'reactstrap';
-import RightSidebar from './RightSidebar';
 
 function NavbarAdmin(props) {
-    const { user } = useAuth()
+    const { user, isArabic, isDarkMode, toggleArabic, toggleDarkMode } = useAuth()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [userData, setUserData] = useState({ name: "User" })
     const [flag, setFlag] = useState(true)
-    const [open, setOpen] = useState(false);
-
-    const onDrawerClose = () => {
-        setOpen(false);
-    }
-
-    const toggleRightDrawer = () => {
-        setOpen(!open);
-    };
 
     if (flag && user) {
         setUserData(user)
@@ -137,18 +126,98 @@ function NavbarAdmin(props) {
                     }
                     <ul className="buy-button list-inline mb-0">
                         <li className="list-inline-item mb-0">
-                            <Link to="#" onClick={toggleRightDrawer} disabled={open}>
-                                <div id="buyButton" className="login-btn-primary">
-                                    <span className="btn btn-icon btn-pills btn-soft-primary settingbtn">
-                                        <FeatherIcon icon="settings" className="fea icon-sm" />
-                                    </span>
-                                </div>
-                                <div className="login-btn-light">
-                                    <span className="btn btn-icon btn-pills btn-light">
-                                        <FeatherIcon icon="settings" className="fea icon-sm" />
-                                    </span>
-                                </div>
-                            </Link>
+                            {isArabic ?
+                                <>
+                                    <Link to={'#'}
+                                        onClick={() => {
+                                            localStorage.removeItem("arabicMode");
+                                            window.location.reload();
+                                        }}
+                                    >
+                                        <div className="login-btn-primary">
+                                            <span className="btn btn-icon btn-pills btn-soft-primary">
+                                                EN
+                                            </span>
+                                        </div>
+                                    </Link>
+                                    <Link to={'#'}
+                                        onClick={() => {
+                                            localStorage.removeItem("arabicMode");
+                                            window.location.reload();
+                                        }}
+                                    >
+                                        <div className="login-btn-light">
+                                            <span className="btn btn-icon btn-pills btn-light">
+                                                EN
+                                            </span>
+                                        </div>
+                                    </Link>
+                                </>
+                                :
+                                <>
+                                    <Link to={'#'} onClick={() => toggleArabic(true)}>
+                                        <div className="login-btn-primary">
+                                            <span className="btn btn-icon btn-pills btn-soft-primary">
+                                                AR
+                                            </span>
+                                        </div>
+                                    </Link>
+                                    <Link to={'#'} onClick={() => toggleArabic(true)}>
+                                        <div className="login-btn-light">
+                                            <span className="btn btn-icon btn-pills btn-light">
+                                                AR
+                                            </span>
+                                        </div>
+                                    </Link>
+                                </>
+                            }
+                        </li>{" "}
+                        <li className="list-inline-item mb-0">
+                            {isDarkMode ?
+                                <>
+                                    <Link to={'#'}
+                                        onClick={() => {
+                                            localStorage.removeItem("isDarkMode");
+                                            window.location.reload();
+                                        }}
+                                    >
+                                        <div className="login-btn-primary">
+                                            <span className="btn btn-icon btn-pills btn-soft-primary">
+                                                <i className="bx bx-sun" />
+                                            </span>
+                                        </div>
+                                    </Link>
+                                    <Link to={'#'}
+                                        onClick={() => {
+                                            localStorage.removeItem("isDarkMode");
+                                            window.location.reload();
+                                        }}
+                                    >
+                                        <div className="login-btn-light">
+                                            <span className="btn btn-icon btn-pills btn-light">
+                                                <i className="bx bx-sun" />
+                                            </span>
+                                        </div>
+                                    </Link>
+                                </>
+                                :
+                                <>
+                                    <Link to={'#'} onClick={() => toggleDarkMode(true)}>
+                                        <div className="login-btn-primary">
+                                            <span className="btn btn-icon btn-pills btn-soft-primary">
+                                                <i className="bx bx-moon" />
+                                            </span>
+                                        </div>
+                                    </Link>
+                                    <Link to={'#'} onClick={() => toggleDarkMode(true)}>
+                                        <div className="login-btn-light">
+                                            <span className="btn btn-icon btn-pills btn-light">
+                                                <i className="bx bx-moon" />
+                                            </span>
+                                        </div>
+                                    </Link>
+                                </>
+                            }
                         </li>{" "}
                         <li className="list-inline-item mb-0 pe-1">
                             <div className="dropdown d-none d-lg-inline-block ms-1">
@@ -192,9 +261,6 @@ function NavbarAdmin(props) {
                     </ul>
                 </div>
             </header>
-            <Offcanvas isOpen={open} direction="end" toggle={toggleRightDrawer}>
-                <RightSidebar onClose={onDrawerClose} />
-            </Offcanvas>
         </React.Fragment>
     );
 }

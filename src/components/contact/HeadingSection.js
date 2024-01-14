@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import { useAuth } from "../../store/auth"
 import { headingSection } from '../../data';
+import { headingSectionArabic } from '../../data/indexArabic';
 
 export default function HeadingSection() {
   const { isArabic } = useAuth()
-  const data = !isArabic ? headingSection : headingSection
+  const data = !isArabic ? headingSection : headingSectionArabic
   return (
     <React.Fragment>
       <section className="bg-half-170 bg-light d-table w-100">
@@ -14,7 +15,7 @@ export default function HeadingSection() {
           <Row className="mt-5 justify-content-center">
             <Col lg={12} className="text-center">
               <div className="pages-heading">
-                <h4 className="title mb-0">{headingSection?.title}</h4>
+                <h4 className="title mb-0">{data?.title}</h4>
               </div>
             </Col>
           </Row>
