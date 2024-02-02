@@ -9,7 +9,7 @@ const servicesDataArabic = {
   name: 'قسم الخدمات',
   heading: 'الخدمات',
   title: 'استمتع بخدمات التدفئة والتبريد لدينا',
-  readMore: "اقرأ أكثر",
+  readMore: "شاهد المزيد",
   description: [
     {
       content: 'اكتشف الجودة والموثوقية في خدمات التدفئة والتبريد لدينا في ',
