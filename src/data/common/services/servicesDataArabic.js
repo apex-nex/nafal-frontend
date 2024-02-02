@@ -6,22 +6,22 @@ import work5 from "../../../assets/images/home/services/work5.png"
 import work6 from "../../../assets/images/home/services/work6.png"
 
 const servicesDataArabic = {
-  name: 'قسم الخدمات',
+  name: 'Services-Section',
   heading: 'الخدمات',
-  title: 'استمتع بخدمات التدفئة والتبريد لدينا',
-  readMore: "شاهد المزيد",
+  title: 'استمتع بخدمات تكييف الهواء لدينا',
+  readMore: "المزيد",
   description: [
     {
-      content: 'اكتشف الجودة والموثوقية في خدمات التدفئة والتبريد لدينا في ',
+      content: 'اكتشف جودة وموثوقية خدمات تكييف الهواء لدينا في ',
       highlight: false,
     },
     {
-      content: 'NAFAL HVAC ',
+      content: 'نفال لتكييف الهواء',
       highlight: true,
     },
     {
       content:
-        "نقدم كل ما تحتاجه لضمان راحة وكفاءة منزلك.",
+        "نحن نقدم كل ما تحتاجه لضمان راحة منزلك وكفاءته",
       highlight: false,
     },
   ],
@@ -29,20 +29,20 @@ const servicesDataArabic = {
     {
       image: work1,
       title: 'Home Conditioners',
-      subtitle: 'حلول التبريد لراحة المنازل',
-      category: 'سكني',
+      subtitle: 'حلول التبريد للمشاريع السكنية',
+      category: 'Residential',
     },
     {
       image: work2,
       title: 'Package AC',
-      subtitle: 'حلول HVAC التجارية المخصصة',
-      category: 'تجاري',
+      subtitle: 'حلول تجارية مخصصة مع نفال',
+      category: 'Commercial',
     },
     {
       image: work3,
       title: 'Air20',
-      subtitle: 'تكنولوجيا HVAC المبتكرة للبنية التحتية',
-      category: 'بنية تحتية',
+      subtitle: 'نفال تقدم أنظمة التهوية وتكييف الهواء المبتكرة للبنية التحتية ',
+      category: 'Commercial',
     },
     {
       image: work4,
@@ -53,17 +53,17 @@ const servicesDataArabic = {
     {
       image: work5,
       title: 'AC Maintenance',
-      subtitle: 'الرعاية الهندسية لتكييف الهواء',
-      category: 'سكني',
+      subtitle: 'ارفع أداء تكييف الهواء مع الخبراء في نفال',
+      category: 'Residential',
     },
     {
       image: work6,
       title: 'Duct Construction And Design',
-      subtitle: 'حلول البنية التحتية الخبيرة',
-      category: 'بنية تحتية',
+      subtitle: 'وتصميم وتركيب مجاري الهواء',
+      category: 'Infrastructure',
     },
   ],
-  categories : ['All', 'Residential', 'Commercial', 'Infrastructure']
+  categories: ['All', 'Residential', 'Commercial', 'Infrastructure']
 };
 
 export { servicesDataArabic };

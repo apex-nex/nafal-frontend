@@ -106,12 +106,12 @@ const clientsDataArabic = {
 
 const appDataArabic = {
   img: userInterface,
-  title1: 'متاح لـك',
-  title2: 'الهواتف الذكية',
+  title1: 'التطبيق متاح',
+  title2: 'على الهواتف الذكية ',
   description1: 'ابق على اتصال مع',
-  highlightedText: 'NAFAL HVAC',
+  highlightedText: 'نفال للتكييف',
   description2:
-    'احصل على تطبيقنا لجميع احتياجاتك في التدفئة والتبريد والتهوية.',
+    'احصل على تطبيقنا لجميع احتياجات التكييف والتبريد والتهويةاحصل على تطبيقنا لجميع احتياجاتك في التدفئة والتبريد والتهوية',
     appStoreTitle: "App Store",
     playStoreTitle: "Play Store",
 };
