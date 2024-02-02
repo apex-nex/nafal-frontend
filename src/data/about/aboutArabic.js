@@ -108,7 +108,7 @@ const aboutDataArabic = {
                 },
             ],
         },
-        seeMore: "شاهد المزيد",
+        seeMore: "رؤية المزيد",
         hideMore: "إخفاء المزيد",
     },
 };
