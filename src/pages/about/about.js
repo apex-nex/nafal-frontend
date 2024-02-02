@@ -105,7 +105,7 @@ const About = () => {
                   <Link to="#" className="btn btn-primary"
                     onClick={() => { setIsseeMore(!isSeeMore) }}
                   >
-                    {isSeeMore ? data?.aboutUsCmsData?.seeMore : data?.aboutUsCmsData?.hideMore} <i className={`mdi mdi-arrow-${isSeeMore ? 'up' : 'down'}`}></i>
+                    {isSeeMore ? data?.aboutUsCmsData?.hideMore : data?.aboutUsCmsData?.seeMore} <i className={`mdi mdi-arrow-${isSeeMore ? 'up' : 'down'}`}></i>
                   </Link>
                 </Col>
               </Row>

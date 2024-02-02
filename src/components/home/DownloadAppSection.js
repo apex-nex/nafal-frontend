@@ -11,7 +11,7 @@ const DownloadAppSection = () => {
 
   return (
     <React.Fragment>
-      <section className="section pt-0 border-bottom">
+      <section className="section pt-0 border-bottom mt-100 mt-60">
         <Container>
           <Row className="align-items-center">
             <Col
