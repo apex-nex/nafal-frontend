@@ -118,7 +118,7 @@ const Services = () => {
                                         <Link to="#" className="btn btn-primary"
                                             onClick={() => { setIsseeMore(!isSeeMore) }}
                                         >
-                                            {isSeeMore ? "Hide More" : "See More"} <i className={`mdi mdi-arrow-${isSeeMore ? 'up' : 'down'}`}></i>
+                                            {isSeeMore ? data.hideMore : data.seeMore} <i className={`mdi mdi-arrow-${isSeeMore ? 'up' : 'down'}`}></i>
                                         </Link>
                                     </Col>
                                 </Row>

@@ -33,7 +33,7 @@ const Footer = () => {
                 <Col lg={6} md={6} sm={12} xs={12}>
                   <div className="text-sm-start">
                     <p className="mb-1">
-                      © {new Date().getFullYear()} NAFAL HVAC.{' '}
+                      © {new Date().getFullYear()}{" "}
                       <Link to="/" rel="noreferrer" className="text-reset">
                         {data?.description}
                       </Link>
