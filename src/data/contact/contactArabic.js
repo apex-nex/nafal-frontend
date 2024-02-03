@@ -12,15 +12,15 @@ const headingSectionArabic = {
 const contactDataArabic = [
     {
         title: 'الهاتف',
-        discription: 'ابدأ العمل مع Nafal الذي يمكن أن يوفر كل شيء',
+        discription: 'ابدأ العمل مع نفال التي يمكنها تقديم كل حلول التكييف والتهوية',
         data: '+966 51 014 9313',
         textBold: false,
         sameClassName: false,
         icon: 'uil-phone',
     },
     {
-        title: 'البريد الإلكتروني',
-        discription: 'ابدأ العمل مع Nafal الذي يمكن أن يوفر كل شيء',
+        title: 'الايميل',
+        discription: 'ابدأ العمل مع نفال التي يمكنها تقديم كل حلول التكييف والتهوية',
         data: 'info@nafal-hvac.sa',
         textBold: false,
         sameClassName: true,
@@ -29,8 +29,8 @@ const contactDataArabic = [
     {
         title: 'الموقع',
         discription:
-            'طلحة بن عبيد الله، 7946، الفيحاء، الرياض 14253، المملكة العربية السعودية',
-        data: 'عرض على الخريطة في جوجل',
+            'طلحة بن عبيد الله، 7946، الفيحاء الرياض 14253، المملكة العربية السعودية',
+        data: 'عرض على خريطة جوجل',
         textBold: true,
         sameClassName: true,
         icon: 'uil-map-marker',
@@ -50,28 +50,28 @@ const formSectionArabic = {
         },
         {
             name: 'email',
-            label: 'بريدك الإلكتروني',
+            label: 'بريدك الالكتروني',
             type: 'email',
             icon: 'mail',
             placeholder: 'بريدك الإلكتروني:',
         },
         {
             name: 'mobile',
-            label: 'الجوال',
+            label: 'رقم هاتفك',
             type: 'text',
             icon: 'phone',
             placeholder: '+966 رقم جوالك:',
         },
         {
             name: 'subject',
-            label: 'الموضوع',
+            label: 'العنوان',
             type: 'text',
             icon: 'book',
             placeholder: 'الموضوع الخاص بك:',
         },
         {
             name: 'comments',
-            label: 'التعليقات',
+            label: 'تعليقات',
             type: 'textarea',
             icon: 'message-circle',
             placeholder: 'رسالتك:',

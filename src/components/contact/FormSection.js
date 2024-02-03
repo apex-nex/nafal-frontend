@@ -12,7 +12,7 @@ const FormSection = () => {
   const { isArabic } = useAuth()
   const data = !isArabic ? formSection : formSectionArabic
   const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
-  const [form, setForm] = useState(defaultContactForm);
+  const [form, setForm] = useState({...defaultContactForm, mobile: "+966"});
   const [formError, setFormError] = useState(defaultContactForm);
   const [loading, setLoading] = useState(false)
 
@@ -97,6 +97,7 @@ const FormSection = () => {
                                 className={formError?.[field.name] ? "form-control ps-5 is-invalid" : "form-control ps-5"}
                                 placeholder={field.placeholder}
                                 value={form?.[field.name]}
+                                defaultValue={field.defaultValue}
                                 onChange={handleInput}
                                 required
                               />

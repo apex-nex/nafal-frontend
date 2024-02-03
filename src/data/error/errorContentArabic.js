@@ -15,7 +15,7 @@ const errorContentArabic = {
     goHomeBtn: {
         link: '/',
         btnClass: 'btn btn-primary',
-        text: 'اذهب إلى المنزل',
+        text: 'الذهاب الى الرئيسية',
     },
 };
 

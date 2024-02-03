@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navigate } from "react-router-dom";
 import Home from '../pages/home/Home';
 import About from '../pages/about/about';
 import Services from '../pages/services/Services';
@@ -29,14 +28,6 @@ const routes = [
   { path: "/auth-login", component: <PageLogin />, isWithoutLayout: true, },
   { path: "/auth-logout", component: <Logout />, isWithoutLayout: true },
   { path: "/admin-dashboard", component: <Dashboard /> },
-
-  //Index Main
-  // {
-  //   path: "/",
-  //   exact: true,
-  //   component: <Navigate to="/index" />,
-  // },
-  // { path: "/index", component: <Main />},
 
 ];
 

@@ -131,7 +131,9 @@ const servicesPageData = {
             { type: "text", content: "Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!" },
         ],
         buttonText: "Get in Touch"
-    }
+    },
+    seeMore: "See More",
+    hideMore: "Hide More",
 };
 
 export { servicesPageData }
