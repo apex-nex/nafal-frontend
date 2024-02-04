@@ -10,7 +10,7 @@ import { useAuth } from '../../store/auth';
 
 const ClientSection = (props) => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? clientsData : clientsDataArabic
+  const data = isArabic ? clientsData : clientsDataArabic
 
   return (
     <React.Fragment>

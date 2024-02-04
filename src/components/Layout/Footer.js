@@ -21,7 +21,7 @@ const Loader = () => {
 
 const Footer = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? footerData : footerDataArabic
+  const data = isArabic ? footerData : footerDataArabic
 
   return (
     <React.Fragment>

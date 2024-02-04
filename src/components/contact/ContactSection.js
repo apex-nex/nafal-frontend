@@ -7,7 +7,7 @@ import { contactDataArabic } from '../../data/indexArabic';
 
 export default function ContactSection(props) {
   const { isArabic } = useAuth()
-  const data = !isArabic ? contactData : contactDataArabic
+  const data = isArabic ? contactData : contactDataArabic
 
   const { } = props;
 

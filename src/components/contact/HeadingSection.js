@@ -7,7 +7,7 @@ import { headingSectionArabic } from '../../data/indexArabic';
 
 export default function HeadingSection() {
   const { isArabic } = useAuth()
-  const data = !isArabic ? headingSection : headingSectionArabic
+  const data = isArabic ? headingSection : headingSectionArabic
   return (
     <React.Fragment>
       <section className="bg-half-170 bg-light d-table w-100">

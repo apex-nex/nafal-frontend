@@ -125,8 +125,8 @@ function NavbarAdmin(props) {
                         </Link>
                     }
                     <ul className="buy-button list-inline mb-0">
-                        <li className="list-inline-item mb-0">
-                            {isArabic ?
+                        {/* <li className="list-inline-item mb-0">
+                            {!isArabic ?
                                 <>
                                     <Link to={'#'}
                                         onClick={() => {
@@ -155,14 +155,20 @@ function NavbarAdmin(props) {
                                 </>
                                 :
                                 <>
-                                    <Link to={'#'} onClick={() => toggleArabic(true)}>
+                                    <Link to={'#'} onClick={() => {
+                                        localStorage.removeItem("arabicMode");
+                                        window.location.reload();
+                                    }}>
                                         <div className="login-btn-primary">
                                             <span className="btn btn-icon btn-pills btn-soft-primary">
                                                 AR
                                             </span>
                                         </div>
                                     </Link>
-                                    <Link to={'#'} onClick={() => toggleArabic(true)}>
+                                    <Link to={'#'} onClick={() => {
+                                        localStorage.removeItem("arabicMode");
+                                        window.location.reload();
+                                    }}>
                                         <div className="login-btn-light">
                                             <span className="btn btn-icon btn-pills btn-light">
                                                 AR
@@ -171,7 +177,7 @@ function NavbarAdmin(props) {
                                     </Link>
                                 </>
                             }
-                        </li>{" "}
+                        </li>{" "} */}
                         <li className="list-inline-item mb-0">
                             {isDarkMode ?
                                 <>
