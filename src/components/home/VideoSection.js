@@ -11,7 +11,7 @@ import { videoSectionDataArabic } from '../../data/indexArabic';
 function VideoSection(props) {
   const [isOpen, setIsOpen] = useState(false);
   const { isArabic } = useAuth()
-  const data = !isArabic ? videoSectionData : videoSectionDataArabic
+  const data = isArabic ? videoSectionData : videoSectionDataArabic
 
   const openModal = () => {
     setIsOpen(true);

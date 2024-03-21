@@ -10,7 +10,7 @@ import { aboutDataArabic } from '../../data/indexArabic';
 
 const About = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? aboutData : aboutDataArabic
+  const data = isArabic ? aboutData : aboutDataArabic
   const [isSeeMore, setIsseeMore] = useState(false)
 
   return (

@@ -9,7 +9,7 @@ import { useAuth } from '../../store/auth';
 
 const ServiceSection = ({ seeMore = true }) => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? servicesData : servicesDataArabic
+  const data = isArabic ? servicesData : servicesDataArabic
   const [displayCategory, setDisplayCategory] = useState('All');
 
   const setCategory = (category) => {

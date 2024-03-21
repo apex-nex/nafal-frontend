@@ -8,7 +8,7 @@ import { errorContentArabic } from "../../data/indexArabic";
 
 const PageError = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? errorContent : errorContentArabic
+  const data = isArabic ? errorContent : errorContentArabic
 
   return (
     <React.Fragment>

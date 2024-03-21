@@ -8,7 +8,7 @@ import { privacyContentArabic } from '../../data/indexArabic';
 
 const PagePrivacy = () => {
     const { isArabic } = useAuth()
-    const data = !isArabic ? privacyContent : privacyContentArabic
+    const data = isArabic ? privacyContent : privacyContentArabic
 
     useEffect(() => {
         document.body.classList = '';

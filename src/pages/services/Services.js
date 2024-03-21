@@ -10,7 +10,7 @@ import { servicesPageDataArabic } from '../../data/indexArabic';
 
 const Services = () => {
     const { isArabic } = useAuth()
-    const data = !isArabic ? servicesPageData : servicesPageDataArabic
+    const data = isArabic ? servicesPageData : servicesPageDataArabic
     const [isSeeMore, setIsseeMore] = useState(false)
 
     useEffect(() => {

@@ -9,7 +9,7 @@ import { termsContentArabic } from "../../data/indexArabic";
 
 const PageTerms = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? termsContent : termsContentArabic
+  const data = isArabic ? termsContent : termsContentArabic
 
   const [col1, setCol1] = useState(false);
   const [col2, setCol2] = useState(false);

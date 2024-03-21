@@ -2,7 +2,17 @@ import bg01 from '../../assets/images/home/carousel/bg1.jpg';
 import aboutImg from '../../assets/images/home/about/about.jpg';
 import videoImg from '../../assets/images/home/video/img.svg';
 import clientImg1 from '../../assets/images/home/clients/01.png';
-import clientImg2 from '../../assets/images/home/clients/02.jpg';
+import clientImg2 from '../../assets/images/home/clients/02.png';
+import clientImg3 from '../../assets/images/home/clients/03.png';
+import clientImg4 from '../../assets/images/home/clients/04.png';
+import clientImg5 from '../../assets/images/home/clients/05.png';
+import clientImg6 from '../../assets/images/home/clients/06.png';
+import clientImg7 from '../../assets/images/home/clients/07.png';
+import clientImg8 from '../../assets/images/home/clients/08.png';
+import clientImg9 from '../../assets/images/home/clients/09.png';
+import clientImg10 from '../../assets/images/home/clients/10.png';
+import clientImg11 from '../../assets/images/home/clients/11.jpg';
+import clientImg12 from '../../assets/images/home/clients/12.png';
 import userInterface from '../../assets/images/home/download/user_interface.svg';
 
 const carouselDataArabic = [
@@ -90,6 +100,18 @@ const clientsDataArabic = {
   title: 'عملاؤنا',
   description:
     'في NAFAL HVAC ، رضا عملائنا هو هدفنا النهائي. نحن ملتزمون بتوفير منتجات وخدمات استثنائية مخصصة لمتطلباتهم الخاصة. سعادتهم ورضاهم يلهمانا لتجاوز توقعاتهم باستمرار.',
+  // clients: [
+  //   {
+  //     badgeNo: 1,
+  //     img: clientImg1,
+  //     title: "Sara Auto Parts"
+  //   },
+  //   {
+  //     badgeNo: 2,
+  //     img: clientImg11,
+  //     title: "Al - Etimad"
+  //   }
+  // ]
   clients: [
     {
       badgeNo: 1,
@@ -99,8 +121,58 @@ const clientsDataArabic = {
     {
       badgeNo: 2,
       img: clientImg2,
+      title: "Mumtaz Policlinic"
+    },
+    {
+      badgeNo: 3,
+      img: clientImg3,
+      title: "project Way"
+    },
+    {
+      badgeNo: 4,
+      img: clientImg4,
+      title: "Saudi Traffic Police"
+    },
+    {
+      badgeNo: 5,
+      img: clientImg5,
+      title: "Hayat Policlinic"
+    },
+    {
+      badgeNo: 6,
+      img: clientImg6,
+      title: "Taib Medical Services"
+    },
+    {
+      badgeNo: 7,
+      img: clientImg7,
+      title: "Akbar Alam Travel"
+    },
+    {
+      badgeNo: 8,
+      img: clientImg8,
+      title: "Perfect Vision Clinic"
+    },
+    {
+      badgeNo: 9,
+      img: clientImg9,
+      title: "Future Homes"
+    },
+    {
+      badgeNo: 10,
+      img: clientImg10,
+      title: "Q Choice Company"
+    },
+    {
+      badgeNo: 11,
+      img: clientImg11,
       title: "Al - Etimad"
-    }
+    },
+    {
+      badgeNo: 12,
+      img: clientImg12,
+      title: "Dawaak Medical"
+    },
   ]
 };
 
