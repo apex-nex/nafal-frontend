@@ -8,7 +8,7 @@ import { menuItemsArabic } from '../../data/indexArabic';
 
 const Navbar = (props) => {
   const { isArabic, isDarkMode, toggleDarkMode, toggleArabic } = useAuth()
-  const data = !isArabic ? menuItems : menuItemsArabic
+  const data = isArabic ? menuItems : menuItemsArabic
 
   useEffect(() => {
     const handleScroll = () => {
@@ -143,13 +143,10 @@ const Navbar = (props) => {
 
           <ul className="buy-button list-inline mb-0">
             <li className="list-inline-item mb-0">
-              {isArabic ?
+              {!isArabic ?
                 <>
                   <Link to={'#'}
-                    onClick={() => {
-                      localStorage.removeItem("arabicMode");
-                      window.location.reload();
-                    }}
+                    onClick={() => toggleArabic(true)}
                   >
                     <div className="login-btn-primary">
                       <span className="btn btn-icon btn-pills btn-soft-primary">
@@ -158,10 +155,7 @@ const Navbar = (props) => {
                     </div>
                   </Link>
                   <Link to={'#'}
-                    onClick={() => {
-                      localStorage.removeItem("arabicMode");
-                      window.location.reload();
-                    }}
+                    onClick={() => toggleArabic(true)}
                   >
                     <div className="login-btn-light">
                       <span className="btn btn-icon btn-pills btn-light">
@@ -172,14 +166,20 @@ const Navbar = (props) => {
                 </>
                 :
                 <>
-                  <Link to={'#'} onClick={() => toggleArabic(true)}>
+                  <Link to={'#'} onClick={() => {
+                    localStorage.removeItem("arabicMode");
+                    window.location.reload();
+                  }}>
                     <div className="login-btn-primary">
                       <span className="btn btn-icon btn-pills btn-soft-primary">
                         AR
                       </span>
                     </div>
                   </Link>
-                  <Link to={'#'} onClick={() => toggleArabic(true)}>
+                  <Link to={'#'} onClick={() => {
+                    localStorage.removeItem("arabicMode");
+                    window.location.reload();
+                  }}>
                     <div className="login-btn-light">
                       <span className="btn btn-icon btn-pills btn-light">
                         AR

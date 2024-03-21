@@ -10,7 +10,7 @@ import { formSectionArabic } from '../../data/indexArabic';
 
 const FormSection = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? formSection : formSectionArabic
+  const data = isArabic ? formSection : formSectionArabic
   const defaultContactForm = { name: "", email: "", mobile: "", subject: "", comments: "" }
   const [form, setForm] = useState({...defaultContactForm, mobile: "+966"});
   const [formError, setFormError] = useState(defaultContactForm);

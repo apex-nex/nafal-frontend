@@ -13,7 +13,7 @@ import { useAuth } from "../../store/auth";
 
 const Carousel = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? carouselData : carouselDataArabic
+  const data = isArabic ? carouselData : carouselDataArabic
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

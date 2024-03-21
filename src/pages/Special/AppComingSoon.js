@@ -8,7 +8,7 @@ import { appTextContentArabic } from "../../data/indexArabic";
 
 const AppComingSoon = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? appTextContent : appTextContentArabic
+  const data = isArabic ? appTextContent : appTextContentArabic
 
   return (
     <React.Fragment>

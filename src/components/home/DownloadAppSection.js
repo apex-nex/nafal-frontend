@@ -7,7 +7,7 @@ import { appDataArabic } from "../../data/home/homeArabic";
 
 const DownloadAppSection = () => {
   const { isArabic } = useAuth()
-  const data = !isArabic ? appData : appDataArabic
+  const data = isArabic ? appData : appDataArabic
 
   return (
     <React.Fragment>

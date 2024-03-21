@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     // Dynamically import styles based on isDarkMode and/or isArabic
     const importStyles = async () => {
-      if (isArabic && isDarkMode) {
+      if (!isArabic && isDarkMode) {
         // Import styles for Arabic and Dark Mode
         await import('./assets/scss/bootstrap-dark.scss');
         await import('./assets/scss/style-dark.scss');
@@ -29,7 +29,7 @@ const App = () => {
         }
   
         // Import styles based on isArabic
-        if (isArabic) {
+        if (!isArabic) {
           await import('./assets/scss/bootstrap.scss');
           await import('./assets/scss/style.scss');
           await import('./assets/scss/style-rtl.scss');
