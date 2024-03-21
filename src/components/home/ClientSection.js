@@ -23,11 +23,11 @@ const ClientSection = (props) => {
                   <div className="section-title mb-4 pb-2 text-center">
                     <h3 className="title mb-4">
                       <span className="text-primary">
-                        {data?.title}
+                        {data.title}
                       </span>
                     </h3>
                     <p className="text-muted para-desc mb-0 mx-auto">
-                      {data?.description}
+                      {data.description}
                     </p>
                   </div>
                 </Col>
@@ -50,7 +50,7 @@ const ClientSection = (props) => {
                         slidesPerView: 3,
                       },
                       1400: {
-                        slidesPerView: data?.clients.length < 5 ? data.clients.length : 5,
+                        slidesPerView: data.clients.length < 5 ? data.clients.length : 5,
                       },
                     }}
                     autoplay={{
@@ -61,31 +61,33 @@ const ClientSection = (props) => {
                     modules={[Pagination, Autoplay, Navigation]}
                     className="tiny-five-item"
                   >
-                    <div className="tiny-slide">
-                      {data?.clients
-                        ? data?.clients?.map((client, key) => (
-                          <SwiperSlide key={key}>
-                            <Card className="nft nft-primary nft-creator border-0 rounded-md shadow m-2">
-                              <CardBody className="p-3">
-                                <div className="content mt-3">
-                                  <div className="position-relative text-center">
-                                    <img src={client.img}
-                                      className="avatar avatar-small rounded-pill shadow"
-                                      alt="logo"
-                                    />
-                                    <div className="author mt-2">
-                                      <Link
-                                        to="#"
-                                        className="text-dark h6 name"
-                                      >
-                                        {client.title}
-                                      </Link>
+                    <div className="d-flex flex-wrap justify-content-center">
+                      {data.clients
+                        ? data.clients.map((client, key) => (
+                          <>
+                            <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+                              <Card className="nft nft-primary nft-creator border-0 rounded-md shadow m-2">
+                                <CardBody className="p-3">
+                                  <div className="content mt-3">
+                                    <div className="position-relative text-center">
+                                      <img src={client.img}
+                                        className="avatar avatar-small rounded-pill shadow"
+                                        alt="logo"
+                                      />
+                                      <div className="author mt-2">
+                                        <Link
+                                          to="#"
+                                          className="text-dark h6 name"
+                                        >
+                                          {client.title}
+                                        </Link>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              </CardBody>
-                            </Card>
-                          </SwiperSlide>
+                                </CardBody>
+                              </Card>
+                            </div>
+                          </>
                         ))
                         : null}
                     </div>
