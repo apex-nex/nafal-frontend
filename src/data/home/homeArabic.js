@@ -13,6 +13,7 @@ import clientImg9 from '../../assets/images/home/clients/09.png';
 import clientImg10 from '../../assets/images/home/clients/10.png';
 import clientImg11 from '../../assets/images/home/clients/11.jpg';
 import clientImg12 from '../../assets/images/home/clients/12.png';
+import clientImg13 from '../../assets/images/home/clients/13.png';
 import userInterface from '../../assets/images/home/download/user_interface.svg';
 
 const carouselDataArabic = [
@@ -172,6 +173,11 @@ const clientsDataArabic = {
       badgeNo: 12,
       img: clientImg12,
       title: "Dawaak Medical"
+    },
+    {
+      badgeNo: 13,
+      img: clientImg13,
+      title: "STEP TO THE SUN"
     },
   ]
 };
