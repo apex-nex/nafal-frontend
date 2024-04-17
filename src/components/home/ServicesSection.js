@@ -53,9 +53,7 @@ const ServiceSection = ({ seeMore = true }) => {
                       ? data?.description?.map(
                         (ele, index) => (
                           <span
-                            className={
-                              ele.highlight ? 'text-primary fw-bold' : ''
-                            }
+                            className={ele.highlight ? 'text-primary fw-bold' : ''}
                             key={index}
                           >
                             {ele.content}
@@ -110,7 +108,7 @@ const ServiceSection = ({ seeMore = true }) => {
                           displayCategory === category ||
                           displayCategory === 'All',
                       )
-                      .map(({ title, image, subtitle }, key) => (
+                      .map(({ title, image, subtitle, link }, key) => (
                         <Col
                           key={key}
                           lg={6}
@@ -120,7 +118,7 @@ const ServiceSection = ({ seeMore = true }) => {
                           <FadeIn delay={100}>
                             <Card className="border-0 work-container work-classic shadow overflow-hidden">
                               <CardBody className="p-0">
-                                <Link to="#">
+                                <Link to={link}>
                                   <img
                                     src={image}
                                     className="img-fluid work-image"
