@@ -9,6 +9,9 @@ import { appTextContent } from "./app/appTextContent";
 import { errorContent } from "./error/errorContent";
 import { privacyContent } from "./privicy/privacyContent";
 import { termsContent } from "./terms/termsContent";
+import { AcMaintenanceContent } from "./acMaintenace/acMaintenanceContent";
+import { ductContent } from "./duct/ductContent"
+import { vrfContent } from "./vrf/vrfContent"
 
 export {
     carouselData,
@@ -31,4 +34,7 @@ export {
     errorContent,
     privacyContent,
     termsContent,
+    AcMaintenanceContent,
+    ductContent,
+    vrfContent,
 };

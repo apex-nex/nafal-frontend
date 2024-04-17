@@ -10,6 +10,9 @@ import AppComingSoon from '../pages/Special/AppComingSoon';
 import PageLogin from "../pages/AuthPages/PageLogin";
 import Dashboard from "../pages/admin/Dashboard";
 import Logout from '../pages/AuthPages/Logout';
+import AcMaintenance from '../pages/Utility/AcMaintenance';
+import Duct from '../pages/Utility/duct';
+import Vrf from '../pages/Utility/vrf';
 
 const routes = [
   //routes with Layout
@@ -19,6 +22,9 @@ const routes = [
   { path: "/contact-us", component: <Contact /> },
   { path: "/privacy", component: <PagePrivacy /> },
   { path: "/terms", component: <PageTerms /> },
+  { path: "/services/ac-maintenance", component: <AcMaintenance /> },
+  { path: "/services/duct", component: <Duct /> },
+  { path: "/services/vrf-system", component: <Vrf /> },
 
   //routes without Layout
   { path: "/app-comingsoon", component: <AppComingSoon />, isWithoutLayout: true },

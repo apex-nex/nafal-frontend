@@ -4,6 +4,7 @@ import work3 from "../../../assets/images/home/services/work3.png"
 import work4 from "../../../assets/images/home/services/work4.png"
 import work5 from "../../../assets/images/home/services/work5.png"
 import work6 from "../../../assets/images/home/services/work6.png"
+import work7 from "../../../assets/images/home/services/work7.png"
 
 const servicesDataArabic = {
   name: 'Services-Section',
@@ -31,36 +32,49 @@ const servicesDataArabic = {
       title: 'Home Conditioners',
       subtitle: 'حلول التبريد للمشاريع السكنية',
       category: 'Residential',
+      link: "#"
     },
     {
       image: work2,
       title: 'Package AC',
       subtitle: 'حلول تجارية مخصصة مع نفال',
       category: 'Commercial',
+      link: "#"
     },
     {
       image: work3,
       title: 'Air20',
       subtitle: 'نفال تقدم أنظمة التهوية وتكييف الهواء المبتكرة للبنية التحتية ',
       category: 'Commercial',
+      link: "#"
     },
     {
       image: work4,
       title: 'Cassette',
       subtitle: 'حلول بناء فعالة',
       category: 'تجاري',
+      link: "#"
     },
     {
       image: work5,
       title: 'AC Maintenance',
       subtitle: 'ارفع أداء تكييف الهواء مع الخبراء في نفال',
       category: 'Residential',
+      link: "/services/ac-maintenance"
     },
     {
       image: work6,
       title: 'Duct Construction And Design',
       subtitle: 'وتصميم وتركيب مجاري الهواء',
       category: 'Infrastructure',
+      link: "/services/duct"
+    },
+    {
+      image: work7,
+      title: 'VRF System',
+      subtitle: 'تكنولوجيا التبريد الأكثر تقدما',
+      category: 'Commercial',
+      link: "/services/vrf-system"
     },
   ],
   categories: ['All', 'Residential', 'Commercial', 'Infrastructure']

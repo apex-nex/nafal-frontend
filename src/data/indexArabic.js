@@ -9,6 +9,9 @@ import { appTextContentArabic } from "./app/appTextContentArabic";
 import { errorContentArabic } from "./error/errorContentArabic";
 import { privacyContentArabic } from "./privicy/privacyContentArabic";
 import { termsContentArabic } from "./terms/termsContentArabic";
+import { AcMaintenanceContentArabic } from "./acMaintenace/acMaintenanceContentArabic";
+import { ductContentArabic } from "./duct/ductContentArabic"
+import {vrfContentArabic } from "./vrf/vrfContentArabic"
 
 export {
     carouselDataArabic,
@@ -28,4 +31,7 @@ export {
     errorContentArabic,
     privacyContentArabic,
     termsContentArabic,
+    AcMaintenanceContentArabic,
+    ductContentArabic,
+    vrfContentArabic,
 };
