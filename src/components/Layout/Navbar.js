@@ -7,7 +7,7 @@ import { useAuth } from '../../store/auth';
 import { menuItemsArabic } from '../../data/indexArabic';
 
 const Navbar = (props) => {
-  const { isArabic, isDarkMode, toggleDarkMode, toggleArabic } = useAuth()
+  const { isArabic, isDarkMode, toggleDarkMode } = useAuth()
   const data = isArabic ? menuItems : menuItemsArabic
 
   useEffect(() => {
@@ -146,7 +146,12 @@ const Navbar = (props) => {
               {!isArabic ?
                 <>
                   <Link to={'#'}
-                    onClick={() => toggleArabic(true)}
+                    onClick={() => {
+                      {
+                        localStorage.setItem("arabicMode", true)
+                        window.location.reload();
+                      }
+                    }}
                   >
                     <div className="login-btn-primary">
                       <span className="btn btn-icon btn-pills btn-soft-primary">
@@ -155,7 +160,12 @@ const Navbar = (props) => {
                     </div>
                   </Link>
                   <Link to={'#'}
-                    onClick={() => toggleArabic(true)}
+                    onClick={() => {
+                      {
+                        localStorage.setItem("arabicMode", true)
+                        window.location.reload();
+                      }
+                    }}
                   >
                     <div className="login-btn-light">
                       <span className="btn btn-icon btn-pills btn-light">
