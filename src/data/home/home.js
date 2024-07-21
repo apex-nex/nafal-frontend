@@ -26,7 +26,7 @@ const carouselData = [
   {
     id: 1,
     image: bg01,
-    h1: 'Enhance Comfort with Nafal HVAC',
+    h1: 'Enhance Comfort with Etqan Nafal HVAC',
     p: 'Upgrade your indoor environment with our expert HVAC services. We specialize in efficient heating, cooling, and ventilation for your comfort.',
     btnclass: 'btn btn-icon btn-pills btn-primary lightbox',
     buttontext: ' Watch Now',
@@ -47,7 +47,7 @@ const carouselData = [
   {
     id: 3,
     image: bg01,
-    h1: 'Contact Nafal HVAC Experts',
+    h1: 'Contact Etqan Nafal HVAC Experts',
     p: 'Get in touch with our HVAC experts for personalized solutions. We provide professional services to ensure your indoor environment is comfortable.',
     btnclass: 'btn btn-primary mouse-down',
     btntext: ' Contact Us',
@@ -132,7 +132,7 @@ const videoSectionData = {
 
 const clientsData = {
   title: "Our Clients",
-  description: "At NAFAL HVAC, our clients' satisfaction is our ultimate goal.We are dedicated to providing exceptional products services customized to their specific requirements. Their happiness and contentment inspire us to consistently surpass expectations.",
+  description: "At Etqan NAFAL HVAC, our clients' satisfaction is our ultimate goal.We are dedicated to providing exceptional products services customized to their specific requirements. Their happiness and contentment inspire us to consistently surpass expectations.",
   clients: [
     {
       badgeNo: 1,
@@ -207,7 +207,7 @@ const appData = {
   title1: "Available for your",
   title2: "Smartphones",
   description1: "Stay connected with",
-  highlightedText: "Nafal HVAC",
+  highlightedText: "Etqan Nafal HVAC",
   description2: "Get our app for all your heating, cooling, and ventilation needs.",
   appStoreTitle: "App Store",
   playStoreTitle: "Play Store",

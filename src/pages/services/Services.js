@@ -57,7 +57,7 @@ const Services = () => {
         <React.Fragment>
             <div className="page-content">
                 <MetaTags>
-                    <title>Services | Nafal</title>
+                    <title>Services | Etqan Nafal</title>
                 </MetaTags>
                 {data ?
                     <>

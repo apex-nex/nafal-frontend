@@ -1,7 +1,7 @@
 const servicesPageDataArabic = {
     page_heading: "الخدمات",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "الصفحة", className: "breadcrumb-item", link: "#" },
         { name: "الخدمات", className: "breadcrumb-item active" }
     ],
@@ -124,10 +124,10 @@ const servicesPageDataArabic = {
         ],
     },
     endSection: {
-        title: "قم بترقية راحتك مع نفال للتكييف",
+        title: "قم بترقية راحتك مع اتقان نفال للتكييف",
         description: [
             { type: "text", content: "اكتشف التميز في مجال التدفئة والتهوية وتكييف الهواء (HVAC) مع" },
-            { type: "highlighted", content: "نفال" },
+            { type: "highlighted", content: "اتقان نفال" },
             { type: "text", content: "للتكييف (HVAC). ارفع مستوى الراحة والكفاءة وجودة الهواء في مساحتك." },
         ],
         buttonText: "ابقى على تواصل"

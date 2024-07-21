@@ -1,7 +1,7 @@
 const privacyContent = {
     title: "Privacy Policy",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },
         { name: "Privacy", className: "breadcrumb-item active" }
     ],
@@ -16,7 +16,7 @@ const privacyContent = {
     useInfo: {
         title: "Our use of your personal information :",
         content: "We use your personal information to provide services, support, and enhance your experience. This includes preventing illegal activities and complying with our User Agreement. We may share information with third parties for verification and fraud prevention. While we prioritize privacy, disclosure may occur in legal or law enforcement situations.",
-        content2: "If Nafal is sold, your info may be shared for continued site provision. Personal data may be disclosed in item transactions, but otherwise, only with your explicit permission. We don't sell or rent personal info and only share it as outlined in this policy.",
+        content2: "If Etqan Nafal is sold, your info may be shared for continued site provision. Personal data may be disclosed in item transactions, but otherwise, only with your explicit permission. We don't sell or rent personal info and only share it as outlined in this policy.",
         content3: "By registering, you agree to receive promotional emails. You can opt out anytime. Your comments about the site may be used for marketing, with your express consent.",
     },
     userPersonalInfo: {

@@ -17,7 +17,7 @@ const servicesDataArabic = {
       highlight: false,
     },
     {
-      content: 'نفال لتكييف الهواء',
+      content: 'اتقان نفال لتكييف الهواء',
       highlight: true,
     },
     {
@@ -37,14 +37,14 @@ const servicesDataArabic = {
     {
       image: work2,
       title: 'Package AC',
-      subtitle: 'حلول تجارية مخصصة مع نفال',
+      subtitle: 'حلول تجارية مخصصة مع اتقان نفال',
       category: 'Commercial',
       link: "#"
     },
     {
       image: work3,
       title: 'Air20',
-      subtitle: 'نفال تقدم أنظمة التهوية وتكييف الهواء المبتكرة للبنية التحتية ',
+      subtitle: 'اتقان نفال تقدم أنظمة التهوية وتكييف الهواء المبتكرة للبنية التحتية ',
       category: 'Commercial',
       link: "#"
     },
@@ -58,7 +58,7 @@ const servicesDataArabic = {
     {
       image: work5,
       title: 'AC Maintenance',
-      subtitle: 'ارفع أداء تكييف الهواء مع الخبراء في نفال',
+      subtitle: 'ارفع أداء تكييف الهواء مع الخبراء في اتقان نفال',
       category: 'Residential',
       link: "/services/ac-maintenance"
     },

@@ -1,7 +1,7 @@
 const ductContent = {
     title: "Duct",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },
         { name: "Duct", className: "breadcrumb-item active" }
     ],

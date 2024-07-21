@@ -133,7 +133,7 @@ const FormSection = () => {
           <Col lg={7} md={{ size: 6, order: 2 }} xs={{ order: 1 }}>
             <Card className="border-0">
               <CardBody className="p-0">
-                <img src={data?.img} className="img-fluid" alt="Nafal" />
+                <img src={data?.img} className="img-fluid" alt="Etqan Nafal" />
               </CardBody>
             </Card>
           </Col>

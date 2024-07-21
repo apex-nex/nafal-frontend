@@ -1,7 +1,7 @@
 const servicesPageData = {
     page_heading: "Services",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },
         { name: "Services", className: "breadcrumb-item active" }
     ],
@@ -124,10 +124,10 @@ const servicesPageData = {
         ],
     },
     endSection: {
-        title: "Upgrade Your Comfort with Nafal HVAC",
+        title: "Upgrade Your Comfort with Etqan Nafal HVAC",
         description: [
             { type: "text", content: "Discover HVAC excellence with" },
-            { type: "highlighted", content: "Nafal HVAC." },
+            { type: "highlighted", content: "Etqan Nafal HVAC." },
             { type: "text", content: "Elevate your space's comfort, efficiency, and air quality. Let's transform your indoors!" },
         ],
         buttonText: "Get in Touch"

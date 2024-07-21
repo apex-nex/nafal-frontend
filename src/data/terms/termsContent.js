@@ -1,7 +1,7 @@
 const termsContent = {
     title: "Terms of Services",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },
         { name: "Terms", className: "breadcrumb-item active" }
     ],
@@ -10,12 +10,12 @@ const termsContent = {
         { to: "/services", label: "Services", className: "btn btn-outline-primary mt-2" },
     ],
     welcome: {
-        title: "Welcome to Nafal HVAC :",
-        content: "Discover the best in heating, ventilation, and air conditioning services at Nafal HVAC. We are dedicated to providing unmatched comfort solutions for your indoor spaces.",
+        title: "Welcome to Etqan Nafal HVAC :",
+        content: "Discover the best in heating, ventilation, and air conditioning services at Etqan Nafal HVAC. We are dedicated to providing unmatched comfort solutions for your indoor spaces.",
     },
     commitment: {
         title: "Our Service Commitment :",
-        content: "At Nafal HVAC, we pledge to provide HVAC services that are reliable and efficient, specifically tailored to meet your unique needs. Our unwavering commitment is to enhance the performance and lifespan of your HVAC systems, ensuring your indoor comfort year-round.",
+        content: "At Etqan Nafal HVAC, we pledge to provide HVAC services that are reliable and efficient, specifically tailored to meet your unique needs. Our unwavering commitment is to enhance the performance and lifespan of your HVAC systems, ensuring your indoor comfort year-round.",
     },
     restrictions: {
         title: "Service Restrictions :",

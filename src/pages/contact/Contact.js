@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <React.Fragment>
       <MetaTags>
-        <title>Contact Us | Nafal</title>
+        <title>Contact Us | Etqan Nafal</title>
       </MetaTags>
       {/* heading-section */}
       <HeadingSection />

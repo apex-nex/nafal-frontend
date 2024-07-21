@@ -4,7 +4,7 @@ const aboutData = {
         page_heading: 'About us',
         title: "Our Story",
         breadcrumb: [
-            { name: "Nafal", className: "breadcrumb-item", link: "/" },
+            { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
             { name: "Page", className: "breadcrumb-item", link: "#" },
             { name: "About us", className: "breadcrumb-item active" }
         ],
@@ -19,7 +19,7 @@ const aboutData = {
                     highlight: false,
                 },
                 {
-                    content: 'Nafal',
+                    content: 'Etqan Nafal',
                     highlight: true,
                 },
                 {
@@ -36,7 +36,7 @@ const aboutData = {
                     highlight: false,
                 },
                 {
-                    content: 'Nafal',
+                    content: 'Etqan Nafal',
                     highlight: true,
                 },
                 {

@@ -13,7 +13,7 @@ const Home = () => {
     <React.Fragment>
       <div className="page-content wrapper bg-light">
         <MetaTags>
-          <title>Home | Nafal</title>
+          <title>Home | Etqan Nafal</title>
         </MetaTags>
 
         {/* {carousel} */}

@@ -58,7 +58,7 @@ const PageLogin = () => {
   return (
     <React.Fragment>
       <MetaTags>
-        <title>Login | Nafal</title>
+        <title>Login | Etqan Nafal</title>
       </MetaTags>
       <div className="back-to-home">
         <Link to="/" className="back-button btn btn-icon btn-primary">

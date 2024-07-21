@@ -17,7 +17,7 @@ const About = () => {
     <React.Fragment>
       <div className="page-content">
         <MetaTags>
-          <title>About | Nafal</title>
+          <title>About | Etqan Nafal</title>
         </MetaTags>
         {data ? <>
           <section className="bg-half-170 bg-light d-table w-100">
@@ -62,7 +62,7 @@ const About = () => {
               <Row className="align-items-center">
                 <Col lg={5} md={5} className="mt-4 pt-2 mt-sm-0 pt-sm-0">
                   <div className="position-relative">
-                    <img src={data?.aboutUsCmsData?.img} className="rounded img-fluid mx-auto d-block" alt="Nafal" />
+                    <img src={data?.aboutUsCmsData?.img} className="rounded img-fluid mx-auto d-block" alt="Etqan Nafal" />
                   </div>
                 </Col>
 

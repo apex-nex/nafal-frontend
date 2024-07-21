@@ -20,7 +20,7 @@ const carouselDataArabic = [
   {
     id: 1,
     image: bg01,
-    h1: 'عزز راحتك مع نفال للتكييف',
+    h1: 'عزز راحتك مع اتقان نفال للتكييف',
     p: 'قم بترقية بيئتك الداخلية من خلال خدمات تكييف الهواء (HVAC) المتخصصة لدينا. نحن متخصصون في التدفئة والتبريد والتهوية الفعالة لراحتك',
     btnclass: 'btn btn-icon btn-pills btn-primary lightbox',
     buttontext: ' شاهد الآن',
@@ -41,7 +41,7 @@ const carouselDataArabic = [
   {
     id: 3,
     image: bg01,
-    h1: 'إتصل بخبراء نفال لأنظمة تكييف الهواء',
+    h1: 'إتصل بخبراء اتقان نفال لأنظمة تكييف الهواء',
     p: 'تواصل مع خبراء التكييف لدينا للحصول على حلول مخصصة. نحن نقدم خدمات احترافية لضمان أن البيئة الداخلية الخاصة بك مريحة',
     btnclass: 'btn btn-primary mouse-down',
     btntext: ' تواصل معنا',
@@ -57,7 +57,7 @@ const aboutSectionDataArabic = {
   readMore: "اقرأ أكثر",
   titles: [
     {
-      title: 'نفال للتكييف',
+      title: 'اتقان نفال للتكييف',
       highlight: true,
       breakPoint: false,
     },
@@ -78,7 +78,7 @@ const aboutSectionDataArabic = {
       highlight: false,
     },
     {
-      content: 'شركة نفال.',
+      content: 'شركة اتقان نفال.',
       highlight: true,
     },
     {
@@ -92,7 +92,7 @@ const aboutSectionDataArabic = {
 const videoSectionDataArabic = {
   title: 'خبراء تكييف الهواء الموثوقون لديك',
   description:
-    'اكتشف الفرق مع نفال للتكييف. نحن نقدم حلولاً مبتكرة لجميع احتياجات في التكييف والتهوية',
+    'اكتشف الفرق مع اتقان نفال للتكييف. نحن نقدم حلولاً مبتكرة لجميع احتياجات في التكييف والتهوية',
   videoId: '8_FJEMH8hx0',
   img: videoImg,
 };
@@ -100,7 +100,7 @@ const videoSectionDataArabic = {
 const clientsDataArabic = {
   title: 'عملاؤنا',
   description:
-    'في NAFAL HVAC ، رضا عملائنا هو هدفنا النهائي. نحن ملتزمون بتوفير منتجات وخدمات استثنائية مخصصة لمتطلباتهم الخاصة. سعادتهم ورضاهم يلهمانا لتجاوز توقعاتهم باستمرار.',
+    'في Etqan NAFAL HVAC ، رضا عملائنا هو هدفنا النهائي. نحن ملتزمون بتوفير منتجات وخدمات استثنائية مخصصة لمتطلباتهم الخاصة. سعادتهم ورضاهم يلهمانا لتجاوز توقعاتهم باستمرار.',
   // clients: [
   //   {
   //     badgeNo: 1,
@@ -187,7 +187,7 @@ const appDataArabic = {
   title1: 'التطبيق متاح',
   title2: 'على الهواتف الذكية ',
   description1: 'ابق على اتصال مع',
-  highlightedText: 'نفال للتكييف',
+  highlightedText: 'اتقان نفال للتكييف',
   description2:
     'احصل على تطبيقنا لجميع احتياجات التكييف والتبريد والتهويةاحصل على تطبيقنا لجميع احتياجاتك في التدفئة والتبريد والتهوية',
     appStoreTitle: "App Store",

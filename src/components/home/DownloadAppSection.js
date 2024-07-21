@@ -22,7 +22,7 @@ const DownloadAppSection = () => {
               <img
                 src={data.img}
                 className="img-fluid mx-auto d-block"
-                alt="Nafal"
+                alt="Etqan Nafal"
               />
             </Col>
             <Col

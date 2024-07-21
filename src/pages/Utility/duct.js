@@ -77,7 +77,7 @@ const Duct = () => {
     <React.Fragment>
       {/* breadcrumb */}
       <MetaTags>
-        <title>Duct | Nafal</title>
+        <title>Duct | Etqan Nafal</title>
       </MetaTags>
       <section className="bg-half-170 bg-light d-table w-100">
         <Container>

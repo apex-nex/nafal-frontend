@@ -1,5 +1,5 @@
 const footerData = {
-    description: " NAFAL HVAC. All rights reserved",
+    description: " ETQAN NAFAL HVAC. All rights reserved",
     TermsPage: "Terms",
     PrivacyPage: "Privacy"
 }

@@ -1,4 +1,4 @@
-# Nafal-Frontend
+# Etqan-Nafal-Frontend
 
 
 ## Unable to install packages

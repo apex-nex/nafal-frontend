@@ -1,7 +1,7 @@
 const vrfContentArabic = {
     title: "تكييف VRV | VRF",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "الصفحة", className: "breadcrumb-item", link: "#" },
         { name: "تكييف VRF", className: "breadcrumb-item active" }
     ],

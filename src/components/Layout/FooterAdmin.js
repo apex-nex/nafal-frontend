@@ -13,10 +13,10 @@ const FooterAdmin = () => {
       <footer style={{ padding: "20px" }} className="bg-light">
         <Container fluid={true}>
           <Row>
-            <Col md={6}>{new Date().getFullYear()} © Nafal.</Col>
+            <Col md={6}>{new Date().getFullYear()} © Etqan Nafal.</Col>
             <Col md={6}>
               <div style={textBlockStyle} className="d-none d-sm-block">
-                All rights reserved by Nafal
+                All rights reserved by Etqan Nafal
               </div>
             </Col>
           </Row>

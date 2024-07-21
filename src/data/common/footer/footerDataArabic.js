@@ -1,5 +1,5 @@
 const footerDataArabic = {
-    description: "كل الحقوق محفوظة لشركة نفال لتكييف الهواء",
+    description: "كل الحقوق محفوظة لشركة اتقان نفال لتكييف الهواء",
     TermsPage: "شروط",
     PrivacyPage: "خصوصية"
 }

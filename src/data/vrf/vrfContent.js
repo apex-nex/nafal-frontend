@@ -1,7 +1,7 @@
 const vrfContent = {
     title: "VRF System",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },
         { name: "VRF System", className: "breadcrumb-item active" }
     ],

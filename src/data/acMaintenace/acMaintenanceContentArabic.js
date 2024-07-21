@@ -1,7 +1,7 @@
 const AcMaintenanceContentArabic = {
     title: "صيانة التكييف",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "الصفحة", className: "breadcrumb-item", link: "#" },
         { name: "صيانة التكييف", className: "breadcrumb-item active" }
     ],

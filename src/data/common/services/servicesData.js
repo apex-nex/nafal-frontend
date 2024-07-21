@@ -17,7 +17,7 @@ const servicesData = {
       highlight: false,
     },
     {
-      content: 'NAFAL HVAC ',
+      content: 'ETQAN NAFAL HVAC ',
       highlight: true,
     },
     {

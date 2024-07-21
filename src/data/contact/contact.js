@@ -3,7 +3,7 @@ import contact from '../../assets/images/contact/contact.svg';
 const headingSection = {
     title: "Contact Us",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },
         { name: "Contact Us", className: "breadcrumb-item active" }
     ]
@@ -12,7 +12,7 @@ const headingSection = {
 const contactData = [
     {
         title: 'Phone',
-        discription: 'Start working with Nafal that can provide everything',
+        discription: 'Start working with Etqan Nafal that can provide everything',
         data: '+966 51 014 9313',
         textBold: false,
         sameClassName: false,
@@ -20,7 +20,7 @@ const contactData = [
     },
     {
         title: 'Email',
-        discription: 'Start working with Nafal that can provide everything',
+        discription: 'Start working with Etqan Nafal that can provide everything',
         data: 'info@nafal-hvac.sa',
         textBold: false,
         sameClassName: true,

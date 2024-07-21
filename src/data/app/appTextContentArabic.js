@@ -9,10 +9,10 @@ const appTextContentArabic = {
   logo: {
     link: '#',
     imageSrc: logoNafal,
-    alt: 'Nafal Logo',
+    alt: 'Etqan Nafal Logo',
   },
   title: 'التطبيق قريبا...',
-  description: `ابدأ العمل مع شركة Nafal HVAC التي يمكنها توفير كل شيء
+  description: `ابدأ العمل مع شركة Etqan Nafal HVAC التي يمكنها توفير كل شيء
   تحتاج إلى ضمان راحة منزلك وكفاءته.
   استمتع بأفضل حلول التدفئة والتبريد والتهوية.`,
   goBackHomeBtn: {

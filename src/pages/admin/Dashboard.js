@@ -210,7 +210,7 @@ const Dashboard = () => {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(16);
     doc.setTextColor(62, 191, 238);
-    doc.text('NAFAL HVAC', 14, 10);
+    doc.text('Etqan NAFAL HVAC', 14, 10);
     doc.setTextColor(0);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
@@ -303,7 +303,7 @@ const Dashboard = () => {
     <React.Fragment>
       <div className="page-content wrapper d-flex flex-column" style={{ marginTop: "60px", minHeight: "83vh" }}>
         <MetaTags>
-          <title>Dashboard | Nafal</title>
+          <title>Dashboard | Etqan Nafal</title>
         </MetaTags>
         <Container fluid>
           <Row>

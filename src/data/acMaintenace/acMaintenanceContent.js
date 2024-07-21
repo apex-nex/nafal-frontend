@@ -1,7 +1,7 @@
 const AcMaintenanceContent = {
     title: "AC Maintenance",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "Page", className: "breadcrumb-item", link: "#" },
         { name: "AC Maintenance", className: "breadcrumb-item active" }
     ],

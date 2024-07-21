@@ -1,7 +1,7 @@
 const ductContentArabic = {
     title: "الدكت ”Duct“",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "الصفحة", className: "breadcrumb-item", link: "#" },
         { name: "الدكت", className: "breadcrumb-item active" }
     ],

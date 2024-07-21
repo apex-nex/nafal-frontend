@@ -77,7 +77,7 @@ const PageTerms = () => {
     <React.Fragment>
       {/* breadcrumb */}
       <MetaTags>
-        <title>Terms | Nafal</title>
+        <title>Terms | Etqan Nafal</title>
       </MetaTags>
       <section className="bg-half-170 bg-light d-table w-100">
         <Container>

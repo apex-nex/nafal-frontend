@@ -120,8 +120,8 @@ function NavbarAdmin(props) {
                         </Link>
                         :
                         <Link className="logo" to="/">
-                            <img src={logoDark} height="24" className="logo-light-mode" alt="Nafal" />
-                            <img src={logoLight} height="24" className="logo-dark-mode" alt="Nafal" />
+                            <img src={logoDark} height="24" className="logo-light-mode" alt="Etqan Nafal" />
+                            <img src={logoLight} height="24" className="logo-dark-mode" alt="Etqan Nafal" />
                         </Link>
                     }
                     <ul className="buy-button list-inline mb-0">

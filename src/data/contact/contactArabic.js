@@ -3,7 +3,7 @@ import contact from '../../assets/images/contact/contact.svg';
 const headingSectionArabic = {
     title: "اتصل بنا",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "الصفحة", className: "breadcrumb-item", link: "#" },
         { name: "اتصل بنا", className: "breadcrumb-item active" }
     ]
@@ -12,7 +12,7 @@ const headingSectionArabic = {
 const contactDataArabic = [
     {
         title: 'الهاتف',
-        discription: 'ابدأ العمل مع نفال التي يمكنها تقديم كل حلول التكييف والتهوية',
+        discription: 'ابدأ العمل مع اتقان نفال التي يمكنها تقديم كل حلول التكييف والتهوية',
         data: '+966 51 014 9313',
         textBold: false,
         sameClassName: false,
@@ -20,7 +20,7 @@ const contactDataArabic = [
     },
     {
         title: 'الايميل',
-        discription: 'ابدأ العمل مع نفال التي يمكنها تقديم كل حلول التكييف والتهوية',
+        discription: 'ابدأ العمل مع اتقان نفال التي يمكنها تقديم كل حلول التكييف والتهوية',
         data: 'info@nafal-hvac.sa',
         textBold: false,
         sameClassName: true,

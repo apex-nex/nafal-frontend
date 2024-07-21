@@ -1,7 +1,7 @@
 const privacyContentArabic = {
     title: "سياسة الخصوصية",
     breadcrumb: [
-        { name: "Nafal", className: "breadcrumb-item", link: "/" },
+        { name: "Etqan Nafal", className: "breadcrumb-item", link: "/" },
         { name: "صفحة", className: "breadcrumb-item", link: "#" },
         { name: "خصوصية", className: "breadcrumb-item active" }
     ],

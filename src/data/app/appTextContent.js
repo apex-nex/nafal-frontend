@@ -9,10 +9,10 @@ const appTextContent = {
   logo: {
     link: '#',
     imageSrc: logoNafal,
-    alt: 'Nafal Logo',
+    alt: 'Etqan Nafal Logo',
   },
   title: 'App Coming Soon...',
-  description: `Start working with Nafal HVAC Company that can provide everything
+  description: `Start working with Etqan Nafal HVAC Company that can provide everything
     you need to ensure your home's comfort and efficiency. 
     Experience top-notch heating, cooling, and ventilation solutions.`,
   goBackHomeBtn: {
